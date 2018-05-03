@@ -45,7 +45,7 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign="center"
-            style={{ minHeight: 700, padding: "1em 0em" }}
+            style={{ minHeight: 80, padding: "1em 0em" }}
             vertical
           >
             <Menu
@@ -56,7 +56,7 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as={NavLink} to="/">
+                <Menu.Item exact as={NavLink} to="/">
                   Home
                 </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/howitworks">
@@ -84,7 +84,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            <HomepageHeading />
+            {/* <HomepageHeading /> */}
           </Segment>
         </Visibility>
 

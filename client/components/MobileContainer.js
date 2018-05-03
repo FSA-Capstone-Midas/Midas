@@ -90,7 +90,7 @@ class MobileContainer extends Component {
                   </Menu.Item>
                 </Menu>
               </Container>
-              <HomepageHeading mobile />
+              {/* <HomepageHeading mobile /> */}
             </Segment>
 
             {children}
