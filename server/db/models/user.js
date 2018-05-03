@@ -29,21 +29,15 @@ const User = db.define("user", {
   birthday: {
     type: Sequelize.DATE
   },
-  plaidTokenId: {
-    type: Sequelize.STRING
-  },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
+  plaidTokenId: {
+    type: Sequelize.STRING
+  },
   public_key: {
-    type: Sequelize.STRING
-  },
-  secret: {
-    type: Sequelize.STRING
-  },
-  client_key: {
     type: Sequelize.STRING
   },
   password: {
