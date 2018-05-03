@@ -16,8 +16,8 @@ nav a {
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+  /* margin: 1em; */
+  /* display: inline; */
 }
 
 #carousel {
@@ -50,4 +50,16 @@ form div {
 
 .ui.cards {
   flex-wrap: initial;
+}
+
+.field {
+  display: block;
+}
+
+#signup {
+  padding-left: 30%;
+  padding-right: 40%;
+}
+#dob {
+  display: inline-flex;
 }
