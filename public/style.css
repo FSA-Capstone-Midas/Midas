@@ -44,6 +44,14 @@ form div {
   /* transition: opacity 1.5s; */
 }
 
+#aboutUsBackground {
+  background: linear-gradient(#fdfcfb, #e2d1c3);
+}
+
+.ui.cards {
+  flex-wrap: initial;
+}
+
 .field {
   display: block;
 }
