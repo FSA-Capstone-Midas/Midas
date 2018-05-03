@@ -14,7 +14,8 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
+  Input
 } from "semantic-ui-react";
 
 /**
@@ -24,37 +25,47 @@ import {
 /* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
  * such things.
  */
-const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Header
-      as="h1"
-      content="Imagine-a-Company"
-      inverted
-      style={{
-        fontSize: mobile ? "2em" : "4em",
-        fontWeight: "normal",
-        marginBottom: 0,
-        marginTop: mobile ? "1.5em" : "3em"
-      }}
-    />
-    <Header
-      as="h2"
-      content="Do whatever you want when you want to."
-      inverted
-      style={{
-        fontSize: mobile ? "1.5em" : "1.7em",
-        fontWeight: "normal",
-        marginTop: mobile ? "0.5em" : "1.5em"
-      }}
-    />
-    <Button primary size="huge">
-      Get Started
-      <Icon name="right arrow" />
-    </Button>
-  </Container>
-);
+class MenuExampleSecondary extends Component {
+  state = { activeItem: "home" };
 
-HomepageHeading.propTypes = {
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  render() {
+    const { activeItem } = this.state;
+
+    return (
+      <Menu secondary>
+        <Menu.Item
+          name="home"
+          active={activeItem === "home"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="messages"
+          active={activeItem === "messages"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="friends"
+          active={activeItem === "friends"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+          <Menu.Item
+            name="logout"
+            active={activeItem === "logout"}
+            onClick={this.handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu>
+    );
+  }
+}
+
+MenuExampleSecondary.propTypes = {
   mobile: PropTypes.bool
 };
 
@@ -94,27 +105,24 @@ class DesktopContainer extends Component {
             >
               <Container>
                 <Menu.Item as="a" active>
-                  Home
+                  HOME
                 </Menu.Item>
-                <Menu.Item as="a">Work</Menu.Item>
-                <Menu.Item as="a">Company</Menu.Item>
-                <Menu.Item as="a">Careers</Menu.Item>
+                <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
+                <Menu.Item as="a">SETTING</Menu.Item>
+                <Menu.Item as="a">PROFILE</Menu.Item>
                 <Menu.Item position="right">
-                  <Button as="a" inverted={!fixed}>
-                    Log in
-                  </Button>
                   <Button
                     as="a"
                     inverted={!fixed}
                     primary={fixed}
                     style={{ marginLeft: "0.5em" }}
                   >
-                    Sign Up
+                    LOG OUT
                   </Button>
                 </Menu.Item>
               </Container>
             </Menu>
-            <HomepageHeading />
+            <MenuExampleSecondary />
           </Segment>
         </Visibility>
 
@@ -155,13 +163,12 @@ class MobileContainer extends Component {
             visible={sidebarOpened}
           >
             <Menu.Item as="a" active>
-              Home
+              HOME
             </Menu.Item>
-            <Menu.Item as="a">Work</Menu.Item>
-            <Menu.Item as="a">Company</Menu.Item>
-            <Menu.Item as="a">Careers</Menu.Item>
-            <Menu.Item as="a">Log in</Menu.Item>
-            <Menu.Item as="a">Sign Up</Menu.Item>
+            <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
+            <Menu.Item as="a">PROFILE</Menu.Item>
+            <Menu.Item as="a">SETTING</Menu.Item>
+            <Menu.Item as="a">LOG OUT</Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher
@@ -181,16 +188,13 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button as="a" inverted>
-                      Log in
-                    </Button>
                     <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-                      Sign Up
+                      LOG OUT
                     </Button>
                   </Menu.Item>
                 </Menu>
               </Container>
-              <HomepageHeading mobile />
+              <MenuExampleSecondary mobile />
             </Segment>
 
             {children}
