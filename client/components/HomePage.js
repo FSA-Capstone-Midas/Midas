@@ -104,7 +104,7 @@ const HomePage = () => (
               Sign Up for Midas
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              <Image avatar src="/assets/images/avatar/large/nan.jpg" />
+              {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
               <b>Midas</b> Sign up and sync a bank account easily. Manage your
               money like never before
             </p>

@@ -18,7 +18,7 @@ import {
   Sidebar,
   Visibility,
 } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Link } from "react-router-dom";
 
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
@@ -32,7 +32,7 @@ class DesktopContainer extends Component {
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    const { children } = this.props;
+    const { children, match } = this.props;
     const { fixed } = this.state;
 
     return (
@@ -72,15 +72,18 @@ class DesktopContainer extends Component {
                   <Button as="a" inverted={!fixed}>
                     Log in
                   </Button>
-                  <Button
-                    as={NavLink}
-                    to="/signup"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.5em" }}
-                  >
-                    Sign Up
-                  </Button>
+
+                  {match.path === "/signup" ? null : (
+                    <Button
+                      as={Link}
+                      to="/signup"
+                      inverted={!fixed}
+                      primary={fixed}
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Sign Up
+                    </Button>
+                  )}
                 </Menu.Item>
               </Container>
             </Menu>

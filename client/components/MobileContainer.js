@@ -18,7 +18,7 @@ import {
   Sidebar,
   Visibility,
 } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Link } from "react-router-dom";
 
 class MobileContainer extends Component {
   state = {};
@@ -76,11 +76,9 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button as="a" inverted>
-                      Log in
-                    </Button>
+                    <Button inverted>Log in</Button>
                     <Button
-                      as={NavLink}
+                      as={Link}
                       to="/signup"
                       inverted
                       style={{ marginLeft: "0.5em" }}
