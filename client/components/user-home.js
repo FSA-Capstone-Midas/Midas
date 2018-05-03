@@ -93,7 +93,7 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign="center"
-            style={{ minHeight: 700, padding: "1em 0em" }}
+            style={{ minHeight: 100, padding: "1em 0em" }}
             vertical
           >
             <Menu
@@ -122,10 +122,10 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            <MenuExampleSecondary />
           </Segment>
         </Visibility>
 
+        <MenuExampleSecondary />
         {children}
       </Responsive>
     );

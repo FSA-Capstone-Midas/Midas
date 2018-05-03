@@ -28,7 +28,7 @@ form div {
 #carousel .carousel-text {
   position: absolute;
   top: 45vh;
-  opacity: .7;
+  opacity: 0.7;
   color: rgb(17, 23, 34);
   text-shadow: 2px 2px black;
   z-index: 1;
@@ -43,5 +43,3 @@ form div {
   /* opacity: 1; */
   /* transition: opacity 1.5s; */
 }
-
-
