@@ -16,8 +16,8 @@ nav a {
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+  /* margin: 1em; */
+  /* display: inline; */
 }
 
 #carousel {
@@ -25,6 +25,7 @@ form div {
   display: flex;
   justify-content: center;
 }
+
 #carousel .carousel-text {
   position: absolute;
   top: 45vh;
@@ -34,6 +35,7 @@ form div {
   z-index: 1;
   transition: all 1.5s ease-out;
 }
+
 #carousel .carousel-image {
   /* position: absolute; */
   /* display: block; */
@@ -42,4 +44,25 @@ form div {
   height: 100%;
   /* opacity: 1; */
   /* transition: opacity 1.5s; */
+}
+
+#aboutUsBackground {
+  background: linear-gradient(#fdfcfb, #e2d1c3);
+}
+
+.ui.cards {
+  flex-wrap: initial;
+}
+
+.field {
+  display: block;
+}
+
+#signup {
+  padding-left: 30%;
+  padding-right: 40%;
+}
+
+#dob {
+  display: inline-flex;
 }
