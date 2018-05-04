@@ -5,6 +5,8 @@
   "rules": {
     "semi": [1, "always"],
     "quotes": [1, "double"],
-    "new-cap": [1, { "capIsNewExceptions": ["Router"] }]
+    "new-cap": [1, {
+      "capIsNewExceptions": ["Router"]
+    }]
   }
 }

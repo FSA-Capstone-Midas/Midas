@@ -155,4 +155,5 @@ const HomePage = () => (
     <Footer />
   </ResponsiveContainer>
 );
+
 export default withRouter(HomePage);
