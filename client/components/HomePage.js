@@ -34,24 +34,65 @@ ResponsiveContainer.propTypes = {
 
 const HomePage = () => (
   <ResponsiveContainer>
+    <Segment id="howItWorksBackground" style={{ padding: "1.5em" }} vertical>
+      <Grid celled="internally" columns="equal" stackable>
+        <Grid.Row textAlign="center">
+          <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
+            {/* <Header as="h3" style={{ fontSize: "2em" }}>
+              About Us
+            </Header> */}
+
+            <img
+              style={{ width: "60%" }}
+              className="carousel-image"
+              src="../../../../../../pictures/feature_link_headline.gif"
+            />
+            <h1>Time is money. Save both.</h1>
+            <p style={{ fontSize: "1.33em" }}>
+              As New York’s first Personal financial management app,
+              <br />
+              Introducing New York’s first personal finance app powered by
+              bank-level security.
+              <br />
+              Midas is a simple, safe, smart way to save - mobile banking has
+              never been so rewarding.
+            </p>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
+
+    <Segment id="homeBackground" style={{ padding: "12.5em" }} vertical>
+      <Grid celled="internally" columns="equal" stackable>
+        <Grid.Row textAlign="center">
+          <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
+            {/* <Header as="h3" style={{ fontSize: "2em" }}>
+              About Us
+            </Header> */}
+
+            <h1 />
+            <p style={{ fontSize: "1.33em" }}>
+              <br />
+              <br />
+            </p>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
+
     <Segment style={{ padding: "2em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              We Help Companies and Companions
+            <Header as="h1" style={{ fontSize: "2em" }}>
+              Your money, sorted.
             </Header>
             <p style={{ fontSize: "1.33em" }}>
-              We can give your company superpowers to do things that they never
-              thought possible. Let us delight your customers and empower your
-              needs... through pure data analytics.
-            </p>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              We Make Bananas That Can Dance
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              Yes that's right, you thought it was the stuff of dreams, but even
-              bananas can be bioengineered.
+              Lost track of your spending again? Simply connect your banks with
+              our best personal finance tracker. Your accounts automatically
+              update every time you sign in to show you current (and
+              categorised!) transactions. Wealth building begins with healthy
+              financial habits.
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
@@ -68,30 +109,23 @@ const HomePage = () => (
     <Segment style={{ padding: "2em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              We Help Companies and Companions
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              We can give your company superpowers to do things that they never
-              thought possible. Let us delight your customers and empower your
-              needs... through pure data analytics.
-            </p>
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              We Make Bananas That Can Dance
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              Yes that's right, you thought it was the stuff of dreams, but even
-              bananas can be bioengineered.
-            </p>
-          </Grid.Column>
-          <Grid.Column floated="right" width={6}>
+          <Grid.Column floated="left" width={6}>
             <Image
               bordered
               rounded
               size="large"
               src="../../../../../../pictures/insurance coverage.jpg"
             />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Header as="h1" style={{ fontSize: "2em" }}>
+              Know your money better.
+            </Header>
+            <p style={{ fontSize: "1.33em" }}>
+              Get a great grasp of your finances with our unique monthly
+              overviews and easy-to-read graphs. You can also monitor your
+              spending across all of your accounts and spending categories.
+            </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -100,7 +134,7 @@ const HomePage = () => (
       <Grid celled="internally" columns="equal" stackable>
         <Grid.Row textAlign="center">
           <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-            <Header as="h3" style={{ fontSize: "2em" }}>
+            <Header as="h1" style={{ fontSize: "2em" }}>
               Sign Up for Midas
             </Header>
             <p style={{ fontSize: "1.33em" }}>
