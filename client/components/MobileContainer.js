@@ -16,7 +16,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -53,7 +53,9 @@ class MobileContainer extends Component {
             <Menu.Item as="a">Security</Menu.Item>
             <Menu.Item as="a">Blog</Menu.Item>
             <Menu.Item as="a">Support</Menu.Item>
-            <Menu.Item as="a">Log in</Menu.Item>
+            <Menu.Item as={NavLink} to="/login">
+              Log in
+            </Menu.Item>
             <Menu.Item as={NavLink} to="/signup">
               Sign Up
             </Menu.Item>
@@ -76,7 +78,9 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button inverted>Log in</Button>
+                    <Button as={Link} to="/login" inverted>
+                      Log in
+                    </Button>
                     <Button
                       as={Link}
                       to="/signup"
@@ -100,7 +104,7 @@ class MobileContainer extends Component {
 }
 
 MobileContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default withRouter(MobileContainer);
