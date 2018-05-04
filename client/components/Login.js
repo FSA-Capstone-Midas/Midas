@@ -67,10 +67,10 @@ class Login extends Component {
             <Grid.Row>
               <Grid.Column>
                 <div id="signup-login">
-                  <form className="ui form">
+                  <form className="ui form" name={name} onSubmit={handleSubmit}>
                     <div className="field">
                       <label>Email</label>
-                      <input email="email" placeholder="Email" />
+                      <input name="email" placeholder="Email" />
                     </div>
                     <div className="field">
                       <label>Password</label>
