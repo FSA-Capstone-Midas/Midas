@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
+
 import Footer from "./Footer";
 import {
   Button,
@@ -182,23 +182,12 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-class SignUp extends Component {
+//const Login = () => (
+class Login extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const startYear = 1948;
-    const endYear = 2000;
-    const startDay = 1;
-    const endDay = 31;
-    let arrayYear = [];
-    let arrayDay = [];
-    for (var i = startYear; i <= endYear; i++) {
-      arrayYear.push(i);
-    }
-    for (var j = startDay; j <= endDay; j++) {
-      arrayDay.push(j);
-    }
     return (
       <ResponsiveContainer>
         <Segment id="aboutUsBackground" style={{ padding: "3em" }} vertical>
@@ -208,7 +197,7 @@ class SignUp extends Component {
                 style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
               >
                 <Header as="h3" style={{ fontSize: "2em" }}>
-                  Sign Up Now
+                  Login
                 </Header>
                 <p style={{ fontSize: "1.33em" }}>
                   {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
@@ -226,14 +215,6 @@ class SignUp extends Component {
                 <div id="signup-login">
                   <form className="ui form">
                     <div className="field">
-                      <label>First Name</label>
-                      <input placeholder="First Name" />
-                    </div>
-                    <div className="field">
-                      <label>Last Name</label>
-                      <input placeholder="Last Name" />
-                    </div>
-                    <div className="field">
                       <label>Email</label>
                       <input placeholder="Email" />
                     </div>
@@ -241,53 +222,6 @@ class SignUp extends Component {
                       <label>Password</label>
                       <input placeholder="Password" />
                     </div>
-                    <div className="field">
-                      <label>What should we call you?</label>
-                      <input placeholder="What should we call you?" />
-                    </div>
-
-                    <label>
-                      Date of Birth
-                      <div id="dob">
-                        <select name="month" default="month" id="monthddl">
-                          <option value="1">January</option>
-                          <option value="2">Febuary</option>
-                          <option value="3">March</option>
-                          <option value="4">April</option>
-                          <option value="5">May</option>
-                          <option value="6">June</option>
-                          <option value="7">July</option>
-                          <option value="8">August</option>
-                          <option value="9">September</option>
-                          <option value="10">October</option>
-                          <option value="11">November</option>
-                          <option value="12">December</option>
-                        </select>
-                        <select name="day" id="dayddl">
-                          {arrayDay.map(elem => (
-                            <option key={`${elem}`} value={`${elem}`}>
-                              {elem}
-                            </option>
-                          ))}
-                        </select>
-
-                        <select name="Year" id="Year">
-                          {arrayYear.map(item => (
-                            <option key={`${item}`} value={`${item}`}>
-                              {item}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </label>
-                    <br />
-                    <div className="field">
-                      <div className="ui checkbox">
-                        <input type="checkbox" className="hidden" />
-                        <label>I agree to the Terms and Conditions</label>
-                      </div>
-                    </div>
-                    <br />
                     <button
                       type="submit"
                       className="ui orange inverted button"
@@ -307,4 +241,4 @@ class SignUp extends Component {
     );
   }
 }
-export default withRouter(SignUp);
+export default withRouter(Login);

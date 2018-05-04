@@ -16,7 +16,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -69,7 +69,7 @@ class DesktopContainer extends Component {
                   About Us
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <Button as="a" inverted={!fixed}>
+                  <Button as={Link} to="/login" inverted={!fixed}>
                     Log in
                   </Button>
 
@@ -98,7 +98,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default withRouter(DesktopContainer);
