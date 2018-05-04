@@ -16,7 +16,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -98,7 +98,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default withRouter(DesktopContainer);
