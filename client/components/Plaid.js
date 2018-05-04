@@ -41,11 +41,11 @@ function mapDispatchToProps(dispatch) {
     handleOnSuccess(token, metadata) {
       dispatch(fetchInformation(token, metadata));
       dispatch(fetchItem());
-    },
-    handleClick(event) {
-      event.preventDefault();
-      dispatch(fetchItem());
     }
+    // handleClick(event) {
+    //   event.preventDefault();
+    //   dispatch(fetchItem());
+    // }
   };
 }
 
