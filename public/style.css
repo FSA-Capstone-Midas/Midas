@@ -1,5 +1,12 @@
+/* @font-face {
+  font-family: jaapokkienchance-regular;
+  src: url('../../../../../fonts/jaapokkienchance-regular.ttf');
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -16,8 +23,16 @@ nav a {
 }
 
 form div {
-  margin: 1em;
-  display: inline-block;
+  /* margin: 1em; */
+  /* display: inline; */
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.5em;
 }
 
 #carousel {
@@ -25,15 +40,17 @@ form div {
   display: flex;
   justify-content: center;
 }
+
 #carousel .carousel-text {
   position: absolute;
   top: 45vh;
-  opacity: .7;
+  opacity: 0.7;
   color: rgb(17, 23, 34);
   text-shadow: 2px 2px black;
   z-index: 1;
   transition: all 1.5s ease-out;
 }
+
 #carousel .carousel-image {
   /* position: absolute; */
   /* display: block; */
@@ -44,4 +61,28 @@ form div {
   /* transition: opacity 1.5s; */
 }
 
+#aboutUsBackground {
+  background: linear-gradient(#fdfcfb, #e2d1c3);
+}
 
+#homeBackground {
+  background-image: url('pictures/backgroundNYC.png') !important;
+  background-size: cover !important;
+}
+
+.ui.cards {
+  flex-wrap: initial;
+}
+
+.field {
+  display: block;
+}
+
+#signup-login {
+  padding-left: 30%;
+  padding-right: 40%;
+}
+
+#dob {
+  display: inline-flex;
+}
