@@ -55,6 +55,16 @@ class MenuExampleSecondary extends Component {
           active={activeItem === "BILLS"}
           onClick={this.handleItemClick}
         />
+        <Menu.Item
+          name="BUDGETS"
+          active={activeItem === "BUDGETS"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="TRENDS"
+          active={activeItem === "TRENDS"}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     );
   }
@@ -217,11 +227,32 @@ ResponsiveContainer.propTypes = {
 
 const UserHome = () => (
   <ResponsiveContainer>
-    <Segment padded>
-      <h1>Hello</h1>
+    <Segment>
+      <h1>Pie chart (RIght)</h1>
     </Segment>
-    <Segment padded>
-      <h1>Hello</h1>
+    <Segment>
+      <h1>Account info (LEFT)</h1>
+      <Segment>
+        <h1>Cash</h1>
+      </Segment>
+      <Segment>
+        <h1>Credit Cards</h1>
+      </Segment>
+      <Segment>
+        <h1>Loans</h1>
+      </Segment>
+      <Segment>
+        <h1>Investments</h1>
+      </Segment>
+      <Segment>
+        <h1>Propertys</h1>
+      </Segment>
+    </Segment>
+    <Segment>
+      <h1>Suggested offers</h1>
+    </Segment>
+    <Segment>
+      <h1>Spending</h1>
     </Segment>
   </ResponsiveContainer>
 );
