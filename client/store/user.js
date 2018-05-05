@@ -28,16 +28,17 @@ export const me = () => dispatch =>
     .catch(err => console.log(err));
 
 export const auth = (
-  firstName,
-  lastName,
   email,
   password,
-  method
+  method,
+  firstName,
+  lastName
 ) => dispatch =>
   axios
     .post(`/auth/${method}`, { firstName, lastName, email, password })
     .then(
       res => {
+        console.log(res);
         dispatch(getUser(res.data));
         history.push("/home");
       },
