@@ -18,9 +18,10 @@ import {
   Sidebar,
   Visibility
 } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import MobileContainer from "./MobileContainer";
 import DesktopContainer from "./DesktopContainer";
+import { auth } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -37,8 +38,9 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    const { name, displayName, handleSubmit, error } = props;
+    const { name, displayName, handleSubmit, error } = this.props;
     const startYear = 1948;
     const endYear = 2000;
     const startDay = 1;
@@ -187,7 +189,7 @@ const mapDispatch = dispatch => {
   };
 };
 
-export const Signup = connect(mapSignup, mapDispatch)(SignUp);
+export default withRouter(connect(mapSignup, mapDispatch)(SignUp));
 
 /**
  * PROP TYPES
