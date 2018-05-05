@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
+import Plaid from "./Plaid";
 import {
   Button,
   Container,
@@ -15,7 +16,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import MobileContainer from "./MobileContainer";
@@ -29,7 +30,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const HomePage = () => (
@@ -94,6 +95,7 @@ const HomePage = () => (
               categorised!) transactions. Wealth building begins with healthy
               financial habits.
             </p>
+            <Plaid />
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
             <Image
