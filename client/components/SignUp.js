@@ -77,22 +77,22 @@ class SignUp extends Component {
             <Grid.Row>
               <Grid.Column>
                 <div id="signup-login">
-                  <form className="ui form" handleSubmit={handleSubmit}>
+                  <form className="ui form" onSubmit={handleSubmit} name={name}>
                     <div className="field">
                       <label>First Name</label>
-                      <input placeholder="First Name" />
+                      <input placeholder="First Name" name="firstName" />
                     </div>
                     <div className="field">
                       <label>Last Name</label>
-                      <input placeholder="Last Name" />
+                      <input placeholder="Last Name" name="lastName" />
                     </div>
                     <div className="field">
                       <label>Email</label>
-                      <input placeholder="Email" />
+                      <input placeholder="Email" name="email" />
                     </div>
                     <div className="field">
                       <label>Password</label>
-                      <input placeholder="Password" />
+                      <input placeholder="Password" name="password" />
                     </div>
                     <div className="field">
                       <label>What should we call you?</label>
@@ -184,7 +184,9 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch(auth(email, password, formName));
+      const firstName = evt.target.firstName.value;
+      const lastName = evt.target.lastName.value;
+      dispatch(auth(firstName, lastName, email, password, formName));
     }
   };
 };
