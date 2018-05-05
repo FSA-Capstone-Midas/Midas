@@ -18,6 +18,7 @@ import {
   Input
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
+import { logout } from "../../store";
 
 /**
  * COMPONENT
@@ -86,7 +87,7 @@ class DesktopContainer extends Component {
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    const { children } = this.props;
+    const { children, handleClick } = this.props;
     const { fixed } = this.state;
 
     return (
@@ -122,6 +123,7 @@ class DesktopContainer extends Component {
                     inverted={!fixed}
                     primary={fixed}
                     style={{ marginLeft: "0.5em" }}
+                    onClick={handleClick}
                   >
                     LOG OUT
                   </Button>
@@ -142,4 +144,14 @@ DesktopContainer.propTypes = {
   children: PropTypes.node
 };
 
-export default withRouter(DesktopContainer);
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout());
+    }
+  };
+};
+
+export default connect(null, mapDispatch)(DesktopContainer);
+
+// export default withRouter(DesktopContainer);
