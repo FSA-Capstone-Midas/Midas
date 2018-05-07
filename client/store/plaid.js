@@ -21,13 +21,13 @@ const getItem = item => ({
 export const fetchInformation = publicToken => dispatch => {
   //   console.log(publicToken, "did i get smth?");
   return axios
-    .post("/get_access_token", { publicToken })
+    .post("/api/plaid/get_access_token", { publicToken })
     .then(res => dispatch(getInformation(res.data)))
     .catch(err => console.error(err));
 };
 export const fetchItem = () => dispatch => {
   return axios
-    .get("/auth")
+    .get("/api/plaid/auth")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -37,7 +37,7 @@ export const fetchItem = () => dispatch => {
 
 export const fetchTransaction = () => dispatch => {
   return axios
-    .get("/transactions")
+    .get("/api/plaid/transactions")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -45,18 +45,21 @@ export const fetchTransaction = () => dispatch => {
     .catch(err => console.error(err));
 };
 
+//waiting for plaid api approve
 export const fetchAsset = () => dispatch => {
   return axios
-    .get("/asset_report")
+    .get("/api/plaid//asset_report")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
     })
     .catch(err => console.error(err));
 };
+
+//waiting for plaid api approve
 export const fetchMakingAsset = () => dispatch => {
   return axios
-    .post("/asset_report/create")
+    .post("/api/plaid//asset_report/create")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -64,9 +67,10 @@ export const fetchMakingAsset = () => dispatch => {
     .catch(err => console.error(err));
 };
 
+//waiting for plaid api approve
 export const fetchIdentity = () => dispatch => {
   return axios
-    .get("/identity")
+    .get("/api/plaid//identity")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -74,10 +78,11 @@ export const fetchIdentity = () => dispatch => {
     .catch(err => console.error(err));
 };
 
+//waiting for plaid api approve
 export const fetchIncome = () => dispatch => {
   //   console.log(publicToken, "did i get smth?");
   return axios
-    .get("/income")
+    .get("/api/plaid//income")
     .then(res => dispatch(getItem(res.data)))
     .catch(err => console.error(err));
 };
