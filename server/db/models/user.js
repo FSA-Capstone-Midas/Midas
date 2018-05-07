@@ -37,6 +37,9 @@ const User = db.define("user", {
   plaidTokenId: {
     type: Sequelize.STRING
   },
+  plaidItemId: {
+    type: Sequelize.STRING
+  },
   public_key: {
     type: Sequelize.STRING
   },
