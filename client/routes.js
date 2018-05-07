@@ -9,6 +9,7 @@ import {
   HomePage,
   AboutUs,
   HowItWorks,
+  DataMap
 } from "./components";
 import { me } from "./store";
 
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
+        <Route exact path="/datamap" component={DataMap} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -51,7 +53,7 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 
@@ -59,7 +61,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
-    },
+    }
   };
 };
 
@@ -72,5 +74,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };

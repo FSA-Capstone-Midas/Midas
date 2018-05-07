@@ -11,3 +11,4 @@ export { default as SignUp } from "./SignUp";
 export { default as Login } from "./Login";
 export { default as AboutUs } from "./AboutUs";
 export { default as HowItWorks } from "./HowItWorks";
+export { default as DataMap } from "./DataMap";

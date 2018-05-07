@@ -15,13 +15,13 @@ const getItem = item => ({
 export const fetchInformation = publicToken => dispatch => {
   //   console.log(publicToken, "did i get smth?");
   return axios
-    .post("/get_access_token", { publicToken })
+    .post("/plaid/get_access_token", { publicToken })
     .then(res => dispatch(getInformation(res.data)))
     .catch(err => console.error(err));
 };
 export const fetchItem = () => dispatch => {
   return axios
-    .get("/auth")
+    .get("/plaid/auth")
     .then(res => {
       console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
