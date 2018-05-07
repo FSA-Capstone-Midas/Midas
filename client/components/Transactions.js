@@ -35,17 +35,20 @@ ResponsiveContainer.propTypes = {
 class Transactions extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loading: true
+    };
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   render() {
     console.log(this.props.accounts);
     return (
       <ResponsiveContainer>
-        <Segment>Hi</Segment>
+        {this.state.loading ? <Loading /> : <Segment>Hi</Segment>}
         <Footer />
       </ResponsiveContainer>
     );
