@@ -38,7 +38,6 @@ export const auth = (
     .post(`/auth/${method}`, { firstName, lastName, email, password })
     .then(
       res => {
-        console.log(res);
         dispatch(getUser(res.data));
         history.push("/home");
       },
