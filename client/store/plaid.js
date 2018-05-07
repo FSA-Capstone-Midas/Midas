@@ -32,7 +32,6 @@ export const fetchItem = () => dispatch => {
   return axios
     .get("/api/plaid/auth") //fetch accounts
     .then(res => {
-      // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
     })
     .catch(err => console.error(err));
@@ -94,7 +93,7 @@ export default function plaidReducer(state = initialState, action) {
     case GET_ACCESSTOKEN:
       return action.information;
     case GET_ACCOUNT:
-      return action.item;
+      return Object.assign({}, state, { account: action.item });
     case GET_TRANSACTION:
       return Object.assign({}, state, { transaction: action.information });
     default:
