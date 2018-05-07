@@ -70,6 +70,8 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="TRENDS"
+          as={Link}
+          to="/trend"
           active={activeItem === "TRENDS"}
           onClick={this.handleItemClick}
         />
@@ -158,6 +160,6 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(null, mapDispatch)(DesktopContainer);
+export default withRouter(connect(null, mapDispatch)(DesktopContainer));
 
 // export default withRouter(DesktopContainer);

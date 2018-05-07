@@ -9,6 +9,7 @@ import {
   HomePage,
   AboutUs,
   HowItWorks,
+  UserTrend,
   Transactions
 } from "./components";
 import { me } from "./store";
@@ -32,6 +33,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
+        <Route exact path="/trend" component={UserTrend} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
