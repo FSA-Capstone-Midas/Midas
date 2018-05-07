@@ -22,6 +22,10 @@ class DataMap extends Component {
         },
         highlightBorderWidth: 3
       },
+      // geographyConfig: {
+      //   popupOnHover: true,
+      //   highlightOnHover: true
+      // },
 
       fills: {
         "Very High": "#800000",
@@ -272,9 +276,9 @@ class DataMap extends Component {
   render() {
     return (
       <div>
-        <h1>Average Housing Price(sales) - 2017</h1>
-        <div id="map_election" />
-        <div id="map_election2" />
+        <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
+        <div id="map_election" className="ui segment" />
+        <div id="map_election2" className="ui segment" />
       </div>
     );
   }

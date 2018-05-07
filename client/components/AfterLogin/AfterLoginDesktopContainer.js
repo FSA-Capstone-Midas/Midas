@@ -65,7 +65,7 @@ class MenuExampleSecondary extends Component {
         <Menu.Item
           name="TRENDS"
           as={Link}
-          to="/DataMap"
+          to="/trend"
           active={activeItem === "TRENDS"}
           onClick={this.handleItemClick}
         />

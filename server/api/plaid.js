@@ -1,26 +1,92 @@
-// const router = require("express").Router();
+const plaid = require("plaid");
+const router = require("express").Router();
+module.exports = router;
 
-// var envvar = require("envvar");
-// var express = require("express");
-// var bodyParser = require("body-parser");
-// var moment = require("moment");
-// var plaid = require("plaid");
+let ACCESS_TOKEN = null;
+let PUBLIC_TOKEN = null;
+var ITEM_ID = null;
 
-// var APP_PORT = envvar.number("APP_PORT", 8080);
-// var PLAID_CLIENT_ID = envvar.string("PLAID_CLIENT_ID");
-// var PLAID_SECRET = envvar.string("PLAID_SECRET");
-// var PLAID_PUBLIC_KEY = envvar.string("PLAID_PUBLIC_KEY");
-// var PLAID_ENV = envvar.string("PLAID_ENV", "sandbox");
+let client = new plaid.Client(
+  "5ae8f515900e950013499acf",
+  "f274c354ebdaf254570702d564cd40",
+  "f274c354ebdaf254570702d564cd40",
+  plaid.environments.development
+);
 
-// var ACCESS_TOKEN = null;
-// var PUBLIC_TOKEN = null;
-// var ITEM_ID = null;
+router.post("/get_access_token", (req, res, next) => {
+  // console.log(
+  //   "?????????????????????????????????????",
+  //   req.body,
+  //   "what do i have here"
+  // );
+  console.log("???????????????????????", req.body.publicToken);
+  PUBLIC_TOKEN = req.body.publicToken;
+  client.exchangePublicToken(PUBLIC_TOKEN, function(err, tokenResponse) {
+    if (err != null) {
+      console.log("could not exchange public_token", err);
+      return res.json({ err: err });
+    }
+    ACCESS_TOKEN = tokenResponse.access_token;
+    console.log("Access Token: " + ACCESS_TOKEN);
+    ITEM_ID = tokenResponse.item_id;
+    console.log("Item ID: " + ITEM_ID);
+  });
+});
 
-// var client = new plaid.Client(
-//   PLAID_CLIENT_ID,
-//   PLAID_SECRET,
-//   PLAID_PUBLIC_KEY,
-//   plaid.environments[PLAID_ENV]
-// );
+router.get("/auth", function(request, response, next) {
+  console.log("come on boys: ", "access-development-" + ACCESS_TOKEN);
+  // Pull the Item - this includes information about available products,
+  // billed products, webhook information, and more.
+  client.getAuth(ACCESS_TOKEN, function(error, data) {
+    if (error != null) {
+      console.log(JSON.stringify(error));
+      return response.json({
+        error: error
+      });
+    }
+    response.json({
+      error: false,
+      accounts: data.accounts,
+      numbers: data.numbers
+    });
+  });
+});
 
-// module.exports = router;
+router.get("/transactions", (req, res, next) => {
+  client.getTransactions(
+    ACCESS_TOKEN,
+    "2017-01-01",
+    "2017-02-15",
+    {
+      count: 250,
+      offset: 0
+    },
+    function(error, data) {
+      if (error != null) {
+        console.log(JSON.stringify(error));
+        return res.json({
+          error: error
+        });
+      }
+      res.json({
+        error: false,
+        transaction: data.transactions
+      });
+    }
+  );
+});
+
+router.get("/income", (req, res, next) => {
+  client.getIncome(ACCESS_TOKEN, function(error, data) {
+    if (error != null) {
+      console.log(JSON.stringify(error));
+      return res.json({
+        error: error
+      });
+    }
+    res.json({
+      error: false,
+      income: data.income
+    });
+  });
+});

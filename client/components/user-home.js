@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
+import Loading from "./Loading";
 import {
   Button,
   Container,
@@ -68,50 +69,76 @@ const data2015 = [
   { quarter: 4, earnings: 12000 }
 ];
 
-const UserHome = () => (
-  <ResponsiveContainer>
-    <Segment>
-      <h1>Pie chart (RIght)</h1>
-      <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
-        <VictoryAxis
-          tickValues={[1, 2, 3, 4]}
-          tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
-        />
-        <VictoryAxis dependentAxis tickFormat={x => `$${x / 1000}k`} />
-        <VictoryStack colorScale={"warm"}>
-          <VictoryBar data={data2012} x="quarter" y="earnings" />
-          <VictoryBar data={data2013} x="quarter" y="earnings" />
-          <VictoryBar data={data2014} x="quarter" y="earnings" />
-          <VictoryBar data={data2015} x="quarter" y="earnings" />
-        </VictoryStack>
-      </VictoryChart>
-    </Segment>
-    <Segment>
-      <h1>Account info (LEFT)</h1>
-      <Segment>
-        <h1>Cash</h1>
-      </Segment>
-      <Segment>
-        <h1>Credit Cards</h1>
-      </Segment>
-      <Segment>
-        <h1>Loans</h1>
-      </Segment>
-      <Segment>
-        <h1>Investments</h1>
-      </Segment>
-      <Segment>
-        <h1>Propertys</h1>
-      </Segment>
-    </Segment>
-    <Segment>
-      <h1>Suggested offers</h1>
-    </Segment>
-    <Segment>
-      <h1>Spending</h1>
-    </Segment>
-  </ResponsiveContainer>
-);
+class UserHome extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ loading: false }), 3000);
+  }
+
+  render() {
+    return (
+      <ResponsiveContainer>
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <Segment>
+            <Segment>
+              <h1>Pie chart (RIght)</h1>
+              <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+                <VictoryAxis
+                  tickValues={[1, 2, 3, 4]}
+                  tickFormat={[
+                    "Quarter 1",
+                    "Quarter 2",
+                    "Quarter 3",
+                    "Quarter 4"
+                  ]}
+                />
+                <VictoryAxis dependentAxis tickFormat={x => `$${x / 1000}k`} />
+                <VictoryStack colorScale={"warm"}>
+                  <VictoryBar data={data2012} x="quarter" y="earnings" />
+                  <VictoryBar data={data2013} x="quarter" y="earnings" />
+                  <VictoryBar data={data2014} x="quarter" y="earnings" />
+                  <VictoryBar data={data2015} x="quarter" y="earnings" />
+                </VictoryStack>
+              </VictoryChart>
+            </Segment>
+            <Segment>
+              <h1>Account info (LEFT)</h1>
+              <Segment>
+                <h1>Cash</h1>
+              </Segment>
+              <Segment>
+                <h1>Credit Cards</h1>
+              </Segment>
+              <Segment>
+                <h1>Loans</h1>
+              </Segment>
+              <Segment>
+                <h1>Investments</h1>
+              </Segment>
+              <Segment>
+                <h1>Propertys</h1>
+              </Segment>
+            </Segment>
+            <Segment>
+              <h1>Suggested offers</h1>
+            </Segment>
+            <Segment>
+              <h1>Spending</h1>
+            </Segment>
+          </Segment>
+        )}
+      </ResponsiveContainer>
+    );
+  }
+}
 
 /**
  * CONTAINER
