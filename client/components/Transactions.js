@@ -45,7 +45,8 @@ class Transactions extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log("account ", this.props.account); //user account info
+    console.log("transaction ", this.props.transaction); //user transaction info
     return (
       <ResponsiveContainer>
         {this.state.loading ? <Loading /> : <Segment>Hi</Segment>}
