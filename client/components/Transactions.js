@@ -42,7 +42,12 @@ class Transactions extends Component {
   }
 
   render() {
-    return <div>hi</div>;
+    return (
+      <ResponsiveContainer>
+        <Segment>Hi</Segment>
+        <Footer />
+      </ResponsiveContainer>
+    );
   }
 }
 
