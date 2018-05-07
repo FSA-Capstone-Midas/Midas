@@ -1,5 +1,4 @@
 import React from "react";
-import "../../public/loading.css";
 
 const Loading = () => (
   <div className="spinner">
