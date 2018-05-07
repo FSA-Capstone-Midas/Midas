@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import Plaid from "./Plaid";
 import {
   Button,
   Container,
@@ -78,7 +79,7 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   render() {
@@ -88,6 +89,9 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <Segment>
+            <Segment>
+              <Plaid />
+            </Segment>
             <Segment>
               <h1>Pie chart (RIght)</h1>
               <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
@@ -135,6 +139,7 @@ class UserHome extends React.Component {
             </Segment>
           </Segment>
         )}
+        <Footer />
       </ResponsiveContainer>
     );
   }

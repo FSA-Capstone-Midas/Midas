@@ -6,7 +6,10 @@ import {
   fetchInformation,
   fetchItem,
   fetchTransaction,
-  fetchIncome
+  fetchIncome,
+  fetchIdentity,
+  fetchAsset,
+  fetchMakingAsset
 } from "../store";
 class Plaid extends Component {
   render() {
@@ -14,7 +17,10 @@ class Plaid extends Component {
       handleOnSuccess,
       handleAccount,
       handleTransaction,
-      handleIncome
+      handleIncome,
+      handleIdentity,
+      handleAsset,
+      handleMakingAsset
     } = this.props;
     // console.log(getData);
     return (
@@ -22,7 +28,14 @@ class Plaid extends Component {
         <PlaidLink
           clientName="Midas"
           env="development"
-          product={["auth", "transactions"]}
+          product={[
+            "auth",
+            "transactions",
+            "connect",
+            "info",
+            "identity",
+            "income"
+          ]}
           publicKey="f274c354ebdaf254570702d564cd40"
           onExit={this.handleOnExit}
           onSuccess={handleOnSuccess}
@@ -35,6 +48,9 @@ class Plaid extends Component {
           Get transactions
         </button>
         <button onClick={evt => handleIncome(evt)}>Get income</button>
+        <button onClick={evt => handleIdentity(evt)}>Get identity</button>
+        <button onClick={evt => handleAsset(evt)}>Get asset</button>
+        <button onClick={evt => handleMakingAsset(evt)}>make asset</button>
       </div>
     );
   }
@@ -65,6 +81,18 @@ function mapDispatchToProps(dispatch) {
     handleIncome(event) {
       event.preventDefault();
       dispatch(fetchIncome());
+    },
+    handleIdentity(event) {
+      event.preventDefault();
+      dispatch(fetchIdentity());
+    },
+    handleAsset(event) {
+      event.preventDefault();
+      dispatch(fetchAsset());
+    },
+    handleMakingAsset(event) {
+      event.preventDefault();
+      dispatch(fetchMakingAsset());
     }
   };
 }
