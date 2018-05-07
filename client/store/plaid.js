@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const initialState = {};
+
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 const GET_ACCOUNT = "GET_ACCOUNT";
 const GET_TRANSACTION = "GET_TRANSACTION";
@@ -25,9 +27,10 @@ export const fetchInformation = publicToken => dispatch => {
     .then(res => dispatch(getInformation(res.data)))
     .catch(err => console.error(err));
 };
+
 export const fetchItem = () => dispatch => {
   return axios
-    .get("/api/plaid/auth")
+    .get("/api/plaid/auth") //fetch accounts
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -48,7 +51,7 @@ export const fetchTransaction = () => dispatch => {
 //waiting for plaid api approve
 export const fetchAsset = () => dispatch => {
   return axios
-    .get("/api/plaid//asset_report")
+    .get("/api/plaid/asset_report")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -59,7 +62,7 @@ export const fetchAsset = () => dispatch => {
 //waiting for plaid api approve
 export const fetchMakingAsset = () => dispatch => {
   return axios
-    .post("/api/plaid//asset_report/create")
+    .post("/api/plaid/asset_report/create")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -70,7 +73,7 @@ export const fetchMakingAsset = () => dispatch => {
 //waiting for plaid api approve
 export const fetchIdentity = () => dispatch => {
   return axios
-    .get("/api/plaid//identity")
+    .get("/api/plaid/identity")
     .then(res => {
       // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
@@ -82,12 +85,12 @@ export const fetchIdentity = () => dispatch => {
 export const fetchIncome = () => dispatch => {
   //   console.log(publicToken, "did i get smth?");
   return axios
-    .get("/api/plaid//income")
+    .get("/api/plaid/income")
     .then(res => dispatch(getItem(res.data)))
     .catch(err => console.error(err));
 };
 
-export default function plaidReducer(state = {}, action) {
+export default function plaidReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCESSTOKEN:
       return action.information;

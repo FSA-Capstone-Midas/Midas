@@ -42,6 +42,7 @@ class Transactions extends Component {
   }
 
   render() {
+    console.log(this.props.accounts);
     return (
       <ResponsiveContainer>
         <Segment>Hi</Segment>
@@ -51,4 +52,10 @@ class Transactions extends Component {
   }
 }
 
-export default Transactions;
+const mapState = state => {
+  return {
+    accounts: state.plaid.accounts
+  };
+};
+
+export default connect(mapState)(Transactions);
