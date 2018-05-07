@@ -86,3 +86,15 @@ h2 {
 #dob {
   display: inline-flex;
 }
+
+#map_election {
+  position: relative;
+  width: 500px;
+  height: 300px;
+}
+
+#map_election2 {
+  position: relative;
+  width: 500px;
+  height: 300px;
+}
