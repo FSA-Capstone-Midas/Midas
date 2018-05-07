@@ -135,6 +135,7 @@ class UserHome extends React.Component {
             </Segment>
           </Segment>
         )}
+        <Footer />
       </ResponsiveContainer>
     );
   }
