@@ -45,6 +45,35 @@ export const fetchTransaction = () => dispatch => {
     .catch(err => console.error(err));
 };
 
+export const fetchAsset = () => dispatch => {
+  return axios
+    .get("/asset_report")
+    .then(res => {
+      // console.log("res!!!", res.data);
+      return dispatch(getItem(res.data));
+    })
+    .catch(err => console.error(err));
+};
+export const fetchMakingAsset = () => dispatch => {
+  return axios
+    .post("/asset_report/create")
+    .then(res => {
+      // console.log("res!!!", res.data);
+      return dispatch(getItem(res.data));
+    })
+    .catch(err => console.error(err));
+};
+
+export const fetchIdentity = () => dispatch => {
+  return axios
+    .get("/identity")
+    .then(res => {
+      // console.log("res!!!", res.data);
+      return dispatch(getItem(res.data));
+    })
+    .catch(err => console.error(err));
+};
+
 export const fetchIncome = () => dispatch => {
   //   console.log(publicToken, "did i get smth?");
   return axios
