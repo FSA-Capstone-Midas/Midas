@@ -28,14 +28,7 @@ class Plaid extends Component {
         <PlaidLink
           clientName="Midas"
           env="development"
-          product={[
-            "auth",
-            "transactions",
-            "connect",
-            "info",
-            "identity",
-            "income"
-          ]}
+          product={["auth", "transactions"]}
           publicKey="f274c354ebdaf254570702d564cd40"
           onExit={this.handleOnExit}
           onSuccess={handleOnSuccess}

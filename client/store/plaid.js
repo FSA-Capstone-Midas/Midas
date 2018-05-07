@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const initialState = {};
+const initialState = { accounts: {}, transaction: {} };
 
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 const GET_ACCOUNT = "GET_ACCOUNT";
@@ -42,8 +42,7 @@ export const fetchTransaction = () => dispatch => {
   return axios
     .get("/api/plaid/transactions")
     .then(res => {
-      // console.log("res!!!", res.data);
-      return dispatch(getItem(res.data));
+      return dispatch(getTransaction(res.data));
     })
     .catch(err => console.error(err));
 };
@@ -96,6 +95,8 @@ export default function plaidReducer(state = initialState, action) {
       return action.information;
     case GET_ACCOUNT:
       return action.item;
+    case GET_TRANSACTION:
+      return Object.assign({}, state, { transaction: action.information });
     default:
       return state;
   }

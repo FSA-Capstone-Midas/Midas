@@ -61,6 +61,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
+      //need another fetch for account
     }
   };
 };
