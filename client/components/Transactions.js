@@ -45,7 +45,7 @@ class Transactions extends Component {
   }
 
   render() {
-    console.log(this.props.accounts);
+    console.log(this.props);
     return (
       <ResponsiveContainer>
         {this.state.loading ? <Loading /> : <Segment>Hi</Segment>}
@@ -57,7 +57,8 @@ class Transactions extends Component {
 
 const mapState = state => {
   return {
-    accounts: state.plaid.accounts
+    account: state.plaid.account,
+    transaction: state.plaid.transaction
   };
 };
 

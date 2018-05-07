@@ -12,7 +12,7 @@ import {
   UserTrend,
   Transactions
 } from "./components";
-import { me } from "./store";
+import { me, fetchTransaction, fetchItem } from "./store";
 
 /**
  * COMPONENT
@@ -20,6 +20,8 @@ import { me } from "./store";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+    this.props.loadAccountsFromPlaid();
+    this.props.loadTransactionsFromPlaid();
   }
 
   render() {
@@ -63,7 +65,12 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
-      //need another fetch for account
+    },
+    loadAccountsFromPlaid() {
+      dispatch(fetchItem());
+    },
+    loadTransactionsFromPlaid() {
+      dispatch(fetchTransaction());
     }
   };
 };

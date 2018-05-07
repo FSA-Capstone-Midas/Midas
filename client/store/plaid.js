@@ -28,6 +28,7 @@ export const fetchInformation = publicToken => dispatch => {
     .catch(err => console.error(err));
 };
 
+// fetch accounts from api
 export const fetchItem = () => dispatch => {
   return axios
     .get("/api/plaid/auth") //fetch accounts
@@ -37,6 +38,7 @@ export const fetchItem = () => dispatch => {
     .catch(err => console.error(err));
 };
 
+// get transaction from api
 export const fetchTransaction = () => dispatch => {
   return axios
     .get("/api/plaid/transactions")
