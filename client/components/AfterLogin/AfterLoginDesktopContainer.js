@@ -41,11 +41,17 @@ class MenuExampleSecondary extends Component {
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/home"
         />
         <Menu.Item
           name="TRANSACTIONS"
           active={activeItem === "TRANSACTIONS"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/transactions"
         />
         <Menu.Item
           name="CREDIT SCORE"
