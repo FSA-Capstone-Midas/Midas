@@ -1,30 +1,9 @@
-import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
-import Loading from "./Loading";
 import RC2 from "react-chartjs2";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-} from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
 class TransactionsPie extends Component {
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
     $("table").tablesort();
   }
 

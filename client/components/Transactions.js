@@ -5,22 +5,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import TransactionsPie from "./TransactionsPie";
 import TransactionsBar from "./TransactionsBar";
-import RC2 from "react-chartjs2";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-} from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -71,6 +56,10 @@ class Transactions extends Component {
                 ) : rows ? (
                   <div>
                     <Segment>Transactions</Segment>
+                    <Segment>
+                      <button>Button1</button>
+                      <button>Button2</button>
+                    </Segment>
                     <TransactionsPie rows={rows} />
                     <TransactionsBar />
 
@@ -95,14 +84,6 @@ class Transactions extends Component {
                           );
                         })}
                       </tbody>
-                      {/* <tfoot>
-                      <tr>
-                        <th>3 People</th>
-                        <th>2 Approved</th>
-                        <th />
-                        <th />
-                      </tr>
-                    </tfoot> */}
                     </table>
                   </div>
                 ) : null}

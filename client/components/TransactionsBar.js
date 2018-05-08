@@ -1,8 +1,4 @@
-import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Footer from "./Footer";
-import Loading from "./Loading";
 import {
   BarChart,
   Bar,
@@ -12,23 +8,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-} from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
 const data = [
   { name: "Bank Fees", uv: 4000, female: 2400, male: 2400 },
@@ -41,11 +20,6 @@ const data = [
 ];
 
 class TransactionsBar extends Component {
-  componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
-    $("table").tablesort();
-  }
-
   render() {
     return (
       <BarChart
@@ -71,4 +45,4 @@ class TransactionsBar extends Component {
   }
 }
 
-export default connect(null)(TransactionsBar);
+export default TransactionsBar;
