@@ -17,7 +17,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -30,14 +30,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -50,7 +50,7 @@ class Transactions extends Component {
     console.log("account ", this.props.account); //user account info
     console.log("transaction ", this.props.transaction); //user transaction info
     const { transaction } = this.props;
-    const rows = transaction.transaction;
+    const rows = transaction;
 
     return (
       <ResponsiveContainer>
@@ -82,7 +82,7 @@ class Transactions extends Component {
                           "Service",
                           "Shops",
                           "Transfer",
-                          "Travel",
+                          "Travel"
                         ],
                         datasets: [
                           {
@@ -134,7 +134,7 @@ class Transactions extends Component {
                                   return acc + curr.amount;
                                 }
                                 return acc;
-                              }, 0),
+                              }, 0)
                             ],
                             backgroundColor: [
                               "#FF6384",
@@ -144,15 +144,15 @@ class Transactions extends Component {
                               "#00D5D1",
                               "#00A0EF",
                               "#FF8800",
-                              "#0095FF",
+                              "#0095FF"
                             ],
                             hoverBackgroundColor: [
                               "#FF6384",
                               "#36A2EB",
-                              "#FFCE56",
-                            ],
-                          },
-                        ],
+                              "#FFCE56"
+                            ]
+                          }
+                        ]
                       }}
                       type="doughnut"
                     />
@@ -201,8 +201,8 @@ class Transactions extends Component {
 
 const mapState = state => {
   return {
-    account: state.plaid.account,
-    transaction: state.plaid.transaction,
+    account: state.accounts.accountInfo,
+    transaction: state.transactions.transaction
   };
 };
 
@@ -286,7 +286,7 @@ export default connect(mapState)(Transactions);
             index: i,
             cell: cells[i],
             row: rows[i],
-            value: unsortedValues[i],
+            value: unsortedValues[i]
           });
         }
 
@@ -323,7 +323,7 @@ export default connect(mapState)(Transactions);
       this.$sortCells.off("click.tablesort");
       this.$table.data("tablesort", null);
       return null;
-    },
+    }
   };
 
   $.tablesort.DEBUG = false;
@@ -340,7 +340,7 @@ export default connect(mapState)(Transactions);
       } else {
         return 0;
       }
-    },
+    }
   };
 
   $.fn.tablesort = function(settings) {
