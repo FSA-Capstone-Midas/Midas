@@ -85,7 +85,7 @@ const User = db.define(
   },
   {
     getterMethods: {
-      totalExpenditure() {
+      totalBudgetExpenditure() {
         return (
           this.foodAndDrink +
           this.recreation +
