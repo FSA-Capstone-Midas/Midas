@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const initialState = { account: {}, transaction: {} };
+const initialState = {};
 
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
-const GET_ACCOUNT = "GET_ACCOUNT";
+// const GET_ACCOUNT = "GET_ACCOUNT";
 // const GET_TRANSACTION = "GET_TRANSACTION";
 
 // const getTransaction = information => ({
@@ -16,10 +16,10 @@ const getInformation = information => ({
   information
 });
 
-const getItem = item => ({
-  type: GET_ACCOUNT,
-  item
-});
+// const getItem = item => ({
+//   type: GET_ACCOUNT,
+//   item
+// });
 
 export const fetchInformation = publicToken => dispatch => {
   //   console.log(publicToken, "did i get smth?");
@@ -30,14 +30,14 @@ export const fetchInformation = publicToken => dispatch => {
 };
 
 // fetch accounts from api
-export const fetchItem = () => dispatch => {
-  return axios
-    .get("/api/plaid/auth") //fetch accounts
-    .then(res => {
-      return dispatch(getItem(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchItem = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/auth") //fetch accounts
+//     .then(res => {
+//       return dispatch(getItem(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 // get transaction from api
 // export const fetchTransaction = () => dispatch => {
@@ -95,8 +95,6 @@ export default function plaidReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCESSTOKEN:
       return action.information;
-    case GET_ACCOUNT:
-      return Object.assign({}, state, { account: action.item });
     default:
       return state;
   }

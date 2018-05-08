@@ -27,8 +27,6 @@ export const me = () => dispatch =>
     .get("/auth/me")
     .then(res => {
       dispatch(getUser(res.data || defaultUser));
-      dispatch(fetchInformation);
-      dispatch(fetchItem);
     })
     .catch(err => console.log(err));
 

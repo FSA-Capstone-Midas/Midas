@@ -5,17 +5,23 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import user from "./user";
 import plaidReducer from "./plaid";
 import transactions from "./transactions";
+import accounts from "./accounts";
+
 const reducer = combineReducers({
   user,
   plaid: plaidReducer,
-  transactions
+  transactions,
+  accounts
 });
+
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
+
 const store = createStore(reducer, middleware);
 
 export default store;
 export * from "./user";
 export * from "./plaid";
 export * from "./transactions";
+export * from "./accounts";
