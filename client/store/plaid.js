@@ -1,24 +1,25 @@
 import axios from "axios";
 
-const initialState = { account: {}, transaction: {} };
+const initialState = {};
 
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
-const GET_ACCOUNT = "GET_ACCOUNT";
-const GET_TRANSACTION = "GET_TRANSACTION";
+// const GET_ACCOUNT = "GET_ACCOUNT";
+// const GET_TRANSACTION = "GET_TRANSACTION";
 
-const getTransaction = information => ({
-  type: GET_TRANSACTION,
-  information
-});
+// const getTransaction = information => ({
+//   type: GET_TRANSACTION,
+//   information
+// });
+
 const getInformation = information => ({
   type: GET_ACCESSTOKEN,
   information
 });
 
-const getItem = item => ({
-  type: GET_ACCOUNT,
-  item
-});
+// const getItem = item => ({
+//   type: GET_ACCOUNT,
+//   item
+// });
 
 export const fetchInformation = publicToken => dispatch => {
   //   console.log(publicToken, "did i get smth?");
@@ -29,24 +30,24 @@ export const fetchInformation = publicToken => dispatch => {
 };
 
 // fetch accounts from api
-export const fetchItem = () => dispatch => {
-  return axios
-    .get("/api/plaid/auth") //fetch accounts
-    .then(res => {
-      return dispatch(getItem(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchItem = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/auth") //fetch accounts
+//     .then(res => {
+//       return dispatch(getItem(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 // get transaction from api
-export const fetchTransaction = () => dispatch => {
-  return axios
-    .get("/api/plaid/transactions")
-    .then(res => {
-      return dispatch(getTransaction(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchTransaction = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/transactions")
+//     .then(res => {
+//       return dispatch(getTransaction(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 //waiting for plaid api approve
 export const fetchAsset = () => dispatch => {
@@ -94,10 +95,6 @@ export default function plaidReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ACCESSTOKEN:
       return action.information;
-    case GET_ACCOUNT:
-      return Object.assign({}, state, { account: action.item });
-    case GET_TRANSACTION:
-      return Object.assign({}, state, { transaction: action.information });
     default:
       return state;
   }
