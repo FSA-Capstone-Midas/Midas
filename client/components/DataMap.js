@@ -5,6 +5,7 @@ class DataMap extends Component {
   constructor(props) {
     super(props);
   }
+
   componentDidMount() {
     var Map = new Datamap({
       scope: "usa",
@@ -13,7 +14,7 @@ class DataMap extends Component {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
-            '<div class="hoverinfo">' +
+            "<div class=\"hoverinfo\">" +
             geography.properties.name +
             "Electoral Votes:" +
             data.electoralVotes +

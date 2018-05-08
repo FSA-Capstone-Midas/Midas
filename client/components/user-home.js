@@ -5,6 +5,7 @@ import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import Plaid from "./Plaid";
+import AccountTable from "./AccountTable";
 import {
   Button,
   Container,
@@ -79,10 +80,12 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 3000);
   }
 
   render() {
+    const { account } = this.props;
+    console.log(account);
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
@@ -92,6 +95,7 @@ class UserHome extends React.Component {
             <Segment>
               <Plaid />
             </Segment>
+            <AccountTable />
             <Segment>
               <h1>Pie chart (RIght)</h1>
               <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
@@ -114,7 +118,7 @@ class UserHome extends React.Component {
               </VictoryChart>
             </Segment>
             <Segment>
-              <h1>Account info (LEFT)</h1>
+              <h1>Account info (LEFT NEV)</h1>
               <Segment>
                 <h1>Cash</h1>
               </Segment>
@@ -150,7 +154,8 @@ class UserHome extends React.Component {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    email: state.user.email,
+    account: state.plaid.account
   };
 };
 
