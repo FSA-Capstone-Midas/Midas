@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
 module.exports = router;
 
-let PUBLIC_TOKEN = null;
+// let ACCESS_TOKEN = null;
 
 let ASSET_REPORT_TOKEN = null;
 let ASSET_REPORT_ID = null;
