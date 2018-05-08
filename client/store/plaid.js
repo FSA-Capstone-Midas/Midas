@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const initialState = { accounts: {}, transaction: {} };
+const initialState = { account: {}, transaction: {} };
 
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 const GET_ACCOUNT = "GET_ACCOUNT";
