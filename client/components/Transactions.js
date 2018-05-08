@@ -24,13 +24,26 @@ class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      spendingOverTime: true,
+      spendingByCategory: false
     };
+    this.handleClickSpendingOverTime = this.handleClickSpendingOverTime.bind(
+      this
+    );
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 3000);
     $("table").tablesort();
+  }
+
+  handleClickSpendingOverTime(event) {
+    const target = event.target;
+    const name = target.name;
+    console.log(name);
+    this.setState({ [name]: true });
+    this.setState({ [!name]: false });
   }
 
   render() {
@@ -63,8 +76,20 @@ class Transactions extends Component {
                             <div className="item">
                               <div className="header">Spending</div>
                               <div className="menu">
-                                <a className="item">Over Time</a>
-                                <a className="item">By Category</a>
+                                <a
+                                  className="item"
+                                  name="spendingOverTime"
+                                  onClick={this.handleClickSpendingOverTime}
+                                >
+                                  Over Time
+                                </a>
+                                <a
+                                  className="item"
+                                  name="spendingByCategory"
+                                  onClick={this.handleClickSpendingOverTime}
+                                >
+                                  By Category
+                                </a>
                               </div>
                             </div>
                             <div className="item">
@@ -83,8 +108,12 @@ class Transactions extends Component {
                           </div>
                         </Grid.Column>
                         <Grid.Column>
-                          <TransactionsPie rows={rows} />
-                          <TransactionsBar />
+                          {this.state.spendingOverTime ? (
+                            <TransactionsPie rows={rows} />
+                          ) : null}
+                          {this.state.spendingByCategory ? (
+                            <TransactionsBar />
+                          ) : null}
                         </Grid.Column>
                       </Grid.Row>
                     </Segment>
