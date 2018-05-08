@@ -64,7 +64,7 @@ const mapState = state => {
   const service = state.user.service;
   const shop = state.user.shop;
   const miscellaneous = state.user.miscellaneous;
-  const transactions = state.plaid.transaction.transaction;
+  const transactions = state.transactions.transaction;
   const nonMicellaneous = [
     "Food and Drink",
     "Recreation",

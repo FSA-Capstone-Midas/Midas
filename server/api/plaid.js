@@ -27,9 +27,9 @@ router.post("/get_access_token", (req, res, next) => {
       console.log("could not exchange public_token", err);
       return res.json({ err: err });
     }
-    ACCESS_TOKEN = tokenResponse.access_token;
+    // ACCESS_TOKEN = tokenResponse.access_token;
     console.log("Access Token: " + ACCESS_TOKEN);
-    ITEM_ID = tokenResponse.item_id;
+    //ITEM_ID = tokenResponse.item_id;
     console.log("Item ID: " + ITEM_ID);
   });
 });
