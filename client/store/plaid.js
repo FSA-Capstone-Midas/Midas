@@ -4,12 +4,13 @@ const initialState = { account: {}, transaction: {} };
 
 const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 const GET_ACCOUNT = "GET_ACCOUNT";
-const GET_TRANSACTION = "GET_TRANSACTION";
+// const GET_TRANSACTION = "GET_TRANSACTION";
 
-const getTransaction = information => ({
-  type: GET_TRANSACTION,
-  information
-});
+// const getTransaction = information => ({
+//   type: GET_TRANSACTION,
+//   information
+// });
+
 const getInformation = information => ({
   type: GET_ACCESSTOKEN,
   information
@@ -39,14 +40,14 @@ export const fetchItem = () => dispatch => {
 };
 
 // get transaction from api
-export const fetchTransaction = () => dispatch => {
-  return axios
-    .get("/api/plaid/transactions")
-    .then(res => {
-      return dispatch(getTransaction(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchTransaction = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/transactions")
+//     .then(res => {
+//       return dispatch(getTransaction(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 //waiting for plaid api approve
 export const fetchAsset = () => dispatch => {
@@ -96,8 +97,6 @@ export default function plaidReducer(state = initialState, action) {
       return action.information;
     case GET_ACCOUNT:
       return Object.assign({}, state, { account: action.item });
-    case GET_TRANSACTION:
-      return Object.assign({}, state, { transaction: action.information });
     default:
       return state;
   }
