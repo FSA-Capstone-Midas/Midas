@@ -39,7 +39,7 @@ router.get("/auth", function(request, response, next) {
   // Pull the Item - this includes information about available products,
   // billed products, webhook information, and more.
   client.getAuth(ACCESS_TOKEN, function(error, data) {
-    if (error != null) {
+    if (error) {
       console.log(JSON.stringify(error));
       return response.json({
         error: error
@@ -47,8 +47,8 @@ router.get("/auth", function(request, response, next) {
     }
     response.json({
       error: false,
-      accounts: data.accounts,
-      numbers: data.numbers
+      accountInfo: data.accounts
+      // numbers: data.numbers //hide this for security purpose
     });
   });
 });

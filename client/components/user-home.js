@@ -84,11 +84,44 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { account } = this.props;
-    console.log(account);
+    const { accounts } = this.props;
+    console.log(accounts);
     return (
       <ResponsiveContainer>
-        {this.state.loading ? <Loading /> : <Segment />}
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <Segment>
+            <Segment>
+              <Plaid />
+            </Segment>
+            <AccountTable />
+            <Segment>
+              <h1>Account info (LEFT NEV)</h1>
+              <Segment>
+                <h1>Cash</h1>
+              </Segment>
+              <Segment>
+                <h1>Credit Cards</h1>
+              </Segment>
+              <Segment>
+                <h1>Loans</h1>
+              </Segment>
+              <Segment>
+                <h1>Investments</h1>
+              </Segment>
+              <Segment>
+                <h1>Propertys</h1>
+              </Segment>
+            </Segment>
+            <Segment>
+              <h1>Suggested offers</h1>
+            </Segment>
+            <Segment>
+              <h1>Spending</h1>
+            </Segment>
+          </Segment>
+        )}
         <Footer />
       </ResponsiveContainer>
     );
@@ -101,7 +134,7 @@ class UserHome extends React.Component {
 const mapState = state => {
   return {
     email: state.user.email,
-    account: state.plaid.account
+    accounts: state.accounts
   };
 };
 
