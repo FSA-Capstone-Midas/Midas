@@ -84,8 +84,8 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { account } = this.props;
-    console.log(account);
+    const { accounts } = this.props;
+    console.log(accounts);
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
@@ -96,27 +96,6 @@ class UserHome extends React.Component {
               <Plaid />
             </Segment>
             <AccountTable />
-            <Segment>
-              <h1>Pie chart (RIght)</h1>
-              <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
-                <VictoryAxis
-                  tickValues={[1, 2, 3, 4]}
-                  tickFormat={[
-                    "Quarter 1",
-                    "Quarter 2",
-                    "Quarter 3",
-                    "Quarter 4"
-                  ]}
-                />
-                <VictoryAxis dependentAxis tickFormat={x => `$${x / 1000}k`} />
-                <VictoryStack colorScale={"warm"}>
-                  <VictoryBar data={data2012} x="quarter" y="earnings" />
-                  <VictoryBar data={data2013} x="quarter" y="earnings" />
-                  <VictoryBar data={data2014} x="quarter" y="earnings" />
-                  <VictoryBar data={data2015} x="quarter" y="earnings" />
-                </VictoryStack>
-              </VictoryChart>
-            </Segment>
             <Segment>
               <h1>Account info (LEFT NEV)</h1>
               <Segment>
@@ -155,7 +134,7 @@ class UserHome extends React.Component {
 const mapState = state => {
   return {
     email: state.user.email,
-    account: state.plaid.account
+    accounts: state.accounts
   };
 };
 
