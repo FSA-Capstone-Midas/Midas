@@ -56,10 +56,10 @@ router.get("/auth", function(request, response, next) {
 router.get("/transactions", (req, res, next) => {
   client.getTransactions(
     ACCESS_TOKEN,
-    "2017-01-01",
-    "2017-02-15",
+    "2017-05-02",
+    "2018-05-02",
     {
-      count: 250,
+      count: 500,
       offset: 0
     },
     function(error, data) {

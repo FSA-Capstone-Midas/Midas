@@ -17,7 +17,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Transactions extends Component {
@@ -25,12 +25,25 @@ class Transactions extends Component {
     super(props);
     this.state = {
       loading: true,
+      spendingOverTime: true,
+      spendingByCategory: false
     };
+    this.handleClickSpendingOverTime = this.handleClickSpendingOverTime.bind(
+      this
+    );
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 3000);
     $("table").tablesort();
+  }
+
+  handleClickSpendingOverTime(event) {
+    const target = event.target;
+    const name = target.name;
+    console.log(name);
+    this.setState({ [name]: true });
+    this.setState({ [!name]: false });
   }
 
   render() {
@@ -55,13 +68,55 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment>Transactions</Segment>
                     <Segment>
-                      <button>Button1</button>
-                      <button>Button2</button>
+                      Transactions
+                      <Grid.Row id="transactionRow">
+                        <Grid.Column>
+                          <div className="ui vertical menu">
+                            <div className="item">
+                              <div className="header">Spending</div>
+                              <div className="menu">
+                                <a
+                                  className="item"
+                                  name="spendingOverTime"
+                                  onClick={this.handleClickSpendingOverTime}
+                                >
+                                  Over Time
+                                </a>
+                                <a
+                                  className="item"
+                                  name="spendingByCategory"
+                                  onClick={this.handleClickSpendingOverTime}
+                                >
+                                  By Category
+                                </a>
+                              </div>
+                            </div>
+                            <div className="item">
+                              <div className="header">Income</div>
+                              <div className="menu">
+                                <a className="item">Over Time</a>
+                                <a className="item">By Category</a>
+                              </div>
+                            </div>
+                            <div className="item">
+                              <div className="header">Net Income</div>
+                              <div className="menu">
+                                <a className="item">Over Time</a>
+                              </div>
+                            </div>
+                          </div>
+                        </Grid.Column>
+                        <Grid.Column>
+                          {this.state.spendingOverTime ? (
+                            <TransactionsPie rows={rows} />
+                          ) : null}
+                          {this.state.spendingByCategory ? (
+                            <TransactionsBar />
+                          ) : null}
+                        </Grid.Column>
+                      </Grid.Row>
                     </Segment>
-                    <TransactionsPie rows={rows} />
-                    <TransactionsBar />
 
                     <table className="ui sortable celled table">
                       <thead>
@@ -101,7 +156,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction,
+    transaction: state.transactions.transaction
   };
 };
 
