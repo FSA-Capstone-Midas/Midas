@@ -4,12 +4,12 @@ import { Segment } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 
 const AccountTable = props => {
-  const { account } = props;
-  console.log(account);
+  const { accounts } = props;
+  console.log(accounts);
   return (
     <Segment>
-      {account &&
-        account.map(each => {
+      {accounts &&
+        accounts.map(each => {
           if (each.type === "depository") {
             return (
               <table className="ui celled table" key={each.account_id}>
@@ -61,7 +61,7 @@ const AccountTable = props => {
 };
 
 const mapState = state => {
-  return { account: state.plaid.account.accounts };
+  return { accounts: state.accounts.accountInfo };
 };
 
 export default withRouter(connect(mapState)(AccountTable));

@@ -52,7 +52,7 @@ class Transactions extends Component {
     console.log("account ", this.props.account); //user account info
     console.log("transaction ", this.props.transaction); //user transaction info
     const { transaction } = this.props;
-    const rows = transaction.transaction;
+    const rows = transaction;
 
     return (
       <ResponsiveContainer>
@@ -119,8 +119,8 @@ class Transactions extends Component {
 
 const mapState = state => {
   return {
-    account: state.plaid.account,
-    transaction: state.plaid.transaction,
+    account: state.accounts.accountInfo,
+    transaction: state.transactions.transaction,
   };
 };
 
