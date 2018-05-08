@@ -1,10 +1,10 @@
 const plaid = require("plaid");
 const router = require("express").Router();
+const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
 module.exports = router;
 
-let ACCESS_TOKEN = null;
 let PUBLIC_TOKEN = null;
-var ITEM_ID = null;
+
 let ASSET_REPORT_TOKEN = null;
 let ASSET_REPORT_ID = null;
 let client = new plaid.Client(
@@ -38,27 +38,24 @@ router.get("/auth", function(request, response, next) {
   console.log("come on boys: ", "access-development-" + ACCESS_TOKEN);
   // Pull the Item - this includes information about available products,
   // billed products, webhook information, and more.
-  client.getAuth(
-    "access-development-a18d6010-d862-4906-b6a6-f3e22d15180e",
-    function(error, data) {
-      if (error != null) {
-        console.log(JSON.stringify(error));
-        return response.json({
-          error: error
-        });
-      }
-      response.json({
-        error: false,
-        accounts: data.accounts,
-        numbers: data.numbers
+  client.getAuth(ACCESS_TOKEN, function(error, data) {
+    if (error != null) {
+      console.log(JSON.stringify(error));
+      return response.json({
+        error: error
       });
     }
-  );
+    response.json({
+      error: false,
+      accounts: data.accounts,
+      numbers: data.numbers
+    });
+  });
 });
 
 router.get("/transactions", (req, res, next) => {
   client.getTransactions(
-    "access-development-a18d6010-d862-4906-b6a6-f3e22d15180e",
+    ACCESS_TOKEN,
     "2017-01-01",
     "2017-02-15",
     {
@@ -81,39 +78,33 @@ router.get("/transactions", (req, res, next) => {
 });
 
 router.get("/income", (req, res, next) => {
-  client.getIncome(
-    "access-development-a18d6010-d862-4906-b6a6-f3e22d15180e",
-    function(error, data) {
-      if (error != null) {
-        console.log(JSON.stringify(error));
-        return res.json({
-          error: error
-        });
-      }
-      res.json({
-        error: false,
-        income: data.income
+  client.getIncome(ACCESS_TOKEN, function(error, data) {
+    if (error != null) {
+      console.log(JSON.stringify(error));
+      return res.json({
+        error: error
       });
     }
-  );
+    res.json({
+      error: false,
+      income: data.income
+    });
+  });
 });
 
 router.get("/identity", (req, res, next) => {
-  client.getIdentity(
-    "access-development-a18d6010-d862-4906-b6a6-f3e22d15180e",
-    function(error, data) {
-      if (error != null) {
-        console.log(JSON.stringify(error));
-        return res.json({
-          error: error
-        });
-      }
-      res.json({
-        error: false,
-        info: data.info
+  client.getIdentity(ACCESS_TOKEN, function(error, data) {
+    if (error != null) {
+      console.log(JSON.stringify(error));
+      return res.json({
+        error: error
       });
     }
-  );
+    res.json({
+      error: false,
+      info: data.info
+    });
+  });
 });
 
 const daysRequested = 60;
@@ -133,7 +124,7 @@ const options = {
 
 router.post("/asset_report/create", (req, res, next) => {
   client.createAssetReport(
-    ["access-development-a18d6010-d862-4906-b6a6-f3e22d15180e"],
+    [ACCESS_TOKEN],
     daysRequested,
 
     function(error, data) {
