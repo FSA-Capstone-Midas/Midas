@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Datamap from "datamaps";
+import { connect } from "react-redux";
+import { Segment } from "semantic-react";
 
 class DataMap extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     var Map = new Datamap({
       scope: "usa",
@@ -14,14 +12,18 @@ class DataMap extends Component {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
-            "<div class=\"hoverinfo\">" +
+            '<div class="hoverinfo">' +
             geography.properties.name +
+            `</br>` +
             "Electoral Votes:" +
             data.electoralVotes +
+            `</br>` +
+            "Average sales Price: " +
+            data.mediumSalesPrice +
             " "
           );
         },
-        highlightBorderWidth: 3
+        highlightBorderWidth: 6
       },
       // geographyConfig: {
       //   popupOnHover: true,
@@ -40,11 +42,11 @@ class DataMap extends Component {
       data: {
         AZ: {
           fillKey: "High",
-          mediumSalesPrice: 5
+          electoralVotes: 5
         },
         CO: {
           fillKey: "Very High",
-          mediumSalesPrice: 5
+          mediumSalesPrice: 5000
         },
         DE: {
           fillKey: "Democrat",
@@ -240,49 +242,26 @@ class DataMap extends Component {
         }
       }
     });
-    var bubble_map = new Datamap({
-      element: document.getElementById("map_election2"),
-      scope: "canada",
-      geographyConfig: {
-        popupOnHover: true,
-        highlightOnHover: true,
-        borderColor: "#444",
-        borderWidth: 0.5,
-        dataUrl:
-          "https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/canada.topo.json"
-        //dataJson: topoJsonData
-      },
-      fills: {
-        MAJOR: "#306596",
-        MEDIUM: "#0fa0fa",
-        MINOR: "#bada55",
-        defaultFill: "#dddddd"
-      },
-      data: {
-        JH: { fillKey: "MINOR" },
-        MH: { fillKey: "MINOR" }
-      },
-      setProjection: function(element) {
-        var projection = d3.geo
-          .mercator()
-          .center([-106.3468, 68.1304]) // always in [East Latitude, North Longitude]
-          .scale(250)
-          .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
-
-        var path = d3.geo.path().projection(projection);
-        return { path: path, projection: projection };
-      }
-    });
   }
+
   render() {
+    const divStyle = {
+      position: "relative",
+      width: "2500px",
+      height: "1200px"
+    };
     return (
       <div>
-        <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
-        <div id="map_election" className="ui segment" />
-        <div id="map_election2" className="ui segment" />
+        <div id="map_election" style={divStyle} />
       </div>
     );
   }
 }
 
-export default DataMap;
+const mapState = state => {
+  return {
+    stateInfo: state.states
+  };
+};
+
+export default connect(mapState)(DataMap);

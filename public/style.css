@@ -103,8 +103,12 @@ h2 {
   display: table;
   margin-left: auto;
   margin-right: auto;
-  
+}
+
 #transactionRow {
   display: flex;
 }
 
+#usaMap {
+  display: flex;
+}

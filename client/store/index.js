@@ -13,7 +13,7 @@ const reducer = combineReducers({
   plaid: plaidReducer,
   transactions,
   accounts,
-  stateReducer
+  states: stateReducer
 });
 
 const middleware = composeWithDevTools(
