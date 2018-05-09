@@ -1,7 +1,5 @@
 const User = require("./user");
 const State = require("./state");
-const Apartment = require("./apartment");
-const House = require("./house");
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -17,14 +15,7 @@ const House = require("./house");
  * instead of: const User = require('../db/models/user')
  */
 
-Apartment.belongsTo(State);
-House.belongsTo(State);
-State.hasMany(House);
-State.hasMany(Apartment);
-
 module.exports = {
   User,
-  State,
-  Apartment,
-  House
+  State
 };
