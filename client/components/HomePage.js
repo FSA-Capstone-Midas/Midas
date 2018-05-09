@@ -15,7 +15,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import MobileContainer from "./MobileContainer";
@@ -23,13 +23,14 @@ import DesktopContainer from "./DesktopContainer";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
+    {/* write ternary here, check if current user is logged in exists, if yes show AfterLogin, if no show DesktopContainer. */}
     <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const HomePage = () => (

@@ -72,9 +72,8 @@ const mapState = state => {
     "Shops",
     "Travel"
   ];
-  console.log("what is transactions", transactions);
+
   const foodAndDrinkSpending = sumCategory(transactions, "Food and Drink");
-  console.log("foodanddrink", foodAndDrinkSpending);
   const recreationSpending = sumCategory(transactions, "Recreation");
   const serviceSpending = sumCategory(transactions, "Service");
   const shopsSpending = sumCategory(transactions, "Shops");
