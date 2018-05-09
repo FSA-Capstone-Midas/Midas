@@ -36,6 +36,7 @@ export const updateProfile = (id, profile) => dispatch =>
     .put(`/api/users/update/${id}`, profile)
     .then(res => {
       dispatch(updateUser(res.data));
+      history.push("/home");
     })
     .catch(err => console.log(err));
 
