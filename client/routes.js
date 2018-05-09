@@ -11,7 +11,8 @@ import {
   HowItWorks,
   UserTrend,
   Transactions,
-  Profile
+  Profile,
+  Budget
 } from "./components";
 import { me, fetchTransaction, fetchItem } from "./store";
 
@@ -36,6 +37,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
+        <Route exact path="/budget" component={Budget} />
         <Route exact path="/trend" component={UserTrend} />
         <Route exact path="/profile" component={Profile} />
         {isLoggedIn && (
