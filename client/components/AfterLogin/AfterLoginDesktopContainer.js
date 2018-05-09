@@ -65,6 +65,8 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
+          as={Link}
+          to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />
@@ -99,7 +101,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...Responsive.onlyComputer}>
+      <Responsive>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -123,8 +125,12 @@ class DesktopContainer extends Component {
                   HOME
                 </Menu.Item>
                 <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
-                <Menu.Item as="a">SETTING</Menu.Item>
-                <Menu.Item as="a">PROFILE</Menu.Item>
+                <Menu.Item as={Link} to="/profile">
+                  SETTING
+                </Menu.Item>
+                <Menu.Item as={Link} to="/profile">
+                  PROFILE
+                </Menu.Item>
                 <Menu.Item position="right">
                   <Button
                     as="a"

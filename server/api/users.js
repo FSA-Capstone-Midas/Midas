@@ -21,3 +21,17 @@ router.post("/user", (req, res, next) => {});
 
 // user edit info
 router.put("/user", (req, res, next) => {});
+
+router.get("/user/:userId/budget", (req, res, next) => {
+  User.findById(req.params.userId).then(user => {
+    const budget = {};
+    budget.foodAndDrink = user.foodAndDrink;
+    budget.recreation = user.recreation;
+    budget.service = user.service;
+    budget.shops = user.shops;
+    budget.travel = user.travel;
+    budget.miscellaneous = user.miscellaneous;
+    budget.totalBudgetExpenditure = user.totalBudgetExpenditure;
+    res.json(budget);
+  });
+});
