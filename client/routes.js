@@ -37,10 +37,10 @@ class Routes extends Component {
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
         <Route exact path="/trend" component={UserTrend} />
-        <Route exact path="/profile" component={Profile} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/profile" component={Profile} />
             <Route path="/home" component={UserHome} />
             <Route path="/transactions" component={Transactions} />
           </Switch>
