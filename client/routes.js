@@ -14,7 +14,7 @@ import {
   Profile,
   Budget
 } from "./components";
-import { me, fetchTransaction, fetchItem } from "./store";
+import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 
 /**
  * COMPONENT
@@ -24,6 +24,7 @@ class Routes extends Component {
     this.props.loadInitialData();
     this.props.loadAccountsFromPlaid();
     this.props.loadTransactionsFromPlaid();
+    this.props.loadAllStateFromServer();
   }
 
   render() {
@@ -75,6 +76,9 @@ const mapDispatch = dispatch => {
     },
     loadTransactionsFromPlaid() {
       dispatch(fetchTransaction());
+    },
+    loadAllStateFromServer() {
+      dispatch(fetchAllState());
     }
   };
 };

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
@@ -5,8 +6,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import Plaid from "./Plaid";
 import AccountTable from "./AccountTable";
-import { Segment } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 const ResponsiveContainer = ({ children }) => (
@@ -141,6 +141,7 @@ const mapState = state => {
     accounts: state.accounts
   };
 };
+
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     handleClick(product, evt) {
@@ -149,4 +150,5 @@ const mapState = state => {
 //     }
 //   };
 // }
+
 export default connect(mapState)(UserHome);
