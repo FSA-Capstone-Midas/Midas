@@ -22,8 +22,8 @@ import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
-    this.props.loadAccountsFromPlaid();
-    this.props.loadTransactionsFromPlaid();
+    // this.props.loadAccountsFromPlaid();
+    // this.props.loadTransactionsFromPlaid();
     this.props.loadAllStateFromServer();
   }
 
