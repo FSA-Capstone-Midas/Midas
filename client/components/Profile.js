@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
+import store, { updateProfile } from "../store";
 import {
   Button,
   Container,
@@ -24,8 +25,8 @@ import {
   Select
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
-import DesktopContainer from "./DesktopContainer";
-import MobileContainer from "./MobileContainer";
+import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
 /* eslint-disable react/no-multi-comp */
 
@@ -49,6 +50,31 @@ ResponsiveContainer.propTypes = {
 };
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      nickName: "",
+      phoneNumber: 0,
+      address: "",
+      jobTitle: "",
+      incomeRange: 0,
+      birthday: "",
+      email: "",
+      password: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    const { id } = this.props;
+    store.dispatch(updateProfile(id, this.state));
+  }
   render() {
     return (
       <ResponsiveContainer>
@@ -58,22 +84,40 @@ class Profile extends React.Component {
             Update your profile to get your financial advice optimized!
           </Header.Content>
         </Header>
-        <Form id="profile">
+        <Form id="profile" onSubmit={this.handleSubmit}>
           <Form.Group
             widths="equal"
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
             <Form.Field>
               <label>First name</label>
-              <Input fluid placeholder="First name" />
+              <Input
+                fluid
+                placeholder="First name"
+                value={this.state.firstName}
+                name="firstName"
+                onChange={this.handleChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>Last name</label>
-              <Input fluid placeholder="Middle name" />
+              <Input
+                fluid
+                placeholder="Last Name"
+                value={this.state.lastName}
+                name="lastName"
+                onChange={this.handleChange}
+              />
             </Form.Field>
             <Form.Field>
               <label>D.O.B</label>
-              <Input fluid placeholder="Last name" />
+              <Input
+                value={this.state.birthday}
+                name="birthday"
+                onChange={this.handleChange}
+                fluid
+                placeholder="BirthDay"
+              />
             </Form.Field>
           </Form.Group>
           <Form.Group
@@ -81,36 +125,72 @@ class Profile extends React.Component {
             widths={2}
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
-            <Form.Input label="Email" placeholder="Email" />
-            <Form.Input label="Password" placeholder="Password" />
+            <Form.Input
+              value={this.state.email}
+              name="email"
+              onChange={this.handleChange}
+              label="Email"
+              placeholder="Email"
+            />
+            <Form.Input
+              value={this.state.password}
+              name="password"
+              onChange={this.handleChange}
+              label="Password"
+              placeholder="Password"
+            />
           </Form.Group>
           <Form.Group
             widths={2}
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
-            <Form.Input label="Address" placeholder="Address" />
-            <Form.Input label="nickName" placeholder="nickName" />
+            <Form.Input
+              value={this.state.state}
+              name="state"
+              onChange={this.handleChange}
+              label="State"
+              placeholder="State"
+            />
+            <Form.Input
+              value={this.state.nickName}
+              name="nickName"
+              onChange={this.handleChange}
+              label="NickName"
+              placeholder="NickName"
+            />
           </Form.Group>
           <Form.Group
             widths={2}
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
-            <Form.Input label="Job Title" placeholder="Job Title" />
-            <Form.Input label="Income Range" placeholder="Income Range" />
+            <Form.Input
+              value={this.state.jobTitle}
+              name="jobTitle"
+              onChange={this.handleChange}
+              label="Job Title"
+              placeholder="Job Title"
+            />
+            <Form.Input
+              value={this.state.incomeRange}
+              name="incomeRange"
+              onChange={this.handleChange}
+              label="Income Range"
+              placeholder="Income Range"
+            />
           </Form.Group>
           <Form.Group inline style={{ marginBottom: "3em", marginTop: "3em" }}>
             <Form.Field>
               <label>Phone Number</label>
-              <Input placeholder="(xxx)" />
-            </Form.Field>
-            <Form.Field>
-              <Input placeholder="xxx" />
-            </Form.Field>
-            <Form.Field>
-              <Input placeholder="xxxx" />
+              <Input
+                name="phoneNumber"
+                onChange={this.handleChange}
+                placeholder="(xxx)-(xxx)-(xxxx)"
+              />
             </Form.Field>
           </Form.Group>
-          <Button positive>Update Profile</Button>
+          <Button positive type="submit">
+            Update Profile
+          </Button>
         </Form>
         <Footer />
       </ResponsiveContainer>
@@ -118,22 +198,10 @@ class Profile extends React.Component {
   }
 }
 
-/**
- * CONTAINER
- //  */
-// const mapState = state => {
-//   console.log(state, "stateYO~");
-//   return {
-//     email: state.user.email,
-//     accounts: state.accounts
-//   };
-// };
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleClick(product, evt) {
-//       evt.preventDefault();
-//       dispatch(postToCart(product));
-//     }
-//   };
-// }
-export default connect()(Profile);
+const mapState = state => {
+  return {
+    id: state.user.id
+  };
+};
+
+export default connect(mapState)(Profile);

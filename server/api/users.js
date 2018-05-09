@@ -20,7 +20,14 @@ router.get("/user", (req, res, next) => {});
 router.post("/user", (req, res, next) => {});
 
 // user edit info
-router.put("/user", (req, res, next) => {});
+router.put("/update/:id", (req, res, next) => {
+  console.log("req.bdoy????", req.body);
+  User.findById(req.params.id)
+    .then(userToUpdate => {
+      return userToUpdate.update(req.body);
+    })
+    .then(data => res.status(201).json(data));
+});
 
 router.get("/user/:userId/budget", (req, res, next) => {
   User.findById(req.params.userId).then(user => {

@@ -19,7 +19,7 @@ const User = db.define(
     phoneNumber: {
       type: Sequelize.STRING
     },
-    address: {
+    state: {
       type: Sequelize.STRING
     },
     jobTitle: {
