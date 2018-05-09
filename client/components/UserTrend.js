@@ -9,6 +9,8 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { Segment } from "semantic-react";
 import DataMapApartments from "./DataMapApartments";
 import DataMapApartments2Br from "./DataMapApartments2Br";
+import DataMapApartmentsMMRentChange from "./DataMapApartmentsMMRentChange";
+import DataMapApartmentYYRentChange from "./DataMapApartmentYYRentChange";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -21,18 +23,24 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const UserTrend = () => (
-  <div>
-    <ResponsiveContainer>
-      <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
-      <Segment>
-        {/* <DataMap /> */}
-        {/* <DataMapApartments /> */}
-        <DataMapApartments2Br />
-      </Segment>
-    </ResponsiveContainer>
-    <Footer />
-  </div>
-);
+class UserTrend extends Component {
+  render() {
+    return (
+      <div>
+        <ResponsiveContainer>
+          <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
+          <Segment>
+            {/* <DataMap /> */}
+            {/* <DataMapApartments /> */}
+            {/* <DataMapApartments2Br /> */}
+            {/* <DataMapApartmentsMMRentChange /> */}
+            {/* <DataMapApartmentYYRentChange /> */}
+          </Segment>
+        </ResponsiveContainer>
+        <Footer />
+      </div>
+    );
+  }
+}
 
 export default UserTrend;
