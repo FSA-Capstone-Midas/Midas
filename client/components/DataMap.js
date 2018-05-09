@@ -367,6 +367,7 @@ class DataMap extends Component {
   }
 
   render() {
+    console.log(this.props.stateInfo);
     const divStyle = {
       position: "relative",
       width: "2500px",
