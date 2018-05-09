@@ -7,6 +7,7 @@ import { fetchInformation, fetchItem } from "./plaid";
  */
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
+const UPDATE_USER = "UPDATE USER";
 
 /**
  * INITIAL STATE
@@ -18,7 +19,7 @@ const defaultUser = {};
  */
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
-
+const updateUser = user => ({ type: GET_USER, user });
 /**
  * THUNK CREATORS
  */
@@ -27,6 +28,15 @@ export const me = () => dispatch =>
     .get("/auth/me")
     .then(res => {
       dispatch(getUser(res.data || defaultUser));
+    })
+    .catch(err => console.log(err));
+
+export const updateProfile = (id, profile) => dispatch =>
+  axios
+    .put(`/api/users/update/${id}`, profile)
+    .then(res => {
+      dispatch(updateUser(res.data));
+      history.push("/home");
     })
     .catch(err => console.log(err));
 
@@ -69,6 +79,8 @@ export default function(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
+    case UPDATE_USER:
+      return action.user;
     default:
       return state;
   }

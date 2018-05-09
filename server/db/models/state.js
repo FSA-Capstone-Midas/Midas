@@ -16,7 +16,13 @@ const State = db.define("state", {
   apartment2Br: {
     type: Sequelize.INTEGER
   },
-  house: {
+  houseAvgSales: {
+    type: Sequelize.INTEGER
+  },
+  houseAvgListing: {
+    type: Sequelize.INTEGER
+  },
+  truliaPopularity: {
     type: Sequelize.INTEGER
   },
   Condo: {

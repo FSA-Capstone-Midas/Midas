@@ -10,87 +10,13 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require("../server/db");
-const { User, House, State, Apartment } = require("../server/db/models");
+const { User, State } = require("../server/db/models");
 
 async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
-  // const houses = await Promise.all([
-  //   House.create({
-  //     name: "House",
-  //     price: 430000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 625000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 462000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 442000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 379000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 332719
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 331000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 325000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 315000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 297500
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 290000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 290000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 256000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 253500
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 249300
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 245000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 240000
-  //   }),
-  //   House.create({
-  //     name: "House",
-  //     price: 225000
-  //   })
-  // ]);
 
   const states = await Promise.all([
     State.create({
@@ -98,78 +24,145 @@ async function seed() {
       abbreviation: "NY",
       apartment1Br: 1260,
       apartment2Br: 1500,
-      house: 430000
+      houseAvgListing: 555227,
+      houseAvgSales: 430000,
+      truliaPopularity: 4
     }),
     State.create({
       state: "District Of Columbia",
       abbreviation: "DC",
       apartment1Br: 1450,
       apartment2Br: 1670,
-      house: 625000
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "California",
-      abbreviation: "CA"
+      abbreviation: "CA",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 697539,
+      houseAvgSales: 462000
     }),
     State.create({
       state: "Hawaii",
-      abbreviation: "HI"
+      abbreviation: "HI",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 905687,
+      houseAvgSales: 4425000
     }),
     State.create({
       state: "Massachusetts",
-      abbreviation: "MA"
+      abbreviation: "MA",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 602210,
+      houseAvgSales: 379000
     }),
     State.create({
       state: "Washington",
-      abbreviation: "WA"
+      abbreviation: "WA",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 378565,
+      houseAvgSales: 332719
     }),
     State.create({
       state: "Colorado",
-      abbreviation: "CO"
+      abbreviation: "CO",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Vermont",
-      abbreviation: "VT"
+      abbreviation: "VT",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Oregon",
-      abbreviation: "OR"
+      abbreviation: "OR",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Virginia",
-      abbreviation: "VA"
+      abbreviation: "VA",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Maryland",
-      abbreviation: "MD"
+      abbreviation: "MD",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "New Jersey",
-      abbreviation: "NJ"
+      abbreviation: "NJ",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Rhode Island",
-      abbreviation: "RI"
+      abbreviation: "RI",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Connecticut",
-      abbreviation: "CT"
+      abbreviation: "CT",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Nevada",
-      abbreviation: "NV"
+      abbreviation: "NV",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "New Hampshire",
-      abbreviation: "NH"
+      abbreviation: "NH",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Minnesota",
-      abbreviation: "MN"
+      abbreviation: "MN",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     }),
     State.create({
       state: "Arizona",
-      abbreviation: "AZ"
+      abbreviation: "AZ",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      houseAvgListing: 773286,
+      houseAvgSales: 625000
     })
   ]);
   console.log(`seeded ${states.length} states`);
