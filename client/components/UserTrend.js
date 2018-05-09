@@ -7,10 +7,7 @@ import { Grid } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { Segment } from "semantic-react";
-import DataMapApartments from "./DataMapApartments";
-import DataMapApartments2Br from "./DataMapApartments2Br";
-import DataMapApartmentsMMRentChange from "./DataMapApartmentsMMRentChange";
-import DataMapApartmentYYRentChange from "./DataMapApartmentYYRentChange";
+import DataMapHousing from "./DataMapHousing";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -30,7 +27,7 @@ class UserTrend extends Component {
         <ResponsiveContainer>
           <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
           <Segment>
-            {/* <DataMap /> */}
+            <DataMapHousing />
             {/* <DataMapApartments /> */}
             {/* <DataMapApartments2Br /> */}
             {/* <DataMapApartmentsMMRentChange /> */}

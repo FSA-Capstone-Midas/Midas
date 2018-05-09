@@ -3,7 +3,7 @@ import Datamap from "datamaps";
 import { connect } from "react-redux";
 
 // USA housing map
-class DataMap extends Component {
+class DataMapHousing extends Component {
   componentDidMount() {
     var Map = new Datamap({
       scope: "usa",
@@ -12,7 +12,7 @@ class DataMap extends Component {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
-            '<div class="hoverinfo">' +
+            "<div class=\"hoverinfo\">" +
             geography.properties.name +
             "</br>" +
             "Average Listing Price: " +
@@ -364,6 +364,7 @@ class DataMap extends Component {
     };
     return (
       <div>
+        <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
         <div id="map_election" style={divStyle} />
       </div>
     );
@@ -376,4 +377,4 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(DataMap);
+export default connect(mapState)(DataMapHousing);
