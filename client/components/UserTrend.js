@@ -27,6 +27,7 @@ class UserTrend extends Component {
       currentComponent: "null"
     };
   }
+
   render() {
     return (
       <div>
