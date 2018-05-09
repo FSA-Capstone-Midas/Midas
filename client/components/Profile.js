@@ -116,7 +116,7 @@ class Profile extends React.Component {
                 name="birthday"
                 onChange={this.handleChange}
                 fluid
-                placeholder="birthDay"
+                placeholder="BirthDay"
               />
             </Form.Field>
           </Form.Group>
@@ -145,18 +145,18 @@ class Profile extends React.Component {
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
             <Form.Input
-              value={this.state.address}
-              name="address"
+              value={this.state.state}
+              name="state"
               onChange={this.handleChange}
-              label="Address"
-              placeholder="Address"
+              label="State"
+              placeholder="State"
             />
             <Form.Input
               value={this.state.nickName}
               name="nickName"
               onChange={this.handleChange}
-              label="nickName"
-              placeholder="nickName"
+              label="NickName"
+              placeholder="NickName"
             />
           </Form.Group>
           <Form.Group

@@ -3,13 +3,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import SideBar from "./SideBar";
-import Table from "./Table";
-import utils from "./utils";
-import { Grid, Segment } from "semantic-ui-react";
+import HorizontalBarChart from "./HorizontalBarChart";
+//import RC2 from "react-chartjs2";
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Responsive,
+  Segment,
+  Sidebar,
+  Visibility
+} from "semantic-ui-react";
+
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-console.log("what is utils", utils);
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -19,34 +32,26 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
-class Transactions extends Component {
+class Budget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
-      currentChart: "spendingOverTime",
+      loading: true
     };
-    this.handleClick = this.handleClick.bind(this);
   }
-
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 3000);
-  }
-
-  handleClick(event) {
-    const target = event.target;
-    const name = target.name;
-    this.setState({ currentChart: name });
+    $("table").tablesort();
   }
 
   render() {
-    console.log("account ", this.props.account); //user account info
-    console.log("transaction ", this.props.transaction); //user transaction info
-    const { transaction } = this.props;
-    const rows = transaction;
+    // console.log("account ", this.props.account); //user account info
+    // console.log("transaction ", this.props.transaction); //user transaction info
+    // const { transaction } = this.props;
+    // const rows = transaction.transaction;
 
     return (
       <ResponsiveContainer>
@@ -62,19 +67,12 @@ class Transactions extends Component {
               >
                 {this.state.loading ? (
                   <Loading />
-                ) : rows ? (
+                ) : (
                   <div>
-                    <Segment>Transactions</Segment>
-
-                    <div className="ui grid">
-                      <SideBar handleClick={this.handleClick} />
-                      <div className="twelve wide column">
-                        {utils(this.state.currentChart, rows)}
-                      </div>
-                    </div>
-                    <Table rows={rows} />
+                    <Segment>Budget</Segment>
+                    <HorizontalBarChart />
                   </div>
-                ) : null}
+                )}
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -88,9 +86,9 @@ class Transactions extends Component {
 
 const mapState = state => {
   return {
-    account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction,
+    account: state.plaid.account,
+    transaction: state.plaid.transaction
   };
 };
 
-export default connect(mapState)(Transactions);
+export default connect(mapState)(Budget);

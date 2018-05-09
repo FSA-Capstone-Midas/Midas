@@ -6,12 +6,14 @@ import user from "./user";
 import plaidReducer from "./plaid";
 import transactions from "./transactions";
 import accounts from "./accounts";
+import stateReducer from "./state";
 
 const reducer = combineReducers({
   user,
   plaid: plaidReducer,
   transactions,
-  accounts
+  accounts,
+  states: stateReducer
 });
 
 const middleware = composeWithDevTools(
@@ -25,3 +27,4 @@ export * from "./user";
 export * from "./plaid";
 export * from "./transactions";
 export * from "./accounts";
+export * from "./state";

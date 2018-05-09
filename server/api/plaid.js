@@ -27,9 +27,9 @@ router.post("/get_access_token", (req, res, next) => {
       console.log("could not exchange public_token", err);
       return res.json({ err: err });
     }
-    ACCESS_TOKEN = tokenResponse.access_token;
+    // ACCESS_TOKEN = tokenResponse.access_token;
     console.log("Access Token: " + ACCESS_TOKEN);
-    ITEM_ID = tokenResponse.item_id;
+    //ITEM_ID = tokenResponse.item_id;
     console.log("Item ID: " + ITEM_ID);
   });
 });
@@ -56,10 +56,10 @@ router.get("/auth", function(request, response, next) {
 router.get("/transactions", (req, res, next) => {
   client.getTransactions(
     ACCESS_TOKEN,
-    "2017-01-01",
-    "2017-02-15",
+    "2017-05-02",
+    "2018-05-02",
     {
-      count: 250,
+      count: 500,
       offset: 0
     },
     function(error, data) {

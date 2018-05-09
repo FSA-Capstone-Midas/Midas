@@ -3,25 +3,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility
-} from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { Grid } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import DataMap from "./DataMap";
+import { Segment } from "semantic-react";
+import DataMapHousing from "./DataMapHousing";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -34,31 +20,31 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const UserHome = () => (
-  <div>
-    <ResponsiveContainer>
-      <div className="ui segment">
-        <DataMap />
+class UserTrend extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentComponent: "null"
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <ResponsiveContainer>
+          <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
+          <Segment>
+            <DataMapHousing />
+            {/* <DataMapApartments /> */}
+            {/* <DataMapApartments2Br /> */}
+            {/* <DataMapApartmentsMMRentChange /> */}
+            {/* <DataMapApartmentYYRentChange /> */}
+          </Segment>
+        </ResponsiveContainer>
+        <Footer />
       </div>
-    </ResponsiveContainer>
-    <Footer />
-  </div>
-);
+    );
+  }
+}
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    email: state.user.email
-  };
-};
-
-export default connect(mapState)(UserHome);
-
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-};
+export default UserTrend;
