@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Segment } from "semantic-ui-react";
+import { Segment, Table, Tab } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 
 const AccountTable = props => {
@@ -12,47 +12,47 @@ const AccountTable = props => {
         accounts.map(each => {
           if (each.type === "depository") {
             return (
-              <table className="ui celled table" key={each.account_id}>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>balances</th>
-                    <th>subtype</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{each.name}</td>
-                    <td>${each.balances.available}</td>
-                    <td>{each.subtype}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table color="blue" key={each.account_id} inverted>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>balances</Table.HeaderCell>
+                    <Table.HeaderCell>subtype</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell>{each.name}</Table.Cell>
+                    <Table.Cell>${each.balances.available}</Table.Cell>
+                    <Table.Cell>{each.subtype}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
             );
           } else if (each.type === "credit") {
             return (
-              <table className="ui celled table" key={each.account_id}>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>balances available</th>
-                    <th>balances current</th>
-                    <th>limit</th>
-                    <th>subtype</th>
-                    <th>Creadit card name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{each.name}</td>
-                    <td>${each.balances.available}</td>
-                    <td>${each.balances.current}</td>
-                    <td>${each.balances.limit}</td>
-                    <td>{each.subtype}</td>
-                    <td>{each.official_name}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table color="violet" key={each.account_id} inverted>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>balances available</Table.HeaderCell>
+                    <Table.HeaderCell>balances current</Table.HeaderCell>
+                    <Table.HeaderCell>limit</Table.HeaderCell>
+                    <Table.HeaderCell>subtype</Table.HeaderCell>
+                    <Table.HeaderCell>Creadit card name</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell>{each.name}</Table.Cell>
+                    <Table.Cell>${each.balances.available}</Table.Cell>
+                    <Table.Cell>${each.balances.current}</Table.Cell>
+                    <Table.Cell>${each.balances.limit}</Table.Cell>
+                    <Table.Cell>{each.subtype}</Table.Cell>
+                    <Table.Cell>{each.official_name}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
             );
           }
         })}
