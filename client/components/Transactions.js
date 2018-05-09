@@ -3,11 +3,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import TransactionsPie from "./TransactionsPie";
-import TransactionsBar from "./TransactionsBar";
+import SideBar from "./SideBar";
+import Table from "./Table";
+import utils from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+console.log("what is utils", utils);
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -17,7 +19,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class Transactions extends Component {
@@ -25,25 +27,19 @@ class Transactions extends Component {
     super(props);
     this.state = {
       loading: true,
-      spendingOverTime: true,
-      spendingByCategory: false
+      currentChart: "spendingOverTime",
     };
-    this.handleClickSpendingOverTime = this.handleClickSpendingOverTime.bind(
-      this
-    );
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 3000);
-    $("table").tablesort();
   }
 
-  handleClickSpendingOverTime(event) {
+  handleClick(event) {
     const target = event.target;
     const name = target.name;
-    console.log(name);
-    this.setState({ [name]: true });
-    this.setState({ [!name]: false });
+    this.setState({ currentChart: name });
   }
 
   render() {
@@ -68,78 +64,15 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment>
-                      Transactions
-                      <Grid.Row id="transactionRow">
-                        <Grid.Column>
-                          <div className="ui vertical menu">
-                            <div className="item">
-                              <div className="header">Spending</div>
-                              <div className="menu">
-                                <a
-                                  className="item"
-                                  name="spendingOverTime"
-                                  onClick={this.handleClickSpendingOverTime}
-                                >
-                                  Over Time
-                                </a>
-                                <a
-                                  className="item"
-                                  name="spendingByCategory"
-                                  onClick={this.handleClickSpendingOverTime}
-                                >
-                                  By Category
-                                </a>
-                              </div>
-                            </div>
-                            <div className="item">
-                              <div className="header">Income</div>
-                              <div className="menu">
-                                <a className="item">Over Time</a>
-                                <a className="item">By Category</a>
-                              </div>
-                            </div>
-                            <div className="item">
-                              <div className="header">Net Income</div>
-                              <div className="menu">
-                                <a className="item">Over Time</a>
-                              </div>
-                            </div>
-                          </div>
-                        </Grid.Column>
-                        <Grid.Column>
-                          {this.state.spendingOverTime ? (
-                            <TransactionsPie rows={rows} />
-                          ) : null}
-                          {this.state.spendingByCategory ? (
-                            <TransactionsBar />
-                          ) : null}
-                        </Grid.Column>
-                      </Grid.Row>
-                    </Segment>
+                    <Segment>Transactions</Segment>
 
-                    <table className="ui sortable celled table">
-                      <thead>
-                        <tr>
-                          <th className="">Date</th>
-                          <th className="">Name</th>
-                          <th className="">Category</th>
-                          <th className="sorted ascending">Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {rows.map(row => {
-                          return (
-                            <tr key={row.transaction_id}>
-                              <td>{row.date}</td>
-                              <td>{row.name}</td>
-                              <td>{row.category[0]}</td>
-                              <td>{row.amount}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
+                    <div className="ui grid">
+                      <SideBar handleClick={this.handleClick} />
+                      <div className="twelve wide column">
+                        {utils(this.state.currentChart, rows)}
+                      </div>
+                    </div>
+                    <Table rows={rows} />
                   </div>
                 ) : null}
               </Grid.Column>
@@ -156,7 +89,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction
+    transaction: state.transactions.transaction,
   };
 };
 
