@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import Datamap from "datamaps";
 import { connect } from "react-redux";
-import { Segment } from "semantic-react";
 
 class DataMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentState: ""
+    };
+  }
+
   componentDidMount() {
+    console.log(this.props.stateInfo);
     var Map = new Datamap({
       scope: "usa",
       element: document.getElementById("map_election"),
@@ -15,11 +22,14 @@ class DataMap extends Component {
             '<div class="hoverinfo">' +
             geography.properties.name +
             `</br>` +
-            "Electoral Votes:" +
-            data.electoralVotes +
+            "Average Listing Price: " +
+            data.avergeSalesPrice +
             `</br>` +
-            "Average sales Price: " +
+            "Median Sales Price: " +
             data.mediumSalesPrice +
+            `</br>` +
+            "Trulia popularity: " +
+            data.popularity +
             " "
           );
         },
@@ -42,7 +52,9 @@ class DataMap extends Component {
       data: {
         AZ: {
           fillKey: "High",
-          electoralVotes: 5
+          avergeSalesPrice: "$322,398",
+          mediumSalesPrice: "$225,000",
+          popularity: 15
         },
         CO: {
           fillKey: "Very High",
@@ -50,196 +62,206 @@ class DataMap extends Component {
         },
         DE: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         FL: {
           fillKey: "UNDECIDED",
-          electoralVotes: 29
+          mediumSalesPrice: 29
         },
         GA: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         HI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         ID: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         IL: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         IN: {
           fillKey: "Republican",
-          electoralVotes: 11
+          mediumSalesPrice: 11
         },
         IA: {
           fillKey: "Light Democrat",
-          electoralVotes: 11
+          mediumSalesPrice: 11
         },
         KS: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         KY: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         LA: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         MD: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         ME: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         MA: {
           fillKey: "Democrat",
-          electoralVotes: 602
+          mediumSalesPrice: 602
         },
         MN: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         MI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         MS: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         MO: {
           fillKey: "Republican",
-          electoralVotes: 13
+          mediumSalesPrice: 13
         },
         MT: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NC: {
           fillKey: "Light Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NE: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NV: {
           fillKey: "Heavy Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NH: {
           fillKey: "Light Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NJ: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NY: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         ND: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         NM: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         OH: {
           fillKey: "UNDECIDED",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         OK: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         OR: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         PA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         RI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         SC: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         SD: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         TN: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         TX: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         UT: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         WI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         VA: {
           fillKey: "Light Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         VT: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         WA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         WV: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         WY: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         CA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         CT: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         AK: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         AR: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         },
         AL: {
           fillKey: "Republican",
-          electoralVotes: 32
+          mediumSalesPrice: 32
         }
+      },
+      done: function(map) {
+        map.svg.selectAll(".datamaps-subunit").on("click", function(geo) {
+          console.log(geo.id);
+          console.log(geo.properties.name);
+          var localData = map.options.data[geo.id];
+          if (localData && localData.numberOfThings) {
+            alert(localData.numberOfThings);
+          }
+        });
       }
     });
   }
