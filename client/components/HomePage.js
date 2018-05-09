@@ -15,7 +15,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import MobileContainer from "./MobileContainer";
@@ -29,7 +29,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const HomePage = () => (

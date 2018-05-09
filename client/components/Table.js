@@ -1,102 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import RC2 from "react-chartjs2";
 
-class TransactionsPie extends Component {
+class Table extends Component {
   componentDidMount() {
     $("table").tablesort();
   }
 
   render() {
     const { rows } = this.props;
-    console.log("what is rows", rows);
 
     return (
-      <RC2
-        data={{
-          labels: [
-            "Bank Fees",
-            "Food and Drink",
-            "Interest",
-            "Recreation",
-            "Service",
-            "Shops",
-            "Transfer",
-            "Travel",
-          ],
-          datasets: [
-            {
-              data: [
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Bank Fees") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Food and Drink") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Interest") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Recreation") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Service") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Shops") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Transfer") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-                rows.reduce((acc, curr) => {
-                  if (curr.category[0] === "Travel") {
-                    return acc + curr.amount;
-                  }
-                  return acc;
-                }, 0),
-              ],
-              backgroundColor: [
-                "#FF6384",
-                "#D5A0FF",
-                "#FFCE56",
-                "#FF005B",
-                "#00D5D1",
-                "#00A0EF",
-                "#FF8800",
-                "#0095FF",
-              ],
-              hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-            },
-          ],
-        }}
-        type="doughnut"
-      />
+      <table className="ui sortable celled table">
+        <thead>
+          <tr>
+            <th className="">Date</th>
+            <th className="">Name</th>
+            <th className="">Category</th>
+            <th className="sorted ascending">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(row => {
+            return (
+              <tr key={row.transaction_id}>
+                <td>{row.date}</td>
+                <td>{row.name}</td>
+                <td>{row.category[0]}</td>
+                <td>{row.amount}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     );
   }
 }
 
-export default connect(null)(TransactionsPie);
+export default connect(null)(Table);
 
 /*
 	A simple, lightweight jQuery plugin for creating sortable tables.
