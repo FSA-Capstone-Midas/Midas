@@ -21,6 +21,12 @@ ResponsiveContainer.propTypes = {
 };
 
 class UserTrend extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentComponent: "null"
+    };
+  }
   render() {
     return (
       <div>
