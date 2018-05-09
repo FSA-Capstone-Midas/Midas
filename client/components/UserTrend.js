@@ -8,6 +8,7 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { Segment } from "semantic-react";
 import DataMapApartments from "./DataMapApartments";
+import DataMapApartments2Br from "./DataMapApartments2Br";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -26,7 +27,8 @@ const UserTrend = () => (
       <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
       <Segment>
         {/* <DataMap /> */}
-        <DataMapApartments />
+        {/* <DataMapApartments /> */}
+        <DataMapApartments2Br />
       </Segment>
     </ResponsiveContainer>
     <Footer />
