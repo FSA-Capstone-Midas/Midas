@@ -20,6 +20,7 @@ export { default as Budget } from "./Budget";
 export { default as HorizontalBarChart } from "./HorizontalBarChart";
 export { default as DataMapApartments } from "./DataMapApartments";
 export { default as DataMapApartments2Br } from "./DataMapApartments2Br";
+export { default as UserCredit } from "./UserCredit";
 export {
   default as DataMapApartmentsMMRentChange
 } from "./DataMapApartmentsMMRentChange";
