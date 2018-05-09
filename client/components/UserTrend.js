@@ -6,8 +6,8 @@ import Footer from "./Footer";
 import { Grid } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import DataMap from "./DataMap";
 import { Segment } from "semantic-react";
+import DataMapApartments from "./DataMapApartments";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -25,7 +25,8 @@ const UserTrend = () => (
     <ResponsiveContainer>
       <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
       <Segment>
-        <DataMap />
+        {/* <DataMap /> */}
+        <DataMapApartments />
       </Segment>
     </ResponsiveContainer>
     <Footer />
