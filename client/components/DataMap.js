@@ -2,19 +2,9 @@ import React, { Component } from "react";
 import Datamap from "datamaps";
 import { connect } from "react-redux";
 
+// USA housing map
 class DataMap extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    console.log("hiii");
-    console.log(event.target);
-  }
-
   componentDidMount() {
-    console.log(this.props.stateInfo);
     var Map = new Datamap({
       scope: "usa",
       element: document.getElementById("map_election"),
@@ -24,13 +14,13 @@ class DataMap extends Component {
           return (
             '<div class="hoverinfo">' +
             geography.properties.name +
-            `</br>` +
+            "</br>" +
             "Average Listing Price: " +
             data.avergeSalesPrice +
-            `</br>` +
+            "</br>" +
             "Median Sales Price: " +
             data.mediumSalesPrice +
-            `</br>` +
+            "</br>" +
             "Trulia popularity: " +
             data.popularity +
             " "
@@ -54,7 +44,7 @@ class DataMap extends Component {
       },
       data: {
         AZ: {
-          fillKey: "Very Low",
+          fillKey: "Democrat",
           avergeSalesPrice: "$322,398",
           mediumSalesPrice: "$225,000",
           popularity: 15
@@ -210,7 +200,7 @@ class DataMap extends Component {
           popularity: 15
         },
         NY: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeSalesPrice: "$322,398",
           mediumSalesPrice: "$225,000",
           popularity: 15
@@ -367,11 +357,10 @@ class DataMap extends Component {
   }
 
   render() {
-    console.log(this.props.stateInfo);
     const divStyle = {
       position: "relative",
-      width: "2500px",
-      height: "1200px"
+      width: "1500px",
+      height: "800px"
     };
     return (
       <div>

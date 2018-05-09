@@ -20,7 +20,7 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const UserHome = () => (
+const UserTrend = () => (
   <div>
     <ResponsiveContainer>
       <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
@@ -32,4 +32,4 @@ const UserHome = () => (
   </div>
 );
 
-export default UserHome;
+export default UserTrend;

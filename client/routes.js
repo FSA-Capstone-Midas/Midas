@@ -22,8 +22,8 @@ import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
-    // this.props.loadAccountsFromPlaid();
-    // this.props.loadTransactionsFromPlaid();
+    this.props.loadAccountsFromPlaid();
+    this.props.loadTransactionsFromPlaid();
     this.props.loadAllStateFromServer();
   }
 
@@ -38,14 +38,14 @@ class Routes extends Component {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
-        <Route exact path="/budget" component={Budget} />
-        <Route exact path="/trend" component={UserTrend} />
-        <Route exact path="/profile" component={Profile} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route path="/transactions" component={Transactions} />
+            <Route exact path="/budget" component={Budget} />
+            <Route exact path="/trend" component={UserTrend} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
