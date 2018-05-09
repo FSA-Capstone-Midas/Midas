@@ -23,6 +23,7 @@ import DesktopContainer from "./DesktopContainer";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
+    {/* write ternary here, check if current user is logged in exists, if yes show AfterLogin, if no show DesktopContainer. */}
     <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>

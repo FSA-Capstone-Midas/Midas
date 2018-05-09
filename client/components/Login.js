@@ -106,6 +106,7 @@ const mapLogin = state => {
 
 const mapDispatch = dispatch => {
   return {
+    handleChange() {},
     handleSubmit(evt) {
       evt.preventDefault();
       const formName = evt.target.name;

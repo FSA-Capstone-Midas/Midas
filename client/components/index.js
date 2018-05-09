@@ -18,3 +18,5 @@ export { default as AccountTable } from "./AccountTable";
 export { default as Profile } from "./Profile";
 export { default as Budget } from "./Budget";
 export { default as HorizontalBarChart } from "./HorizontalBarChart";
+export { default as BudgetInput } from "./BudgetInput";
+export { default as BudgetModal } from "./BudgetModal";

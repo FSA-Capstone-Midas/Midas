@@ -6,12 +6,14 @@ import user from "./user";
 import plaidReducer from "./plaid";
 import transactions from "./transactions";
 import accounts from "./accounts";
+import budget from "./budget";
 
 const reducer = combineReducers({
   user,
   plaid: plaidReducer,
   transactions,
-  accounts
+  accounts,
+  budget
 });
 
 const middleware = composeWithDevTools(
