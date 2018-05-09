@@ -6,33 +6,9 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import Plaid from "./Plaid";
 import AccountTable from "./AccountTable";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-  Rail
-} from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
+import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
-  VictoryTheme,
-  VictoryStack
-} from "victory";
-
 const ResponsiveContainer = ({ children }) => (
   <div>
     <DesktopContainer>{children}</DesktopContainer>
@@ -43,34 +19,6 @@ const ResponsiveContainer = ({ children }) => (
 ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
-
-const data2012 = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 }
-];
-
-const data2013 = [
-  { quarter: 1, earnings: 15000 },
-  { quarter: 2, earnings: 12500 },
-  { quarter: 3, earnings: 19500 },
-  { quarter: 4, earnings: 13000 }
-];
-
-const data2014 = [
-  { quarter: 1, earnings: 11500 },
-  { quarter: 2, earnings: 13250 },
-  { quarter: 3, earnings: 20000 },
-  { quarter: 4, earnings: 15500 }
-];
-
-const data2015 = [
-  { quarter: 1, earnings: 18000 },
-  { quarter: 2, earnings: 13250 },
-  { quarter: 3, earnings: 15000 },
-  { quarter: 4, earnings: 12000 }
-];
 
 class UserHome extends React.Component {
   constructor(props) {
@@ -193,6 +141,7 @@ const mapState = state => {
     accounts: state.accounts
   };
 };
+
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     handleClick(product, evt) {
@@ -201,11 +150,5 @@ const mapState = state => {
 //     }
 //   };
 // }
-export default connect(mapState)(UserHome);
 
-/**
- * PROP TYPES
- */
-UserHome.propTypes = {
-  email: PropTypes.string
-};
+export default connect(mapState)(UserHome);

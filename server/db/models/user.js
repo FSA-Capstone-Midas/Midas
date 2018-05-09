@@ -23,10 +23,10 @@ const User = db.define(
       type: Sequelize.STRING
     },
     jobTitle: {
-      type: Sequelize.STRING //drop down menu ?
+      type: Sequelize.STRING
     },
     incomeRange: {
-      type: Sequelize.STRING // think about it , need a range
+      type: Sequelize.STRING
     },
     birthday: {
       type: Sequelize.DATE
@@ -40,9 +40,6 @@ const User = db.define(
       type: Sequelize.STRING
     },
     plaidItemId: {
-      type: Sequelize.STRING
-    },
-    public_key: {
       type: Sequelize.STRING
     },
     password: {

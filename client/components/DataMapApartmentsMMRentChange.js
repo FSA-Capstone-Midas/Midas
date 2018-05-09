@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import Datamap from "datamaps";
+import { connect } from "react-redux";
 
-class DataMap extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+// USA apartments map
+class DatMapApartmentsMMRentChange extends Component {
   componentDidMount() {
     var Map = new Datamap({
       scope: "usa",
-      element: document.getElementById("map_election"),
+      element: document.getElementById("map_mmRentChange"),
       geographyConfig: {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
             "<div class=\"hoverinfo\">" +
             geography.properties.name +
-            "Electoral Votes:" +
-            data.electoralVotes +
+            "</br>" +
+            "M/M rent change: " +
+            data.info +
             " "
           );
         },
-        highlightBorderWidth: 3
+        highlightBorderWidth: 6
       },
       // geographyConfig: {
       //   popupOnHover: true,
@@ -30,259 +29,240 @@ class DataMap extends Component {
 
       fills: {
         "Very High": "#800000",
-        High: "#ff1a1a",
         "Relative High": "#FF6666",
-        Low: "#ff9999",
         "Relative Low": "#ffcccc",
         "Very Low": "#EAA9A8",
         defaultFill: "#EDDC4E"
       },
       data: {
         AZ: {
-          fillKey: "High",
-          mediumSalesPrice: 5
+          fillKey: "Democrat",
+          info: "$322,398"
         },
         CO: {
-          fillKey: "Very High",
-          mediumSalesPrice: 5
+          fillKey: "Democrat",
+          info: "$322,398"
         },
         DE: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         FL: {
           fillKey: "UNDECIDED",
-          electoralVotes: 29
+          info: "$322,398"
         },
         GA: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         HI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         ID: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         IL: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         IN: {
           fillKey: "Republican",
-          electoralVotes: 11
+          info: "$322,398"
         },
         IA: {
           fillKey: "Light Democrat",
-          electoralVotes: 11
+          info: "$322,398"
         },
         KS: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         KY: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         LA: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         MD: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         ME: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         MA: {
           fillKey: "Democrat",
-          electoralVotes: 602
+          info: "$322,398"
         },
         MN: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         MI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         MS: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         MO: {
           fillKey: "Republican",
-          electoralVotes: 13
+          info: "$322,398"
         },
         MT: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NC: {
           fillKey: "Light Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NE: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NV: {
           fillKey: "Heavy Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NH: {
           fillKey: "Light Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NJ: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NY: {
-          fillKey: "Democrat",
-          electoralVotes: 32
+          fillKey: "Very High",
+          info: "$322,398"
         },
         ND: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         NM: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         OH: {
           fillKey: "UNDECIDED",
-          electoralVotes: 32
+          info: "$322,398"
         },
         OK: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         OR: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         PA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         RI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         SC: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         SD: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         TN: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         TX: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         UT: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         WI: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         VA: {
           fillKey: "Light Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         VT: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         WA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         WV: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         WY: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         CA: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         CT: {
           fillKey: "Democrat",
-          electoralVotes: 32
+          info: "$322,398"
         },
         AK: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         AR: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         },
         AL: {
           fillKey: "Republican",
-          electoralVotes: 32
+          info: "$322,398"
         }
+      },
+      done: function(map) {
+        map.svg.selectAll(".datamaps-subunit").on("click", function(geo) {
+          var localData = map.options.data[geo.id];
+        });
       }
     });
-    var bubble_map = new Datamap({
-      element: document.getElementById("map_election2"),
-      scope: "canada",
-      geographyConfig: {
-        popupOnHover: true,
-        highlightOnHover: true,
-        borderColor: "#444",
-        borderWidth: 0.5,
-        dataUrl:
-          "https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/canada.topo.json"
-        //dataJson: topoJsonData
-      },
-      fills: {
-        MAJOR: "#306596",
-        MEDIUM: "#0fa0fa",
-        MINOR: "#bada55",
-        defaultFill: "#dddddd"
-      },
-      data: {
-        JH: { fillKey: "MINOR" },
-        MH: { fillKey: "MINOR" }
-      },
-      setProjection: function(element) {
-        var projection = d3.geo
-          .mercator()
-          .center([-106.3468, 68.1304]) // always in [East Latitude, North Longitude]
-          .scale(250)
-          .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
-
-        var path = d3.geo.path().projection(projection);
-        return { path: path, projection: projection };
-      }
-    });
+    Map.labels();
   }
+
   render() {
+    const divStyle = {
+      position: "relative",
+      width: "1500px",
+      height: "800px"
+    };
     return (
       <div>
-        <h4 className="ui header">Average Housing Price - Year ended 2018</h4>
-        <div id="map_election" className="ui segment" />
-        <div id="map_election2" className="ui segment" />
+        <div id="map_mmRentChange" style={divStyle} />
       </div>
     );
   }
 }
 
-export default DataMap;
+const mapState = state => {
+  return {
+    stateInfo: state.states
+  };
+};
+
+export default connect(mapState)(DatMapApartmentsMMRentChange);
