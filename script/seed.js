@@ -17,172 +17,178 @@ async function seed() {
   console.log("db synced!");
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
-  const houses = await Promise.all([
-    House.create({
-      name: "House",
-      price: 430000
-    }),
-    House.create({
-      name: "House",
-      price: 625000
-    }),
-    House.create({
-      name: "House",
-      price: 462000
-    }),
-    House.create({
-      name: "House",
-      price: 442000
-    }),
-    House.create({
-      name: "House",
-      price: 379000
-    }),
-    House.create({
-      name: "House",
-      price: 332719
-    }),
-    House.create({
-      name: "House",
-      price: 331000
-    }),
-    House.create({
-      name: "House",
-      price: 325000
-    }),
-    House.create({
-      name: "House",
-      price: 315000
-    }),
-    House.create({
-      name: "House",
-      price: 297500
-    }),
-    House.create({
-      name: "House",
-      price: 290000
-    }),
-    House.create({
-      name: "House",
-      price: 290000
-    }),
-    House.create({
-      name: "House",
-      price: 256000
-    }),
-    House.create({
-      name: "House",
-      price: 253500
-    }),
-    House.create({
-      name: "House",
-      price: 249300
-    }),
-    House.create({
-      name: "House",
-      price: 245000
-    }),
-    House.create({
-      name: "House",
-      price: 240000
-    }),
-    House.create({
-      name: "House",
-      price: 225000
-    })
-  ]);
+  // const houses = await Promise.all([
+  //   House.create({
+  //     name: "House",
+  //     price: 430000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 625000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 462000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 442000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 379000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 332719
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 331000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 325000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 315000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 297500
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 290000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 290000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 256000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 253500
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 249300
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 245000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 240000
+  //   }),
+  //   House.create({
+  //     name: "House",
+  //     price: 225000
+  //   })
+  // ]);
 
   const states = await Promise.all([
     State.create({
       state: "New York",
-      Abbreviation: "NY"
+      abbreviation: "NY",
+      apartment1Br: 1260,
+      apartment2Br: 1500,
+      house: 430000
     }),
     State.create({
       state: "District Of Columbia",
-      Abbreviation: "DC"
+      abbreviation: "DC",
+      apartment1Br: 1450,
+      apartment2Br: 1670,
+      house: 625000
     }),
     State.create({
       state: "California",
-      Abbreviation: "CA"
+      abbreviation: "CA"
     }),
     State.create({
       state: "Hawaii",
-      Abbreviation: "HI"
+      abbreviation: "HI"
     }),
     State.create({
       state: "Massachusetts",
-      Abbreviation: "MA"
+      abbreviation: "MA"
     }),
     State.create({
       state: "Washington",
-      Abbreviation: "WA"
+      abbreviation: "WA"
     }),
     State.create({
       state: "Colorado",
-      Abbreviation: "CO"
+      abbreviation: "CO"
     }),
     State.create({
       state: "Vermont",
-      Abbreviation: "VT"
+      abbreviation: "VT"
     }),
     State.create({
       state: "Oregon",
-      Abbreviation: "OR"
+      abbreviation: "OR"
     }),
     State.create({
       state: "Virginia",
-      Abbreviation: "VA"
+      abbreviation: "VA"
     }),
     State.create({
       state: "Maryland",
-      Abbreviation: "MD"
+      abbreviation: "MD"
     }),
     State.create({
       state: "New Jersey",
-      Abbreviation: "NJ"
+      abbreviation: "NJ"
     }),
     State.create({
       state: "Rhode Island",
-      Abbreviation: "RI"
+      abbreviation: "RI"
     }),
     State.create({
       state: "Connecticut",
-      Abbreviation: "CT"
+      abbreviation: "CT"
     }),
     State.create({
       state: "Nevada",
-      Abbreviation: "NV"
+      abbreviation: "NV"
     }),
     State.create({
       state: "New Hampshire",
-      Abbreviation: "NH"
+      abbreviation: "NH"
     }),
     State.create({
       state: "Minnesota",
-      Abbreviation: "MN"
+      abbreviation: "MN"
     }),
     State.create({
       state: "Arizona",
-      Abbreviation: "AZ"
+      abbreviation: "AZ"
     })
   ]);
   console.log(`seeded ${states.length} states`);
 
-  const apartments = await Promise.all([
-    Apartment.create({
-      oneBR: 1260,
-      twoBR: 1500
-    }),
-    Apartment.create({
-      oneBR: 1450,
-      twoBR: 1670
-    }),
-    Apartment.create({
-      oneBR: 1430,
-      twoBR: 1830
-    })
-  ]);
-  console.log(`seeded ${houses.length} houses`);
+  // const apartments = await Promise.all([
+  //   Apartment.create({
+  //     oneBR: 1260,
+  //     twoBR: 1500
+  //   }),
+  //   Apartment.create({
+  //     oneBR: 1450,
+  //     twoBR: 1670
+  //   }),
+  //   Apartment.create({
+  //     oneBR: 1430,
+  //     twoBR: 1830
+  //   })
+  // ]);
+  // console.log(`seeded ${houses.length} houses`);
 
   const users = await Promise.all([
     User.create({
@@ -205,7 +211,6 @@ async function seed() {
       jobTitle: "software engineer"
     })
   ]);
-  console.log(`seeded ${apartments.length} apartments`);
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded ${users.length} users`);

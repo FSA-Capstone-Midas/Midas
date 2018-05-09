@@ -11,6 +11,7 @@ import {
   HowItWorks,
   UserTrend,
   Transactions,
+  Profile,
   Budget
 } from "./components";
 import { me, fetchTransaction, fetchItem } from "./store";
@@ -38,6 +39,7 @@ class Routes extends Component {
         <Route exact path="/howitworks" component={HowItWorks} />
         <Route exact path="/budget" component={Budget} />
         <Route exact path="/trend" component={UserTrend} />
+        <Route exact path="/profile" component={Profile} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
