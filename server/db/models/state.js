@@ -6,9 +6,21 @@ const State = db.define("state", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  Abbreviation: {
+  abbreviation: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  apartment1Br: {
+    type: Sequelize.INTEGER
+  },
+  apartment2Br: {
+    type: Sequelize.INTEGER
+  },
+  house: {
+    type: Sequelize.INTEGER
+  },
+  Condo: {
+    type: Sequelize.INTEGER
   }
 });
 

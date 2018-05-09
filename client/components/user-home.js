@@ -41,36 +41,90 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <Segment>
-            <Segment>
-              <Plaid />
-            </Segment>
-            <AccountTable />
-            <Segment>
-              <h1>Account info (LEFT NEV)</h1>
-              <Segment>
-                <h1>Cash</h1>
-              </Segment>
-              <Segment>
-                <h1>Credit Cards</h1>
-              </Segment>
-              <Segment>
-                <h1>Loans</h1>
-              </Segment>
-              <Segment>
-                <h1>Investments</h1>
-              </Segment>
-              <Segment>
-                <h1>Propertys</h1>
-              </Segment>
-            </Segment>
-            <Segment>
-              <h1>Suggested offers</h1>
-            </Segment>
-            <Segment>
-              <h1>Spending</h1>
-            </Segment>
+            <Grid>
+              <Grid.Column width={4}>
+                <Menu vertical>
+                  <h3>Account info</h3>
+                  {accounts &&
+                    accounts.accountInfo.map(account => {
+                      if (account.subtype === "checking") {
+                        return (
+                          <Segment key={account.id}>
+                            <Menu.Item>
+                              <Menu.Header>{account.name}</Menu.Header>
+                              <Menu.Menu>
+                                <Menu.Item>
+                                  balances
+                                  <Menu.Item
+                                    name={String(account.balances.available)}
+                                  />
+                                </Menu.Item>
+                                <Menu.Item>
+                                  subtype
+                                  <Menu.Item name={account.subtype} />
+                                </Menu.Item>
+                              </Menu.Menu>
+                            </Menu.Item>
+                          </Segment>
+                        );
+                      } else if (account.subtype === "savings") {
+                        return (
+                          <Menu.Item key={account.id}>
+                            <Menu.Header>{account.name}</Menu.Header>
+                            <Menu.Menu>
+                              <Menu.Item>
+                                balances
+                                <Menu.Item
+                                  name={String(account.balances.available)}
+                                />
+                              </Menu.Item>
+                              <Menu.Item>
+                                subtype
+                                <Menu.Item name={account.subtype} />
+                              </Menu.Item>
+                            </Menu.Menu>
+                          </Menu.Item>
+                        );
+                      } else if (account.subtype === "credit card") {
+                        return (
+                          <Menu.Item key={account.id}>
+                            <Menu.Header>{account.name}</Menu.Header>
+                            <Menu.Menu>
+                              <Menu.Item>
+                                Balance{" "}
+                                <Menu.Item
+                                  name={String(account.balances.available)}
+                                />
+                              </Menu.Item>
+                              <Menu.Item>
+                                Current{" "}
+                                <Menu.Item
+                                  name={String(account.balances.current)}
+                                />
+                              </Menu.Item>
+                              <Menu.Item>
+                                Limit{" "}
+                                <Menu.Item
+                                  name={String(account.balances.limit)}
+                                />
+                              </Menu.Item>
+                              <Menu.Item>
+                                subtype <Menu.Item name={account.subtype} />
+                              </Menu.Item>
+                            </Menu.Menu>
+                          </Menu.Item>
+                        );
+                      }
+                    })}
+                </Menu>
+              </Grid.Column>
+              <Grid.Column width={9}>
+                <AccountTable />
+              </Grid.Column>
+            </Grid>
           </Segment>
         )}
+
         <Footer />
       </ResponsiveContainer>
     );
@@ -81,10 +135,18 @@ class UserHome extends React.Component {
  * CONTAINER
  */
 const mapState = state => {
+  console.log(state, "stateYO~");
   return {
     email: state.user.email,
     accounts: state.accounts
   };
 };
-
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     handleClick(product, evt) {
+//       evt.preventDefault();
+//       dispatch(postToCart(product));
+//     }
+//   };
+// }
 export default connect(mapState)(UserHome);
