@@ -21,6 +21,13 @@ const TrendsMenuBar = props => {
             >
               Median Sales Price
             </a>
+            <a
+              className="item"
+              name="truliaPopularity"
+              onClick={props.handleClick}
+            >
+              Trulia Popularity
+            </a>
           </div>
         </div>
         <div className="item">

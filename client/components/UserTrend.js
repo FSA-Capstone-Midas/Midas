@@ -9,6 +9,7 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Loading from "./Loading";
 import TrendsMenuBar from "./TrendsMenuBar";
 import DataMapHousing from "./DataMapHousing";
+import renderMap from "./TrendsMapHelper";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -26,12 +27,18 @@ class UserTrend extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentComponent: "null"
+      currentMap: "avgListingPrice"
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 1000);
+  }
+
+  handleClick(event) {
+    const currentMap = event.target.name;
+    this.setState({ currentMap });
   }
 
   render() {
@@ -47,14 +54,11 @@ class UserTrend extends Component {
                   <Segment>Average Housing Price - Year ended 2018</Segment>
                   <Segment>
                     <div className="ui grid">
-                      <TrendsMenuBar />
+                      <TrendsMenuBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
-                        <DataMapHousing />
+                        {renderMap(this.state.currentMap)}
+                        {/* <DataMapHousing /> */}
                       </div>
-                      {/* <DataMapApartments /> */}
-                      {/* <DataMapApartments2Br /> */}
-                      {/* <DataMapApartmentsMMRentChange /> */}
-                      {/* <DataMapApartmentYYRentChange /> */}
                     </div>
                   </Segment>
                 </div>
