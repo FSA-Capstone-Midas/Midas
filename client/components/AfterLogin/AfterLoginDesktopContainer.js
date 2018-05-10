@@ -57,6 +57,9 @@ class MenuExampleSecondary extends Component {
           name="CREDIT SCORE"
           active={activeItem === "CREDIT SCORE"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/credit"
         />
         <Menu.Item
           name="BILLS"
@@ -65,8 +68,6 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
-          as={Link}
-          to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />

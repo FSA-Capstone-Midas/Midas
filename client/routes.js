@@ -12,7 +12,8 @@ import {
   UserTrend,
   Transactions,
   Profile,
-  Budget
+  Budget,
+  UserCredit
 } from "./components";
 import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 
@@ -48,6 +49,8 @@ class Routes extends Component {
             <Route exact path="/budget" component={Budget} />
             <Route exact path="/trend" component={UserTrend} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/credit" component={UserCredit} />
+            <Route component={UserHome} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
