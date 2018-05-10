@@ -16,7 +16,7 @@ class DataMapApartments2Br extends Component {
             geography.properties.name +
             "</br>" +
             "Median 2 Bedroom Rent: " +
-            data.info +
+            data.median2BrRent +
             " "
           );
         },
@@ -37,203 +37,203 @@ class DataMapApartments2Br extends Component {
       data: {
         AZ: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,030"
         },
         CO: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,270"
         },
         DE: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,170"
         },
         FL: {
           fillKey: "UNDECIDED",
-          info: "$322,398"
+          median2BrRent: "$1,190"
         },
         GA: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$1,010"
         },
         HI: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,940"
         },
         ID: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$820"
         },
         IL: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,080"
         },
         IN: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$810"
         },
         IA: {
           fillKey: "Light Democrat",
-          info: "$322,398"
+          median2BrRent: "$780"
         },
         KS: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$840"
         },
         KY: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$770"
         },
         LA: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$840"
         },
         MD: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,480"
         },
         ME: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$970"
         },
         MA: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,580"
         },
         MN: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,060"
         },
         MI: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$910"
         },
         MS: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$800"
         },
         MO: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$840"
         },
         MT: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$780"
         },
         NC: {
           fillKey: "Light Republican",
-          info: "$322,398"
+          median2BrRent: "$880"
         },
         NE: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$820"
         },
         NV: {
           fillKey: "Heavy Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,080"
         },
         NH: {
           fillKey: "Light Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,290"
         },
         NJ: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,510"
         },
         NY: {
           fillKey: "Very High",
-          info: "$322,398"
+          median2BrRent: "$1,500"
         },
         ND: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$780"
         },
         NM: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$820"
         },
         OH: {
           fillKey: "UNDECIDED",
-          info: "$322,398"
+          median2BrRent: "$840"
         },
         OK: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$770"
         },
         OR: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,210"
         },
         PA: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,010"
         },
         RI: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,150"
         },
         SC: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$910"
         },
         SD: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$720"
         },
         TN: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$850"
         },
         TX: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$1,040"
         },
         UT: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$970"
         },
         WI: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$850"
         },
         VA: {
           fillKey: "Light Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,220"
         },
         VT: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,220"
         },
         WA: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,430"
         },
         WV: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$730"
         },
         WY: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$780"
         },
         CA: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,830"
         },
         CT: {
           fillKey: "Democrat",
-          info: "$322,398"
+          median2BrRent: "$1,350"
         },
         AK: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$1,190"
         },
         AR: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$720"
         },
         AL: {
           fillKey: "Republican",
-          info: "$322,398"
+          median2BrRent: "$790"
         }
       },
       done: function(map) {
@@ -248,8 +248,8 @@ class DataMapApartments2Br extends Component {
   render() {
     const divStyle = {
       position: "relative",
-      width: "1500px",
-      height: "800px"
+      width: "1100px",
+      height: "600px"
     };
     return (
       <div>

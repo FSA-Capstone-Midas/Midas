@@ -3,11 +3,11 @@ import Datamap from "datamaps";
 import { connect } from "react-redux";
 
 // USA housing map
-class DataMapHousing extends Component {
+class DataMapHousingTruliaPop extends Component {
   componentDidMount() {
     var Map = new Datamap({
       scope: "usa",
-      element: document.getElementById("map_average_listing"),
+      element: document.getElementById("map_Trulia_Pop"),
       geographyConfig: {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
@@ -15,8 +15,8 @@ class DataMapHousing extends Component {
             "<div class=\"hoverinfo\">" +
             geography.properties.name +
             "</br>" +
-            "Average Listing Price: " +
-            data.avergeListingPrice +
+            "Trulia Popularity: " +
+            data.popularity +
             " "
           );
         },
@@ -251,7 +251,7 @@ class DataMapHousing extends Component {
           fillKey: "Republican",
           avergeListingPrice: "$238,163",
           mediumSalesPrice: "$177,500",
-          popularity: 48
+          popularity: 15
         },
         TN: {
           fillKey: "Republican",
@@ -287,7 +287,7 @@ class DataMapHousing extends Component {
           fillKey: "Democrat",
           avergeListingPrice: "$306,034",
           mediumSalesPrice: "$332,719",
-          popularity: 46
+          popularity: 17
         },
         WA: {
           fillKey: "Democrat",
@@ -355,7 +355,7 @@ class DataMapHousing extends Component {
     };
     return (
       <div>
-        <div id="map_average_listing" style={divStyle} />
+        <div id="map_Trulia_Pop" style={divStyle} />
       </div>
     );
   }
@@ -367,4 +367,4 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(DataMapHousing);
+export default connect(mapState)(DataMapHousingTruliaPop);

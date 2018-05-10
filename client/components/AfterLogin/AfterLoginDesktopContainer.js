@@ -121,12 +121,15 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" active>
+                <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>
                 <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
-                <Menu.Item as={Link} to="/profile">
-                  SETTING
+                <Menu.Item exact as={NavLink} to="/howitworks">
+                  HOW IT WORKS
+                </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/aboutus">
+                  ABOUT US
                 </Menu.Item>
                 <Menu.Item as={Link} to="/profile">
                   PROFILE
@@ -146,7 +149,6 @@ class DesktopContainer extends Component {
             </Menu>
           </Segment>
         </Visibility>
-
         <MenuExampleSecondary />
         {children}
       </Responsive>
