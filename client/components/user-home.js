@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import Plaid from "./Plaid";
 import AccountTable from "./AccountTable";
 import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+
 const ResponsiveContainer = ({ children }) => (
   <div>
     <DesktopContainer>{children}</DesktopContainer>
@@ -34,7 +34,6 @@ class UserHome extends React.Component {
 
   render() {
     const { accounts } = this.props;
-    console.log(accounts);
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
@@ -170,7 +169,6 @@ class UserHome extends React.Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log(state, "stateYO~");
   return {
     email: state.user.email,
     accounts: state.accounts

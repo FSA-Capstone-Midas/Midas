@@ -9,7 +9,6 @@ import utils from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-console.log("what is utils", utils);
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -19,7 +18,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Transactions extends Component {
@@ -27,7 +26,7 @@ class Transactions extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentChart: "spendingOverTime",
+      currentChart: "spendingOverTime"
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -65,7 +64,6 @@ class Transactions extends Component {
                 ) : rows ? (
                   <div>
                     <Segment>Transactions</Segment>
-
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
@@ -89,7 +87,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction,
+    transaction: state.transactions.transaction
   };
 };
 
