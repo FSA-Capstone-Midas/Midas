@@ -30,6 +30,7 @@ class UserTrend extends Component {
       currentMap: "avgListingPrice"
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleTitleName = this.handleTitleName.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,42 @@ class UserTrend extends Component {
   handleClick(event) {
     const currentMap = event.target.name;
     this.setState({ currentMap });
+  }
+
+  handleTitleName() {
+    const currentMapTitle = this.state.currentMap;
+    console.log(currentMapTitle);
+    //house
+    const AVG_LISTING_PRICE = "avgListingPrice";
+    const MEDIAN_SALES_PRICE = "medianSalesPrice";
+    const TRULIA_POPULARITY = "truliaPopularity";
+
+    //Apartment
+    const ONE_BED_ROOM_RENT = "1BedRoomRent";
+    const TWO_BED_ROOM_RENT = "2BedRoomRent";
+
+    //Apartment % Change
+    const APT_MM_CHANGE = "monthlyChange";
+    const APT_YY_CHANGE = "yearlyChange";
+
+    switch (currentMapTitle) {
+      case AVG_LISTING_PRICE:
+        return "USA Housing Average Listing Price";
+      case MEDIAN_SALES_PRICE:
+        return "USA Housing Median Sales Price";
+      case TRULIA_POPULARITY:
+        return "USA Housing Trulia Popularity";
+      case ONE_BED_ROOM_RENT:
+        return "USA Apartment One Bed Room Rent";
+      case TWO_BED_ROOM_RENT:
+        return "USA Apartment Two Bed Room Rent";
+      case APT_MM_CHANGE:
+        return "USA Apartment Monthly Change";
+      case APT_YY_CHANGE:
+        return "USA Apartment Yearly Change";
+      default:
+        return "USA Housing Average Listing Price";
+    }
   }
 
   render() {
@@ -51,7 +88,7 @@ class UserTrend extends Component {
                 style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
               >
                 <div>
-                  <Segment>Average Housing Price - Year ended 2018</Segment>
+                  <Segment>{this.handleTitleName()} - Year ended 2018</Segment>
                   <Segment>
                     <div className="ui grid">
                       <TrendsMenuBar handleClick={this.handleClick} />
