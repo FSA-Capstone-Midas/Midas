@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import { Grid, Segment } from "semantic-ui-react";
@@ -8,7 +7,6 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Loading from "./Loading";
 import TrendsMenuBar from "./TrendsMenuBar";
-import DataMapHousing from "./DataMapHousing";
 import renderMap from "./TrendsMapHelper";
 
 const ResponsiveContainer = ({ children }) => (
@@ -34,7 +32,7 @@ class UserTrend extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 500);
   }
 
   handleClick(event) {
@@ -44,7 +42,6 @@ class UserTrend extends Component {
 
   handleTitleName() {
     const currentMapTitle = this.state.currentMap;
-    console.log(currentMapTitle);
     //house
     const AVG_LISTING_PRICE = "avgListingPrice";
     const MEDIAN_SALES_PRICE = "medianSalesPrice";
@@ -81,29 +78,34 @@ class UserTrend extends Component {
   render() {
     return (
       <ResponsiveContainer>
-        <Segment style={{ padding: "1.5em" }} vertical>
-          <Grid celled="internally" columns="equal" stackable>
-            <Grid.Row textAlign="center">
-              <Grid.Column
-                style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
-              >
-                <div>
-                  <Segment>{this.handleTitleName()} - Year ended 2018</Segment>
-                  <Segment>
-                    <div className="ui grid">
-                      <TrendsMenuBar handleClick={this.handleClick} />
-                      <div className="twelve wide column">
-                        {renderMap(this.state.currentMap)}
-                        {/* <DataMapHousing /> */}
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <Segment style={{ padding: "1.5em" }} vertical>
+            <Grid celled="internally" columns="equal" stackable>
+              <Grid.Row textAlign="center">
+                <Grid.Column
+                  style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                >
+                  <div>
+                    <Segment>
+                      {this.handleTitleName()} - Year ended 2018
+                    </Segment>
+                    <Segment>
+                      <div className="ui grid">
+                        <TrendsMenuBar handleClick={this.handleClick} />
+                        <div className="twelve wide column">
+                          {renderMap(this.state.currentMap)}
+                        </div>
                       </div>
-                    </div>
-                  </Segment>
-                </div>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          <Footer />
-        </Segment>
+                    </Segment>
+                  </div>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            <Footer />
+          </Segment>
+        )}
       </ResponsiveContainer>
     );
   }
