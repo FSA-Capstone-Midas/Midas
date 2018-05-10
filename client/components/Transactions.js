@@ -5,11 +5,10 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import SideBar from "./SideBar";
 import Table from "./Table";
-import utils from "./utils";
+import { renCompo } from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-console.log("what is utils", utils);
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -69,7 +68,7 @@ class Transactions extends Component {
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
-                        {utils(this.state.currentChart, rows)}
+                        {renCompo(this.state.currentChart, rows)}
                       </div>
                     </div>
                     <Table rows={rows} />
