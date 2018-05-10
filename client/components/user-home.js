@@ -9,6 +9,7 @@ import AccountTable from "./AccountTable";
 import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+
 const ResponsiveContainer = ({ children }) => (
   <div>
     <DesktopContainer>{children}</DesktopContainer>
@@ -34,7 +35,6 @@ class UserHome extends React.Component {
 
   render() {
     const { accounts } = this.props;
-    console.log(accounts);
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
