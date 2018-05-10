@@ -1,41 +1,56 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
-import { updateUserBudget } from "../store";
+import { Button, Header, Modal } from "semantic-ui-react";
+import { updateUserBudget } from "../store/budget";
 
-/*eslint-disable*/
 class BudgetModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
+      modalOpen: false,
+      showMessage: false,
+      category: "foodAndDrink",
       budgetForCategory: 0
     };
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handChangeBudget = this.handleChangeBudget.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLocalState = this.handleLocalState.bind(this);
+    this.changeLocalStateBack = this.changeLocalStateBack.bind(this);
+  }
+  handleLocalState() {
+    this.setState({ showMessage: true });
+    setTimeout(this.changeLocalStateBack, 1000);
+  }
+  changeLocalStateBack() {
+    this.setState({ showMessage: false, budgetForCategory: 0 });
   }
   handleChangeCategory(event) {
-    this.setState({ category: event.target.value });
+    this.setState({ category: event.target.value, budgetForCategory: 0 });
   }
   handleChangeBudget(event) {
-    console.log("event.target", event.target);
     this.setState({ budgetForCategory: +event.target.value });
   }
-  handleSubmit(event, id) {
-    event.preventDefault();
-    const budgetObj = { [this.state.category]: this.state.budgetForCategory };
-    dispatch(updataUserBudget(budgetObj, id));
-  }
+  handleOpen = () => this.setState({ modalOpen: true });
+  handleClose = () => {
+    this.setState({ modalOpen: false });
+    this.forceUpdate();
+  };
+
   render() {
-    const { userId } = this.props;
+    const userId = this.props.user.id;
+    const handleSubmit = this.props.handleSubmit;
+    const budgetItemObj = {
+      [this.state.category]: this.state.budgetForCategory
+    };
     return (
       <Modal
         trigger={
-          <Button className="ui button">
+          <Button onClick={this.handleOpen} className="ui button">
             <i aria-hidden="true" className="add icon" />Create a Budget
           </Button>
         }
+        open={this.state.modalOpen}
+        onClose={this.handleClose}
       >
         <Modal.Header>Create Your Budget</Modal.Header>
         <Modal.Content image>
@@ -47,9 +62,10 @@ class BudgetModal extends Component {
             <p>Then just submit!</p>
           </Modal.Description>
           <form
-            className="ui format form"
-            onSubmit={(event, userId) => {
-              this.handleSubmit(event, userId);
+            className="format"
+            onSubmit={event => {
+              this.handleLocalState();
+              handleSubmit(event, budgetItemObj, userId);
             }}
           >
             <label>
@@ -59,7 +75,7 @@ class BudgetModal extends Component {
                 <option value="foodAndDrink">Food and Drink</option>
                 <option value="recreation">Recreation</option>
                 <option value="service">Service</option>
-                <option value="shop">Shop</option>
+                <option value="shops">Shops</option>
                 <option value="travel">Travel</option>
                 <option value="miscellaneous">Miscellaneous</option>
               </select>
@@ -67,17 +83,25 @@ class BudgetModal extends Component {
             <br />
             <label>
               <h5> Budgeted Spending $: </h5>
-
               <input
                 className="field"
                 name="spending"
+                value={this.state.budgetForCategory}
                 onChange={event => this.handleChangeBudget(event)}
               />
             </label>
             <br />
+            {this.state.showMessage ? (
+              <h5 id="alertMessage">Budget created!</h5>
+            ) : null}
             <input type="submit" value="Submit" />
           </form>
         </Modal.Content>
+        <Modal.Actions>
+          <Button color="green" onClick={this.handleClose} inverted>
+            Close!
+          </Button>
+        </Modal.Actions>
       </Modal>
     );
   }
@@ -85,18 +109,15 @@ class BudgetModal extends Component {
 
 const mapState = state => {
   return {
-    userId: state.user.id
+    user: state.user
   };
 };
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
-      evt.preventDefault();
-      const formName = evt.target.name;
-      const email = evt.target.email.value;
-      const password = evt.target.password.value;
-      dispatch(auth(email, password, formName));
+    handleSubmit: (event, budgetObject, id) => {
+      event.preventDefault();
+      dispatch(updateUserBudget(budgetObject, id));
     }
   };
 };
-export default connect(mapState)(BudgetModal);
+export default connect(mapState, mapDispatch)(BudgetModal);

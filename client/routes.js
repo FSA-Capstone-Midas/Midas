@@ -14,7 +14,13 @@ import {
   Profile,
   Budget
 } from "./components";
-import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
+import {
+  me,
+  fetchTransaction,
+  fetchItem,
+  fetchAllState,
+  getBudgetFromDatabase
+} from "./store";
 
 /**
  * COMPONENT
@@ -80,6 +86,9 @@ const mapDispatch = dispatch => {
     },
     loadAllStateFromServer() {
       dispatch(fetchAllState());
+    },
+    loadBudgetData() {
+      dispatch(getBudgetFromDatabase());
     }
   };
 };

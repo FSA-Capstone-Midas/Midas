@@ -30,3 +30,4 @@ export * from "./plaid";
 export * from "./transactions";
 export * from "./accounts";
 export * from "./state";
+export * from "./budget";

@@ -111,3 +111,6 @@ h2 {
 .format {
   margin-left: 30px;
 }
+#alertMessage {
+  color: orange;
+}
