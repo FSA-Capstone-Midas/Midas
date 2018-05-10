@@ -2,13 +2,6 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 
-const tableData = [
-  { name: "John", age: 15, gender: "Male" },
-  { name: "Amber", age: 40, gender: "Female" },
-  { name: "Leslie", age: 25, gender: "Female" },
-  { name: "Ben", age: 70, gender: "Male" }
-];
-
 const housingData = {
   AZ: {
     state: "ARIZONA",
@@ -312,7 +305,7 @@ const housingData = {
   }
 };
 
-export default class TableExampleSortable extends Component {
+export default class TrendsHousingTable extends Component {
   state = {
     column: null,
     data: housingData,

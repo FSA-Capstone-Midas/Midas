@@ -12,11 +12,11 @@ class DataMapApartments2Br extends Component {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
-            "<div class=\"hoverinfo\">" +
+            '<div class="hoverinfo">' +
             geography.properties.name +
             "</br>" +
             "Median 2 Bedroom Rent: " +
-            data.info +
+            data.median2BrRent +
             " "
           );
         },
@@ -37,203 +37,203 @@ class DataMapApartments2Br extends Component {
       data: {
         AZ: {
           fillKey: "Democrat",
-          info: "$1,030"
+          median2BrRent: "$1,030"
         },
         CO: {
           fillKey: "Democrat",
-          info: "$1,270"
+          median2BrRent: "$1,270"
         },
         DE: {
           fillKey: "Democrat",
-          info: "$1,170"
+          median2BrRent: "$1,170"
         },
         FL: {
           fillKey: "UNDECIDED",
-          info: "$1,190"
+          median2BrRent: "$1,190"
         },
         GA: {
           fillKey: "Republican",
-          info: "$1,010"
+          median2BrRent: "$1,010"
         },
         HI: {
           fillKey: "Democrat",
-          info: "$1,940"
+          median2BrRent: "$1,940"
         },
         ID: {
           fillKey: "Republican",
-          info: "$820"
+          median2BrRent: "$820"
         },
         IL: {
           fillKey: "Democrat",
-          info: "$1,080"
+          median2BrRent: "$1,080"
         },
         IN: {
           fillKey: "Republican",
-          info: "$810"
+          median2BrRent: "$810"
         },
         IA: {
           fillKey: "Light Democrat",
-          info: "$780"
+          median2BrRent: "$780"
         },
         KS: {
           fillKey: "Republican",
-          info: "$840"
+          median2BrRent: "$840"
         },
         KY: {
           fillKey: "Republican",
-          info: "$770"
+          median2BrRent: "$770"
         },
         LA: {
           fillKey: "Republican",
-          info: "$840"
+          median2BrRent: "$840"
         },
         MD: {
           fillKey: "Democrat",
-          info: "$1,480"
+          median2BrRent: "$1,480"
         },
         ME: {
           fillKey: "Democrat",
-          info: "$970"
+          median2BrRent: "$970"
         },
         MA: {
           fillKey: "Democrat",
-          info: "$1,580"
+          median2BrRent: "$1,580"
         },
         MN: {
           fillKey: "Democrat",
-          info: "$1,060"
+          median2BrRent: "$1,060"
         },
         MI: {
           fillKey: "Democrat",
-          info: "$910"
+          median2BrRent: "$910"
         },
         MS: {
           fillKey: "Republican",
-          info: "$800"
+          median2BrRent: "$800"
         },
         MO: {
           fillKey: "Republican",
-          info: "$840"
+          median2BrRent: "$840"
         },
         MT: {
           fillKey: "Republican",
-          info: "$780"
+          median2BrRent: "$780"
         },
         NC: {
           fillKey: "Light Republican",
-          info: "$880"
+          median2BrRent: "$880"
         },
         NE: {
           fillKey: "Republican",
-          info: "$820"
+          median2BrRent: "$820"
         },
         NV: {
           fillKey: "Heavy Democrat",
-          info: "$1,080"
+          median2BrRent: "$1,080"
         },
         NH: {
           fillKey: "Light Democrat",
-          info: "$1,290"
+          median2BrRent: "$1,290"
         },
         NJ: {
           fillKey: "Democrat",
-          info: "$1,510"
+          median2BrRent: "$1,510"
         },
         NY: {
           fillKey: "Very High",
-          info: "$1,500"
+          median2BrRent: "$1,500"
         },
         ND: {
           fillKey: "Republican",
-          info: "$780"
+          median2BrRent: "$780"
         },
         NM: {
           fillKey: "Democrat",
-          info: "$820"
+          median2BrRent: "$820"
         },
         OH: {
           fillKey: "UNDECIDED",
-          info: "$840"
+          median2BrRent: "$840"
         },
         OK: {
           fillKey: "Republican",
-          info: "$770"
+          median2BrRent: "$770"
         },
         OR: {
           fillKey: "Democrat",
-          info: "$1,210"
+          median2BrRent: "$1,210"
         },
         PA: {
           fillKey: "Democrat",
-          info: "$1,010"
+          median2BrRent: "$1,010"
         },
         RI: {
           fillKey: "Democrat",
-          info: "$1,150"
+          median2BrRent: "$1,150"
         },
         SC: {
           fillKey: "Republican",
-          info: "$910"
+          median2BrRent: "$910"
         },
         SD: {
           fillKey: "Republican",
-          info: "$720"
+          median2BrRent: "$720"
         },
         TN: {
           fillKey: "Republican",
-          info: "$850"
+          median2BrRent: "$850"
         },
         TX: {
           fillKey: "Republican",
-          info: "$1,040"
+          median2BrRent: "$1,040"
         },
         UT: {
           fillKey: "Republican",
-          info: "$970"
+          median2BrRent: "$970"
         },
         WI: {
           fillKey: "Democrat",
-          info: "$850"
+          median2BrRent: "$850"
         },
         VA: {
           fillKey: "Light Democrat",
-          info: "$1,220"
+          median2BrRent: "$1,220"
         },
         VT: {
           fillKey: "Democrat",
-          info: "$1,220"
+          median2BrRent: "$1,220"
         },
         WA: {
           fillKey: "Democrat",
-          info: "$1,430"
+          median2BrRent: "$1,430"
         },
         WV: {
           fillKey: "Republican",
-          info: "$730"
+          median2BrRent: "$730"
         },
         WY: {
           fillKey: "Republican",
-          info: "$780"
+          median2BrRent: "$780"
         },
         CA: {
           fillKey: "Democrat",
-          info: "$1,830"
+          median2BrRent: "$1,830"
         },
         CT: {
           fillKey: "Democrat",
-          info: "$1,350"
+          median2BrRent: "$1,350"
         },
         AK: {
           fillKey: "Republican",
-          info: "$1,190"
+          median2BrRent: "$1,190"
         },
         AR: {
           fillKey: "Republican",
-          info: "$720"
+          median2BrRent: "$720"
         },
         AL: {
           fillKey: "Republican",
-          info: "$790"
+          median2BrRent: "$790"
         }
       },
       done: function(map) {
