@@ -251,7 +251,7 @@ class DataMapHousing extends Component {
           fillKey: "Republican",
           avergeListingPrice: "$238,163",
           mediumSalesPrice: "$177,500",
-          popularity: 15
+          popularity: 48
         },
         TN: {
           fillKey: "Republican",
@@ -287,7 +287,7 @@ class DataMapHousing extends Component {
           fillKey: "Democrat",
           avergeListingPrice: "$306,034",
           mediumSalesPrice: "$332,719",
-          popularity: 17
+          popularity: 46
         },
         WA: {
           fillKey: "Democrat",
