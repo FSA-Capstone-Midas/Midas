@@ -31,6 +31,7 @@ class UserTrend extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleTitleName = this.handleTitleName.bind(this);
+    this.handleTable = this.handleTable.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,41 @@ class UserTrend extends Component {
     }
   }
 
+  handleTable() {
+    const currentMapTitle = this.state.currentMap;
+    //house
+    const AVG_LISTING_PRICE = "avgListingPrice";
+    const MEDIAN_SALES_PRICE = "medianSalesPrice";
+    const TRULIA_POPULARITY = "truliaPopularity";
+
+    //Apartment
+    const ONE_BED_ROOM_RENT = "1BedRoomRent";
+    const TWO_BED_ROOM_RENT = "2BedRoomRent";
+
+    //Apartment % Change
+    const APT_MM_CHANGE = "monthlyChange";
+    const APT_YY_CHANGE = "yearlyChange";
+
+    switch (currentMapTitle) {
+      case AVG_LISTING_PRICE:
+        return <TrendsHousingTable />;
+      case MEDIAN_SALES_PRICE:
+        return <TrendsHousingTable />;
+      case TRULIA_POPULARITY:
+        return <TrendsHousingTable />;
+      case ONE_BED_ROOM_RENT:
+        return <TrendsApartmentTable />;
+      case TWO_BED_ROOM_RENT:
+        return <TrendsApartmentTable />;
+      case APT_MM_CHANGE:
+        return <TrendsApartmentTable />;
+      case APT_YY_CHANGE:
+        return <TrendsApartmentTable />;
+      default:
+        return <TrendsHousingTable />;
+    }
+  }
+
   render() {
     return (
       <ResponsiveContainer>
@@ -99,7 +135,7 @@ class UserTrend extends Component {
                         <div className="twelve wide column">
                           {renderMap(this.state.currentMap)}
                         </div>
-                        <TrendsApartmentTable />
+                        {this.handleTable()}
                       </div>
                     </Segment>
                   </div>
