@@ -1,4 +1,4 @@
-# Boilermaker
+# Midas
 
 *Good things come in pairs*
 
