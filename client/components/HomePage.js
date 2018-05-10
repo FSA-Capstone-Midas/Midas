@@ -19,7 +19,6 @@ import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
 const ResponsiveContainer = ({ children, logined }) => {
-  console.log(logined);
   return (
     <div>
       {!logined ? (
