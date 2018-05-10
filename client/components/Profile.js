@@ -77,7 +77,7 @@ class Profile extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <ResponsiveContainer>
+      <ResponsiveContainer style={{ height: "100%" }}>
         <Header as="h2" icon textAlign="center">
           <Icon name="users" circular />
           <Header.Content>
@@ -185,7 +185,17 @@ class Profile extends React.Component {
             Update Profile
           </Button>
         </Form>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

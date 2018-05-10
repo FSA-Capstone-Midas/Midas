@@ -123,7 +123,12 @@ class UserTrend extends Component {
             <Grid celled="internally" columns="equal" stackable>
               <Grid.Row textAlign="center">
                 <Grid.Column
-                  style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                  style={{
+                    paddingBottom: "0.5em",
+                    paddingTop: "2em",
+                    marginLeft: "10%",
+                    marginRight: "10%"
+                  }}
                 >
                   <div>
                     <Segment>

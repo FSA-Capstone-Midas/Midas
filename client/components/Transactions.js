@@ -51,7 +51,7 @@ class Transactions extends Component {
       <ResponsiveContainer>
         <Segment
           id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
+          style={{ padding: "1.5em", marginLeft: "15%", marginRight: "15%" }}
           vertical
         >
           <Grid celled="internally" columns="equal" stackable>
