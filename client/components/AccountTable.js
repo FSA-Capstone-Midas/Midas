@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 
 const AccountTable = props => {
   const { accounts } = props;
-  console.log(accounts);
   return (
     <Segment>
       {accounts &&

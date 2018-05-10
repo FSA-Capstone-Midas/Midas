@@ -16,6 +16,7 @@ class Step1 extends Component {
 
   nextStep(event) {
     event.preventDefault();
+    console.log("event");
     this.props.nextStep();
   }
 

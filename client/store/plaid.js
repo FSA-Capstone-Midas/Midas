@@ -54,7 +54,6 @@ export const fetchAsset = () => dispatch => {
   return axios
     .get("/api/plaid/asset_report")
     .then(res => {
-      // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
     })
     .catch(err => console.error(err));
@@ -65,7 +64,6 @@ export const fetchMakingAsset = () => dispatch => {
   return axios
     .post("/api/plaid/asset_report/create")
     .then(res => {
-      // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
     })
     .catch(err => console.error(err));
@@ -76,7 +74,6 @@ export const fetchIdentity = () => dispatch => {
   return axios
     .get("/api/plaid/identity")
     .then(res => {
-      // console.log("res!!!", res.data);
       return dispatch(getItem(res.data));
     })
     .catch(err => console.error(err));
@@ -84,7 +81,6 @@ export const fetchIdentity = () => dispatch => {
 
 //waiting for plaid api approve
 export const fetchIncome = () => dispatch => {
-  //   console.log(publicToken, "did i get smth?");
   return axios
     .get("/api/plaid/income")
     .then(res => dispatch(getItem(res.data)))
