@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import Plaid from "./Plaid";
 import AccountTable from "./AccountTable";
 import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -135,7 +134,6 @@ class UserHome extends React.Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log(state, "stateYO~");
   return {
     email: state.user.email,
     accounts: state.accounts

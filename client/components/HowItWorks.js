@@ -1,15 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Footer from "./Footer";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Image,
-  Segment
-} from "semantic-ui-react";
+import { Grid, Header, Image, Segment } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import DesktopContainer from "./DesktopContainer";

@@ -64,7 +64,6 @@ class Transactions extends Component {
                 ) : rows ? (
                   <div>
                     <Segment>Transactions</Segment>
-
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
