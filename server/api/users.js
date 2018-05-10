@@ -30,15 +30,28 @@ router.put("/update/:id", (req, res, next) => {
 });
 
 router.get("/user/:userId/budget", (req, res, next) => {
-  User.findById(req.params.userId).then(user => {
-    const budget = {};
-    budget.foodAndDrink = user.foodAndDrink;
-    budget.recreation = user.recreation;
-    budget.service = user.service;
-    budget.shops = user.shops;
-    budget.travel = user.travel;
-    budget.miscellaneous = user.miscellaneous;
-    budget.totalBudgetExpenditure = user.totalBudgetExpenditure;
-    res.json(budget);
-  });
+  User.findById(req.params.userId)
+    .then(user => {
+      const budget = {};
+      budget.foodAndDrink = user.foodAndDrink;
+      budget.recreation = user.recreation;
+      budget.service = user.service;
+      budget.shops = user.shops;
+      budget.travel = user.travel;
+      budget.miscellaneous = user.miscellaneous;
+      budget.totalBudgetExpenditure = user.totalBudgetExpenditure;
+      res.json(budget);
+    })
+    .catch(next);
+});
+
+router.put("/user/:userId/budget", (req, res, next) => {
+  User.update(req.body, {
+    where: { id: req.params.userId },
+    returning: true
+  })
+    .then(([affectedCount, affectedRows]) => {
+      res.status(200).json(affectedRows[0]);
+    })
+    .catch(next);
 });

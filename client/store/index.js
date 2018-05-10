@@ -6,6 +6,7 @@ import user from "./user";
 import plaidReducer from "./plaid";
 import transactions from "./transactions";
 import accounts from "./accounts";
+import budget from "./budget";
 import stateReducer from "./state";
 
 const reducer = combineReducers({
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   plaid: plaidReducer,
   transactions,
   accounts,
+  budget,
   states: stateReducer
 });
 
