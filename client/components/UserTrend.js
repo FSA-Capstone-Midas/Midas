@@ -9,6 +9,7 @@ import Loading from "./Loading";
 import TrendsMenuBar from "./TrendsMenuBar";
 import renderMap from "./TrendsMapHelper";
 import TrendsHousingTable from "./TrendsHousingTable";
+import TrendsApartmentTable from "./TrendsApartmentTable";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -98,7 +99,7 @@ class UserTrend extends Component {
                         <div className="twelve wide column">
                           {renderMap(this.state.currentMap)}
                         </div>
-                        <TrendsHousingTable />
+                        <TrendsApartmentTable />
                       </div>
                     </Segment>
                   </div>

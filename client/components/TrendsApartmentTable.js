@@ -2,313 +2,413 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 
-const housingData = {
+const apartmentData = {
   AZ: {
     state: "ARIZONA",
-    avergeListingPrice: "$322,398",
-    mediumSalesPrice: "$225,000",
-    popularity: 15
+    fillKey: "Democrat",
+    median1BrRent: "$820",
+    median2BrRent: "$1,030",
+    MMChange: "0.2%",
+    YYChange: "3.4%"
   },
   CO: {
     state: "COLORADO",
-    avergeListingPrice: "$538,477",
-    mediumSalesPrice: "$331,000",
-    popularity: 19
+    fillKey: "Democrat",
+    median1BrRent: "$1,000",
+    median2BrRent: "$1,270",
+    MMChange: "0.2%",
+    YYChange: "2.6%"
   },
   DE: {
     state: "DELAWARE",
-    avergeListingPrice: "$303,907",
-    mediumSalesPrice: "$210,000",
-    popularity: 44
+    fillKey: "Democrat",
+    median1BrRent: "$960",
+    median2BrRent: "$1,170",
+    MMChange: "-0.1%",
+    YYChange: "2.0%"
   },
   FL: {
     state: "FLORIDA",
-    avergeListingPrice: "$406,803",
-    mediumSalesPrice: "$218,000",
-    popularity: 3
+    fillKey: "UNDECIDED",
+    median1BrRent: "$950",
+    median2BrRent: "$1,190",
+    MMChange: "0.1%",
+    YYChange: "3.3%"
   },
   GA: {
     state: "GEORGIA",
-    avergeListingPrice: "$296,535",
-    mediumSalesPrice: "$193,000",
-    popularity: 14
+    fillKey: "Republican",
+    median1BrRent: "$850",
+    median2BrRent: "$1,010",
+    MMChange: "0.1%",
+    YYChange: "3.1%"
   },
   HI: {
     state: "HAWAII",
-    avergeListingPrice: "$905,687",
-    mediumSalesPrice: "$442,500",
-    popularity: 49
+    fillKey: "Democrat",
+    median1BrRent: "$1,480",
+    median2BrRent: "$1,940",
+    MMChange: "0.5%",
+    YYChange: "0%"
   },
   ID: {
     state: "IDAHO",
-    avergeListingPrice: "$349,000",
-    mediumSalesPrice: "-",
-    popularity: 25
+    fillKey: "Republican",
+    median1BrRent: "$640",
+    median2BrRent: "$820",
+    MMChange: "-0.3%",
+    YYChange: "4.2%"
   },
   IL: {
     state: "ILLINOIS",
-    avergeListingPrice: "$277,163",
-    mediumSalesPrice: "$212,000",
-    popularity: 39
+    fillKey: "Democrat",
+    median1BrRent: "$900",
+    median2BrRent: "$1,080",
+    MMChange: "0%",
+    YYChange: "1.0%"
   },
   IN: {
     state: "INDIANA",
-    avergeListingPrice: "$190,843",
-    mediumSalesPrice: "-",
-    popularity: 28
+    fillKey: "Republican",
+    median1BrRent: "$650",
+    median2BrRent: "$810",
+    MMChange: "0%",
+    YYChange: "1.8%"
   },
   IA: {
     state: "IOWA",
-    avergeListingPrice: "$185,087",
-    mediumSalesPrice: "$157,000",
-    popularity: 47
+    fillKey: "Light Democrat",
+    median1BrRent: "$610",
+    median2BrRent: "$780",
+    MMChange: "-0.2%",
+    YYChange: "0.7%"
   },
   KS: {
     state: "KANSAS",
-    avergeListingPrice: "$187,649",
-    mediumSalesPrice: "-",
-    popularity: 32
+    fillKey: "Republican",
+    median1BrRent: "$650",
+    median2BrRent: "$840",
+    MMChange: "0.2%",
+    YYChange: "1.6%"
   },
   KY: {
     state: "KENTUCKY",
-    avergeListingPrice: "$213,848",
-    mediumSalesPrice: "$170,000",
-    popularity: 26
+    fillKey: "Republican",
+    median1BrRent: "$600",
+    median2BrRent: "$770",
+    MMChange: "0.1%",
+    YYChange: "0%"
   },
   LA: {
     state: "LOUISIANA",
-    avergeListingPrice: "232,610",
-    mediumSalesPrice: "-",
-    popularity: 41
+    fillKey: "Republican",
+    median1BrRent: "$700",
+    median2BrRent: "$840",
+    MMChange: "0.4%",
+    YYChange: "1.0%"
   },
   MD: {
     state: "MARYLAND",
-    avergeListingPrice: "$275,717",
-    mediumSalesPrice: "-",
-    popularity: 27
+    fillKey: "Democrat",
+    median1BrRent: "$1,220",
+    median2BrRent: "$1,480",
+    MMChange: "-0.1%",
+    YYChange: "0.9%"
   },
   ME: {
     state: "MAINE",
-    avergeListingPrice: "$367,454",
-    mediumSalesPrice: "$290,000",
-    popularity: 33
+    fillKey: "Democrat",
+    median1BrRent: "$780",
+    median2BrRent: "$970",
+    MMChange: "-0.5%",
+    YYChange: "1.5%"
   },
   MA: {
     state: "MASSACHUSETTS",
-    avergeListingPrice: "$602,210",
-    mediumSalesPrice: "$379,000",
-    popularity: 7
+    fillKey: "Democrat",
+    median1BrRent: "$1,270",
+    median2BrRent: "$1,580",
+    MMChange: "0.7%",
+    YYChange: "2.7%"
   },
   MN: {
     state: "MINNESOTA",
-    avergeListingPrice: "$212,694",
-    mediumSalesPrice: "$164,000",
-    popularity: 11
+    fillKey: "Democrat",
+    median1BrRent: "$840",
+    median2BrRent: "$1,060",
+    MMChange: "0.3%",
+    YYChange: "3.0%"
   },
   MI: {
     state: "MICHIGAN",
-    avergeListingPrice: "$290,514",
-    mediumSalesPrice: "$240,000",
-    popularity: 42
+    fillKey: "Democrat",
+    median1BrRent: "$710",
+    median2BrRent: "$910",
+    MMChange: "-0.1%",
+    YYChange: "2.1%"
   },
   MS: {
     state: "MISSISSIPPI",
-    avergeListingPrice: "$195,390",
-    mediumSalesPrice: "-",
-    popularity: 38
+    fillKey: "Republican",
+    median1BrRent: "$650",
+    median2BrRent: "$800",
+    MMChange: "-0.1%",
+    YYChange: "2.1%"
   },
   MO: {
     state: "MISSOURI",
-    avergeListingPrice: "$204,506",
-    mediumSalesPrice: "-",
-    popularity: 30
+    fillKey: "Republican",
+    median1BrRent: "$660",
+    median2BrRent: "$840",
+    MMChange: "-0.2%",
+    YYChange: "0.8%"
   },
   MT: {
     state: "MONTANA",
-    avergeListingPrice: "$314,959",
-    mediumSalesPrice: "-",
-    popularity: 35
+    fillKey: "Republican",
+    median1BrRent: "$620",
+    median2BrRent: "$780",
+    MMChange: "0.3%",
+    YYChange: "2.2%"
   },
   NC: {
     state: "NORTH CAROLINA",
-    avergeListingPrice: "$276,389",
-    mediumSalesPrice: "$210,000",
-    popularity: 13
+    fillKey: "Light Republican",
+    median1BrRent: "$730",
+    median2BrRent: "$880",
+    MMChange: "0.1%",
+    YYChange: "2.3%"
   },
   NE: {
     state: "NEBRASKA",
-    avergeListingPrice: "$230,000",
-    mediumSalesPrice: "$178,000",
-    popularity: 43
+    fillKey: "Republican",
+    median1BrRent: "$640",
+    median2BrRent: "$820",
+    MMChange: "0.1%",
+    YYChange: "1.3%"
   },
   NV: {
     state: "NEVADA",
-    avergeListingPrice: "$331,971",
-    mediumSalesPrice: "$249,000",
-    popularity: 8
+    fillKey: "Heavy Democrat",
+    median1BrRent: "$860",
+    median2BrRent: "$1,080",
+    MMChange: "0.3%",
+    YYChange: "4.6%"
   },
   NH: {
     state: "NEW HAMPSHIRE",
-    avergeListingPrice: "$310,914",
-    mediumSalesPrice: "$245,000",
-    popularity: 34
+    fillKey: "Light Democrat",
+    median1BrRent: "$1,010",
+    median2BrRent: "$1,290",
+    MMChange: "0%",
+    YYChange: "2.2%"
   },
   NJ: {
     state: "NEW JERSEY",
-    avergeListingPrice: "$372,916",
-    mediumSalesPrice: "$290,000",
-    popularity: 12
+    fillKey: "Democrat",
+    median1BrRent: "$1,230",
+    median2BrRent: "$1,510",
+    MMChange: "0.2%",
+    YYChange: "1.4%"
   },
   NY: {
     state: "NEW YORK",
-    avergeListingPrice: "$565,227",
-    mediumSalesPrice: "$430,000",
-    popularity: 4
+    fillKey: "Very High",
+    median1BrRent: "$1,260",
+    median2BrRent: "$1,500",
+    MMChange: "0%",
+    YYChange: "0.7%"
   },
   ND: {
     state: "NORTH DAKOTA",
-    avergeListingPrice: "$226,863",
-    mediumSalesPrice: "-",
-    popularity: 50
+    fillKey: "Republican",
+    median1BrRent: "$610",
+    median2BrRent: "$780",
+    MMChange: "-0.6%",
+    YYChange: "-0.5%"
   },
   NM: {
     state: "NEW MEXICO",
-    avergeListingPrice: "$254,798",
-    mediumSalesPrice: "-",
-    popularity: 21
+    fillKey: "Democrat",
+    median1BrRent: "$660",
+    median2BrRent: "$820",
+    MMChange: "0.4%",
+    YYChange: "2.5%"
   },
   OH: {
     state: "OHIO",
-    avergeListingPrice: "$190,371",
-    mediumSalesPrice: "$154,900",
-    popularity: 24
+    fillKey: "UNDECIDED",
+    median1BrRent: "$650",
+    median2BrRent: "$840",
+    MMChange: "0%",
+    YYChange: "1.6%"
   },
   OK: {
     state: "OKLAHOMA",
-    avergeListingPrice: "$201,091",
-    mediumSalesPrice: "$150,000",
-    popularity: 23
+    fillKey: "Republican",
+    median1BrRent: "$600",
+    median2BrRent: "$770",
+    MMChange: "-0.1%",
+    YYChange: "0%"
   },
   OR: {
     state: "OREGON",
-    avergeListingPrice: "$416,718",
-    mediumSalesPrice: "$315,000",
-    popularity: 20
+    fillKey: "Democrat",
+    median1BrRent: "$990",
+    median2BrRent: "$1,210",
+    MMChange: "0.7%",
+    YYChange: "0.9%"
   },
   PA: {
     state: "PENNSYLVANIA",
-    avergeListingPrice: "$224,090",
-    mediumSalesPrice: "$191,000",
-    popularity: 6
+    fillKey: "Democrat",
+    median1BrRent: "$820",
+    median2BrRent: "$1,010",
+    MMChange: "-0.2%",
+    YYChange: "1.7%"
   },
   RI: {
     state: "RHODE ISLAND",
-    avergeListingPrice: "$405,450",
-    mediumSalesPrice: "$256,000",
-    popularity: 45
+    fillKey: "Democrat",
+    median1BrRent: "$950",
+    median2BrRent: "$1,150",
+    MMChange: "-0.9%",
+    YYChange: "2.0%"
   },
   SC: {
     state: "SOUTH CAROLINA",
-    avergeListingPrice: "$291,636",
-    mediumSalesPrice: "$181,500",
-    popularity: 18
+    fillKey: "Republican",
+    median1BrRent: "$760",
+    median2BrRent: "$910",
+    MMChange: "0.1%",
+    YYChange: "2.0%"
   },
   SD: {
     state: "SOUTH DAKOTA",
-    avergeListingPrice: "$238,163",
-    mediumSalesPrice: "$177,500",
-    popularity: 48
+    fillKey: "Republican",
+    median1BrRent: "$560",
+    median2BrRent: "$720",
+    MMChange: "0.2%",
+    YYChange: "1.2%"
   },
   TN: {
     state: "TENNESSEE",
-    avergeListingPrice: "$268,692",
-    mediumSalesPrice: "$190,000",
-    popularity: 9
+    fillKey: "Republican",
+    median1BrRent: "$690",
+    median2BrRent: "$850",
+    MMChange: "0%",
+    YYChange: "1.7%"
   },
   TX: {
     state: "TEXAS",
-    avergeListingPrice: "$320,060",
-    mediumSalesPrice: "$-",
-    popularity: 2
+    fillKey: "Republican",
+    median1BrRent: "$830",
+    median2BrRent: "$1,040",
+    MMChange: "-0.1%",
+    YYChange: "2.3%"
   },
   UT: {
     state: "UTAH",
-    avergeListingPrice: "$440,946",
-    mediumSalesPrice: "-",
-    popularity: 29
+    fillKey: "Republican",
+    median1BrRent: "$790",
+    median2BrRent: "$970",
+    MMChange: "0%",
+    YYChange: "4.3%"
   },
   WI: {
     state: "WISCONSIN",
-    avergeListingPrice: "$223,480",
-    mediumSalesPrice: "$197,000",
-    popularity: 40
+    fillKey: "Democrat",
+    median1BrRent: "$670",
+    median2BrRent: "$850",
+    MMChange: "0%",
+    YYChange: "0.9%"
   },
   VA: {
     state: "VIRGINIA",
-    avergeListingPrice: "341,015",
-    mediumSalesPrice: "$297,500",
-    popularity: 5
+    fillKey: "Light Democrat",
+    median1BrRent: "$1,030",
+    median2BrRent: "$1,220",
+    MMChange: "0.2%",
+    YYChange: "1.4%"
   },
   VT: {
     state: "VERMONT",
-    avergeListingPrice: "$306,034",
-    mediumSalesPrice: "$332,719",
-    popularity: 46
+    fillKey: "Democrat",
+    median1BrRent: "$970",
+    median2BrRent: "$1,220",
+    MMChange: "-0.2%",
+    YYChange: "1.9%"
   },
   WA: {
     state: "WASHINGTON",
-    avergeListingPrice: "$378,575",
-    mediumSalesPrice: "$332,719",
-    popularity: 17
+    fillKey: "Democrat",
+    median1BrRent: "$1,140",
+    median2BrRent: "$1,430",
+    MMChange: "-0.8%",
+    YYChange: "3.5%"
   },
   WV: {
     state: "WEST VIRGINIA",
-    avergeListingPrice: "$174,865",
-    mediumSalesPrice: "$136,500",
-    popularity: 37
+    fillKey: "Republican",
+    median1BrRent: "$600",
+    median2BrRent: "$730",
+    MMChange: "-0.4%",
+    YYChange: "-1.5%"
   },
   WY: {
     state: "WYOMING",
-    avergeListingPrice: "$291,855",
-    mediumSalesPrice: "$-",
-    popularity: 36
+    fillKey: "Republican",
+    median1BrRent: "$610",
+    median2BrRent: "$780",
+    MMChange: "0.2%",
+    YYChange: "-1.1%"
   },
   CA: {
     state: "CALIFORNIA",
-    avergeListingPrice: "$697,539",
-    mediumSalesPrice: "$462,000",
-    popularity: 1
+    fillKey: "Democrat",
+    median1BrRent: "$1,430",
+    median2BrRent: "$1,830",
+    MMChange: "0.2%",
+    YYChange: "3.6%"
   },
   CT: {
     state: "CONNECTICUT",
-    avergeListingPrice: "$435,858",
-    mediumSalesPrice: "$253,500",
-    popularity: 22
+    fillKey: "Democrat",
+    median1BrRent: "$1070",
+    median2BrRent: "$1,350",
+    MMChange: "0.2%",
+    YYChange: "1.3%"
   },
   AK: {
     state: "ALASKA",
-    avergeListingPrice: "$267,404",
-    mediumSalesPrice: "$-",
-    popularity: 31
+    fillKey: "Republican",
+    median1BrRent: "$930",
+    median2BrRent: "$1,190",
+    MMChange: "-0.3%",
+    YYChange: "-1.0%"
   },
   AR: {
     state: "ARKANSAS",
-    avergeListingPrice: "$191,446",
-    mediumSalesPrice: "$156,000",
-    popularity: 16
+    fillKey: "Republican",
+    median1BrRent: "$570",
+    median2BrRent: "$720",
+    MMChange: "0.1%",
+    YYChange: "3.4%"
   },
   AL: {
     state: "ALABAMA",
-    avergeListingPrice: "$212,733",
-    mediumSalesPrice: "$171,500",
-    popularity: 10
+    fillKey: "Republican",
+    median1BrRent: "$650",
+    median2BrRent: "$790",
+    MMChange: "-0.5%",
+    YYChange: "0.6%"
   }
 };
 
-export default class TableExampleSortable extends Component {
+export default class TrendsApartmentTable extends Component {
   state = {
     column: null,
-    data: housingData,
+    data: apartmentData,
     direction: null
   };
 
@@ -345,34 +445,41 @@ export default class TableExampleSortable extends Component {
               State
             </Table.HeaderCell>
             <Table.HeaderCell
-              sorted={column === "avergeListingPrice" ? direction : null}
-              onClick={this.handleSort("avergeListingPrice")}
+              sorted={column === "median1BrRent" ? direction : null}
+              onClick={this.handleSort("median1BrRent")}
             >
-              Housing Average Listing Price
+              Median 1 Bed Room Rent
             </Table.HeaderCell>
             <Table.HeaderCell
-              sorted={column === "mediumSalesPrice" ? direction : null}
-              onClick={this.handleSort("mediumSalesPrice")}
+              sorted={column === "median2BrRent" ? direction : null}
+              onClick={this.handleSort("median2BrRent")}
             >
-              Housing Median Sales Price
+              Median 2 Bed Room Rent
             </Table.HeaderCell>
             <Table.HeaderCell
-              sorted={column === "popularity" ? direction : null}
-              onClick={this.handleSort("popularity")}
+              sorted={column === "MMChange" ? direction : null}
+              onClick={this.handleSort("MMChange")}
             >
-              Trulia Popularity
+              MM Change
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              sorted={column === "YYChange" ? direction : null}
+              onClick={this.handleSort("YYChange")}
+            >
+              YY Change
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
           {_.map(
             data,
-            ({ avergeListingPrice, mediumSalesPrice, popularity, state }) => (
-              <Table.Row key={popularity}>
+            ({ median1BrRent, median2BrRent, MMChange, YYChange, state }) => (
+              <Table.Row key={state}>
                 <Table.Cell>{state}</Table.Cell>
-                <Table.Cell>{avergeListingPrice}</Table.Cell>
-                <Table.Cell>{mediumSalesPrice}</Table.Cell>
-                <Table.Cell>{popularity}</Table.Cell>
+                <Table.Cell>{median1BrRent}</Table.Cell>
+                <Table.Cell>{median2BrRent}</Table.Cell>
+                <Table.Cell>{MMChange}</Table.Cell>
+                <Table.Cell>{YYChange}</Table.Cell>
               </Table.Row>
             )
           )}
