@@ -57,6 +57,9 @@ class MenuExampleSecondary extends Component {
           name="CREDIT SCORE"
           active={activeItem === "CREDIT SCORE"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/credit"
         />
         <Menu.Item
           name="BILLS"
@@ -65,8 +68,6 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
-          as={Link}
-          to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />
@@ -121,12 +122,15 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" active>
+                <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>
                 <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
-                <Menu.Item as={Link} to="/profile">
-                  SETTING
+                <Menu.Item exact as={NavLink} to="/howitworks">
+                  HOW IT WORKS
+                </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/aboutus">
+                  ABOUT US
                 </Menu.Item>
                 <Menu.Item as={Link} to="/profile">
                   PROFILE
@@ -146,7 +150,6 @@ class DesktopContainer extends Component {
             </Menu>
           </Segment>
         </Visibility>
-
         <MenuExampleSecondary />
         {children}
       </Responsive>

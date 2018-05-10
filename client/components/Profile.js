@@ -61,8 +61,7 @@ class Profile extends React.Component {
       jobTitle: "",
       incomeRange: 0,
       birthday: "",
-      email: "",
-      password: ""
+      email: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,10 +71,11 @@ class Profile extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { id } = this.props;
+    const { id, user } = this.props;
     store.dispatch(updateProfile(id, this.state));
   }
   render() {
+    const { user } = this.props;
     return (
       <ResponsiveContainer>
         <Header as="h2" icon textAlign="center">
@@ -93,7 +93,7 @@ class Profile extends React.Component {
               <label>First name</label>
               <Input
                 fluid
-                placeholder="First name"
+                placeholder={user.firstName}
                 value={this.state.firstName}
                 name="firstName"
                 onChange={this.handleChange}
@@ -103,7 +103,7 @@ class Profile extends React.Component {
               <label>Last name</label>
               <Input
                 fluid
-                placeholder="Last Name"
+                placeholder={user.lastName}
                 value={this.state.lastName}
                 name="lastName"
                 onChange={this.handleChange}
@@ -116,13 +116,13 @@ class Profile extends React.Component {
                 name="birthday"
                 onChange={this.handleChange}
                 fluid
-                placeholder="BirthDay"
+                placeholder={user.birthday}
               />
             </Form.Field>
           </Form.Group>
           <Form.Group
             unstackable
-            widths={2}
+            widths={1}
             style={{ marginBottom: "3em", marginTop: "3em" }}
           >
             <Form.Input
@@ -130,14 +130,7 @@ class Profile extends React.Component {
               name="email"
               onChange={this.handleChange}
               label="Email"
-              placeholder="Email"
-            />
-            <Form.Input
-              value={this.state.password}
-              name="password"
-              onChange={this.handleChange}
-              label="Password"
-              placeholder="Password"
+              placeholder={user.email}
             />
           </Form.Group>
           <Form.Group
@@ -156,7 +149,7 @@ class Profile extends React.Component {
               name="nickName"
               onChange={this.handleChange}
               label="NickName"
-              placeholder="NickName"
+              placeholder={user.nickName}
             />
           </Form.Group>
           <Form.Group
@@ -200,6 +193,7 @@ class Profile extends React.Component {
 
 const mapState = state => {
   return {
+    user: state.user,
     id: state.user.id
   };
 };
