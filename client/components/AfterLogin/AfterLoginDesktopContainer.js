@@ -121,7 +121,7 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" to="/home" active>
+                <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>
                 <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
