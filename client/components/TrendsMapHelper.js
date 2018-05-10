@@ -1,6 +1,7 @@
 import React from "react";
 import DataMapHousing from "./DataMapHousing";
 import DataMapHousingMedSales from "./DataMapHousingMedSales";
+import DataMapHousingTruliaPop from "./DataMapHousingTruliaPop";
 import DataMapApartments1Br from "./DataMapApartments";
 import DataMapApartments2Br from "./DataMapApartments2Br";
 import DatMapApartmentsMMRentChange from "./DataMapApartmentsMMRentChange";
@@ -26,7 +27,7 @@ const renderMap = currentMap => {
     case MEDIAN_SALES_PRICE:
       return <DataMapHousingMedSales />;
     case TRULIA_POPULARITY:
-    // return <DataMapHousing />;
+      return <DataMapHousingTruliaPop />;
     case ONE_BED_ROOM_RENT:
       return <DataMapApartments1Br />;
     case TWO_BED_ROOM_RENT:
