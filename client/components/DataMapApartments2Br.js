@@ -12,7 +12,7 @@ class DataMapApartments2Br extends Component {
         highlightBorderColor: "#bada55",
         popupTemplate: function(geography, data) {
           return (
-            '<div class="hoverinfo">' +
+            "<div class=\"hoverinfo\">" +
             geography.properties.name +
             "</br>" +
             "Median 2 Bedroom Rent: " +
@@ -248,8 +248,8 @@ class DataMapApartments2Br extends Component {
   render() {
     const divStyle = {
       position: "relative",
-      width: "1500px",
-      height: "800px"
+      width: "1100px",
+      height: "600px"
     };
     return (
       <div>
