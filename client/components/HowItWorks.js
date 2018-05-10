@@ -14,7 +14,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import DesktopContainer from "./DesktopContainer";
@@ -35,7 +35,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const HowItWorks = () => (
@@ -106,7 +106,7 @@ const HowItWorks = () => (
           <Grid.Column floated="left" width={6}>
             <Image
               size="medium"
-              src="../../../../../../pictures/feature_link_solution.gif"
+              src="../../../../../../pictures/_solution.gif"
             />
           </Grid.Column>
           <Grid.Column width={8}>
