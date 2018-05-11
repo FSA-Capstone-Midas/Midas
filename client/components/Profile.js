@@ -51,17 +51,18 @@ ResponsiveContainer.propTypes = {
 
 class Profile extends React.Component {
   constructor(props) {
+    console.log("props!!", props);
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      nickName: "",
+      firstName: props.user.firstName,
+      lastName: props.user.lastName,
+      nickName: props.user.nickName,
       phoneNumber: 0,
-      address: "",
       jobTitle: "",
       incomeRange: 0,
-      birthday: "",
-      email: ""
+      birthday: props.user.birthday,
+      email: props.user.email,
+      state: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -98,7 +99,7 @@ class Profile extends React.Component {
               <Input
                 fluid
                 placeholder={user.firstName}
-                value={user.firstName}
+                value={this.state.firstName}
                 name="firstName"
                 onChange={this.handleChange}
               />
