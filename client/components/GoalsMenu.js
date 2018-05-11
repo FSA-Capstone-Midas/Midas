@@ -18,73 +18,70 @@ class GoalsMenu extends Component {
       <Segment>
         <h1>You have not added any goals. Get Started</h1>
         <h3>Choose a Goal:</h3>
-
         <Grid>
-          <Grid.Row columns={4}>
-            <Grid.Column>
-              <Card
-                header="Pay off Credit Card Debit"
-                image={"../../../../../../pictures/matthew.png"}
-                onClick={event =>
-                  this.handleClick(event, { name: "creditCard" })
-                }
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Save for Retirement"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Save for an Emergency"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-            <Grid.Column width={1}>
-              <Sticky>
-                <Header as="h3">Stuck Content</Header>
-              </Sticky>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Buy a house"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Buy a Car"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Save for College"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                header="Take a Trip"
-                onClick={this.handleClick}
-                image={"../../../../../../pictures/matthew.png"}
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row columns={1}>
-            <Grid.Column>
-              <Sticky>
-                <Header as="h3">Tutorial</Header>
-              </Sticky>
-            </Grid.Column>
-          </Grid.Row>
+          <Grid.Column width={12}>
+            <Grid>
+              <Grid.Row columns={4}>
+                <Grid.Column>
+                  <Card
+                    header="Pay off Credit Card Debit"
+                    image={"../../../../../../pictures/matthew.png"}
+                    onClick={event =>
+                      this.handleClick(event, { name: "creditCard" })
+                    }
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Card
+                    header="Save for Retirement"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Card
+                    header="Save for an Emergency"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+
+                <Grid.Column>
+                  <Card
+                    header="Buy a house"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Card
+                    header="Buy a Car"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Card
+                    header="Save for College"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Card
+                    header="Take a Trip"
+                    onClick={this.handleClick}
+                    image={"../../../../../../pictures/matthew.png"}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <Sticky>
+              <Header as="h3">Stuck Content</Header>
+            </Sticky>
+          </Grid.Column>
         </Grid>
       </Segment>
     );
