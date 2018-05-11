@@ -13,7 +13,8 @@ import {
   Transactions,
   Profile,
   Budget,
-  UserCredit
+  UserCredit,
+  Goals
 } from "./components";
 import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 
@@ -50,6 +51,7 @@ class Routes extends Component {
             <Route exact path="/trend" component={UserTrend} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/credit" component={UserCredit} />
+            <Route exact path="/goals" component={Goals} />
             <Route component={UserHome} />
           </Switch>
         )}
