@@ -37,7 +37,6 @@ class Goals extends Component {
             <GoalsMenu />
           </Segment>
         )}
-        <Footer />
       </ResponsiveContainer>
     );
   }
