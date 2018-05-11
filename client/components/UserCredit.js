@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
-import { Grid } from "semantic-ui-react";
+import { Grid, Segment, Progress } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import { Segment, Progress } from "semantic-react";
 import { ProgressBar } from "react-bootstrap";
 
 const ResponsiveContainer = ({ children }) => (

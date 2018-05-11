@@ -108,6 +108,11 @@ h2 {
 #transactionRow {
   display: flex;
 }
+
+#stickyNode {
+  border-left-color: black;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -115,6 +120,7 @@ h2 {
   width: 100%;
   text-align: center;
 }
+
 #app {
   height: 100%;
 

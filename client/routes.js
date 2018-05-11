@@ -13,9 +13,11 @@ import {
   Transactions,
   Profile,
   Budget,
-  Retirement,
   UserCredit,
-  RetirementResult,
+  Goals,
+  SaveForEmergency,
+  Retirement,
+  RetirementResult
 } from "./components";
 import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
 
@@ -53,6 +55,12 @@ class Routes extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/retirement" component={Retirement} />
             <Route exact path="/credit" component={UserCredit} />
+            <Route exact path="/goals" component={Goals} />
+            <Route
+              exact
+              path="/saveForEmergency"
+              component={SaveForEmergency}
+            />
             <Route
               exact
               path="/retirement/analysis"
@@ -75,7 +83,7 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 
@@ -92,7 +100,7 @@ const mapDispatch = dispatch => {
     },
     loadAllStateFromServer() {
       dispatch(fetchAllState());
-    },
+    }
   };
 };
 
@@ -105,5 +113,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };

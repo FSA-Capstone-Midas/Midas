@@ -25,9 +25,11 @@ export { default as DataMapApartments2Br } from "./DataMapApartments2Br";
 export { default as Retirement } from "./Retirement";
 export { default as RetirementResult } from "./RetirementResult";
 export { default as UserCredit } from "./UserCredit";
+export { default as Goals } from "./Goals";
+export { default as SaveForEmergency } from "./SaveForEmergency";
 export {
-  default as DataMapApartmentsMMRentChange,
+  default as DataMapApartmentsMMRentChange
 } from "./DataMapApartmentsMMRentChange";
 export {
-  default as DataMapApartmentYYRentChange,
+  default as DataMapApartmentYYRentChange
 } from "./DataMapApartmentYYRentChange";
