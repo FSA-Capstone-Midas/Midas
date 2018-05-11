@@ -10,9 +10,7 @@ class GoalsMenu extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event, data) {
-    console.log(data.name);
-  }
+  handleClick(event, data) {}
 
   render() {
     return (
@@ -38,6 +36,8 @@ class GoalsMenu extends Component {
                     header="Save for Retirement"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -45,6 +45,8 @@ class GoalsMenu extends Component {
                     header="Save for an Emergency"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
 
@@ -53,6 +55,8 @@ class GoalsMenu extends Component {
                     header="Buy a house"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -60,6 +64,8 @@ class GoalsMenu extends Component {
                     header="Buy a Car"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -67,6 +73,8 @@ class GoalsMenu extends Component {
                     header="Save for College"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -74,6 +82,8 @@ class GoalsMenu extends Component {
                     header="Take a Trip"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/"
                   />
                 </Grid.Column>
               </Grid.Row>
