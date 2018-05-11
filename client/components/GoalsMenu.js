@@ -15,8 +15,6 @@ class GoalsMenu extends Component {
   render() {
     return (
       <Segment>
-        <h1>You have not added any goals. Get Started</h1>
-        <h3>Choose a Goal:</h3>
         <Grid>
           <Grid.Column width={12}>
             <Grid>

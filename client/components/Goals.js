@@ -3,7 +3,7 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "./Footer";
-import { Segment } from "semantic-react";
+import { Segment, Button } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
 
@@ -19,7 +19,7 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: false
+      goals: true
     };
   }
 
@@ -30,10 +30,15 @@ class Goals extends Component {
         <Segment>Goal Page</Segment>
         {goals ? (
           <Segment>
+            <div>
+              <Button positive>Add More Goals!</Button>
+            </div>
             <GoalsComponent />
           </Segment>
         ) : (
           <Segment>
+            <h1>You have not added any goals. Get Started</h1>
+            <h3>Choose a Goal:</h3>
             <GoalsMenu />
           </Segment>
         )}
