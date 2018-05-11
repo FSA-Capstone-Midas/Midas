@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Icon,
-  Image as ImageComponent,
-  Item,
-  Label,
-  Segment
-} from "semantic-ui-react";
+import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
 
 const ItemExampleDivided = () => (
   <Item.Group divided>
@@ -20,7 +13,7 @@ const ItemExampleDivided = () => (
         </Item.Meta>
         <Item.Description>pending</Item.Description>
         <Item.Extra>
-          <Label>IMAX</Label>
+          <Label>Retirement</Label>
           <Label icon="globe" content="Additional Languages" />
         </Item.Extra>
       </Item.Content>
@@ -36,11 +29,7 @@ const ItemExampleDivided = () => (
         </Item.Meta>
         <Item.Description>pending</Item.Description>
         <Item.Extra>
-          <Button primary floated="right">
-            Buy tickets
-            <Icon name="right chevron" />
-          </Button>
-          <Label>Limited</Label>
+          <Label>Buy a House</Label>
         </Item.Extra>
       </Item.Content>
     </Item>
@@ -53,13 +42,8 @@ const ItemExampleDivided = () => (
         <Item.Meta>
           <span className="cinema">IFC</span>
         </Item.Meta>
-        <Item.Description>pending</Item.Description>
-        <Item.Extra>
-          <Button primary floated="right">
-            Buy tickets
-            <Icon name="right chevron" />
-          </Button>
-        </Item.Extra>
+        <Item.Description>College</Item.Description>
+        <Item.Extra />
       </Item.Content>
     </Item>
   </Item.Group>
