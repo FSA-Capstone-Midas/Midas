@@ -3,10 +3,10 @@
   src: url('../../../../../fonts/jaapokkienchance-regular.ttf');
 } */
 
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 a {
@@ -20,11 +20,6 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
-}
-
-form div {
-  /* margin: 1em; */
-  /* display: inline; */
 }
 
 h1 {
@@ -66,7 +61,7 @@ h2 {
 }
 
 #homeBackground {
-  background-image: url('pictures/backgroundNYC.png') !important;
+  background-image: url("pictures/backgroundNYC.png") !important;
   background-size: cover !important;
 }
 
@@ -123,7 +118,14 @@ h2 {
 
 #app {
   height: 100%;
+}
 
+.format {
+  margin-left: 30px;
+}
+#alertMessage {
+  color: orange;
+}
 /* Progress for multi-steps form */
 .progress {
   margin-bottom: 20px;

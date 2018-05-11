@@ -5,26 +5,24 @@ import history from "../history";
 /**
  * ACTION TYPES
  */
-const ADD_FORM = "ADD_FORM";
+const ADD_HOUSE_FORM = "ADD_HOUSE_FORM";
 
 /**
  * INITIAL STATE
  */
 const fieldValues = {
-  birthyear: "",
-  earnEachYear: "",
-  martialStatus: "",
-  monthlyRetirementSpending: "",
-  retirementage: "",
-  saveEachYear: "",
-  savedSoFar: ""
+  annualIncome: "",
+  mortgageRate: "",
+  percentDownPayment: "",
+  annualInsurance: "",
+  annualPropertyTax: ""
 };
 
 /**
  * ACTION CREATORS
  */
-export function addFrom(changeDetails) {
-  const action = { type: ADD_FORM, changeDetails };
+export function addHouseForm(changeDetails) {
+  const action = { type: ADD_HOUSE_FORM, changeDetails };
   return action;
 }
 
@@ -32,8 +30,8 @@ export function addFrom(changeDetails) {
  * THUNK CREATORS
  */
 
-export const addFormdetails = changeDetails => dispatch => {
-  dispatch(addFrom(changeDetails));
+export const addHouseFormdetails = changeDetails => dispatch => {
+  dispatch(addHouseForm(changeDetails));
 };
 
 /**
@@ -41,7 +39,7 @@ export const addFormdetails = changeDetails => dispatch => {
  */
 export default function(state = fieldValues, action) {
   switch (action.type) {
-    case ADD_FORM:
+    case ADD_HOUSE_FORM:
       return Object.assign({}, state, action.changeDetails);
     default:
       return state;
