@@ -33,7 +33,6 @@ class Retirement extends Component {
 
     this.nextStep = this.nextStep.bind(this);
     this.previousStep = this.previousStep.bind(this);
-    this.submitRegistration = this.submitRegistration.bind(this);
     this.showStep = this.showStep.bind(this);
   }
 
@@ -53,20 +52,10 @@ class Retirement extends Component {
     });
   }
 
-  submitRegistration() {
-    // Handle via ajax submitting the user data, upon
-    // success return this.nextStop(). If it fails,
-    // show the user the error but don't advance
-
-    this.nextStep();
-  }
-
   showStep() {
     switch (this.state.step) {
       case 1:
-        return (
-          <Step1 nextStep={this.nextStep} previousStep={this.previousStep} />
-        );
+        return <Step1 nextStep={this.nextStep} />;
       case 2:
         return (
           <Step2 nextStep={this.nextStep} previousStep={this.previousStep} />
@@ -74,24 +63,23 @@ class Retirement extends Component {
       case 3:
         return (
           <Step3Confirmation
-            fieldValues={this.state.fieldValues}
             previousStep={this.previousStep}
+            nextStep={this.nextStep}
             submitRegistration={this.submitRegistration}
           />
         );
       case 4:
-        return <Step4Success fieldValues={this.state.fieldValues} />;
+        return <Step4Success />;
     }
   }
 
   render() {
     console.log("account ", this.props.account); //user account info
     console.log("transaction ", this.props.transaction); //user
-    // const { step, fieldValues } = this.state;
 
-    // const style = {
-    //   width: this.state.step / 4 * 100 + "%",
-    // };
+    const classNameStep1 = this.state.step === 1 ? "active" : "";
+    const classNameStep2 = this.state.step === 2 ? "active" : "";
+    const classNameStep3 = this.state.step === 3 ? "active" : "";
 
     return (
       <ResponsiveContainer>
@@ -110,10 +98,42 @@ class Retirement extends Component {
                 ) : (
                   <div>
                     <main>
-                      <span className="progress-step">
-                        Step {this.state.step}
-                      </span>
-                      <progress className="progress" />
+                      {this.state.step !== 4 ? (
+                        <div>
+                          <h1>
+                            {this.props.user.firstName}, looks like you are
+                            ready to take charge of your retirement?
+                          </h1>
+                          <div className="ui massive steps">
+                            <div className={"step " + classNameStep1}>
+                              <i className="user icon" />
+                              <div className="content">
+                                <div className="title">Basic Info</div>
+                                <div className="description">
+                                  Tell us more about you!
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className={"step " + classNameStep2}>
+                              <i className="payment icon" />
+                              <div className="content">
+                                <div className="title">More Info</div>
+                                <div className="description">
+                                  What's your financial habits?
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className={"step " + classNameStep3}>
+                              <i className="info icon" />
+                              <div className="content">
+                                <div className="title">Confirmation</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
                       {this.showStep()}
                     </main>
                   </div>
@@ -122,7 +142,6 @@ class Retirement extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-
         <Footer />
       </ResponsiveContainer>
     );
@@ -134,6 +153,7 @@ const mapStateToProps = state => {
     account: state.accounts.accountInfo,
     transaction: state.transactions.transaction,
     form: state.form,
+    user: state.user,
   };
 };
 

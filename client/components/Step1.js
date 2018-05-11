@@ -16,53 +16,62 @@ class Step1 extends Component {
 
   nextStep(event) {
     event.preventDefault();
-    console.log("event");
     this.props.nextStep();
   }
 
   render() {
-    const { handleChange } = this.props;
+    const { handleChange, handleSelectChange, form } = this.props;
 
     return (
       <div>
+        <h2 />
         <h2>
           We need some information to calculate the chance that your portfolio
-          will support your spending goals throughout retirement. First, let's
-          establish the timeline for your plan.
+          will support your spending goals throughout retirement.
         </h2>
+        <h2 />
+        <h2> First, let's establish the timeline for your plan.</h2>
+
+        <h2 />
         <div>
-          <Form>
+          <Form className="ui huge">
             <Form.Group widths="equal">
               <Form.Field>
                 <label>Birth Year</label>
-                <input type="text" name="birthyear" onChange={handleChange} />
-              </Form.Field>
-
-              <Form.Field>
-                <label>Retirement Age</label>
-                <input
+                <Input
                   type="text"
-                  name="retirementage"
+                  name="birthyear"
+                  value={form.birthyear}
                   onChange={handleChange}
                 />
               </Form.Field>
 
               <Form.Field>
+                <label>Retirement Age</label>
+                <Input
+                  type="text"
+                  name="retirementage"
+                  value={form.retirementage}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <h2 />
+              <Form.Field>
                 <label>Marital Status</label>
                 <Form.Dropdown
-                  control={Select}
                   fluid
                   selection
                   placeholder="Martial Status"
                   options={options}
+                  value={form.martialStatus}
                   name="martialStatus"
-                  onChange={handleChange}
+                  onChange={handleSelectChange}
                 />
               </Form.Field>
             </Form.Group>
           </Form>
 
-          <Button positive onClick={this.nextStep}>
+          <Button size="huge" positive onClick={this.nextStep}>
             Save & Continue
           </Button>
         </div>
@@ -83,6 +92,9 @@ const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(event) {
       dispatch(addFormdetails({ [event.target.name]: event.target.value }));
+    },
+    handleSelectChange(e, { value }) {
+      dispatch(addFormdetails({ martialStatus: value }));
     },
   };
 };

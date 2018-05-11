@@ -10,7 +10,15 @@ const ADD_FORM = "ADD_FORM";
 /**
  * INITIAL STATE
  */
-const fieldValues = {};
+const fieldValues = {
+  birthyear: "",
+  earnEachYear: "",
+  martialStatus: "",
+  monthlyRetirementSpending: "",
+  retirementage: "",
+  saveEachYear: "",
+  savedSoFar: "",
+};
 
 /**
  * ACTION CREATORS

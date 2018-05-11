@@ -1,80 +1,112 @@
 import React, { Component } from "react";
-import { getRadioOrCheckboxValue } from "./utils";
+import { connect } from "react-redux";
+import { Form, Input, Dropdown, Select, Button } from "semantic-ui-react";
+import { addFormdetails } from "../store/form";
 
-class Step1 extends Component {
+class Step2 extends Component {
   constructor(props) {
     super(props);
     this.nextStep = this.nextStep.bind(this);
+    this.previousStep = this.previousStep.bind(this);
   }
 
-  nextStep() {
-    // Get values via querySelector
-    var age = document.querySelector("input[name=\"age\"]:checked");
-    var colors = document.querySelectorAll("input[name=\"colors\"]");
-
-    var data = {
-      age: getRadioOrCheckboxValue(age),
-      colors: getRadioOrCheckboxValue(colors),
-    };
-
-    this.props.saveValues(data);
+  nextStep(event) {
+    event.preventDefault();
     this.props.nextStep();
   }
 
-  renderOptions(category, name, value, index) {
-    var isChecked = function() {
-      if (category == "radio") return value == this.props.fieldValues[name];
-
-      if (category == "checkbox") return this.props.fieldValues[name].indexOf(value) >= 0;
-
-      return false;
-    }.bind(this);
-
-    return (
-      <label key={index}>
-        <input
-          category={category}
-          name={name}
-          value={value}
-          defaultChecked={isChecked()}
-        />{" "}
-        {value}
-      </label>
-    );
+  previousStep(event) {
+    event.preventDefault();
+    this.props.previousStep();
   }
 
   render() {
+    const { handleChange, form } = this.props;
+
     return (
       <div>
-        <h2>Survey Question</h2>
-        <ul className="form-fields">
-          <li className="radio">
-            <span className="label">Age</span>
-            {["18-26", "27-38", "39-50", "51-62"].map(
-              this.renderOptions.bind(this, "radio", "age")
-            )}
-          </li>
-          <li className="checkbox">
-            <span className="label">Favorite Colors</span>
-            {["Blue", "Red", "Orange", "Green"].map(
-              this.renderOptions.bind(this, "checkbox", "colors")
-            )}
-          </li>
-          <li className="form-footer">
-            <button
-              className="btn -default pull-left"
-              onClick={this.props.previousStep}
-            >
-              Back
-            </button>
-            <button className="btn -primary pull-right" onClick={this.nextStep}>
-              Save & Continue
-            </button>
-          </li>
-        </ul>
+        <h2>
+          We need some information to calculate the chance that your portfolio
+          will support your spending goals throughout retirement.
+        </h2>
+        <h2 />
+        <h2>First, let's establish the timeline for your plan.</h2>
+        <h2 />
+
+        <div>
+          <Form className="ui huge">
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>What You've Saved So Far</label>
+                <input
+                  type="text"
+                  name="savedSoFar"
+                  value={form.savedSoFar}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <label>How Much You Save Each Year</label>
+                <input
+                  type="text"
+                  name="saveEachYear"
+                  value={form.saveEachYear}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>How Much You Earn Each Year</label>
+                <input
+                  type="text"
+                  name="earnEachYear"
+                  value={form.earnEachYear}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+
+              <Form.Field>
+                <label>Monthly Retirement Spending</label>
+                <input
+                  type="text"
+                  name="monthlyRetirementSpending"
+                  onChange={handleChange}
+                  value={form.monthlyRetirementSpending}
+                />
+              </Form.Field>
+            </Form.Group>
+          </Form>
+
+          <Button size="huge" positive onClick={this.previousStep}>
+            Go Back
+          </Button>
+          <Button size="huge" positive onClick={this.nextStep}>
+            Save & Continue
+          </Button>
+        </div>
       </div>
     );
   }
 }
 
-export default Step1;
+const mapStateToProps = state => {
+  return {
+    account: state.accounts.accountInfo,
+    transaction: state.transactions.transaction,
+    form: state.form,
+  };
+};
+
+const mapDispatchToProps = function(dispatch, ownProps) {
+  return {
+    handleChange(event) {
+      dispatch(addFormdetails({ [event.target.name]: event.target.value }));
+    },
+  };
+};
+
+const Step2Container = connect(mapStateToProps, mapDispatchToProps)(Step2);
+
+export default Step2Container;
