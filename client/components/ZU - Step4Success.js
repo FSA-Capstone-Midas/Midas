@@ -1,6 +1,6 @@
 // import React, { Component } from "react";
 // import { ResponsiveStream } from "@nivo/stream";
-// import Step4Table from "./Step4Table";
+// import RetirementTable from "./RetirementTable";
 
 // const data = [
 //   {
@@ -139,7 +139,7 @@
 //   render() {
 //     return (
 //       <div>
-//         <Step4Table />
+//         <RetirementTable />
 //         <div style={{ height: 400 }}>
 //           <h2>Does this render?</h2>
 //           <ResponsiveStream

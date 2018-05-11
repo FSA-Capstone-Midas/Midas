@@ -10,7 +10,6 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3Confirmation from "./Step3Confirmation";
-import Step4Success from "./Step4Success";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -69,7 +68,7 @@ class Retirement extends Component {
           />
         );
       case 4:
-        return <Step4Success />;
+        return null;
     }
   }
 

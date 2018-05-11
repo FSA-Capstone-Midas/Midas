@@ -37,7 +37,7 @@ const tableData = [
   },
 ];
 
-class Step4Table extends Component {
+class RetirementTable extends Component {
   state = {
     column: null,
     data: tableData,
@@ -139,4 +139,4 @@ class Step4Table extends Component {
   }
 }
 
-export default Step4Table;
+export default RetirementTable;

@@ -10,7 +10,7 @@ import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { ResponsiveStream } from "@nivo/stream";
-import Step4Table from "./Step4Table";
+import RetirementTable from "./RetirementTable";
 
 const data = [
   {
@@ -198,7 +198,7 @@ class RetirementResult extends Component {
                   <Loading />
                 ) : (
                   <div>
-                    <Step4Table />
+                    <RetirementTable />
                     <div style={{ height: 400 }}>
                       <h2>Does this render?</h2>
                       <ResponsiveStream
