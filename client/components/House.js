@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import { Segment, Form, Input, Button, Icon } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import { addHouseFormdetails } from "../store";
 
 /*eslint-disable*/
 const ResponsiveContainer = ({ children }) => (
@@ -24,6 +25,7 @@ class House extends Component {
   }
 
   render() {
+    const { handleChange, houseForm } = this.props;
     return (
       <ResponsiveContainer>
         <Segment
@@ -41,27 +43,27 @@ class House extends Component {
               <Form.Field
                 control={Input}
                 label="Annual Income $:"
-                placeholder=""
+                onChange={handleChange}
               />
               <Form.Field
                 control={Input}
                 label="Mortgage Rate( average 30-year fixed rate is 4.04%)"
-                placeholder="%"
+                onChange={handleChange}
               />
               <Form.Field
                 control={Input}
                 label="Percent Down Payment"
-                placeholder="%"
+                onChange={handleChange}
               />
               <Form.Field
                 control={Input}
                 label="Annual Insurance $:"
-                placeholder=""
+                onChange={handleChange}
               />
               <Form.Field
                 control={Input}
                 label="Annual Property Tax(national averge is 1%)"
-                placeholder="%"
+                onChange={handleChange}
               />
             </Form.Group>
           </Form>
@@ -87,12 +89,21 @@ class House extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     account: state.plaid.account,
-//     transaction: state.plaid.transaction
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    houseForm: state.houseForm
+  };
+};
 
-// export default connect(mapState)(Home);
-export default House;
+const mapDispatchToProps = function(dispatch, ownProps) {
+  return {
+    handleChange(event) {
+      dispatch(
+        addHouseFormdetails({ [event.target.name]: event.target.value })
+      );
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(House);
