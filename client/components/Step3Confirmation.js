@@ -39,8 +39,7 @@ class Step3Confirmation extends Component {
         console.log(res.data);
       })
       .catch(err => console.log(err));
-
-    this.props.nextStep();
+    history.push("/retirement/analysis");
   }
 
   render() {
