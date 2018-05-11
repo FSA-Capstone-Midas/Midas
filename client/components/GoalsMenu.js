@@ -34,7 +34,7 @@ class GoalsMenu extends Component {
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
                     as={NavLink}
-                    to="/"
+                    to="/retirement"
                   />
                 </Grid.Column>
                 <Grid.Column>
