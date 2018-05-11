@@ -108,6 +108,15 @@ h2 {
 #transactionRow {
   display: flex;
 }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+#app {
+  height: 100%;
 
 /* Progress for multi-steps form */
 .progress {

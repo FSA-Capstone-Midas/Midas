@@ -11,7 +11,12 @@ const AccountTable = props => {
         accounts.map(each => {
           if (each.type === "depository") {
             return (
-              <Table color="blue" key={each.account_id} inverted>
+              <Table
+                color="blue"
+                key={each.account_id}
+                inverted
+                style={{ fontSize: "15px" }}
+              >
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
@@ -30,7 +35,12 @@ const AccountTable = props => {
             );
           } else if (each.type === "credit") {
             return (
-              <Table color="violet" key={each.account_id} inverted>
+              <Table
+                color="violet"
+                key={each.account_id}
+                inverted
+                style={{ fontSize: "15px" }}
+              >
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>

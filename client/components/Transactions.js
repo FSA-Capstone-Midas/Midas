@@ -51,7 +51,7 @@ class Transactions extends Component {
       <ResponsiveContainer>
         <Segment
           id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
+          style={{ padding: "1.5em", marginLeft: "15%", marginRight: "15%" }}
           vertical
         >
           <Grid celled="internally" columns="equal" stackable>
@@ -63,7 +63,7 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment>Transactions</Segment>
+                    <Segment style={{ fontSize: "28px" }}>Transactions</Segment>
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">

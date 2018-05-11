@@ -28,211 +28,215 @@ class DatMapApartmentsMMRentChange extends Component {
       // },
 
       fills: {
-        "Very High": "#800000",
+        "Very High": "#564f68",
+        High: "#ff1a1a",
         "Relative High": "#FF6666",
+        Low: "#ff9999",
         "Relative Low": "#ffcccc",
-        "Very Low": "#EAA9A8",
-        defaultFill: "#EDDC4E"
+        "Very Low": "#7d739b",
+        Medium: "#6c6384",
+        defaultFill: "#EDDC4E",
+        "New York": "#ff5347"
       },
       data: {
         AZ: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         CO: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         DE: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         FL: {
-          fillKey: "UNDECIDED",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         GA: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         HI: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           MMChange: "0.5%"
         },
         ID: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.3%"
         },
         IL: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0%"
         },
         IN: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0%"
         },
         IA: {
-          fillKey: "Light Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.2%"
         },
         KS: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         KY: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         LA: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.4%"
         },
         MD: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         ME: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.5%"
         },
         MA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           MMChange: "0.7%"
         },
         MN: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0.3%"
         },
         MI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         MS: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         MO: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.2%"
         },
         MT: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.3%"
         },
         NC: {
-          fillKey: "Light Republican",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         NE: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         NV: {
-          fillKey: "Heavy Democrat",
+          fillKey: "Very High",
           MMChange: "0.3%"
         },
         NH: {
-          fillKey: "Light Democrat",
+          fillKey: "Very Low",
           MMChange: "0%"
         },
         NJ: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "0.2%"
         },
         NY: {
-          fillKey: "Very High",
+          fillKey: "New York",
           MMChange: "0%"
         },
         ND: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.6%"
         },
         NM: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           MMChange: "0.4%"
         },
         OH: {
-          fillKey: "UNDECIDED",
+          fillKey: "Very Low",
           MMChange: "0%"
         },
         OK: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         OR: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           MMChange: "0.7%"
         },
         PA: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.2%"
         },
         RI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.9%"
         },
         SC: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.1%"
         },
         SD: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         TN: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "0%"
         },
         TX: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.1%"
         },
         UT: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "0%"
         },
         WI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "0%"
         },
         VA: {
-          fillKey: "Light Democrat",
+          fillKey: "Very Low",
           MMChange: "0.2%"
         },
         VT: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.2%"
         },
         WA: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           MMChange: "-0.8%"
         },
         WV: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.4%"
         },
         WY: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         CA: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         CT: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           MMChange: "0.2%"
         },
         AK: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.3%"
         },
         AR: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "0.1%"
         },
         AL: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           MMChange: "-0.5%"
         }
       },

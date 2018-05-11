@@ -28,211 +28,215 @@ class DatMapApartmentsYYRentChange extends Component {
       // },
 
       fills: {
-        "Very High": "#800000",
+        "Very High": "#875700",
+        High: "#ff1a1a",
         "Relative High": "#FF6666",
+        Low: "#ff9999",
         "Relative Low": "#ffcccc",
-        "Very Low": "#EAA9A8",
-        defaultFill: "#EDDC4E"
+        "Very Low": "#c47e00",
+        Medium: "#9b6400",
+        defaultFill: "#EDDC4E",
+        "New York": "#ff5347"
       },
       data: {
         AZ: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "3.4%"
         },
         CO: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "2.6%"
         },
         DE: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "2.0%"
         },
         FL: {
-          fillKey: "UNDECIDED",
+          fillKey: "Very High",
           YYChange: "3.3%"
         },
         GA: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           YYChange: "3.1%"
         },
         HI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "0%"
         },
         ID: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           YYChange: "4.2%"
         },
         IL: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "1.0%"
         },
         IN: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "1.8%"
         },
         IA: {
-          fillKey: "Light Democrat",
+          fillKey: "Medium",
           YYChange: "0.7%"
         },
         KS: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "1.6%"
         },
         KY: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "0%"
         },
         LA: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "1.0%"
         },
         MD: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "0.9%"
         },
         ME: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "1.5%"
         },
         MA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "2.7%"
         },
         MN: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "3.0%"
         },
         MI: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "2.1%"
         },
         MS: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "2.1%"
         },
         MO: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "0.8%"
         },
         MT: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "2.2%"
         },
         NC: {
-          fillKey: "Light Republican",
+          fillKey: "Medium",
           YYChange: "2.3%"
         },
         NE: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "1.3%"
         },
         NV: {
-          fillKey: "Heavy Democrat",
+          fillKey: "Very High",
           YYChange: "4.6%"
         },
         NH: {
-          fillKey: "Light Democrat",
+          fillKey: "Medium",
           YYChange: "2.2%"
         },
         NJ: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "1.4%"
         },
         NY: {
-          fillKey: "Very High",
+          fillKey: "New York",
           YYChange: "0.7%"
         },
         ND: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "-0.5%"
         },
         NM: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "2.5%"
         },
         OH: {
-          fillKey: "UNDECIDED",
+          fillKey: "Very Low",
           YYChange: "1.6%"
         },
         OK: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "0%"
         },
         OR: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "0.9%"
         },
         PA: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "1.7%"
         },
         RI: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "2.0%"
         },
         SC: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "2.0%"
         },
         SD: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "1.2%"
         },
         TN: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "1.7%"
         },
         TX: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           YYChange: "2.3%"
         },
         UT: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           YYChange: "4.3%"
         },
         WI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "0.9%"
         },
         VA: {
-          fillKey: "Light Democrat",
+          fillKey: "Medium",
           YYChange: "1.4%"
         },
         VT: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           YYChange: "1.9%"
         },
         WA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "3.5%"
         },
         WV: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "-1.5%"
         },
         WY: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "-1.1%"
         },
         CA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           YYChange: "3.6%"
         },
         CT: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           YYChange: "1.3%"
         },
         AK: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "-1.0%"
         },
         AR: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           YYChange: "3.4%"
         },
         AL: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           YYChange: "0.6%"
         }
       },

@@ -7,7 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  Legend
 } from "recharts";
 
 // get today's data
@@ -47,7 +47,7 @@ data.push(
   {
     name: "Sept",
     month: numToString((mm + 5) % 12 || mm + 5),
-    year: 2017,
+    year: 2017
   },
   { name: "Oct", month: numToString((mm + 6) % 12 || mm + 6), year: 2017 },
   { name: "Nov", month: numToString((mm + 7) % 12 || mm + 7), year: 2017 },
@@ -56,14 +56,14 @@ data.push(
   {
     name: "Feb",
     month: numToString((mm + 10) % 10 || mm + 3),
-    year: 2018,
+    year: 2018
   },
   { name: "Mar", month: numToString((mm + 11) % 12 || mm + 11), year: 2018 },
   { name: "Apr", month: numToString((mm + 12) % 12 || mm + 12), year: 2018 },
   {
     name: currentMonth,
     month: numToString((mm + 13) % 12 || mm + 13),
-    year: 2018,
+    year: 2018
   }
 );
 const spendingCategory = {
@@ -73,7 +73,7 @@ const spendingCategory = {
   Recreation: 0,
   Service: 0,
   Shops: 0,
-  Travel: 0,
+  Travel: 0
 };
 
 class BarSpending extends Component {
@@ -98,6 +98,7 @@ class BarSpending extends Component {
 
     return (
       <BarChart
+        style={{ fontSize: "12px" }}
         width={800}
         height={500}
         data={data}

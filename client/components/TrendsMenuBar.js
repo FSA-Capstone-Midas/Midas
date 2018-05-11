@@ -3,7 +3,7 @@ import React from "react";
 const TrendsMenuBar = props => {
   return (
     <div className="four wide column">
-      <div className="ui vertical menu">
+      <div className="ui vertical menu" style={{ fontSize: "15px" }}>
         <div className="item">
           <div className="header">House</div>
           <div className="menu">
