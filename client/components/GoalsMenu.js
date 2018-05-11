@@ -1,44 +1,17 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Segment,
-  Card,
-  Sticky,
-  Header,
-  Button,
-  Image,
-  Modal
-} from "semantic-ui-react";
+import { Grid, Segment, Card, Sticky, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
-
-const ModalModalExample = props => (
-  <Modal trigger={<Button>Show Modal</Button>}>
-    <Modal.Header>Select a Photo</Modal.Header>
-    <Modal.Content image>
-      <Image wrapped size="medium" />
-      <Modal.Description>
-        <Header>Default Profile Image</Header>
-        <p>
-          We've found the following gravatar image associated with your e-mail
-          address.
-        </p>
-        <p>Is it okay to use this photo?</p>
-      </Modal.Description>
-    </Modal.Content>
-  </Modal>
-);
+import { NavLink } from "react-router-dom";
 
 //render menu
 class GoalsMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = { hi: false };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event, data) {
     console.log(data.name);
-    this.setState({ hi: true });
   }
 
   render() {
@@ -51,32 +24,14 @@ class GoalsMenu extends Component {
             <Grid>
               <Grid.Row columns={4}>
                 <Grid.Column>
-                  <Modal
-                    trigger={
-                      <Button>
-                        <Card
-                          header="Pay off Credit Card Debit"
-                          image={"../../../../../../pictures/matthew.png"}
-                          onClick={event =>
-                            this.handleClick(event, { name: "creditCard" })
-                          }
-                        />
-                      </Button>
-                    }
-                  >
-                    <Modal.Header>Select a Photo</Modal.Header>
-                    <Modal.Content image>
-                      <Image wrapped size="medium" />
-                      <Modal.Description>
-                        <Header>Default Profile Image</Header>
-                        <p>
-                          We've found the following gravatar image associated
-                          with your e-mail address.
-                        </p>
-                        <p>Is it okay to use this photo?</p>
-                      </Modal.Description>
-                    </Modal.Content>
-                  </Modal>
+                  <Card
+                    header="Pay off Credit Card Debit"
+                    image={"../../../../../../pictures/matthew.png"}
+                    onClick={this.handleClick}
+                    exact
+                    as={NavLink}
+                    to="/"
+                  />
                 </Grid.Column>
                 <Grid.Column>
                   <Card
