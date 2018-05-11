@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import SideBar from "./SideBar";
 import Table from "./Table";
-import utils from "./utils";
+import { renCompo } from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -51,7 +51,7 @@ class Transactions extends Component {
       <ResponsiveContainer>
         <Segment
           id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
+          style={{ padding: "1.5em", marginLeft: "15%", marginRight: "15%" }}
           vertical
         >
           <Grid celled="internally" columns="equal" stackable>
@@ -63,11 +63,11 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment>Transactions</Segment>
+                    <Segment style={{ fontSize: "28px" }}>Transactions</Segment>
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
-                        {utils(this.state.currentChart, rows)}
+                        {renCompo(this.state.currentChart, rows)}
                       </div>
                     </div>
                     <Table rows={rows} />

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 const SideBar = props => {
   return (
     <div className="four wide column">
-      <div className="ui vertical menu">
+      <div className="ui vertical menu" style={{ fontSize: "16px" }}>
         <div className="item">
           <div className="header">Spending</div>
           <div className="menu">

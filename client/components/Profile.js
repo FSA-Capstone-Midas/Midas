@@ -51,17 +51,18 @@ ResponsiveContainer.propTypes = {
 
 class Profile extends React.Component {
   constructor(props) {
+    console.log("props!!", props);
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      nickName: "",
+      firstName: props.user.firstName,
+      lastName: props.user.lastName,
+      nickName: props.user.nickName,
       phoneNumber: 0,
-      address: "",
       jobTitle: "",
       incomeRange: 0,
-      birthday: "",
-      email: ""
+      birthday: props.user.birthday,
+      email: props.user.email,
+      state: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,14 +78,18 @@ class Profile extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <ResponsiveContainer>
+      <ResponsiveContainer style={{ height: "100%" }}>
         <Header as="h2" icon textAlign="center">
           <Icon name="users" circular />
           <Header.Content>
             Update your profile to get your financial advice optimized!
           </Header.Content>
         </Header>
-        <Form id="profile" onSubmit={this.handleSubmit}>
+        <Form
+          id="profile"
+          onSubmit={this.handleSubmit}
+          style={{ fontSize: "13px" }}
+        >
           <Form.Group
             widths="equal"
             style={{ marginBottom: "3em", marginTop: "3em" }}
@@ -185,7 +190,17 @@ class Profile extends React.Component {
             Update Profile
           </Button>
         </Form>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0",
+            bottom: "-30px",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

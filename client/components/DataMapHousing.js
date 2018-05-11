@@ -28,311 +28,313 @@ class DataMapHousing extends Component {
       // },
 
       fills: {
-        "Very High": "#800000",
+        "Very High": "#ff6a00",
         High: "#ff1a1a",
         "Relative High": "#FF6666",
         Low: "#ff9999",
         "Relative Low": "#ffcccc",
-        "Very Low": "#EAA9A8",
-        defaultFill: "#EDDC4E"
+        "Very Low": "#ffc282",
+        Medium: "#ffa366",
+        defaultFill: "#EDDC4E",
+        "New York": "#ff5347"
       },
       data: {
         AZ: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$322,398",
           mediumSalesPrice: "$225,000",
           popularity: 15
         },
         CO: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$538,477",
           mediumSalesPrice: "$331,000",
           popularity: 19
         },
         DE: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$303,907",
           mediumSalesPrice: "$210,000",
           popularity: 44
         },
         FL: {
-          fillKey: "UNDECIDED",
+          fillKey: "Very High",
           avergeListingPrice: "$406,803",
           mediumSalesPrice: "$218,000",
           popularity: 3
         },
         GA: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$296,535",
           mediumSalesPrice: "$193,000",
           popularity: 14
         },
         HI: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$905,687",
           mediumSalesPrice: "$442,500",
           popularity: 49
         },
         ID: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$349,000",
           mediumSalesPrice: "-",
           popularity: 25
         },
         IL: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$277,163",
           mediumSalesPrice: "$212,000",
           popularity: 39
         },
         IN: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$190,843",
           mediumSalesPrice: "-",
           popularity: 28
         },
         IA: {
-          fillKey: "Light Democrat",
+          fillKey: "Very Low",
           avergeListingPrice: "$185,087",
           mediumSalesPrice: "$157,000",
           popularity: 47
         },
         KS: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$187,649",
           mediumSalesPrice: "-",
           popularity: 32
         },
         KY: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$213,848",
           mediumSalesPrice: "$170,000",
           popularity: 26
         },
         LA: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "232,610",
           mediumSalesPrice: "-",
           popularity: 41
         },
         MD: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$275,717",
           mediumSalesPrice: "-",
           popularity: 27
         },
         ME: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$367,454",
           mediumSalesPrice: "$290,000",
           popularity: 33
         },
         MA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$602,210",
           mediumSalesPrice: "$379,000",
           popularity: 7
         },
         MN: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$212,694",
           mediumSalesPrice: "$164,000",
           popularity: 11
         },
         MI: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$290,514",
           mediumSalesPrice: "$240,000",
           popularity: 42
         },
         MS: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$195,390",
           mediumSalesPrice: "-",
           popularity: 38
         },
         MO: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$204,506",
           mediumSalesPrice: "-",
           popularity: 30
         },
         MT: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           avergeListingPrice: "$314,959",
           mediumSalesPrice: "-",
           popularity: 35
         },
         NC: {
-          fillKey: "Light Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$276,389",
           mediumSalesPrice: "$210,000",
           popularity: 13
         },
         NE: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$230,000",
           mediumSalesPrice: "$178,000",
           popularity: 43
         },
         NV: {
-          fillKey: "Heavy Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$331,971",
           mediumSalesPrice: "$249,000",
           popularity: 8
         },
         NH: {
-          fillKey: "Light Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$310,914",
           mediumSalesPrice: "$245,000",
           popularity: 34
         },
         NJ: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$372,916",
           mediumSalesPrice: "$290,000",
           popularity: 12
         },
         NY: {
-          fillKey: "Very High",
+          fillKey: "New York",
           avergeListingPrice: "$565,227",
           mediumSalesPrice: "$430,000",
           popularity: 4
         },
         ND: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$226,863",
           mediumSalesPrice: "-",
           popularity: 50
         },
         NM: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$254,798",
           mediumSalesPrice: "-",
           popularity: 21
         },
         OH: {
-          fillKey: "UNDECIDED",
+          fillKey: "Very Low",
           avergeListingPrice: "$190,371",
           mediumSalesPrice: "$154,900",
           popularity: 24
         },
         OK: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$201,091",
           mediumSalesPrice: "$150,000",
           popularity: 23
         },
         OR: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$416,718",
           mediumSalesPrice: "$315,000",
           popularity: 20
         },
         PA: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           avergeListingPrice: "$224,090",
           mediumSalesPrice: "$191,000",
           popularity: 6
         },
         RI: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$405,450",
           mediumSalesPrice: "$256,000",
           popularity: 45
         },
         SC: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$291,636",
           mediumSalesPrice: "$181,500",
           popularity: 18
         },
         SD: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$238,163",
           mediumSalesPrice: "$177,500",
           popularity: 48
         },
         TN: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$268,692",
           mediumSalesPrice: "$190,000",
           popularity: 9
         },
         TX: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$320,060",
           mediumSalesPrice: "$-",
           popularity: 2
         },
         UT: {
-          fillKey: "Republican",
+          fillKey: "Very High",
           avergeListingPrice: "$440,946",
           mediumSalesPrice: "-",
           popularity: 29
         },
         WI: {
-          fillKey: "Democrat",
+          fillKey: "Very Low",
           avergeListingPrice: "$223,480",
           mediumSalesPrice: "$197,000",
           popularity: 40
         },
         VA: {
-          fillKey: "Light Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "341,015",
           mediumSalesPrice: "$297,500",
           popularity: 5
         },
         VT: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$306,034",
           mediumSalesPrice: "$332,719",
           popularity: 46
         },
         WA: {
-          fillKey: "Democrat",
+          fillKey: "Medium",
           avergeListingPrice: "$378,575",
           mediumSalesPrice: "$332,719",
           popularity: 17
         },
         WV: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$174,865",
           mediumSalesPrice: "$136,500",
           popularity: 37
         },
         WY: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$291,855",
           mediumSalesPrice: "$-",
           popularity: 36
         },
         CA: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$697,539",
           mediumSalesPrice: "$462,000",
           popularity: 1
         },
         CT: {
-          fillKey: "Democrat",
+          fillKey: "Very High",
           avergeListingPrice: "$435,858",
           mediumSalesPrice: "$253,500",
           popularity: 22
         },
         AK: {
-          fillKey: "Republican",
+          fillKey: "Medium",
           avergeListingPrice: "$267,404",
           mediumSalesPrice: "$-",
           popularity: 31
         },
         AR: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$191,446",
           mediumSalesPrice: "$156,000",
           popularity: 16
         },
         AL: {
-          fillKey: "Republican",
+          fillKey: "Very Low",
           avergeListingPrice: "$212,733",
           mediumSalesPrice: "$171,500",
           popularity: 10

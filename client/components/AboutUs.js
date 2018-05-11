@@ -53,7 +53,7 @@ const AboutUs = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-              <Header as="h3" style={{ fontSize: "2em" }}>
+              <Header as="h3" style={{ fontSize: "6em" }}>
                 About Us
               </Header>
               <p style={{ fontSize: "1.33em" }}>
@@ -65,84 +65,87 @@ const AboutUs = props => {
         </Grid>
       </Segment>
 
-      <Segment style={{ padding: "2em 0em" }} vertical>
+      <Segment
+        style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
+        vertical
+      >
         <Grid container stackable verticalAlign="middle">
           <Grid.Row>
             <Grid.Column>
               <div className="ui link cards">
                 <div className="card">
                   <div className="image">
-                    <img src="../../../../../../pictures/matthew.png" />
+                    <a href="https://www.linkedin.com/in/jingjing-li-757b0711/">
+                      <img src="../../../../../../pictures/JJ.png" />
+                    </a>
                   </div>
                   <div className="content">
                     <div className="header">JingJing Li</div>
                     <div className="meta" />
-                    <div className="description">
-                      Matthew is an interior designer living in New York.
-                    </div>
+                    <div className="description">Software Developer</div>
                   </div>
                   <div className="extra content">
-                    <span className="right floated">Joined in 2013</span>
+                    <span className="right floated">Joined in 2018</span>
                     <span>
-                      <i className="facebook square" />
-                      75 Friends
+                      <i className="user icon" />
+                      1000 connection
                     </span>
                   </div>
                 </div>
                 <div className="card">
                   <div className="image">
-                    <img src="../../../../../../pictures/matthew.png" />
+                    <a href="https://www.linkedin.com/in/joshua-park-7044a7153/">
+                      <img src="../../../../../../pictures/Joshua.png" />
+                    </a>
                   </div>
                   <div className="content">
                     <div className="header">Joshua Park</div>
                     <div className="meta" />
-                    <div className="description">
-                      Molly is a personal assistant living in Paris.
-                    </div>
+                    <div className="description">Software Developer</div>
                   </div>
                   <div className="extra content">
-                    <span className="right floated">Joined in 2011</span>
+                    <span className="right floated">Joined in 2018</span>
                     <span>
-                      <i className="facebook square" />
-                      35 Friends
+                      <i className="user icon" />
+                      20,000 connections
                     </span>
                   </div>
                 </div>
                 <div className="card">
                   <div className="image">
-                    <img src="../../../../../../pictures/matthew.png" />
+                    <a href="https://www.linkedin.com/in/philipleung90/">
+                      <img src="../../../../../../pictures/Philip.png" />
+                    </a>
                   </div>
                   <div className="content">
                     <div className="header">Philip Leung</div>
                     <div className="meta" />
-                    <div className="description">
-                      Elyse is a copywriter working in New York.
-                    </div>
+                    <div className="description">Software Developer</div>
                   </div>
                   <div className="extra content">
-                    <span className="right floated">Joined in 2014</span>
+                    <span className="right floated">Joined in 2018</span>
                     <span>
-                      <i className="facebook square" />
-                      151 Friends
+                      <i className="user icon" />
+                      3 connections
                     </span>
                   </div>
                 </div>
                 <div className="card">
                   <div className="image">
-                    <img src="../../../../../../pictures/matthew.png" />
+                    <a href="https://www.linkedin.com/in/whchan703//">
+                      <img src="../../../../../../pictures/Casey.png" />
+                    </a>
                   </div>
                   <div className="content">
-                    <div className="header">Expressjs Lover</div>
+                    <div className="header">Casey Chan</div>
                     <div className="meta" />
-                    <div className="description">
-                      Matthew is an interior designer living in New York.
-                    </div>
+                    <div className="description">Software Developer</div>
                   </div>
                   <div className="extra content">
-                    <span className="right floated">Joined in 2013</span>
+                    <span className="right floated">Joined in 2018</span>
                     <span>
                       <i className="user icon" />
-                      75 Friends
+                      2,000 connections
                     </span>
                   </div>
                 </div>

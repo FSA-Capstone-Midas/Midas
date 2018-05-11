@@ -123,10 +123,13 @@ class UserTrend extends Component {
             <Grid celled="internally" columns="equal" stackable>
               <Grid.Row textAlign="center">
                 <Grid.Column
-                  style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                  style={{
+                    paddingBottom: "0.5em",
+                    paddingTop: "2em"
+                  }}
                 >
                   <div>
-                    <Segment>
+                    <Segment style={{ fontSize: "18px" }}>
                       {this.handleTitleName()} - Year ended 2018
                     </Segment>
                     <Segment>

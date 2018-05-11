@@ -62,12 +62,17 @@ class Login extends Component {
           </Grid>
         </Segment>
 
-        <Segment style={{ padding: "2em 0em" }} vertical>
+        <Segment style={{ padding: "2em 0em", height: "100vh" }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column>
                 <div id="signup-login">
-                  <form className="ui form" name={name} onSubmit={handleSubmit}>
+                  <form
+                    className="ui form"
+                    name={name}
+                    onSubmit={handleSubmit}
+                    style={{ fontSize: "15px" }}
+                  >
                     <div className="field">
                       <label>Email</label>
                       <input name="email" placeholder="Email" />
@@ -90,7 +95,17 @@ class Login extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0px",
+            bottom: "0px",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

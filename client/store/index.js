@@ -7,6 +7,7 @@ import plaidReducer from "./plaid";
 import transactions from "./transactions";
 import accounts from "./accounts";
 import budget from "./budget";
+import form from "./form";
 import stateReducer from "./state";
 
 const reducer = combineReducers({
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   transactions,
   accounts,
   budget,
-  states: stateReducer
+  form,
+  states: stateReducer,
 });
 
 const middleware = composeWithDevTools(
@@ -30,3 +32,4 @@ export * from "./plaid";
 export * from "./transactions";
 export * from "./accounts";
 export * from "./state";
+export * from "./form";
