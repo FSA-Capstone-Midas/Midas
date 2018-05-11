@@ -63,7 +63,7 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment>Transactions</Segment>
+                    <Segment style={{ fontSize: "28px" }}>Transactions</Segment>
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">

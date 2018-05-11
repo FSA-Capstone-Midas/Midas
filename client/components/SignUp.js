@@ -77,7 +77,12 @@ class SignUp extends Component {
             <Grid.Row>
               <Grid.Column>
                 <div id="signup-login">
-                  <form className="ui form" onSubmit={handleSubmit} name={name}>
+                  <form
+                    className="ui form"
+                    onSubmit={handleSubmit}
+                    name={name}
+                    style={{ fontSize: "15px" }}
+                  >
                     <div className="field">
                       <label>First Name</label>
                       <input placeholder="First Name" name="firstName" />
@@ -155,7 +160,17 @@ class SignUp extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0px",
+            bottom: "0px",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

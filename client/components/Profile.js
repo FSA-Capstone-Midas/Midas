@@ -84,7 +84,11 @@ class Profile extends React.Component {
             Update your profile to get your financial advice optimized!
           </Header.Content>
         </Header>
-        <Form id="profile" onSubmit={this.handleSubmit}>
+        <Form
+          id="profile"
+          onSubmit={this.handleSubmit}
+          style={{ fontSize: "13px" }}
+        >
           <Form.Group
             widths="equal"
             style={{ marginBottom: "3em", marginTop: "3em" }}
@@ -94,7 +98,7 @@ class Profile extends React.Component {
               <Input
                 fluid
                 placeholder={user.firstName}
-                value={this.state.firstName}
+                value={user.firstName}
                 name="firstName"
                 onChange={this.handleChange}
               />

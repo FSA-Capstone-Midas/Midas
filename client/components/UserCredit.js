@@ -21,13 +21,13 @@ ResponsiveContainer.propTypes = {
 };
 
 class UserCredit extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick = e => {
-    e.preventDefault();
-  };
+  // constructor(props) {
+  //   super(props);
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+  // handleClick = e => {
+  //   e.preventDefault();
+  // };
   render() {
     return (
       <ResponsiveContainer>
@@ -63,13 +63,12 @@ class UserCredit extends Component {
             </ProgressBar>
             <a
               href="https://google.com"
-              onClick={this.handleClick}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto"
               }}
             >
-              <h2>Check Your Credit Score!</h2>
+              <h2> Feel free to sign up to check your Credit score!</h2>
             </a>
           </div>
         </div>

@@ -129,7 +129,7 @@ class UserTrend extends Component {
                   }}
                 >
                   <div>
-                    <Segment>
+                    <Segment style={{ fontSize: "18px" }}>
                       {this.handleTitleName()} - Year ended 2018
                     </Segment>
                     <Segment>
