@@ -26,7 +26,7 @@ ResponsiveContainer.propTypes = {
 };
 
 const steps = [
-  { key: 'Expense', icon: 'truck', title: 'Expense', description: 'Tell us your expense.' },
+  { key: 'expense', icon: 'truck', title: 'Expense', description: 'Tell us your expense.' },
   { key: 'billing', active: true, icon: 'payment', title: 'Billing', description: 'Enter billing information' },
   { key: 'confirm', disabled: true, icon: 'info', title: 'Confirm Order' },
 ]
