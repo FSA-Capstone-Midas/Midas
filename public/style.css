@@ -108,3 +108,7 @@ h2 {
 #transactionRow {
   display: flex;
 }
+
+#stickyNode {
+  border-left-color: black;
+}
