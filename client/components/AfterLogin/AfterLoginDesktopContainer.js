@@ -15,7 +15,7 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Input
+  Input,
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import { logout } from "../../store";
@@ -78,13 +78,20 @@ class MenuExampleSecondary extends Component {
           active={activeItem === "TRENDS"}
           onClick={this.handleItemClick}
         />
+        <Menu.Item
+          name="RETIREMENT"
+          as={Link}
+          to="/retirement"
+          active={activeItem === "RETIREMENT"}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     );
   }
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
 };
 
 /* Heads up!
@@ -158,14 +165,14 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    }
+    },
   };
 };
 
