@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Segment, Card, Sticky, Header } from "semantic-ui-react";
+import { Grid, Segment, Card, Sticky, Header, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -22,9 +22,8 @@ class GoalsMenu extends Component {
                 <Grid.Column>
                   <Card
                     header="Pay off Credit Card Debit"
-                    image={"../../../../../../pictures/matthew.png"}
                     onClick={this.handleClick}
-                    exact
+                    image={"../../../../../../pictures/matthew.png"}
                     as={NavLink}
                     to="/"
                   />
@@ -44,7 +43,7 @@ class GoalsMenu extends Component {
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
                     as={NavLink}
-                    to="/"
+                    to="/saveForEmergency"
                   />
                 </Grid.Column>
 
@@ -89,7 +88,7 @@ class GoalsMenu extends Component {
               </Grid.Row>
             </Grid>
           </Grid.Column>
-
+          {/* Tutorial */}
           <Grid.Column width={4}>
             <Sticky id="stickyNode">
               <Header as="h1">About Goals</Header>
