@@ -36,7 +36,7 @@ class MenuExampleSecondary extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu secondary>
+      <Menu secondary style={{ fontSize: "15px", marginLeft: "12%" }}>
         <Menu.Item
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
@@ -121,7 +121,7 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Container>
+              <Container style={{ fontSize: "17px" }}>
                 <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>

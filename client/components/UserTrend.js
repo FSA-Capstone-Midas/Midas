@@ -125,9 +125,7 @@ class UserTrend extends Component {
                 <Grid.Column
                   style={{
                     paddingBottom: "0.5em",
-                    paddingTop: "2em",
-                    marginLeft: "10%",
-                    marginRight: "10%"
+                    paddingTop: "2em"
                   }}
                 >
                   <div>

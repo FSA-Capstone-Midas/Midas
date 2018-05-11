@@ -90,7 +90,17 @@ class Login extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0px",
+            bottom: "0px",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

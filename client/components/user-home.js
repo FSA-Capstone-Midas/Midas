@@ -155,7 +155,7 @@ class UserHome extends React.Component {
                     })}
                 </Menu>
               </Grid.Column>
-              <Grid.Column width={9}>
+              <Grid.Column width={9} style={{ marginLeft: "5%" }}>
                 <AccountTable />
               </Grid.Column>
             </Grid>

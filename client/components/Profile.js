@@ -189,7 +189,7 @@ class Profile extends React.Component {
           style={{
             position: "fixed",
             left: "0",
-            bottom: "0",
+            bottom: "-30px",
             width: "100%",
             textAlign: "center"
           }}
