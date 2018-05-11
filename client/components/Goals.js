@@ -19,7 +19,7 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: true
+      goals: false
     };
   }
 

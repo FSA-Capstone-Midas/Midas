@@ -57,6 +57,7 @@ class GoalsMenu extends Component {
                     to="/"
                   />
                 </Grid.Column>
+
                 <Grid.Column>
                   <Card
                     header="Buy a Car"
@@ -66,6 +67,7 @@ class GoalsMenu extends Component {
                     to="/"
                   />
                 </Grid.Column>
+
                 <Grid.Column>
                   <Card
                     header="Save for College"
@@ -87,6 +89,7 @@ class GoalsMenu extends Component {
               </Grid.Row>
             </Grid>
           </Grid.Column>
+
           <Grid.Column width={4}>
             <Sticky id="stickyNode">
               <Header as="h1">About Goals</Header>
