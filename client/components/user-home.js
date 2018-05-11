@@ -74,7 +74,7 @@ class UserHome extends React.Component {
                               </Menu.Menu>
                             </Menu.Item>
                             <img
-                              style={{ width: "220px", height: "120px" }}
+                              style={{ width: "240px", height: "150px" }}
                               className="carousel-image"
                               src="../../../../../../pictures/visa.png"
                             />
