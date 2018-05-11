@@ -19,7 +19,7 @@ const data = [
     Marcel: 59,
     René: 81,
     Paul: 132,
-    Jacques: 108,
+    Jacques: 108
   },
   {
     Raoul: 147,
@@ -27,7 +27,7 @@ const data = [
     Marcel: 195,
     René: 150,
     Paul: 158,
-    Jacques: 126,
+    Jacques: 126
   },
   {
     Raoul: 139,
@@ -35,7 +35,7 @@ const data = [
     Marcel: 140,
     René: 53,
     Paul: 143,
-    Jacques: 169,
+    Jacques: 169
   },
   {
     Raoul: 113,
@@ -43,7 +43,7 @@ const data = [
     Marcel: 18,
     René: 100,
     Paul: 154,
-    Jacques: 36,
+    Jacques: 36
   },
   {
     Raoul: 59,
@@ -51,7 +51,7 @@ const data = [
     Marcel: 195,
     René: 54,
     Paul: 40,
-    Jacques: 36,
+    Jacques: 36
   },
   {
     Raoul: 107,
@@ -59,7 +59,7 @@ const data = [
     Marcel: 163,
     René: 142,
     Paul: 148,
-    Jacques: 78,
+    Jacques: 78
   },
   {
     Raoul: 80,
@@ -67,7 +67,7 @@ const data = [
     Marcel: 53,
     René: 69,
     Paul: 99,
-    Jacques: 68,
+    Jacques: 68
   },
   {
     Raoul: 141,
@@ -75,7 +75,7 @@ const data = [
     Marcel: 86,
     René: 86,
     Paul: 126,
-    Jacques: 29,
+    Jacques: 29
   },
   {
     Raoul: 102,
@@ -83,7 +83,7 @@ const data = [
     Marcel: 45,
     René: 47,
     Paul: 41,
-    Jacques: 191,
+    Jacques: 191
   },
   {
     Raoul: 125,
@@ -91,7 +91,7 @@ const data = [
     Marcel: 130,
     René: 105,
     Paul: 133,
-    Jacques: 198,
+    Jacques: 198
   },
   {
     Raoul: 112,
@@ -99,7 +99,7 @@ const data = [
     Marcel: 57,
     René: 189,
     Paul: 105,
-    Jacques: 20,
+    Jacques: 20
   },
   {
     Raoul: 88,
@@ -107,7 +107,7 @@ const data = [
     Marcel: 56,
     René: 127,
     Paul: 151,
-    Jacques: 79,
+    Jacques: 79
   },
   {
     Raoul: 118,
@@ -115,7 +115,7 @@ const data = [
     Marcel: 162,
     René: 162,
     Paul: 132,
-    Jacques: 75,
+    Jacques: 75
   },
   {
     Raoul: 192,
@@ -123,7 +123,7 @@ const data = [
     Marcel: 95,
     René: 75,
     Paul: 132,
-    Jacques: 85,
+    Jacques: 85
   },
   {
     Raoul: 80,
@@ -131,7 +131,7 @@ const data = [
     Marcel: 70,
     René: 165,
     Paul: 70,
-    Jacques: 192,
+    Jacques: 192
   },
   {
     Raoul: 64,
@@ -139,8 +139,8 @@ const data = [
     Marcel: 44,
     René: 187,
     Paul: 106,
-    Jacques: 178,
-  },
+    Jacques: 178
+  }
 ];
 
 const keys = ["Raoul", "Josiane", "Marcel", "René", "Paul", "Jacques"];
@@ -153,14 +153,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class RetirementResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
       // currentChart: "spendingOverTime",
     };
     // this.handleClick = this.handleClick.bind(this);
@@ -208,7 +208,7 @@ class RetirementResult extends Component {
                           top: 50,
                           right: 110,
                           bottom: 50,
-                          left: 60,
+                          left: 60
                         }}
                         axisBottom={{
                           orient: "bottom",
@@ -216,7 +216,7 @@ class RetirementResult extends Component {
                           tickPadding: 5,
                           tickRotation: 0,
                           legend: "",
-                          legendOffset: 36,
+                          legendOffset: 36
                         }}
                         curve="natural"
                         offsetType="none"
@@ -230,7 +230,7 @@ class RetirementResult extends Component {
                             color: "#2c998f",
                             size: 4,
                             padding: 2,
-                            stagger: true,
+                            stagger: true
                           },
                           {
                             id: "squares",
@@ -239,22 +239,22 @@ class RetirementResult extends Component {
                             color: "#e4c912",
                             size: 6,
                             padding: 2,
-                            stagger: true,
-                          },
+                            stagger: true
+                          }
                         ]}
                         fill={[
                           {
                             match: {
-                              id: "Paul",
+                              id: "Paul"
                             },
-                            id: "dots",
+                            id: "dots"
                           },
                           {
                             match: {
-                              id: "Marcel",
+                              id: "Marcel"
                             },
-                            id: "squares",
-                          },
+                            id: "squares"
+                          }
                         ]}
                         animate={true}
                         motionStiffness={90}
@@ -267,8 +267,8 @@ class RetirementResult extends Component {
                             itemWidth: 80,
                             itemHeight: 20,
                             symbolSize: 12,
-                            symbolShape: "circle",
-                          },
+                            symbolShape: "circle"
+                          }
                         ]}
                       />
                     </div>
@@ -288,7 +288,7 @@ class RetirementResult extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction,
+    transaction: state.transactions.transaction
   };
 };
 

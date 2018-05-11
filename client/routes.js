@@ -16,10 +16,17 @@ import {
   UserCredit,
   Goals,
   SaveForEmergency,
+  House,
   Retirement,
   RetirementResult
 } from "./components";
-import { me, fetchTransaction, fetchItem, fetchAllState } from "./store";
+import {
+  me,
+  fetchTransaction,
+  fetchItem,
+  fetchAllState,
+  getBudgetFromDatabase
+} from "./store";
 
 /**
  * COMPONENT
@@ -61,6 +68,7 @@ class Routes extends Component {
               path="/saveForEmergency"
               component={SaveForEmergency}
             />
+            <Route exact path="/house" component={House} />
             <Route
               exact
               path="/retirement/analysis"
@@ -100,6 +108,9 @@ const mapDispatch = dispatch => {
     },
     loadAllStateFromServer() {
       dispatch(fetchAllState());
+    },
+    loadBudgetData() {
+      dispatch(getBudgetFromDatabase());
     }
   };
 };

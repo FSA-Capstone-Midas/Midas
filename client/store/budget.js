@@ -27,22 +27,22 @@ export const updateBudget = budgetData => ({
 /**
  * THUNK CREATORS
  */
-export const getBudgetFromDatabase = () => dispatch =>
+export const getBudgetFromDatabase = userId => dispatch =>
   axios
-    .get("/user/:userId/budget")
+    .get(`/user/${userId}/budget`)
     .then(res => {
       dispatch(getBudget(res.data));
     })
     .catch(err => console.log(err));
 
-export const updateUserBudget = budgetObj => dispatch =>
+export const updateUserBudget = (budgetObj, userId) => dispatch => {
   axios
-    .put("/api/user/:userId/budget", budgetObj)
+    .put(`/api/users/${userId}/budget`, budgetObj)
     .then(res => {
       dispatch(updateBudget(res.data));
     })
     .catch(err => console.log(err));
-
+};
 /**
  * REDUCER
  */

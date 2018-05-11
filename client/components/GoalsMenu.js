@@ -50,6 +50,8 @@ class GoalsMenu extends Component {
                     header="Buy a house"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
+                    as={NavLink}
+                    to="/house"
                   />
                 </Grid.Column>
 

@@ -11,7 +11,7 @@ function sumCategory(items, category) {
   }, 0);
 }
 
-class HorizontalBarChart extends Component {
+class BudgetHorizontalBarChart extends Component {
   constructor(props) {
     super(props);
   }
@@ -22,9 +22,9 @@ class HorizontalBarChart extends Component {
       labels: [
         "Food and Drink",
         "Recreation",
+        "Travel",
         "Service",
         "Shops",
-        "Travel",
         "Miscellaneous"
       ],
       datasets: [
@@ -62,9 +62,11 @@ const mapState = state => {
   const recreation = state.user.recreation;
   const travel = state.user.travel;
   const service = state.user.service;
-  const shop = state.user.shop;
+  const shops = state.user.shops;
   const miscellaneous = state.user.miscellaneous;
-  const transactions = state.transactions.transaction;
+  const transactions = state.transactions.transaction.filter(transaction => {
+    return transaction.name.slice(0, 13) !== "BOOK TRANSFER";
+  });
   const nonMicellaneous = [
     "Food and Drink",
     "Recreation",
@@ -73,28 +75,41 @@ const mapState = state => {
     "Travel"
   ];
 
-  const foodAndDrinkSpending = sumCategory(transactions, "Food and Drink");
-  const recreationSpending = sumCategory(transactions, "Recreation");
-  const serviceSpending = sumCategory(transactions, "Service");
-  const shopsSpending = sumCategory(transactions, "Shops");
-  const travelSpending = sumCategory(transactions, "Travel");
-  const miscellaneousSpending = transactions.reduce((acc, curr) => {
-    if (nonMicellaneous.indexOf(curr.category[0]) === -1) {
-      return acc + curr.amount;
-    }
-    return acc;
-  }, 0);
+  const foodAndDrinkSpending = sumCategory(
+    transactions,
+    "Food and Drink"
+  ).toFixed();
+  const recreationSpending = sumCategory(transactions, "Recreation").toFixed();
+  const serviceSpending = sumCategory(transactions, "Service").toFixed();
+  const shopsSpending = sumCategory(transactions, "Shops").toFixed();
+  const travelSpending = sumCategory(transactions, "Travel").toFixed();
+  const miscellaneousSpending = transactions
+    .reduce((acc, curr) => {
+      if (nonMicellaneous.indexOf(curr.category[0]) === -1) {
+        return acc + curr.amount;
+      }
+      return acc;
+    }, 0)
+    .toFixed();
+
   return {
-    budgetArr: [foodAndDrink, recreation, travel, service, shop, miscellaneous],
+    budgetArr: [
+      foodAndDrink,
+      recreation,
+      travel,
+      service,
+      shops,
+      miscellaneous
+    ],
     spendingArr: [
       foodAndDrinkSpending,
       recreationSpending,
+      travelSpending,
       serviceSpending,
       shopsSpending,
-      travelSpending,
       miscellaneousSpending
     ]
   };
 };
 
-export default connect(mapState)(HorizontalBarChart);
+export default connect(mapState)(BudgetHorizontalBarChart);
