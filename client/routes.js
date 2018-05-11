@@ -13,7 +13,8 @@ import {
   Transactions,
   Profile,
   Budget,
-  UserCredit
+  UserCredit,
+  House
 } from "./components";
 import {
   me,
@@ -56,6 +57,7 @@ class Routes extends Component {
             <Route exact path="/trend" component={UserTrend} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/credit" component={UserCredit} />
+            <Route exact path="/house" component={House} />
             <Route component={UserHome} />
           </Switch>
         )}

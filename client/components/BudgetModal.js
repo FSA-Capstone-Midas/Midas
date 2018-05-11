@@ -16,6 +16,8 @@ class BudgetModal extends Component {
     this.handChangeBudget = this.handleChangeBudget.bind(this);
     this.handleLocalState = this.handleLocalState.bind(this);
     this.changeLocalStateBack = this.changeLocalStateBack.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
   handleLocalState() {
     this.setState({ showMessage: true });
@@ -30,11 +32,12 @@ class BudgetModal extends Component {
   handleChangeBudget(event) {
     this.setState({ budgetForCategory: +event.target.value });
   }
-  handleOpen = () => this.setState({ modalOpen: true });
-  handleClose = () => {
+  handleOpen() {
+    this.setState({ modalOpen: true });
+  }
+  handleClose() {
     this.setState({ modalOpen: false });
-    this.forceUpdate();
-  };
+  }
 
   render() {
     const userId = this.props.user.id;
@@ -51,6 +54,7 @@ class BudgetModal extends Component {
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
+        className="scrolling"
       >
         <Modal.Header>Create Your Budget</Modal.Header>
         <Modal.Content image>

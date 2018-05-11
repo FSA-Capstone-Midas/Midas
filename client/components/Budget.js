@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import BudgetHorizontalBarChart from "./BudgetHorizontalBarChart";
-//import BudgetInput from "./BudgetInput";
 import BudgetModal from "./BudgetModal";
 import BudgetProgress from "./BudgetProgress";
 import { Grid, Segment } from "semantic-ui-react";

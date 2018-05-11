@@ -68,6 +68,8 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
+          as={Link}
+          to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />
@@ -75,6 +77,13 @@ class MenuExampleSecondary extends Component {
           name="TRENDS"
           as={Link}
           to="/trend"
+          active={activeItem === "TRENDS"}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name="House"
+          as={Link}
+          to="/house"
           active={activeItem === "TRENDS"}
           onClick={this.handleItemClick}
         />

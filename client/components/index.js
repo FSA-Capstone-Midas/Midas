@@ -20,7 +20,6 @@ export { default as Budget } from "./Budget";
 export {
   default as BudgetHorizontalBarChart
 } from "./BudgetHorizontalBarChart";
-export { default as BudgetInput } from "./BudgetInput";
 export { default as BudgetProgress } from "./BudgetProgress";
 export { default as BudgetModal } from "./BudgetModal";
 export { default as DataMapApartments } from "./DataMapApartments";
@@ -32,3 +31,4 @@ export {
 export {
   default as DataMapApartmentYYRentChange
 } from "./DataMapApartmentYYRentChange";
+export { default as House } from "./house";
