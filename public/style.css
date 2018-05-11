@@ -114,3 +114,23 @@ h2 {
 #alertMessage {
   color: orange;
 }
+/* Progress for multi-steps form */
+.progress {
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.progress-step {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+#p_wrap {
+  white-space: pre-line;
+}
