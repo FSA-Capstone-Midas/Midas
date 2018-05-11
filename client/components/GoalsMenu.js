@@ -24,8 +24,6 @@ class GoalsMenu extends Component {
                     header="Pay off Credit Card Debit"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -52,8 +50,6 @@ class GoalsMenu extends Component {
                     header="Buy a house"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/"
                   />
                 </Grid.Column>
 
@@ -62,8 +58,6 @@ class GoalsMenu extends Component {
                     header="Buy a Car"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/"
                   />
                 </Grid.Column>
 
@@ -72,8 +66,6 @@ class GoalsMenu extends Component {
                     header="Save for College"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/"
                   />
                 </Grid.Column>
                 <Grid.Column>
@@ -81,8 +73,6 @@ class GoalsMenu extends Component {
                     header="Take a Trip"
                     onClick={this.handleClick}
                     image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/"
                   />
                 </Grid.Column>
               </Grid.Row>
