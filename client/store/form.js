@@ -6,6 +6,7 @@ import history from "../history";
  * ACTION TYPES
  */
 const ADD_FORM = "ADD_FORM";
+const GET_FORM = "GET_FORM";
 
 /**
  * INITIAL STATE
@@ -28,12 +29,26 @@ export function addFrom(changeDetails) {
   return action;
 }
 
+export function getFrom(retirementDeatils) {
+  const action = { type: GET_FORM, retirementDeatils };
+  return action;
+}
+
 /**
  * THUNK CREATORS
  */
 
 export const addFormdetails = changeDetails => dispatch => {
   dispatch(addFrom(changeDetails));
+};
+
+export const fetchRetirementDetails = id => dispatch => {
+  axios
+    .get(`/api/retirement/user/${id}`)
+    .then(res => {
+      dispatch(getFrom(res.data));
+    })
+    .catch(err => console.log(err));
 };
 
 /**
@@ -43,6 +58,8 @@ export default function(state = fieldValues, action) {
   switch (action.type) {
     case ADD_FORM:
       return Object.assign({}, state, action.changeDetails);
+    case GET_FORM:
+      return Object.assign({}, state, action.retirementDeatils);
     default:
       return state;
   }
