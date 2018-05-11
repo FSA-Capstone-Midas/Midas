@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Segment, Card, Sticky, Header } from "semantic-ui-react";
+import { Grid, Segment, Card, Sticky, Header, Icon } from "semantic-ui-react";
 
 //render menu
 class GoalsMenu extends Component {
@@ -9,8 +9,8 @@ class GoalsMenu extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    console.log("hi");
+  handleClick(event, data) {
+    console.log(data.name);
   }
 
   render() {
@@ -25,7 +25,9 @@ class GoalsMenu extends Component {
               <Card
                 header="Pay off Credit Card Debit"
                 image={"../../../../../../pictures/matthew.png"}
-                onClick={this.handleClick}
+                onClick={event =>
+                  this.handleClick(event, { name: "creditCard" })
+                }
               />
             </Grid.Column>
             <Grid.Column>
@@ -42,10 +44,9 @@ class GoalsMenu extends Component {
                 image={"../../../../../../pictures/matthew.png"}
               />
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={1}>
               <Sticky>
-                <Header as="h3">Tutorial</Header>
-                <body>hehehe</body>
+                <Header as="h3">Stuck Content</Header>
               </Sticky>
             </Grid.Column>
             <Grid.Column>
@@ -75,6 +76,13 @@ class GoalsMenu extends Component {
                 onClick={this.handleClick}
                 image={"../../../../../../pictures/matthew.png"}
               />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <Sticky>
+                <Header as="h3">Tutorial</Header>
+              </Sticky>
             </Grid.Column>
           </Grid.Row>
         </Grid>
