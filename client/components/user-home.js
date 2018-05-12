@@ -64,9 +64,9 @@ class UserHome extends React.Component {
                                 <Menu.Menu>
                                   <Menu.Item>
                                     balances:
-                                    <Menu.Item
-                                      name={`$${account.balances.available}`}
-                                    />
+                                    <Menu.Item>{`$${
+                                      account.balances.available
+                                    }`}</Menu.Item>
                                   </Menu.Item>
                                   <Menu.Item>
                                     subtype:
@@ -87,9 +87,9 @@ class UserHome extends React.Component {
                                 <Menu.Menu>
                                   <Menu.Item>
                                     balances:
-                                    <Menu.Item
-                                      name={`$${account.balances.available}`}
-                                    />
+                                    <Menu.Item>{`$${
+                                      account.balances.available
+                                    }`}</Menu.Item>
                                   </Menu.Item>
                                   <Menu.Item>
                                     subtype:
@@ -110,21 +110,21 @@ class UserHome extends React.Component {
                                 <Menu.Menu>
                                   <Menu.Item>
                                     Balance:
-                                    <Menu.Item
-                                      name={String(account.balances.available)}
-                                    />
+                                    <Menu.Item>{`$${
+                                      account.balances.available
+                                    }`}</Menu.Item>
                                   </Menu.Item>
                                   <Menu.Item>
                                     Current:
-                                    <Menu.Item
-                                      name={String(account.balances.current)}
-                                    />
+                                    <Menu.Item>{`$${
+                                      account.balances.current
+                                    }`}</Menu.Item>
                                   </Menu.Item>
                                   <Menu.Item>
                                     Limit:
-                                    <Menu.Item
-                                      name={String(account.balances.limit)}
-                                    />
+                                    <Menu.Item>{`$${
+                                      account.balances.limit
+                                    }`}</Menu.Item>
                                   </Menu.Item>
                                   <Menu.Item>
                                     subtype:
