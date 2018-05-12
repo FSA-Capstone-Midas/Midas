@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Dropdown, Select, Button } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import { addFormdetails } from "../store/form";
 
 class Step2 extends Component {

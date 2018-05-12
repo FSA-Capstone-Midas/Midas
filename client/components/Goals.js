@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import { Segment, Button } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
-import GoalsRetirement from "./GoalsRetirement";
 import GoalsMenu from "./GoalsMenu";
 import { fetchRetirementDetails } from "../store";
 
