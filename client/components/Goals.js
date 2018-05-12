@@ -31,6 +31,7 @@ class Goals extends Component {
   render() {
     let { goals } = this.state;
     let { retirement } = this.props;
+    let { houseFrom } = this.props;
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>
@@ -59,6 +60,7 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
+    houseForm: state.houseForm,
   };
 };
 

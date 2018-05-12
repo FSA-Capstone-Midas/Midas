@@ -5,7 +5,7 @@ import { addFormdetails } from "../store/form";
 
 const options = [
   { key: "s", text: "Single", value: "single" },
-  { key: "m", text: "Married", value: "married" },
+  { key: "m", text: "Married", value: "married" }
 ];
 
 class Step1 extends Component {
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
   return {
     account: state.accounts.accountInfo,
     transaction: state.transactions.transaction,
-    form: state.form,
+    form: state.form
   };
 };
 
@@ -95,7 +95,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     },
     handleSelectChange(e, { value }) {
       dispatch(addFormdetails({ martialStatus: value }));
-    },
+    }
   };
 };
 
