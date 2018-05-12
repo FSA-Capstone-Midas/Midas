@@ -48,16 +48,16 @@ class Transactions extends Component {
     return (
       <ResponsiveContainer>
         <Container>
-          <Segment>
-            <Segment id="howItWorksBackground" vertical>
-              <Grid celled="internally" columns="equal" stackable>
-                <Grid.Row textAlign="center">
-                  <Grid.Column
-                    style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
-                  >
-                    {this.state.loading ? (
-                      <Loading />
-                    ) : rows ? (
+          <Segment id="howItWorksBackground" vertical>
+            <Grid celled="internally" columns="equal" stackable>
+              <Grid.Row textAlign="center">
+                <Grid.Column
+                  style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                >
+                  {this.state.loading ? (
+                    <Loading />
+                  ) : rows ? (
+                    <Segment>
                       <div>
                         <Segment style={{ fontSize: "28px" }}>
                           Transactions
@@ -70,11 +70,11 @@ class Transactions extends Component {
                         </div>
                         <Table rows={rows} />
                       </div>
-                    ) : null}
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Segment>
+                    </Segment>
+                  ) : null}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Segment>
         </Container>
 

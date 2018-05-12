@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import BudgetHorizontalBarChart from "./BudgetHorizontalBarChart";
 import BudgetModal from "./BudgetModal";
 import BudgetProgress from "./BudgetProgress";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -29,7 +29,7 @@ class Budget extends Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 2000);
     $("table").tablesort();
   }
 
@@ -50,6 +50,9 @@ class Budget extends Component {
                   <Loading />
                 ) : (
                   <div>
+                    <Segment style={{ fontSize: "28px", textAlign: "center" }}>
+                      BUDGETS
+                    </Segment>
                     <Segment>
                       <BudgetModal />
                       <BudgetProgress />

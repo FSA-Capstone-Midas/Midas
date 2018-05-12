@@ -28,21 +28,25 @@ class Goals extends Component {
     return (
       <ResponsiveContainer>
         <Container>
-          <Segment>Goal Page</Segment>
-          {goals ? (
-            <Segment>
+          <Segment>
+            <Segment style={{ fontSize: "28px", textAlign: "center" }}>
+              Goal
+            </Segment>
+            {goals ? (
+              <Segment>
+                <div>
+                  <Button positive>Add More Goals!</Button>
+                </div>
+                <GoalsComponent />
+              </Segment>
+            ) : (
               <div>
-                <Button positive>Add More Goals!</Button>
+                <h1>You have not added any goals. Get Started</h1>
+                <h3>Choose a Goal:</h3>
+                <GoalsMenu />
               </div>
-              <GoalsComponent />
-            </Segment>
-          ) : (
-            <Segment>
-              <h1>You have not added any goals. Get Started</h1>
-              <h3>Choose a Goal:</h3>
-              <GoalsMenu />
-            </Segment>
-          )}
+            )}
+          </Segment>
         </Container>
         <Footer />
       </ResponsiveContainer>

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Loading from "./Loading";
@@ -119,35 +119,42 @@ class UserTrend extends Component {
         {this.state.loading ? (
           <Loading />
         ) : (
-          <Segment style={{ padding: "1.5em" }} vertical>
-            <Grid celled="internally" columns="equal" stackable>
-              <Grid.Row textAlign="center">
-                <Grid.Column
-                  style={{
-                    paddingBottom: "0.5em",
-                    paddingTop: "2em"
-                  }}
-                >
-                  <div>
-                    <Segment style={{ fontSize: "18px" }}>
-                      {this.handleTitleName()} - Year ended 2018
-                    </Segment>
-                    <Segment>
-                      <div className="ui grid">
-                        <TrendsMenuBar handleClick={this.handleClick} />
-                        <div className="twelve wide column">
-                          {renderMap(this.state.currentMap)}
-                        </div>
-                        {this.handleTable()}
+          <Container>
+            <Segment>
+              <Segment style={{ fontSize: "28px", textAlign: "center" }}>
+                TRENDS
+              </Segment>
+              <Segment style={{ padding: "1.5em" }} vertical>
+                <Grid celled="internally" columns="equal" stackable>
+                  <Grid.Row textAlign="center">
+                    <Grid.Column
+                      style={{
+                        paddingBottom: "0.5em",
+                        paddingTop: "2em"
+                      }}
+                    >
+                      <div>
+                        <Segment style={{ fontSize: "18px" }}>
+                          {this.handleTitleName()} - Year ended 2018
+                        </Segment>
+                        <Segment>
+                          <div className="ui grid">
+                            <TrendsMenuBar handleClick={this.handleClick} />
+                            <div className="twelve wide column">
+                              {renderMap(this.state.currentMap)}
+                            </div>
+                            {this.handleTable()}
+                          </div>
+                        </Segment>
                       </div>
-                    </Segment>
-                  </div>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-            <Footer />
-          </Segment>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Segment>
+            </Segment>
+          </Container>
         )}
+        <Footer />
       </ResponsiveContainer>
     );
   }
