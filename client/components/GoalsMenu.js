@@ -13,7 +13,7 @@ class GoalsMenu extends Component {
   handleClick(event, data) {}
 
   render() {
-    let { retirement } = this.props;
+    let { retirement, houseForm } = this.props;
 
     return (
       <Segment>
@@ -50,15 +50,17 @@ class GoalsMenu extends Component {
                   />
                 </Grid.Column>
 
-                <Grid.Column>
-                  <Card
-                    header="Buy a house"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/house"
-                  />
-                </Grid.Column>
+                {houseForm.annualIncome ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Buy a house"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/house"
+                    />
+                  </Grid.Column>
+                )}
 
                 <Grid.Column>
                   <Card
@@ -120,6 +122,7 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
+    houseForm: state.houseForm,
   };
 };
 

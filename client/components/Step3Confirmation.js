@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-import history from "../history";
-import {
-  Form,
-  Input,
-  Dropdown,
-  Select,
-  Button,
-  Item,
-  Icon,
-} from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
+import { addRetirementDetails } from "../store";
 
 class Step3Confirmation extends Component {
   constructor(props) {
@@ -32,14 +23,8 @@ class Step3Confirmation extends Component {
 
   submitRegistration(event, id, formDetails) {
     event.preventDefault();
-    console.log("do i get here?");
-    axios
-      .post(`/api/retirement/user/${id}`, formDetails)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-    history.push("/retirement/analysis");
+    console.log("what is form deetails in submitReg", formDetails);
+    this.props.addRetirementDetails(id, formDetails);
   }
 
   render() {
@@ -112,7 +97,7 @@ class Step3Confirmation extends Component {
           size="huge"
           positive
           onClick={() => {
-            console.log("what is user", form);
+            console.log("what is form", form);
             this.submitRegistration(event, user.id, form);
           }}
         >
@@ -132,15 +117,13 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = function(dispatch, ownProps) {
-//   return {
-//     submitRegistration(event) {
-//       dispatch(addFormdetails({ [event.target.name]: event.target.value }));
-//     },
-//   };
-// };
-
-const Step3ConfirmationContainer = connect(mapStateToProps, null)(
+function mapDispatchToProps(dispatch) {
+  return {
+    addRetirementDetails: (userId, formDetails) =>
+      dispatch(addRetirementDetails(userId, formDetails)),
+  };
+}
+const Step3ConfirmationContainer = connect(mapStateToProps, mapDispatchToProps)(
   Step3Confirmation
 );
 
