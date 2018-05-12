@@ -50,7 +50,7 @@ class UserHome extends React.Component {
                       display: "table-row-group"
                     }}
                   >
-                    <h3>Account info</h3>
+                    <h2>Account info</h2>
                     {accounts &&
                       accounts.accountInfo.map(account => {
                         if (account.subtype === "checking") {

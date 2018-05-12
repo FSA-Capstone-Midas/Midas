@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
-import { Grid, Segment, Progress } from "semantic-ui-react";
+import { Grid, Segment, Progress, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { ProgressBar } from "react-bootstrap";
@@ -18,17 +18,10 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-class UserCredit extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
-  // handleClick = e => {
-  //   e.preventDefault();
-  // };
-  render() {
-    return (
-      <ResponsiveContainer>
+const UserCredit = () => (
+  <ResponsiveContainer>
+    <Container>
+      <Segment>
         <div
           className="ui segment"
           style={{ marginLeft: "15%", marginRight: "15%" }}
@@ -78,12 +71,11 @@ class UserCredit extends Component {
             width: "100%",
             textAlign: "center"
           }}
-        >
-          <Footer />
-        </div>
-      </ResponsiveContainer>
-    );
-  }
-}
+        />
+      </Segment>
+    </Container>
+    <Footer />
+  </ResponsiveContainer>
+);
 
 export default UserCredit;

@@ -11,7 +11,8 @@ export default function Footer() {
         left: "0",
         bottom: "0",
         width: "100%",
-        textAlign: "center"
+        textAlign: "center",
+        position: "absolute"
       }}
     >
       <Container>

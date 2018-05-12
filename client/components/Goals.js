@@ -44,6 +44,7 @@ class Goals extends Component {
             </Segment>
           )}
         </Container>
+        <Footer />
       </ResponsiveContainer>
     );
   }
