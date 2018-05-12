@@ -15,7 +15,7 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Input
+  Input,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../../store";
@@ -93,7 +93,7 @@ class MenuExampleSecondary extends Component {
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
 };
 
 /* Heads up!
@@ -167,14 +167,14 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    }
+    },
   };
 };
 

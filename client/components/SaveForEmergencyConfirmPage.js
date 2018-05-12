@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Label, Segment, List, Button } from "semantic-ui-react";
+import { connect } from "react-redux";
 
 class SaveForEmergenyConfirmPage extends Component {
   handleSubmit() {

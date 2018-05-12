@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Segment,
-  Card,
-  Sticky,
-  Header,
-  Icon,
-  Container
-} from "semantic-ui-react";
+import { Grid, Segment, Card, Sticky, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -18,24 +10,29 @@ class GoalsMenu extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event, data) {}
+  handleClick(event) {}
 
   render() {
+    let { retirement } = this.props;
+
     return (
       <Segment>
         <Grid>
           <Grid.Column width={12}>
             <Grid>
               <Grid.Row columns={4}>
-                <Grid.Column>
-                  <Card
-                    header="Save for Retirement"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/retirement"
-                  />
-                </Grid.Column>
+                {retirement.birthyear ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Save for Retirement"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/retirement"
+                    />
+                  </Grid.Column>
+                )}
+
                 <Grid.Column>
                   <Card
                     header="Save for an Emergency"
@@ -88,12 +85,16 @@ class GoalsMenu extends Component {
   }
 }
 
-const mapState = state => {
+const mapStateToProps = state => {
+  return {
+    form: state.form,
+    user: state.user,
+    retirement: state.retirement
+  };
+};
+
+const mapDispatchToProps = dispatch => {
   return {};
 };
 
-const mapDispatch = dispatch => {
-  return {};
-};
-
-export default connect(mapState, mapDispatch)(GoalsMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsMenu);

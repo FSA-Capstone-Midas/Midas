@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import { Segment, Button, Container } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
+import GoalsRetirement from "./GoalsRetirement";
 import GoalsMenu from "./GoalsMenu";
+import { fetchRetirementDetails } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -23,40 +25,47 @@ class Goals extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.fetchRetirementDetails(this.props.user.id);
+  }
+
   render() {
     let { goals } = this.state;
+    let { retirement } = this.props;
     return (
       <ResponsiveContainer>
-        <Container>
+        <Segment>Goal Page</Segment>
+        {retirement.birthyear || goals ? (
           <Segment>
-            <Segment style={{ fontSize: "28px", textAlign: "center" }}>
-              Goal
-            </Segment>
-            {goals ? (
-              <Segment>
-                <div>
-                  <Button positive>Add More Goals!</Button>
-                </div>
-                <GoalsComponent />
-              </Segment>
-            ) : (
-              <div>
-                <h1>You have not added any goals. Get Started</h1>
-                <h3>Choose a Goal:</h3>
-                <GoalsMenu />
-              </div>
-            )}
+            <GoalsComponent goals={goals} />
           </Segment>
-        </Container>
-        <Footer />
+        ) : null}
+        <Segment>
+          {retirement.birthyear || goals ? (
+            <h1>You have not added the following goals. Get Started</h1>
+          ) : (
+            <h1>You have not added any goals. Get Started</h1>
+          )}
+          <h3>Choose a Goal:</h3>
+          <GoalsMenu />
+        </Segment>
       </ResponsiveContainer>
     );
   }
 }
 
-const mapState = state => {
-  //set up number of goals of each user
-  return {};
+const mapStateToProps = state => {
+  return {
+    form: state.form,
+    user: state.user,
+    retirement: state.retirement
+  };
 };
 
-export default connect(mapState)(Goals);
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchRetirementDetails: userId => dispatch(fetchRetirementDetails(userId))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goals);

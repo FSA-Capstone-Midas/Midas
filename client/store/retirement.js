@@ -5,8 +5,8 @@ import history from "../history";
 /**
  * ACTION TYPES
  */
-const ADD_FORM = "ADD_FORM";
-const GET_FORM = "GET_FORM";
+// const ADD_FORM = "ADD_FORM";
+const GET_RETIREMENT_PLAN = "GET_RETIREMENT_PLAN";
 
 /**
  * INITIAL STATE
@@ -18,19 +18,19 @@ const fieldValues = {
   monthlyRetirementSpending: "",
   retirementage: "",
   saveEachYear: "",
-  savedSoFar: "",
+  savedSoFar: ""
 };
 
 /**
  * ACTION CREATORS
  */
-export function addFrom(changeDetails) {
-  const action = { type: ADD_FORM, changeDetails };
-  return action;
-}
+// export function addFrom(changeDetails) {
+//   const action = { type: ADD_FORM, changeDetails };
+//   return action;
+// }
 
-export function getFrom(retirementDeatils) {
-  const action = { type: GET_FORM, retirementDeatils };
+export function getRetirementPlan(retirementDeatils) {
+  const action = { type: GET_RETIREMENT_PLAN, retirementDeatils };
   return action;
 }
 
@@ -38,15 +38,15 @@ export function getFrom(retirementDeatils) {
  * THUNK CREATORS
  */
 
-export const addFormdetails = changeDetails => dispatch => {
-  dispatch(addFrom(changeDetails));
-};
+// export const addFormdetails = changeDetails => dispatch => {
+//   dispatch(addFrom(changeDetails));
+// };
 
-export const fetchCurrentRetirementDetails = id => dispatch => {
+export const fetchRetirementDetails = id => dispatch => {
   axios
     .get(`/api/retirement/user/${id}`)
     .then(res => {
-      dispatch(getFrom(res.data));
+      dispatch(getRetirementPlan(res.data));
     })
     .catch(err => console.log(err));
 };
@@ -56,9 +56,7 @@ export const fetchCurrentRetirementDetails = id => dispatch => {
  */
 export default function(state = fieldValues, action) {
   switch (action.type) {
-    case ADD_FORM:
-      return Object.assign({}, state, action.changeDetails);
-    case GET_FORM:
+    case GET_RETIREMENT_PLAN:
       return Object.assign({}, state, action.retirementDeatils);
     default:
       return state;

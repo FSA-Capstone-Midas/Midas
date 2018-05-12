@@ -18,14 +18,14 @@ import {
   SaveForEmergencyMainPage,
   House,
   Retirement,
-  RetirementResult
+  RetirementResult,
 } from "./components";
 import {
   me,
   fetchTransaction,
   fetchItem,
   fetchAllState,
-  getBudgetFromDatabase
+  getBudgetFromDatabase,
 } from "./store";
 
 /**
@@ -60,6 +60,11 @@ class Routes extends Component {
             <Route exact path="/budget" component={Budget} />
             <Route exact path="/trend" component={UserTrend} />
             <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/retirement/analysis"
+              component={RetirementResult}
+            />
             <Route exact path="/retirement" component={Retirement} />
             <Route exact path="/credit" component={UserCredit} />
             <Route exact path="/goals" component={Goals} />
@@ -69,11 +74,7 @@ class Routes extends Component {
               component={SaveForEmergencyMainPage}
             />
             <Route exact path="/house" component={House} />
-            <Route
-              exact
-              path="/retirement/analysis"
-              component={RetirementResult}
-            />
+
             <Route component={UserHome} />
           </Switch>
         )}
@@ -91,7 +92,7 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 
@@ -111,7 +112,7 @@ const mapDispatch = dispatch => {
     },
     loadBudgetData() {
       dispatch(getBudgetFromDatabase());
-    }
+    },
   };
 };
 
@@ -124,5 +125,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 };

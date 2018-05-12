@@ -8,6 +8,7 @@ import transactions from "./transactions";
 import accounts from "./accounts";
 import budget from "./budget";
 import form from "./form";
+import retirement from "./retirement";
 import houseForm from "./houseForm";
 import stateReducer from "./state";
 
@@ -18,8 +19,9 @@ const reducer = combineReducers({
   accounts,
   budget,
   form,
+  retirement,
   houseForm,
-  states: stateReducer
+  states: stateReducer,
 });
 
 const middleware = composeWithDevTools(
@@ -36,4 +38,5 @@ export * from "./accounts";
 export * from "./state";
 export * from "./budget";
 export * from "./form";
+export * from "./retirement";
 export * from "./houseForm";
