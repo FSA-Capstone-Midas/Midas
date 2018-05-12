@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Link, Component } from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Footer from "./Footer";
@@ -8,7 +8,6 @@ import {
   Form,
   Input,
   Button,
-  Divider,
   Icon,
   Statistic,
 } from "semantic-ui-react";
@@ -48,18 +47,11 @@ class House extends Component {
     const downpaymentAggresive = Math.floor(
       aggressivePrice * (houseForm.percentDownPayment / 100)
     );
-    console.log('houseForm2', houseForm.mortgageRate);
-    console.log('houseForm3', houseForm.percentDownPayment);
-    console.log('okkk', downpaymentAggresive);
     const monthlyAggresive = Math.floor(
       (aggressivePrice - downpaymentAggresive) *
         Math.pow(1 + houseForm.mortgageRate / 100, 30) /
         360
     );
-
-    console.log('aggressivePrice', aggressivePrice);
-    console.log('downpaymentAggresive', downpaymentAggresive);
-    console.log('houseForm.mortgageRate', houseForm.mortgageRate);
 
     return (
       <ResponsiveContainer>
@@ -166,8 +158,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(event) {
-      console.log('what is event.target.name', event.target.name);
-      console.log('what is event.target.value', event.target.value);
       dispatch(
         addHouseFormdetails({ [event.target.name]: +event.target.value })
       );

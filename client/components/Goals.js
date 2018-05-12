@@ -32,7 +32,7 @@ class Goals extends Component {
   render() {
     let { goals } = this.state;
     let { retirement, houseForm } = this.props;
-    console.log("what is houseForm right before render?", houseForm);
+
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>

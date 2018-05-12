@@ -1,6 +1,4 @@
 import axios from "axios";
-import history from "../history";
-// import { fetchInformation, fetchItem } from "./plaid";
 
 /**
  * ACTION TYPES
@@ -19,7 +17,6 @@ const fieldValues = {
   annualInsurance: "",
   annualPropertyTax: "",
 };
-//const initialState = { fieldValues };
 
 /**
  * ACTION CREATORS
@@ -29,7 +26,6 @@ export function getHouseForm(houseDetail) {
   return action;
 }
 export function addHouseForm(changeDetails) {
-  console.log("what is addHouseForm changeDetails", changeDetails);
   const action = { type: ADD_HOUSE_FORM, changeDetails };
   return action;
 }
@@ -45,25 +41,21 @@ export const getHouseFormdetails = userId => dispatch => {
   axios
     .get(`api/house/user/${userId}`)
     .then(res => {
-      console.log("res.data in getHouseFormdetails", res.data);
       dispatch(getHouseForm(res.data));
     })
     .catch(err => console.log(err));
 };
 
 export const addHouseFormdetails = changeDetails => dispatch => {
-  console.log("what is addHouseFormdetails changeDetails", changeDetails);
   dispatch(addHouseForm(changeDetails));
 };
 
 export const addHousePlan = housePlan => dispatch => {
   const userId = housePlan.userId;
-  console.log("housePlan", housePlan);
 
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
-      console.log("res.data", res.data);
       dispatch(getUpdatedHousePlan(res.data));
     })
     .catch(err => console.log(err));
