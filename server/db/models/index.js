@@ -1,6 +1,7 @@
 const User = require("./user");
 const State = require("./state");
 const Retirement = require("./retirement");
+const House = require("./house");
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -10,6 +11,7 @@ const Retirement = require("./retirement");
  */
 
 Retirement.belongsTo(User);
+House.belongsTo(User);
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -22,4 +24,5 @@ module.exports = {
   User,
   State,
   Retirement,
+  House
 };

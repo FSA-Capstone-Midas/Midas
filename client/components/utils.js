@@ -86,3 +86,7 @@ export const getRadioOrCheckboxValue = el => {
 //       return <Success />;
 //   }
 // };
+
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
