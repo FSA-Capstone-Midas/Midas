@@ -9,10 +9,26 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/user/:userId", (req, res, next) => {
-  House.create(req.body)
-    .then(newHousePlan => {
-      console.log("xxxxxx", newHousePlan);
-      res.status(201).json(newHousePlan);
-    })
-    .catch(next);
+  House.findOne({
+    where: {
+      userId: req.params.userId,
+    },
+  }).then(foundUser => {
+    if (!foundUser) {
+      House.create(req.body)
+        .then(newHousePlan => {
+          console.log("xxxxxx", newHousePlan);
+          res.status(201).json(newHousePlan);
+        })
+        .catch(next);
+    } else {
+      foundUser
+        .update(req.body)
+        .then(newHousePlan => {
+          console.log("xxxxxx", newHousePlan);
+          res.status(201).json(newHousePlan);
+        })
+        .catch(next);
+    }
+  });
 });

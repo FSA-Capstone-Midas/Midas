@@ -19,12 +19,13 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: false
+      goals: false,
     };
   }
 
   render() {
     let { goals } = this.state;
+    let { houseFrom } = this.props;
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>
@@ -49,7 +50,9 @@ class Goals extends Component {
 
 const mapState = state => {
   //set up number of goals of each user
-  return {};
+  return {
+    houseForm: state.houseForm,
+  };
 };
 
 export default connect(mapState)(Goals);

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Link, Component } from "react";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import {
@@ -9,7 +10,7 @@ import {
   Button,
   Divider,
   Icon,
-  Statistic
+  Statistic,
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -26,14 +27,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class House extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showResult: false
+      showResult: false,
     };
     this.handleChangeLocal = this.handleChangeLocal.bind(this);
   }
@@ -45,22 +46,26 @@ class House extends Component {
     const housePlan = Object.assign({}, { userId }, houseForm);
     const aggressivePrice = Math.floor(houseForm.annualIncome * 6);
     const downpaymentAggresive = Math.floor(
-      aggressivePrice * houseForm.percentDownPayment
+      aggressivePrice * (houseForm.percentDownPayment / 100)
     );
-    console.log("houseForm2", houseForm.mortgageRate);
-    console.log("houseForm3", houseForm.percentDownPayment);
-    console.log("okkk", downpaymentAggresive);
+    console.log('houseForm2', houseForm.mortgageRate);
+    console.log('houseForm3', houseForm.percentDownPayment);
+    console.log('okkk', downpaymentAggresive);
     const monthlyAggresive = Math.floor(
       (aggressivePrice - downpaymentAggresive) *
-        Math.pow(1 + houseForm.mortgageRate, 30) /
+        Math.pow(1 + houseForm.mortgageRate / 100, 30) /
         360
     );
+
+    console.log('aggressivePrice', aggressivePrice);
+    console.log('downpaymentAggresive', downpaymentAggresive);
+    console.log('houseForm.mortgageRate', houseForm.mortgageRate);
 
     return (
       <ResponsiveContainer>
         <Segment
           id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
+          style={{ padding: '1.5em' }}
           vertical
         >
           <i aria-hidden="true" className="home massive icon" />
@@ -138,15 +143,12 @@ class House extends Component {
             </div>
           ) : null}
 
-          <Button
-            icon
-            className="ui large button"
-            labelPosition="right"
-            link="/HouseGoal"
-          >
-            Save the Goal
-            <Icon name="right arrow" />
-          </Button>
+          <NavLink to="/goals">
+            <Button icon className="ui large button" labelPosition="right">
+              Save the Goal
+              <Icon name="right arrow" />
+            </Button>
+          </NavLink>
         </Segment>
         <Footer />
       </ResponsiveContainer>
@@ -157,13 +159,15 @@ class House extends Component {
 const mapStateToProps = state => {
   return {
     userId: state.user.id,
-    houseForm: state.houseForm
+    houseForm: state.houseForm,
   };
 };
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(event) {
+      console.log('what is event.target.name', event.target.name);
+      console.log('what is event.target.value', event.target.value);
       dispatch(
         addHouseFormdetails({ [event.target.name]: +event.target.value })
       );
@@ -171,7 +175,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     handleSubmit(event, housePlan) {
       event.preventDefault();
       dispatch(addHousePlan(housePlan));
-    }
+    },
   };
 };
 

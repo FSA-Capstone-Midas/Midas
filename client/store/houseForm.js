@@ -16,7 +16,7 @@ const fieldValues = {
   mortgageRate: "",
   percentDownPayment: "",
   annualInsurance: "",
-  annualPropertyTax: ""
+  annualPropertyTax: "",
 };
 //const initialState = { fieldValues };
 
@@ -24,6 +24,7 @@ const fieldValues = {
  * ACTION CREATORS
  */
 export function addHouseForm(changeDetails) {
+  console.log("what is addHouseForm changeDetails", changeDetails);
   const action = { type: ADD_HOUSE_FORM, changeDetails };
   return action;
 }
@@ -36,12 +37,14 @@ export function getUpdatedHousePlan(housePlan) {
  */
 
 export const addHouseFormdetails = changeDetails => dispatch => {
+  console.log("what is addHouseFormdetails changeDetails", changeDetails);
   dispatch(addHouseForm(changeDetails));
 };
 
 export const addHousePlan = housePlan => dispatch => {
   const userId = housePlan.userId;
   console.log("housePlan", housePlan);
+
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
