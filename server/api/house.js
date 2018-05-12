@@ -2,8 +2,12 @@ const router = require("express").Router();
 const { House } = require("../db/models");
 module.exports = router;
 
-router.get("/", (req, res, next) => {
-  House.findAll()
+router.get("/user/:userId", (req, res, next) => {
+  House.findOne({
+    where: {
+      userId: req.params.userId,
+    },
+  })
     .then(housePlanData => res.json(housePlanData))
     .catch(next);
 });

@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import { Segment, Button } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
-import { fetchRetirementDetails } from "../store";
+import { fetchRetirementDetails, getHouseFormdetails } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -26,22 +26,23 @@ class Goals extends Component {
 
   componentDidMount() {
     this.props.fetchRetirementDetails(this.props.user.id);
+    this.props.getHouseFormdetails(this.props.user.id);
   }
 
   render() {
     let { goals } = this.state;
-    let { retirement } = this.props;
-    let { houseFrom } = this.props;
+    let { retirement, houseForm } = this.props;
+    console.log("what is houseForm right before render?", houseForm);
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>
-        {retirement.birthyear || goals ? (
+        {retirement.birthyear || houseForm.annualIncome || goals ? (
           <Segment>
-            <GoalsComponent goals={goals} />
+            <GoalsComponent goals={goals} houseForm={houseForm} />
           </Segment>
         ) : null}
         <Segment>
-          {retirement.birthyear || goals ? (
+          {retirement.birthyear || houseForm.annualIncome || goals ? (
             <h1>You have not added the following goals. Get Started</h1>
           ) : (
             <h1>You have not added any goals. Get Started</h1>
@@ -66,7 +67,12 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchRetirementDetails: userId => dispatch(fetchRetirementDetails(userId)),
+    fetchRetirementDetails(userId) {
+      dispatch(fetchRetirementDetails(userId));
+    },
+    getHouseFormdetails(userId) {
+      dispatch(getHouseFormdetails(userId));
+    },
   };
 }
 

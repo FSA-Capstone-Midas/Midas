@@ -28,6 +28,27 @@ class ItemExampleDivided extends Component {
             </Item.Content>
           </Item>
         ) : null}
+
+        {this.props.houseForm.annualIncome ? (
+          <Item>
+            <Item.Image src="../../../../../../pictures/matthew.png" />
+
+            <Item.Content>
+              <Item.Header>See your housing goal</Item.Header>
+              {/* <Item.Meta>
+                <span className="cinema">Union Square 14</span>
+              </Item.Meta> */}
+              {/* <Item.Description>pending</Item.Description> */}
+              <Item.Extra>
+                <Label>Housing Goal</Label>
+              </Item.Extra>
+              <NavLink to="/house">
+                <Button>Update your housing goal</Button>
+              </NavLink>
+            </Item.Content>
+          </Item>
+        ) : null}
+
         {this.props.goals ? (
           <div>
             <Item>
@@ -67,10 +88,10 @@ class ItemExampleDivided extends Component {
 //render box
 class GoalsComponent extends Component {
   render() {
-    let { retirement, goals } = this.props;
+    let { retirement, goals, houseForm } = this.props;
     return (
       <Segment>
-        <ItemExampleDivided retirement={retirement} />
+        <ItemExampleDivided retirement={retirement} houseForm={houseForm} />
       </Segment>
     );
   }
