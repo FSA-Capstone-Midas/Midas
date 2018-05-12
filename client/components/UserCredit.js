@@ -44,16 +44,23 @@ const UserCredit = () => (
                 marginRight: "auto"
               }}
             >
-              The average Midas credit score is{" "}
+              The average Midaser's credit score is
             </h2>
             <div className="ui red statistic">
               <div className="value">800</div>
             </div>
             <ProgressBar>
-              <ProgressBar striped bsStyle="danger" now={20} key={1} />{" "}
-              <ProgressBar bsStyle="warning" now={30} key={2} />{" "}
-              <ProgressBar active bsStyle="success" now={30} key={3} />{" "}
+              <ProgressBar striped bsStyle="danger" now={20} key={1} />
+              <ProgressBar bsStyle="warning" now={30} key={2} />
+              <ProgressBar active bsStyle="success" now={30} key={3} />
             </ProgressBar>
+            <h2>
+              Get your absolutely free credit score to see how you stack up.
+            </h2>
+            <h2>
+              Discover what impacks your score and put yourself in a better
+              position for a new loan, a new credit card-or even a new job.
+            </h2>
             <a
               href="https://google.com"
               style={{
