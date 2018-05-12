@@ -3,7 +3,7 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "./Footer";
-import { Segment, Button } from "semantic-ui-react";
+import { Segment, Button, Container } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
 
@@ -27,21 +27,23 @@ class Goals extends Component {
     let { goals } = this.state;
     return (
       <ResponsiveContainer>
-        <Segment>Goal Page</Segment>
-        {goals ? (
-          <Segment>
-            <div>
-              <Button positive>Add More Goals!</Button>
-            </div>
-            <GoalsComponent />
-          </Segment>
-        ) : (
-          <Segment>
-            <h1>You have not added any goals. Get Started</h1>
-            <h3>Choose a Goal:</h3>
-            <GoalsMenu />
-          </Segment>
-        )}
+        <Container>
+          <Segment>Goal Page</Segment>
+          {goals ? (
+            <Segment>
+              <div>
+                <Button positive>Add More Goals!</Button>
+              </div>
+              <GoalsComponent />
+            </Segment>
+          ) : (
+            <Segment>
+              <h1>You have not added any goals. Get Started</h1>
+              <h3>Choose a Goal:</h3>
+              <GoalsMenu />
+            </Segment>
+          )}
+        </Container>
       </ResponsiveContainer>
     );
   }

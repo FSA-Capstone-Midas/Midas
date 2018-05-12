@@ -32,7 +32,7 @@ class Transactions extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 2000);
   }
 
   handleClick(event) {

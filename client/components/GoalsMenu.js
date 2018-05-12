@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Grid, Segment, Card, Sticky, Header, Icon } from "semantic-ui-react";
+import {
+  Grid,
+  Segment,
+  Card,
+  Sticky,
+  Header,
+  Icon,
+  Container
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -19,13 +27,6 @@ class GoalsMenu extends Component {
           <Grid.Column width={12}>
             <Grid>
               <Grid.Row columns={4}>
-                <Grid.Column>
-                  <Card
-                    header="Pay off Credit Card Debit"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
                 <Grid.Column>
                   <Card
                     header="Save for Retirement"
@@ -52,29 +53,6 @@ class GoalsMenu extends Component {
                     image={"../../../../../../pictures/matthew.png"}
                     as={NavLink}
                     to="/house"
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Card
-                    header="Buy a Car"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Card
-                    header="Save for College"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Card
-                    header="Take a Trip"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
                   />
                 </Grid.Column>
               </Grid.Row>

@@ -81,7 +81,7 @@ class MenuExampleSecondary extends Component {
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="RETIREMENT"
+          name="GOALS"
           as={Link}
           to="/goals"
           active={activeItem === "GOALS"}
