@@ -47,6 +47,9 @@ class House extends Component {
     const downpaymentAggresive = Math.floor(
       aggressivePrice * houseForm.percentDownPayment
     );
+    console.log("houseForm2", houseForm.mortgageRate);
+    console.log("houseForm3", houseForm.percentDownPayment);
+    console.log("okkk", downpaymentAggresive);
     const monthlyAggresive = Math.floor(
       (aggressivePrice - downpaymentAggresive) *
         Math.pow(1 + houseForm.mortgageRate, 30) /

@@ -18,6 +18,7 @@ const fieldValues = {
   annualInsurance: "",
   annualPropertyTax: ""
 };
+//const initialState = { fieldValues };
 
 /**
  * ACTION CREATORS

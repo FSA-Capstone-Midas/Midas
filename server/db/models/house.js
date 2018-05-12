@@ -28,7 +28,7 @@ const House = db.define("house", {
     type: Sequelize.INTEGER,
     allowNull: false,
     get() {
-      return this.annualPropertyTax / 100;
+      return this.getDataValue("annualPropertyTax") / 100;
     }
   }
   // aggressivePrice: {
