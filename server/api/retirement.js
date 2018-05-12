@@ -9,6 +9,7 @@ router.get("/user/:userId", (req, res, next) => {
     },
   })
     .then(retirementPlan => {
+      console.log("what is retirementPlan", retirementPlan);
       res.json(retirementPlan);
     })
     .catch(next);
