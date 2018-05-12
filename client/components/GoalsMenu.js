@@ -13,6 +13,8 @@ class GoalsMenu extends Component {
   handleClick(event, data) {}
 
   render() {
+    let { retirement } = this.props;
+
     return (
       <Segment>
         <Grid>
@@ -26,15 +28,18 @@ class GoalsMenu extends Component {
                     image={"../../../../../../pictures/matthew.png"}
                   />
                 </Grid.Column>
-                <Grid.Column>
-                  <Card
-                    header="Save for Retirement"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/retirement"
-                  />
-                </Grid.Column>
+                {retirement.birthyear ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Save for Retirement"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/retirement"
+                    />
+                  </Grid.Column>
+                )}
+
                 <Grid.Column>
                   <Card
                     header="Save for an Emergency"
@@ -110,12 +115,16 @@ class GoalsMenu extends Component {
   }
 }
 
-const mapState = state => {
+const mapStateToProps = state => {
+  return {
+    form: state.form,
+    user: state.user,
+    retirement: state.retirement,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
   return {};
 };
 
-const mapDispatch = dispatch => {
-  return {};
-};
-
-export default connect(mapState, mapDispatch)(GoalsMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsMenu);

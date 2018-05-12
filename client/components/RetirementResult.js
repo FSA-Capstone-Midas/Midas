@@ -11,139 +11,104 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { ResponsiveStream } from "@nivo/stream";
 import RetirementTable from "./RetirementTable";
+import { fetchRetirementDetails } from "../store";
 
-const data = [
-  {
-    Raoul: 164,
-    Josiane: 29,
-    Marcel: 59,
-    René: 81,
-    Paul: 132,
-    Jacques: 108
-  },
-  {
-    Raoul: 147,
-    Josiane: 100,
-    Marcel: 195,
-    René: 150,
-    Paul: 158,
-    Jacques: 126
-  },
-  {
-    Raoul: 139,
-    Josiane: 73,
-    Marcel: 140,
-    René: 53,
-    Paul: 143,
-    Jacques: 169
-  },
-  {
-    Raoul: 113,
-    Josiane: 198,
-    Marcel: 18,
-    René: 100,
-    Paul: 154,
-    Jacques: 36
-  },
-  {
-    Raoul: 59,
-    Josiane: 50,
-    Marcel: 195,
-    René: 54,
-    Paul: 40,
-    Jacques: 36
-  },
-  {
-    Raoul: 107,
-    Josiane: 200,
-    Marcel: 163,
-    René: 142,
-    Paul: 148,
-    Jacques: 78
-  },
-  {
-    Raoul: 80,
-    Josiane: 116,
-    Marcel: 53,
-    René: 69,
-    Paul: 99,
-    Jacques: 68
-  },
-  {
-    Raoul: 141,
-    Josiane: 96,
-    Marcel: 86,
-    René: 86,
-    Paul: 126,
-    Jacques: 29
-  },
-  {
-    Raoul: 102,
-    Josiane: 26,
-    Marcel: 45,
-    René: 47,
-    Paul: 41,
-    Jacques: 191
-  },
-  {
-    Raoul: 125,
-    Josiane: 162,
-    Marcel: 130,
-    René: 105,
-    Paul: 133,
-    Jacques: 198
-  },
-  {
-    Raoul: 112,
-    Josiane: 61,
-    Marcel: 57,
-    René: 189,
-    Paul: 105,
-    Jacques: 20
-  },
-  {
-    Raoul: 88,
-    Josiane: 108,
-    Marcel: 56,
-    René: 127,
-    Paul: 151,
-    Jacques: 79
-  },
-  {
-    Raoul: 118,
-    Josiane: 90,
-    Marcel: 162,
-    René: 162,
-    Paul: 132,
-    Jacques: 75
-  },
-  {
-    Raoul: 192,
-    Josiane: 100,
-    Marcel: 95,
-    René: 75,
-    Paul: 132,
-    Jacques: 85
-  },
-  {
-    Raoul: 80,
-    Josiane: 171,
-    Marcel: 70,
-    René: 165,
-    Paul: 70,
-    Jacques: 192
-  },
-  {
-    Raoul: 64,
-    Josiane: 197,
-    Marcel: 44,
-    René: 187,
-    Paul: 106,
-    Jacques: 178
+const createData = form => {
+  const result = [];
+  const {
+    birthyear,
+    earnEachYear,
+    martialStatus,
+    monthlyRetirementSpending,
+    retirementage,
+    saveEachYear,
+    savedSoFar,
+  } = form;
+
+  console.log("what is form in function", form);
+  const currentYear = new Date().getFullYear();
+  const currentAge = currentYear - birthyear;
+  const deathYear = 95;
+  let num = 0;
+  for (let i = currentAge; i <= deathYear; i++) {
+    if (i === currentAge) {
+      const avgMarket = savedSoFar;
+      const poorMarket = savedSoFar;
+      const goodMarket = savedSoFar;
+      const beginningSaving = saveEachYear + earnEachYear;
+      result.push({
+        year: num,
+        age: i,
+        startingPortfolioValueAvg: avgMarket,
+        startingPortfolioValuePoor: poorMarket,
+        startingPortfolioValueGood: goodMarket,
+        savingOrSpending: beginningSaving,
+        cashFlow:
+          martialStatus === "single"
+            ? beginningSaving - 80000
+            : beginningSaving - 100000,
+      });
+      num++;
+    } else if (i > currentAge && i < retirementage) {
+      const avgMarket =
+        savedSoFar * Math.pow(1 + 0.7 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const poorMarket =
+        savedSoFar * Math.pow(1 + 0.02 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const goodMarket =
+        savedSoFar * Math.pow(1 + 0.15 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const beginningSaving =
+        result[num - 1].savingOrSpending + saveEachYear + earnEachYear;
+      result.push({
+        year: num,
+        age: i,
+        startingPortfolioValueAvg: Math.round(avgMarket, 0),
+        startingPortfolioValuePoor: Math.round(poorMarket, 0),
+        startingPortfolioValueGood: Math.round(goodMarket, 0),
+        savingOrSpending: Math.round(beginningSaving, 0),
+        cashFlow:
+          martialStatus === "single"
+            ? Math.round(beginningSaving - 80000, 0)
+            : Math.round(beginningSaving - 100000, 0),
+      });
+      num++;
+    } else {
+      const avgMarket =
+        savedSoFar * Math.pow(1 + 0.7 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const poorMarket =
+        savedSoFar * Math.pow(1 + 0.02 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const goodMarket =
+        savedSoFar * Math.pow(1 + 0.15 / 12, 12) +
+        result[num - 1].savingOrSpending;
+      const beginningSaving =
+        result[num - 1].savingOrSpending - monthlyRetirementSpending;
+      result.push({
+        year: num,
+        age: i,
+        startingPortfolioValueAvg: Math.round(avgMarket),
+        startingPortfolioValuePoor: Math.round(poorMarket),
+        startingPortfolioValueGood: Math.round(goodMarket),
+        savingOrSpending: Math.round(beginningSaving),
+        cashFlow:
+          martialStatus === "single"
+            ? Math.round(beginningSaving - 80000)
+            : Math.round(beginningSaving - 100000),
+      });
+      num++;
+    }
   }
-];
+  return result;
+};
 
-const keys = ["Raoul", "Josiane", "Marcel", "René", "Paul", "Jacques"];
+const keys = [
+  "startingPortfolioValueAvg",
+  "startingPortfolioValuePoor",
+  "startingPortfolioValueGood",
+];
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -160,27 +125,18 @@ class RetirementResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
-      // currentChart: "spendingOverTime",
+      loading: true,
     };
-    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ loading: false }), 3000);
+    this.props.fetchRetirementDetails(this.props.user.id);
   }
 
-  // handleClick(event) {
-  //   const target = event.target;
-  //   const name = target.name;
-  //   this.setState({ currentChart: name });
-  // }
-
   render() {
-    // console.log("account ", this.props.account); //user account info
-    // console.log("transaction ", this.props.transaction); //user transaction info
-    // const { transaction } = this.props;
-    // const rows = transaction;
+    const objWithAllProperty = createData(this.props.form);
+    console.log("what is objWithAllProperty", objWithAllProperty);
 
     return (
       <ResponsiveContainer>
@@ -198,11 +154,10 @@ class RetirementResult extends Component {
                   <Loading />
                 ) : (
                   <div>
-                    <RetirementTable />
                     <div style={{ height: 400 }}>
                       <h2>Does this render?</h2>
                       <ResponsiveStream
-                        data={data}
+                        data={objWithAllProperty}
                         keys={keys}
                         margin={{
                           top: 50,
@@ -217,6 +172,14 @@ class RetirementResult extends Component {
                           tickRotation: 0,
                           legend: "",
                           legendOffset: 36
+                        }}
+                        axisLeft={{
+                          orient: "left",
+                          tickSize: 5,
+                          tickPadding: 5,
+                          tickRotation: 0,
+                          legend: "",
+                          legendOffset: -40,
                         }}
                         curve="natural"
                         offsetType="none"
@@ -272,6 +235,7 @@ class RetirementResult extends Component {
                         ]}
                       />
                     </div>
+                    <RetirementTable form={this.props.form} />
                   </div>
                 )}
               </Grid.Column>
@@ -288,8 +252,16 @@ class RetirementResult extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction
+    transaction: state.transactions.transaction,
+    form: state.form,
+    user: state.user,
   };
 };
 
-export default connect(mapState)(RetirementResult);
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchRetirementDetails: userId => dispatch(fetchRetirementDetails(userId)),
+  };
+}
+
+export default connect(mapState, mapDispatchToProps)(RetirementResult);
