@@ -48,11 +48,19 @@ const StepExampleGroupShorthand = () => <Step.Group items={steps} />;
 class SaveForEmergency extends Component {
   constructor(props) {
     super(props);
-    this.state = { duration: 500, visible: true };
+    this.state = { duration: 5, visible: true, amount: 0 };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleSubmit(evevt) {}
+  handleSubmit(evevt) {
+    event.preventDefault();
+  }
+
+  handleInputChange(event, data) {
+    this.setState({ amount: +data.value });
+  }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
@@ -70,6 +78,7 @@ class SaveForEmergency extends Component {
                   <Form>
                     <Form.Group widths="equal">
                       <Input
+                        onChange={this.handleInputChange}
                         labelPosition="right"
                         type="text"
                         placeholder="Amount"
@@ -79,27 +88,28 @@ class SaveForEmergency extends Component {
                         <Label>.00</Label>
                       </Input>
                     </Form.Group>
+                    <Form.Input
+                      label={`Duration: ${this.state.duration} months `}
+                      min={1}
+                      max={24}
+                      name="duration"
+                      onChange={this.handleChange}
+                      step={1}
+                      type="range"
+                      value={this.state.duration}
+                    />
                     <Form.Field
                       id="form-button-control-public"
                       control={Button}
                       content="Confirm"
-                    />
-                    <Form.Input
-                      label={`Duration: ${this.state.duration}ms `}
-                      min={100}
-                      max={2000}
-                      name="duration"
-                      onChange={this.handleChange}
-                      step={100}
-                      type="range"
-                      value={this.state.duration}
                     />
                   </Form>
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <Header as="h1">How much will you need?</Header>
                   <Segment>
-                    Based on your expense we recommend you set a goal of $2,170
+                    Based on your expense we recommend you set a goal of ${+this
+                      .state.amount * +this.state.duration}{" "}
                     to save the money you will need for an Emergency Fund
                   </Segment>
                 </Grid.Column>
