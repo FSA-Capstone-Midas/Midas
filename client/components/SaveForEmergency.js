@@ -81,7 +81,7 @@ class SaveForEmergency extends Component {
                       <Input
                         onChange={this.handleInputChange}
                         labelPosition="right"
-                        type="text"
+                        type="number"
                         placeholder="Amount"
                       >
                         <Label basic>$</Label>
@@ -92,7 +92,7 @@ class SaveForEmergency extends Component {
                     <Form.Input
                       label={`Duration: ${this.state.duration} months `}
                       min={1}
-                      max={24}
+                      max={36}
                       name="duration"
                       onChange={this.handleChange}
                       step={1}

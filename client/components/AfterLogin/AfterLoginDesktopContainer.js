@@ -17,7 +17,7 @@ import {
   Visibility,
   Input
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../../store";
 
 /**
