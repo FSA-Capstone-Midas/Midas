@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const emergencyGoal = db.define("retirement", {
+const emergencyGoal = db.define("emergencyGoal", {
   isEnter: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
@@ -17,7 +17,7 @@ const emergencyGoal = db.define("retirement", {
   totalExpense: {
     type: Sequelize.VIRTUAL,
     get: function() {
-      return this.get("duration") * this.get("expense");
+      return this.getDataValue("duration") * this.getDataValue("expense");
     }
   }
 });
