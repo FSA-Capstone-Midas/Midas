@@ -11,6 +11,7 @@ import form from "./form";
 import retirement from "./retirement";
 import houseForm from "./houseForm";
 import stateReducer from "./state";
+import emergencyGoalReducer from "./emergencyGoal";
 
 const reducer = combineReducers({
   user,
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   retirement,
   houseForm,
   states: stateReducer,
+  emergencyGoalReducer
 });
 
 const middleware = composeWithDevTools(
@@ -40,3 +42,4 @@ export * from "./budget";
 export * from "./form";
 export * from "./retirement";
 export * from "./houseForm";
+export * from "./emergencyGoal";

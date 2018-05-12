@@ -11,7 +11,7 @@ const emergencyGoal = db.define("emergencyGoal", {
     allowNull: false
   },
   expense: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   totalExpense: {

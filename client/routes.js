@@ -18,14 +18,14 @@ import {
   SaveForEmergencyMainPage,
   House,
   Retirement,
-  RetirementResult,
+  RetirementResult
 } from "./components";
 import {
   me,
   fetchTransaction,
   fetchItem,
-  fetchAllState,
   getBudgetFromDatabase,
+  fetchEmergencyGoal
 } from "./store";
 
 /**
@@ -36,7 +36,6 @@ class Routes extends Component {
     this.props.loadInitialData();
     this.props.loadAccountsFromPlaid();
     this.props.loadTransactionsFromPlaid();
-    this.props.loadAllStateFromServer();
   }
 
   render() {
@@ -93,6 +92,7 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
+    userId: state.user.id
   };
 };
 
@@ -107,12 +107,9 @@ const mapDispatch = dispatch => {
     loadTransactionsFromPlaid() {
       dispatch(fetchTransaction());
     },
-    loadAllStateFromServer() {
-      dispatch(fetchAllState());
-    },
     loadBudgetData() {
       dispatch(getBudgetFromDatabase());
-    },
+    }
   };
 };
 
@@ -125,5 +122,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };
