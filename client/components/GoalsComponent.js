@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
+import { Item, Label, Segment } from "semantic-ui-react";
 
 const ItemExampleDivided = () => (
   <Item.Group divided>
