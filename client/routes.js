@@ -15,7 +15,7 @@ import {
   Budget,
   UserCredit,
   Goals,
-  SaveForEmergency,
+  SaveForEmergencyMainPage,
   House,
   Retirement,
   RetirementResult
@@ -65,8 +65,8 @@ class Routes extends Component {
             <Route exact path="/goals" component={Goals} />
             <Route
               exact
-              path="/saveForEmergency"
-              component={SaveForEmergency}
+              path="/goals/saveForEmergency"
+              component={SaveForEmergencyMainPage}
             />
             <Route exact path="/house" component={House} />
             <Route

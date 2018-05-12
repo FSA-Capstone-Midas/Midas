@@ -28,7 +28,9 @@ export { default as Retirement } from "./Retirement";
 export { default as RetirementResult } from "./RetirementResult";
 export { default as UserCredit } from "./UserCredit";
 export { default as Goals } from "./Goals";
-export { default as SaveForEmergency } from "./SaveForEmergency";
+export {
+  default as SaveForEmergencyMainPage
+} from "./SaveForEmergencyMainPage";
 export {
   default as DataMapApartmentsMMRentChange
 } from "./DataMapApartmentsMMRentChange";
