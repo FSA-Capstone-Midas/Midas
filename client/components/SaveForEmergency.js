@@ -29,17 +29,17 @@ ResponsiveContainer.propTypes = {
 
 const steps = [
   {
-    key: "expense",
+    key: "goal",
     icon: "truck",
-    title: "Expense",
-    description: "Tell us your expense."
+    title: "Goal",
+    description: "Tell us your goal."
   },
   {
-    key: "billing",
+    key: "expense",
     active: true,
     icon: "payment",
-    title: "Billing",
-    description: "Enter billing information"
+    title: "Expense",
+    description: "Enter your expenses."
   },
   { key: "confirm", disabled: true, icon: "info", title: "Submit Goal" }
 ];
@@ -51,12 +51,13 @@ class SaveForEmergency extends Component {
     super(props);
     this.state = { duration: 5, visible: true, amount: 0 };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleSubmit(evevt) {
+  handleFormSubmit(evevt) {
     event.preventDefault();
+    console.log(this.state.duration * this.state.amount);
   }
 
   handleInputChange(event, data) {
@@ -76,7 +77,7 @@ class SaveForEmergency extends Component {
               <Grid>
                 <Grid.Column width={8}>
                   <Header as="h1">Tell us about your expenses...</Header>
-                  <Form>
+                  <Form onSubmit={this.handleFormSubmit}>
                     <Form.Group widths="equal">
                       <Input
                         onChange={this.handleInputChange}
@@ -99,11 +100,7 @@ class SaveForEmergency extends Component {
                       type="range"
                       value={this.state.duration}
                     />
-                    <Form.Field
-                      id="form-button-control-public"
-                      control={Button}
-                      content="Confirm"
-                    />
+                    <Button type="submit">Submit</Button>
                   </Form>
                 </Grid.Column>
                 <Grid.Column width={8}>
