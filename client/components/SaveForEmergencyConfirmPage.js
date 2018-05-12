@@ -4,6 +4,7 @@ import { Grid, Label, Segment, List, Button } from "semantic-ui-react";
 class SaveForEmergenyConfirmPage extends Component {
   handleSubmit() {
     //send to state
+    //redirect to goal home page
   }
 
   render() {
@@ -46,4 +47,10 @@ class SaveForEmergenyConfirmPage extends Component {
   }
 }
 
-export default SaveForEmergenyConfirmPage;
+const mapDispatch = dispatch => {
+  return {
+    // sendExpenseGoal() {dispatch()}
+  };
+};
+
+export default connect(null, mapDispatch)(SaveForEmergenyConfirmPage);
