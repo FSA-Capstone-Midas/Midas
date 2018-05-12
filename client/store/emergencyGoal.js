@@ -18,13 +18,13 @@ export const fetchEmergencyGoal = id => dispatch => {
   axios
     .get(`/api/emergencyGoal/user/${id}`)
     .then(res => {
+      console.log(res.data);
       dispatch(getEmergencyGoal(res.data));
     })
     .catch(err => console.log(err));
 };
 
 export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
-  // body
   const { expense, duration } = emergencyInfo;
   axios
     .post(`/api/emergencyGoal/user/${id}`, { expense, duration })

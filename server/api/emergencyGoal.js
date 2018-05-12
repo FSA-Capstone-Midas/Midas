@@ -3,7 +3,7 @@ const { EmergencyGoal } = require("../db/models");
 
 router.get("/user/:userId", (req, res, next) => {
   const userId = req.params.userId;
-  EmergencyGoal.findAll({ where: { userId } })
+  EmergencyGoal.findOne({ where: { userId } })
     .then(result => {
       res.status(201).json(result);
     })
