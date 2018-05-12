@@ -24,36 +24,18 @@ class ItemExampleDivided extends Component {
             </Item.Content>
           </Item>
         ) : null}
-        {this.props.goals ? (
-          <div>
-            <Item>
-              <Item.Image src="../../../../../../pictures/matthew.png" />
+        {this.props.emergency.isEnter ? (
+          <Item>
+            <Item.Image src="../../../../../../pictures/matthew.png" />
 
-              <Item.Content>
-                <Item.Header as="a">My Neighbor Totoro</Item.Header>
-                <Item.Meta>
-                  <span className="cinema">IFC Cinema</span>
-                </Item.Meta>
-                <Item.Description>pending</Item.Description>
-                <Item.Extra>
-                  <Label>Buy a House</Label>
-                </Item.Extra>
-              </Item.Content>
-            </Item>
-
-            <Item>
-              <Item.Image src="../../../../../../pictures/matthew.png" />
-
-              <Item.Content>
-                <Item.Header as="a">Watchmen</Item.Header>
-                <Item.Meta>
-                  <span className="cinema">IFC</span>
-                </Item.Meta>
-                <Item.Description>College</Item.Description>
-                <Item.Extra />
-              </Item.Content>
-            </Item>
-          </div>
+            <Item.Content>
+              <Item.Header>Emergency Planning Goal</Item.Header>
+              <Item.Extra>
+                <p>Total Expense Goal: ${this.props.emergency.totalExpense}</p>
+                <Label>Emergency Planning</Label>
+              </Item.Extra>
+            </Item.Content>
+          </Item>
         ) : null}
       </Item.Group>
     );
@@ -63,11 +45,11 @@ class ItemExampleDivided extends Component {
 //render box
 class GoalsComponent extends Component {
   render() {
-    let { retirement, goals } = this.props;
+    let { retirement, goals, emergency } = this.props;
     return (
       <Segment>
         <h1>Goals: </h1>
-        <ItemExampleDivided retirement={retirement} />
+        <ItemExampleDivided retirement={retirement} emergency={emergency} />
       </Segment>
     );
   }
@@ -77,8 +59,9 @@ const mapStateToProps = state => {
   return {
     form: state.form,
     user: state.user,
-    retirement: state.retirement
+    retirement: state.retirement,
+    emergency: state.emergencyGoalReducer
   };
 };
 
-export default connect(mapStateToProps, null)(GoalsComponent);
+export default connect(mapStateToProps)(GoalsComponent);

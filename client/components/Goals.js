@@ -31,11 +31,11 @@ class Goals extends Component {
 
   render() {
     let { goals } = this.state;
-    let { retirement } = this.props;
+    let { retirement, emergency } = this.props;
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>
-        {retirement.birthyear || goals ? (
+        {retirement.birthyear || goals || emergency.isEnter ? (
           <Segment>
             <GoalsComponent goals={goals} />
           </Segment>
@@ -58,7 +58,8 @@ const mapStateToProps = state => {
   return {
     form: state.form,
     user: state.user,
-    retirement: state.retirement
+    retirement: state.retirement,
+    emergency: state.emergencyGoalReducer
   };
 };
 
