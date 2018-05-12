@@ -8,7 +8,8 @@ import {
   Container,
   Header,
   Grid,
-  Step
+  Step,
+  Label
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -39,7 +40,7 @@ const steps = [
     title: "Billing",
     description: "Enter billing information"
   },
-  { key: "confirm", disabled: true, icon: "info", title: "Confirm Order" }
+  { key: "confirm", disabled: true, icon: "info", title: "Submit Goal" }
 ];
 
 const StepExampleGroupShorthand = () => <Step.Group items={steps} />;
@@ -47,45 +48,63 @@ const StepExampleGroupShorthand = () => <Step.Group items={steps} />;
 class SaveForEmergency extends Component {
   constructor(props) {
     super(props);
-    this.state = { goal: 0 };
+    this.state = { duration: 500, visible: true };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(evevt) {}
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
   render() {
     return (
       <ResponsiveContainer>
         <Container>
-          <Header as="h1">Save for an Emergency</Header>
-          <StepExampleGroupShorthand />
           <Segment>
-            <Grid>
-              <Grid.Column width={8}>
-                <Header as="h1">Tell us about your expenses...</Header>
-                <Form>
-                  <Form.Group widths="equal">
+            <Header as="h1">Save for an Emergency</Header>
+            <StepExampleGroupShorthand />
+            <Segment>
+              <Grid>
+                <Grid.Column width={8}>
+                  <Header as="h1">Tell us about your expenses...</Header>
+                  <Form>
+                    <Form.Group widths="equal">
+                      <Input
+                        labelPosition="right"
+                        type="text"
+                        placeholder="Amount"
+                      >
+                        <Label basic>$</Label>
+                        <input />
+                        <Label>.00</Label>
+                      </Input>
+                    </Form.Group>
                     <Form.Field
-                      id="form-input-control-first-name"
-                      control={Input}
-                      label="Enter your average monthly spending"
-                      placeholder="$1000"
+                      id="form-button-control-public"
+                      control={Button}
+                      content="Confirm"
                     />
-                  </Form.Group>
-                  <Form.Field
-                    id="form-button-control-public"
-                    control={Button}
-                    content="Confirm"
-                  />
-                </Form>
-              </Grid.Column>
-              <Grid.Column width={8}>
-                <Header as="h1">How much will you need?</Header>
-                <Segment>
-                  Based on your expense we recommend you set a goal of $2,170 to
-                  save the money you will need for an Emergency Fund
-                </Segment>
-              </Grid.Column>
-            </Grid>
+                    <Form.Input
+                      label={`Duration: ${this.state.duration}ms `}
+                      min={100}
+                      max={2000}
+                      name="duration"
+                      onChange={this.handleChange}
+                      step={100}
+                      type="range"
+                      value={this.state.duration}
+                    />
+                  </Form>
+                </Grid.Column>
+                <Grid.Column width={8}>
+                  <Header as="h1">How much will you need?</Header>
+                  <Segment>
+                    Based on your expense we recommend you set a goal of $2,170
+                    to save the money you will need for an Emergency Fund
+                  </Segment>
+                </Grid.Column>
+              </Grid>
+            </Segment>
           </Segment>
         </Container>
 
