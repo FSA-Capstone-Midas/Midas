@@ -6,7 +6,6 @@ const defaultEmergencyGoal = {};
 
 //action type
 const GET_EMERGENCY_GOAL = "GET_EMERGENCY_GOAL";
-const POST_EMERGENCY_GOAL = "POST_EMERGENCT_GOAL";
 
 //action creators
 const getEmergencyGoal = emergencyGoal => ({
@@ -18,7 +17,6 @@ export const fetchEmergencyGoal = id => dispatch => {
   axios
     .get(`/api/emergencyGoal/user/${id}`)
     .then(res => {
-      console.log(res.data);
       dispatch(getEmergencyGoal(res.data));
     })
     .catch(err => console.log(err));

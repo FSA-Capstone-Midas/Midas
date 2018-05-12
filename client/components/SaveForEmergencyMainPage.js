@@ -40,7 +40,7 @@ class SaveForEmergencyMainPage extends Component {
           {!this.state.enteredExpense ? (
             <SaveForEmergency handlePage={this.handlePage} />
           ) : (
-            <SaveForEmergenyConfirmPage expenseGoal={this.state} />
+            <SaveForEmergenyConfirmPage expenseGoalData={this.state} />
           )}
         </Container>
         <Footer />

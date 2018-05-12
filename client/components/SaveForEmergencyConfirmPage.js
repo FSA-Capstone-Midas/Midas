@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { Grid, Label, Segment, List, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { postEmergencyGoal } from "../store";
 
 class SaveForEmergenyConfirmPage extends Component {
-  handleSubmit() {
-    //send to state
+  constructor(props) {
+    super(props);
+  }
+
+  handleSubmit(event, data, id) {
+    event.preventDefault();
+    this.props.sendExpenseGoal(id, data);
     //redirect to goal home page
   }
 
   render() {
-    const { expenseGoal, expenseDuration } = this.props.expenseGoal;
+    const { expenseGoal, expenseDuration } = this.props.expenseGoalData;
     return (
       <Grid>
         <Grid.Column>
@@ -39,7 +45,18 @@ class SaveForEmergenyConfirmPage extends Component {
                   </List.Content>
                 </List.Item>
               </List>
-              <Button type="submit">Submit</Button>
+              <Button
+                type="submit"
+                onClick={event =>
+                  this.handleSubmit(
+                    event,
+                    this.props.expenseGoalData,
+                    this.props.user.id
+                  )
+                }
+              >
+                Submit
+              </Button>
             </Segment>
           </Segment>
         </Grid.Column>
@@ -48,10 +65,18 @@ class SaveForEmergenyConfirmPage extends Component {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
   return {
-    // sendExpenseGoal() {dispatch()}
+    user: state.user
   };
 };
 
-export default connect(null, mapDispatch)(SaveForEmergenyConfirmPage);
+const mapDispatch = dispatch => {
+  return {
+    sendExpenseGoal(id, expenseData) {
+      dispatch(postEmergencyGoal(id, expenseData));
+    }
+  };
+};
+
+export default connect(mapState, mapDispatch)(SaveForEmergenyConfirmPage);
