@@ -15,7 +15,7 @@ import {
   Segment,
   Sidebar,
   Visibility,
-  Input,
+  Input
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import { logout } from "../../store";
@@ -36,7 +36,7 @@ class MenuExampleSecondary extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu secondary>
+      <Menu secondary style={{ fontSize: "15px", marginLeft: "12%" }}>
         <Menu.Item
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
@@ -68,6 +68,8 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
+          as={Link}
+          to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />
@@ -81,9 +83,8 @@ class MenuExampleSecondary extends Component {
         <Menu.Item
           name="RETIREMENT"
           as={Link}
-          to="/retirement"
-          active={activeItem === "RETIREMENT"}
-          onClick={this.handleItemClick}
+          to="/goals"
+          active={activeItem === "GOALS"}
         />
       </Menu>
     );
@@ -91,7 +92,7 @@ class MenuExampleSecondary extends Component {
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool,
+  mobile: PropTypes.bool
 };
 
 /* Heads up!
@@ -128,7 +129,7 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Container>
+              <Container style={{ fontSize: "17px" }}>
                 <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>
@@ -165,14 +166,14 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    },
+    }
   };
 };
 

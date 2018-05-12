@@ -18,7 +18,7 @@ const fieldValues = {
   monthlyRetirementSpending: "",
   retirementage: "",
   saveEachYear: "",
-  savedSoFar: "",
+  savedSoFar: ""
 };
 
 /**

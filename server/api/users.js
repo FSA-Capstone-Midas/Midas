@@ -21,7 +21,6 @@ router.post("/user", (req, res, next) => {});
 
 // user edit info
 router.put("/update/:id", (req, res, next) => {
-  console.log("req.bdoy????", req.body);
   User.findById(req.params.id)
     .then(userToUpdate => {
       return userToUpdate.update(req.body);
@@ -29,7 +28,7 @@ router.put("/update/:id", (req, res, next) => {
     .then(data => res.status(201).json(data));
 });
 
-router.get("/user/:userId/budget", (req, res, next) => {
+router.get("/:userId/budget", (req, res, next) => {
   User.findById(req.params.userId)
     .then(user => {
       const budget = {};
@@ -45,13 +44,22 @@ router.get("/user/:userId/budget", (req, res, next) => {
     .catch(next);
 });
 
-router.put("/user/:userId/budget", (req, res, next) => {
+router.put("/:userId/budget", (req, res, next) => {
   User.update(req.body, {
     where: { id: req.params.userId },
     returning: true
   })
     .then(([affectedCount, affectedRows]) => {
-      res.status(200).json(affectedRows[0]);
+      const updatedUser = affectedRows[0];
+      const updatedBudget = {};
+      updatedBudget.foodAndDrink = updatedUser.foodAndDrink;
+      updatedBudget.recreation = updatedUser.recreation;
+      updatedBudget.service = updatedUser.service;
+      updatedBudget.shops = updatedUser.shops;
+      updatedBudget.travel = updatedUser.travel;
+      updatedBudget.miscellaneous = updatedUser.miscellaneous;
+      updatedBudget.totalBudgetExpenditure = updatedUser.totalBudgetExpenditure;
+      res.status(200).json(updatedBudget);
     })
     .catch(next);
 });

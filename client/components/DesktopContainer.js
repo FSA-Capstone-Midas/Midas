@@ -47,7 +47,7 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size="large"
             >
-              <Container>
+              <Container style={{ fontSize: "17px" }}>
                 <Menu.Item exact as={NavLink} to="/">
                   Home
                 </Menu.Item>

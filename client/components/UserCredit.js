@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
-import { Grid } from "semantic-ui-react";
+import { Grid, Segment, Progress } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import { Segment, Progress } from "semantic-react";
 import { ProgressBar } from "react-bootstrap";
 
 const ResponsiveContainer = ({ children }) => (
@@ -21,17 +19,20 @@ ResponsiveContainer.propTypes = {
 };
 
 class UserCredit extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick = e => {
-    e.preventDefault();
-  };
+  // constructor(props) {
+  //   super(props);
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+  // handleClick = e => {
+  //   e.preventDefault();
+  // };
   render() {
     return (
       <ResponsiveContainer>
-        <div className="ui segment" style={{ height: "67vh" }}>
+        <div
+          className="ui segment"
+          style={{ marginLeft: "15%", marginRight: "15%" }}
+        >
           <div
             className="ui statistic"
             style={{
@@ -50,7 +51,7 @@ class UserCredit extends Component {
               The average Midas credit score is{" "}
             </h2>
             <div className="ui red statistic">
-              <div className="value">80</div>
+              <div className="value">800</div>
             </div>
             <ProgressBar>
               {" "}
@@ -60,17 +61,26 @@ class UserCredit extends Component {
             </ProgressBar>
             <a
               href="https://google.com"
-              onClick={this.handleClick}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto"
               }}
             >
-              <h2>Check Your Credit Score!</h2>
+              <h2> Feel free to sign up to check your Credit score!</h2>
             </a>
           </div>
         </div>
-        <Footer />
+        <div
+          style={{
+            position: "fixed",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          <Footer />
+        </div>
       </ResponsiveContainer>
     );
   }

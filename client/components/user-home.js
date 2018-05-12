@@ -39,12 +39,15 @@ class UserHome extends React.Component {
         {this.state.loading ? (
           <Loading />
         ) : (
-          <Segment>
+          <Segment style={{ marginLeft: "10%", marginRight: "-3%" }}>
             <Grid>
               <Grid.Column width={4}>
                 <Menu
                   vertical
-                  style={{ fontSize: "14px", display: "table-row-group" }}
+                  style={{
+                    fontSize: "14px",
+                    display: "table-row-group"
+                  }}
                 >
                   <h3>Account info</h3>
                   {accounts &&
@@ -71,7 +74,7 @@ class UserHome extends React.Component {
                               </Menu.Menu>
                             </Menu.Item>
                             <img
-                              style={{ width: "220px", height: "120px" }}
+                              style={{ width: "240px", height: "150px" }}
                               className="carousel-image"
                               src="../../../../../../pictures/visa.png"
                             />
@@ -152,7 +155,7 @@ class UserHome extends React.Component {
                     })}
                 </Menu>
               </Grid.Column>
-              <Grid.Column width={9}>
+              <Grid.Column width={9} style={{ marginLeft: "5%" }}>
                 <AccountTable />
               </Grid.Column>
             </Grid>
