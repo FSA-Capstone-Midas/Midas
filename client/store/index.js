@@ -10,7 +10,6 @@ import budget from "./budget";
 import form from "./form";
 import retirement from "./retirement";
 import houseForm from "./houseForm";
-import stateReducer from "./state";
 import emergencyGoalReducer from "./emergencyGoal";
 
 const reducer = combineReducers({
@@ -22,7 +21,6 @@ const reducer = combineReducers({
   form,
   retirement,
   houseForm,
-  states: stateReducer,
   emergencyGoalReducer
 });
 

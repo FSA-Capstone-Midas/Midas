@@ -6,7 +6,11 @@ import Footer from "./Footer";
 import { Segment, Button, Container } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
-import { fetchRetirementDetails, getHouseFormdetails } from "../store";
+import {
+  fetchRetirementDetails,
+  getHouseFormdetails,
+  fetchEmergencyGoal
+} from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -27,6 +31,7 @@ class Goals extends Component {
   componentDidMount() {
     this.props.fetchRetirementDetails(this.props.user.id);
     this.props.getHouseFormdetails(this.props.user.id);
+    this.props.getEmergencyGoal(this.props.user.id);
   }
 
   render() {
@@ -40,7 +45,11 @@ class Goals extends Component {
         emergency.isEnter ||
         goals ? (
           <Segment>
-            <GoalsComponent goals={goals} houseForm={houseForm} />
+            <GoalsComponent
+              goals={goals}
+              houseForm={houseForm}
+              emergency={emergency}
+            />
           </Segment>
         ) : null}
         <Segment>
@@ -74,6 +83,9 @@ function mapDispatchToProps(dispatch) {
     },
     getHouseFormdetails(userId) {
       dispatch(getHouseFormdetails(userId));
+    },
+    getEmergencyGoal(userId) {
+      dispatch(fetchEmergencyGoal(userId));
     }
   };
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 import history from "../history";
 
 //initial state
-const defaultEmergencyGoal = {};
+const defaultEmergencyGoal = { isEnter: false };
 
 //action type
 const GET_EMERGENCY_GOAL = "GET_EMERGENCY_GOAL";
