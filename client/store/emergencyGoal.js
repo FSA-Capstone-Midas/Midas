@@ -24,19 +24,17 @@ export const fetchEmergencyGoal = id => dispatch => {
 
 export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
   const { expenseGoal, expenseDuration } = emergencyInfo;
-  console.log("HIIIII");
-  console.log(expenseGoal);
-  console.log(expenseDuration);
-  console.log(id);
   axios
     .post(`/api/emergencyGoal/user/${id}`, {
       expense: expenseGoal,
-      duration: expenseDuration
+      duration: expenseDuration,
+      isEnter: true
     })
     .then(res => res.data)
     .then(emergencyGoal => {
       //return added data to database
       dispatch(getEmergencyGoal(emergencyGoal));
+      history.push("/goals");
     })
     .catch(err => console.log(err));
 };

@@ -13,7 +13,7 @@ class GoalsMenu extends Component {
   handleClick(event) {}
 
   render() {
-    let { retirement } = this.props;
+    let { retirement, emergencyGoal } = this.props;
 
     return (
       <Segment>
@@ -32,17 +32,17 @@ class GoalsMenu extends Component {
                     />
                   </Grid.Column>
                 )}
-
-                <Grid.Column>
-                  <Card
-                    header="Save for an Emergency"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/goals/saveForEmergency"
-                  />
-                </Grid.Column>
-
+                {emergencyGoal.isEnter ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Save for an Emergency"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/goals/saveForEmergency"
+                    />
+                  </Grid.Column>
+                )}
                 <Grid.Column>
                   <Card
                     header="Buy a house"
@@ -89,7 +89,8 @@ const mapStateToProps = state => {
   return {
     form: state.form,
     user: state.user,
-    retirement: state.retirement
+    retirement: state.retirement,
+    emergencyGoal: state.emergencyGoalReducer
   };
 };
 

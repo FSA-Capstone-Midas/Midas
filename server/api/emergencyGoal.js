@@ -11,9 +11,9 @@ router.get("/user/:userId", (req, res, next) => {
 });
 
 router.post("/user/:userId", (req, res, next) => {
-  const { duration, expense } = req.body;
+  const { duration, expense, isEnter } = req.body;
   const userId = req.params.userId;
-  EmergencyGoal.create({ duration, expense, userId })
+  EmergencyGoal.create({ duration, expense, userId, isEnter })
     .then(result => {
       res.status(201).json(result);
     })
