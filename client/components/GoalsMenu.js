@@ -13,7 +13,7 @@ class GoalsMenu extends Component {
   handleClick(event) {}
 
   render() {
-    let { retirement, emergencyGoal } = this.props;
+    let { retirement, emergencyGoal, houseForm } = this.props;
 
     return (
       <Segment>
@@ -43,15 +43,17 @@ class GoalsMenu extends Component {
                     />
                   </Grid.Column>
                 )}
-                <Grid.Column>
-                  <Card
-                    header="Buy a house"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/house"
-                  />
-                </Grid.Column>
+                {houseForm.annualIncome ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Buy a house"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/house"
+                    />
+                  </Grid.Column>
+                )}
               </Grid.Row>
             </Grid>
           </Grid.Column>
@@ -90,12 +92,9 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
-    emergencyGoal: state.emergencyGoalReducer
+    emergencyGoal: state.emergencyGoalReducer,
+    houseForm: state.houseForm
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GoalsMenu);
+export default connect(mapStateToProps)(GoalsMenu);

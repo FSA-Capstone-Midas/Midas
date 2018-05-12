@@ -24,6 +24,7 @@ class ItemExampleDivided extends Component {
             </Item.Content>
           </Item>
         ) : null}
+
         {this.props.emergency.isEnter ? (
           <Item>
             <Item.Image src="../../../../../../pictures/matthew.png" />
@@ -37,6 +38,22 @@ class ItemExampleDivided extends Component {
             </Item.Content>
           </Item>
         ) : null}
+
+        {this.props.houseForm.annualIncome ? (
+          <Item>
+            <Item.Image src="../../../../../../pictures/matthew.png" />
+
+            <Item.Content>
+              <Item.Header>See your housing goal</Item.Header>
+              <Item.Extra>
+                <Label>Housing Goal</Label>
+              </Item.Extra>
+              <NavLink to="/house">
+                <Button>Update your housing goal</Button>
+              </NavLink>
+            </Item.Content>
+          </Item>
+        ) : null}
       </Item.Group>
     );
   }
@@ -45,11 +62,14 @@ class ItemExampleDivided extends Component {
 //render box
 class GoalsComponent extends Component {
   render() {
-    let { retirement, goals, emergency } = this.props;
+    let { retirement, goals, emergency, houseForm } = this.props;
     return (
       <Segment>
-        <h1>Goals: </h1>
-        <ItemExampleDivided retirement={retirement} emergency={emergency} />
+        <ItemExampleDivided
+          retirement={retirement}
+          houseForm={houseForm}
+          emergency={emergency}
+        />
       </Segment>
     );
   }

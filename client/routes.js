@@ -25,7 +25,8 @@ import {
   fetchTransaction,
   fetchItem,
   getBudgetFromDatabase,
-  fetchEmergencyGoal
+  fetchEmergencyGoal,
+  fetchRetirementDetails
 } from "./store";
 
 /**
@@ -36,6 +37,16 @@ class Routes extends Component {
     this.props.loadInitialData();
     this.props.loadAccountsFromPlaid();
     this.props.loadTransactionsFromPlaid();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log("what is this.props.user.id", this.props.user.id);
+    // console.log("what is nextProps.id", nextProps.user.id);
+    if (this.props.user.id !== nextProps.user.id) {
+      // console.log("do we get here?");
+      // console.log("what is nextProps.id inside", nextProps.user.id);
+      this.props.fetchRetirementDetails(nextProps.user.id);
+    }
   }
 
   render() {
@@ -92,7 +103,8 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
-    userId: state.user.id
+    userId: state.user.id,
+    user: state.user
   };
 };
 
@@ -109,6 +121,9 @@ const mapDispatch = dispatch => {
     },
     loadBudgetData() {
       dispatch(getBudgetFromDatabase());
+    },
+    fetchRetirementDetails(id) {
+      dispatch(fetchRetirementDetails(id));
     }
   };
 };

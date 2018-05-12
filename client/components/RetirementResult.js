@@ -3,9 +3,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import SideBar from "./SideBar";
-import Table from "./Table";
-import { renCompo } from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -13,7 +10,7 @@ import { ResponsiveStream } from "@nivo/stream";
 import RetirementTable from "./RetirementTable";
 import { fetchRetirementDetails } from "../store";
 
-const createData = form => {
+const createData = retirement => {
   const result = [];
   const {
     birthyear,
@@ -23,9 +20,8 @@ const createData = form => {
     retirementage,
     saveEachYear,
     savedSoFar,
-  } = form;
+  } = retirement;
 
-  console.log("what is form in function", form);
   const currentYear = new Date().getFullYear();
   const currentAge = currentYear - birthyear;
   const deathYear = 95;
@@ -35,68 +31,60 @@ const createData = form => {
       const avgMarket = savedSoFar;
       const poorMarket = savedSoFar;
       const goodMarket = savedSoFar;
-      const beginningSaving = saveEachYear + earnEachYear;
+      const beginningSaving = saveEachYear;
       result.push({
         year: num,
         age: i,
-        startingPortfolioValueAvg: avgMarket,
-        startingPortfolioValuePoor: poorMarket,
-        startingPortfolioValueGood: goodMarket,
+        "Average Market": avgMarket,
+        "Poor Market": poorMarket,
+        "Good Market": goodMarket,
         savingOrSpending: beginningSaving,
         cashFlow:
-          martialStatus === "single"
-            ? beginningSaving - 80000
-            : beginningSaving - 100000,
+          martialStatus === "single" ? beginningSaving : beginningSaving,
       });
       num++;
     } else if (i > currentAge && i < retirementage) {
       const avgMarket =
-        savedSoFar * Math.pow(1 + 0.7 / 12, 12) +
-        result[num - 1].savingOrSpending;
+        (result[num - 1]["Average Market"] + result[num - 1].cashFlow) * 1.07;
       const poorMarket =
-        savedSoFar * Math.pow(1 + 0.02 / 12, 12) +
-        result[num - 1].savingOrSpending;
+        (result[num - 1]["Poor Market"] + result[num - 1].cashFlow) * 1.03;
       const goodMarket =
-        savedSoFar * Math.pow(1 + 0.15 / 12, 12) +
-        result[num - 1].savingOrSpending;
-      const beginningSaving =
-        result[num - 1].savingOrSpending + saveEachYear + earnEachYear;
+        (result[num - 1]["Good Market"] + result[num - 1].cashFlow) * 1.1;
+      const beginningSaving = saveEachYear;
       result.push({
         year: num,
         age: i,
-        startingPortfolioValueAvg: Math.round(avgMarket, 0),
-        startingPortfolioValuePoor: Math.round(poorMarket, 0),
-        startingPortfolioValueGood: Math.round(goodMarket, 0),
+        "Average Market": Math.round(avgMarket, 0),
+        "Poor Market": Math.round(poorMarket, 0),
+        "Good Market": Math.round(goodMarket, 0),
         savingOrSpending: Math.round(beginningSaving, 0),
         cashFlow:
           martialStatus === "single"
-            ? Math.round(beginningSaving - 80000, 0)
-            : Math.round(beginningSaving - 100000, 0),
+            ? Math.round(beginningSaving, 0)
+            : Math.round(beginningSaving, 0),
       });
       num++;
     } else {
       const avgMarket =
-        savedSoFar * Math.pow(1 + 0.7 / 12, 12) +
-        result[num - 1].savingOrSpending;
+        (result[num - 1]["Average Market"] + result[num - 1].cashFlow) * 1.07;
       const poorMarket =
-        savedSoFar * Math.pow(1 + 0.02 / 12, 12) +
-        result[num - 1].savingOrSpending;
+        (result[num - 1]["Poor Market"] + result[num - 1].cashFlow) * 1.03;
       const goodMarket =
-        savedSoFar * Math.pow(1 + 0.15 / 12, 12) +
-        result[num - 1].savingOrSpending;
-      const beginningSaving =
-        result[num - 1].savingOrSpending - monthlyRetirementSpending;
+        (result[num - 1]["Good Market"] + result[num - 1].cashFlow) * 1.1;
+
+      const beginningSaving = -monthlyRetirementSpending * 12;
+
       result.push({
         year: num,
         age: i,
-        startingPortfolioValueAvg: Math.round(avgMarket),
-        startingPortfolioValuePoor: Math.round(poorMarket),
-        startingPortfolioValueGood: Math.round(goodMarket),
+        "Average Market": Math.round(avgMarket),
+        "Poor Market": Math.round(poorMarket),
+        "Good Market": Math.round(goodMarket),
         savingOrSpending: Math.round(beginningSaving),
         cashFlow:
           martialStatus === "single"
-            ? Math.round(beginningSaving - 80000)
-            : Math.round(beginningSaving - 100000),
+            ? Math.round(beginningSaving)
+            : Math.round(beginningSaving * 1.2),
       });
       num++;
     }
@@ -104,11 +92,7 @@ const createData = form => {
   return result;
 };
 
-const keys = [
-  "startingPortfolioValueAvg",
-  "startingPortfolioValuePoor",
-  "startingPortfolioValueGood",
-];
+const keys = ["Average Market", "Poor Market", "Good Market"];
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -118,7 +102,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class RetirementResult extends Component {
@@ -135,8 +119,7 @@ class RetirementResult extends Component {
   }
 
   render() {
-    const objWithAllProperty = createData(this.props.form);
-    console.log("what is objWithAllProperty", objWithAllProperty);
+    const objWithAllProperty = createData(this.props.retirement);
 
     return (
       <ResponsiveContainer>
@@ -155,7 +138,7 @@ class RetirementResult extends Component {
                 ) : (
                   <div>
                     <div style={{ height: 400 }}>
-                      <h2>Does this render?</h2>
+                      <h2>Retirement Analysis</h2>
                       <ResponsiveStream
                         data={objWithAllProperty}
                         keys={keys}
@@ -163,7 +146,7 @@ class RetirementResult extends Component {
                           top: 50,
                           right: 110,
                           bottom: 50,
-                          left: 60
+                          left: 60,
                         }}
                         axisBottom={{
                           orient: "bottom",
@@ -171,7 +154,7 @@ class RetirementResult extends Component {
                           tickPadding: 5,
                           tickRotation: 0,
                           legend: "",
-                          legendOffset: 36
+                          legendOffset: 36,
                         }}
                         axisLeft={{
                           orient: "left",
@@ -193,7 +176,7 @@ class RetirementResult extends Component {
                             color: "#2c998f",
                             size: 4,
                             padding: 2,
-                            stagger: true
+                            stagger: true,
                           },
                           {
                             id: "squares",
@@ -202,22 +185,22 @@ class RetirementResult extends Component {
                             color: "#e4c912",
                             size: 6,
                             padding: 2,
-                            stagger: true
-                          }
+                            stagger: true,
+                          },
                         ]}
                         fill={[
                           {
                             match: {
-                              id: "Paul"
+                              id: "Paul",
                             },
-                            id: "dots"
+                            id: "dots",
                           },
                           {
                             match: {
-                              id: "Marcel"
+                              id: "Marcel",
                             },
-                            id: "squares"
-                          }
+                            id: "squares",
+                          },
                         ]}
                         animate={true}
                         motionStiffness={90}
@@ -230,12 +213,15 @@ class RetirementResult extends Component {
                             itemWidth: 80,
                             itemHeight: 20,
                             symbolSize: 12,
-                            symbolShape: "circle"
-                          }
+                            symbolShape: "circle",
+                          },
                         ]}
                       />
                     </div>
-                    <RetirementTable form={this.props.form} />
+                    <RetirementTable
+                      retirement={this.props.retirement}
+                      objWithAllProperty={objWithAllProperty}
+                    />
                   </div>
                 )}
               </Grid.Column>
@@ -255,6 +241,7 @@ const mapState = state => {
     transaction: state.transactions.transaction,
     form: state.form,
     user: state.user,
+    retirement: state.retirement,
   };
 };
 

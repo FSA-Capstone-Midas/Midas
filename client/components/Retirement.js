@@ -73,9 +73,6 @@ class Retirement extends Component {
   }
 
   render() {
-    console.log("account ", this.props.account); //user account info
-    console.log("transaction ", this.props.transaction); //user
-
     const classNameStep1 = this.state.step === 1 ? "active" : "";
     const classNameStep2 = this.state.step === 2 ? "active" : "";
     const classNameStep3 = this.state.step === 3 ? "active" : "";
