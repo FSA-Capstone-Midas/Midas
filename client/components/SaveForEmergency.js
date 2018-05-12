@@ -9,7 +9,8 @@ import {
   Header,
   Grid,
   Step,
-  Label
+  Label,
+  Statistic
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
@@ -108,8 +109,12 @@ class SaveForEmergency extends Component {
                 <Grid.Column width={8}>
                   <Header as="h1">How much will you need?</Header>
                   <Segment>
-                    Based on your expense we recommend you set a goal of ${+this
-                      .state.amount * +this.state.duration}{" "}
+                    Based on your expense we recommend you set a goal of
+                    <Statistic color="pink">
+                      <Statistic.Value>
+                        ${+this.state.amount * +this.state.duration}
+                      </Statistic.Value>
+                    </Statistic>
                     to save the money you will need for an Emergency Fund
                   </Segment>
                 </Grid.Column>
