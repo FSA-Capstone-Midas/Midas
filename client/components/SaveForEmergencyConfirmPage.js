@@ -10,6 +10,7 @@ class SaveForEmergenyConfirmPage extends Component {
 
   handleSubmit(event, data, id) {
     event.preventDefault();
+    console.log(id);
     this.props.sendExpenseGoal(id, data);
     //redirect to goal home page
   }
