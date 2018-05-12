@@ -5,6 +5,7 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Footer from "./Footer";
 import SaveForEmergency from "./SaveForEmergency";
 import SaveForEmergenyConfirmPage from "./SaveForEmergencyConfirmPage";
+import { Container } from "semantic-ui-react";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -22,23 +23,26 @@ class SaveForEmergencyMainPage extends Component {
     super(props);
     this.state = {
       expenseGoal: 0,
+      expenseDuration: 0,
       enteredExpense: false
     };
     this.handlePage = this.handlePage.bind(this);
   }
 
-  handlePage(expenseGoal, enteredExpense) {
-    this.setState({ expenseGoal, enteredExpense });
+  handlePage(expenseDuration, expenseGoal, enteredExpense) {
+    this.setState({ expenseDuration, expenseGoal, enteredExpense });
   }
 
   render() {
     return (
       <ResponsiveContainer>
-        {!this.state.enteredExpense ? (
-          <SaveForEmergency handlePage={this.handlePage} />
-        ) : (
-          <SaveForEmergenyConfirmPage />
-        )}
+        <Container>
+          {!this.state.enteredExpense ? (
+            <SaveForEmergency handlePage={this.handlePage} />
+          ) : (
+            <SaveForEmergenyConfirmPage expenseGoal={this.state} />
+          )}
+        </Container>
         <Footer />
       </ResponsiveContainer>
     );
