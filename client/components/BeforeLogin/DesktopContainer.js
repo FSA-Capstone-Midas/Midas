@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import {
   Button,
   Container,
@@ -8,7 +9,6 @@ import {
   Segment,
   Visibility,
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
@@ -75,7 +75,6 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            {/* <HomepageHeading /> */}
           </Segment>
         </Visibility>
 

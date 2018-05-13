@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import {
   Button,
   Container,
@@ -9,7 +10,6 @@ import {
   Segment,
   Sidebar,
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
 
 class MobileContainer extends Component {
   state = {};
@@ -37,17 +37,22 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as={NavLink} to="/">
+            <Menu.Item exact as={NavLink} to="/">
               Home
             </Menu.Item>
-            <Menu.Item as="a">How It Works</Menu.Item>
+            <Menu.Item exact as="a" to="/howitworks">
+              How It Works
+            </Menu.Item>
             <Menu.Item as="a">Security</Menu.Item>
             <Menu.Item as="a">Blog</Menu.Item>
             <Menu.Item as="a">Support</Menu.Item>
-            <Menu.Item as={NavLink} to="/login">
+            <Menu.Item exact as={NavLink} to="/aboutus">
+              About Us
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/login">
               Log in
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/signup">
+            <Menu.Item exact as={NavLink} to="/signup">
               Sign Up
             </Menu.Item>
           </Sidebar>
@@ -83,7 +88,6 @@ class MobileContainer extends Component {
                   </Menu.Item>
                 </Menu>
               </Container>
-              {/* <HomepageHeading mobile /> */}
             </Segment>
 
             {children}
