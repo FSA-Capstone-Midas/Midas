@@ -16,11 +16,11 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
-import MobileContainer from "./MobileContainer";
-import DesktopContainer from "./DesktopContainer";
+import MobileContainer from "./BeforeLogin/MobileContainer";
+import DesktopContainer from "./BeforeLogin/DesktopContainer";
 import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -43,7 +43,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const AboutUs = props => {
@@ -182,7 +182,7 @@ const AboutUs = props => {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 

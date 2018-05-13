@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import { Grid, Header, Image, Segment } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import DesktopContainer from "./DesktopContainer";
-import MobileContainer from "./MobileContainer";
+import DesktopContainer from "./BeforeLogin/DesktopContainer";
+import MobileContainer from "./BeforeLogin/MobileContainer";
 import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -28,7 +28,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const HowItWorks = props => {
@@ -217,7 +217,7 @@ const HowItWorks = props => {
 };
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 

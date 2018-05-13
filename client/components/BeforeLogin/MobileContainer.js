@@ -1,22 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
-import Footer from "./Footer";
-import HomepageHeading from "./HomePageHeading";
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
   Sidebar,
-  Visibility
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -69,7 +60,7 @@ class MobileContainer extends Component {
             <Segment
               inverted
               textAlign="center"
-              style={{ minHeight: 350, padding: "1em 0em" }}
+              style={{ minHeight: 50, padding: "1em 0em" }}
               vertical
             >
               <Container>
@@ -104,7 +95,7 @@ class MobileContainer extends Component {
 }
 
 MobileContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default withRouter(MobileContainer);

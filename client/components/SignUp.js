@@ -16,11 +16,11 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
-import MobileContainer from "./MobileContainer";
-import DesktopContainer from "./DesktopContainer";
+import MobileContainer from "./BeforeLogin/MobileContainer";
+import DesktopContainer from "./BeforeLogin/DesktopContainer";
 import { auth } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
@@ -31,7 +31,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class SignUp extends Component {
@@ -166,7 +166,7 @@ class SignUp extends Component {
             left: "0px",
             bottom: "0px",
             width: "100%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <Footer />
@@ -188,7 +188,7 @@ const mapSignup = state => {
   return {
     name: "signup",
     displayName: "Sign Up",
-    error: state.user.error
+    error: state.user.error,
   };
 };
 
@@ -202,7 +202,7 @@ const mapDispatch = dispatch => {
       const firstName = evt.target.firstName.value;
       const lastName = evt.target.lastName.value;
       dispatch(auth(email, password, formName, firstName, lastName));
-    }
+    },
   };
 };
 
@@ -215,5 +215,5 @@ SignUp.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
+  error: PropTypes.object,
 };

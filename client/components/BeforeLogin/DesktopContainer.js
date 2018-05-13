@@ -1,14 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Carousel from "nuka-carousel";
-import HomepageHeading from "./HomePageHeading";
 import {
   Button,
   Container,
   Menu,
   Responsive,
   Segment,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -46,6 +45,7 @@ class DesktopContainer extends Component {
               pointing={!fixed}
               secondary={!fixed}
               size="large"
+              style={{ border: "none" }}
             >
               <Container style={{ fontSize: "17px" }}>
                 <Menu.Item exact as={NavLink} to="/">
@@ -90,7 +90,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default withRouter(DesktopContainer);

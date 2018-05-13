@@ -17,11 +17,11 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
-import MobileContainer from "./MobileContainer";
-import DesktopContainer from "./DesktopContainer";
+import MobileContainer from "./BeforeLogin/MobileContainer";
+import DesktopContainer from "./BeforeLogin/DesktopContainer";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -31,7 +31,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 //const Login = () => (
@@ -101,7 +101,7 @@ class Login extends Component {
             left: "0px",
             bottom: "0px",
             width: "100%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <Footer />
@@ -115,7 +115,7 @@ const mapLogin = state => {
   return {
     name: "login",
     displayName: "Login",
-    error: state.user.error
+    error: state.user.error,
   };
 };
 
@@ -127,7 +127,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       dispatch(auth(email, password, formName));
-    }
+    },
   };
 };
 
@@ -140,5 +140,5 @@ Login.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
+  error: PropTypes.object,
 };
