@@ -56,10 +56,6 @@ h2 {
   /* transition: opacity 1.5s; */
 }
 
-#aboutUsBackground {
-  background: linear-gradient(#fdfcfb, #e2d1c3);
-}
-
 #homeBackground {
   background-image: url('pictures/backgroundNYC.png') !important;
   background-size: cover !important;
@@ -150,4 +146,9 @@ h2 {
 /* Mobile NavBar */
 #mobileSignUpbutton {
   margin-left: 0.5em;
+}
+
+/* Header Section Background Color */
+#headerBackground {
+  background: linear-gradient(#fdfcfb, #e2d1c3);
 }

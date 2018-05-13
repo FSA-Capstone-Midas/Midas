@@ -23,7 +23,7 @@ const Login = props => {
   const { name, handleSubmit } = props;
   return (
     <ResponsiveContainer>
-      <Segment id="aboutUsBackground" style={{ padding: "3em" }} vertical>
+      <Segment id="headerBackground" style={{ padding: "3em" }} vertical>
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column

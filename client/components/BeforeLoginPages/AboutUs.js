@@ -42,7 +42,7 @@ ResponsiveContainer.propTypes = {
 const AboutUs = props => {
   return (
     <ResponsiveContainer logined={props.isLoggedIn}>
-      <Segment id="aboutUsBackground" style={{ padding: "3em" }} vertical>
+      <Segment id="headerBackground" style={{ padding: "3em" }} vertical>
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
@@ -146,95 +146,6 @@ const AboutUs = props => {
                 </Card.Content>
               </Card>
             </Grid.Column>
-
-            {/* <Grid.Column className="ui link cards" width={4}> */}
-            {/* <div className="ui link cards"> */}
-            {/* <div className="card">
-                <div className="image">
-                  <a href="https://www.linkedin.com/in/jingjing-li-757b0711/">
-                    <img src="../../../../../../pictures/JJ.png" />
-                  </a>
-                </div>
-                <div className="content">
-                  <div className="header">JingJing Li</div>
-                  <div className="meta" />
-                  <div className="description">Software Developer</div>
-                </div>
-                <div className="extra content">
-                  <span className="right floated">Joined in 2018</span>
-                  <span>
-                    <i className="user icon" />
-                    1000 connection
-                  </span>
-                </div>
-              </div>
-            </Grid.Column>
-            <Grid.Column className="ui link cards" width={4}>
-              <div className="card">
-                <div className="image">
-                  <a href="https://www.linkedin.com/in/joshua-park-7044a7153/">
-                    <img src="../../../../../../pictures/Joshua.png" />
-                  </a>
-                </div>
-                <div className="content">
-                  <div className="header">Joshua Park</div>
-                  <div className="meta" />
-                  <div className="description">Software Developer</div>
-                </div>
-                <div className="extra content">
-                  <span className="right floated">Joined in 2018</span>
-                  <span>
-                    <i className="user icon" />
-                    20,000 connections
-                  </span>
-                </div>
-              </div>
-            </Grid.Column>
-            <Grid.Column className="ui link cards" width={4}>
-              <div className="card">
-                <div className="image">
-                  <a href="https://www.linkedin.com/in/philipleung90/">
-                    <img src="../../../../../../pictures/Philip.png" />
-                  </a>
-                </div>
-                <div className="content">
-                  <div className="header">Philip Leung</div>
-                  <div className="meta" />
-                  <div className="description">Software Developer</div>
-                </div>
-                <div className="extra content">
-                  <span className="right floated">Joined in 2018</span>
-                  <span>
-                    <i className="user icon" />
-                    3,000 connections
-                  </span>
-                </div>
-              </div>
-            </Grid.Column>
-
-            <Grid.Column className="ui link cards" width={4}>
-              <div className="card">
-                <div className="image">
-                  <a href="https://www.linkedin.com/in/whchan703/">
-                    <img src="../../../../../../pictures/Casey.png" />
-                  </a>
-                </div>
-                <div className="content">
-                  <div className="header">Casey Chan</div>
-                  <div className="meta" />
-                  <div className="description">Software Developer</div>
-                </div>
-                <div className="extra content">
-                  <span className="right floated">Joined in 2018</span>
-                  <span>
-                    <i className="user icon" />
-                    2,000 connections
-                  </span>
-                </div>
-              </div> */}
-
-            {/* </div> */}
-            {/* </Grid.Column> */}
           </Grid.Row>
         </Grid>
       </Segment>
