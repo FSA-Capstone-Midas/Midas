@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
 import {
   Button,
   Container,
@@ -11,10 +10,7 @@ import {
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
+const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
 class DesktopContainer extends Component {
   state = {};
@@ -27,7 +23,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...Responsive.onlyComputer}>
+      <Responsive {...notMobile}>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
