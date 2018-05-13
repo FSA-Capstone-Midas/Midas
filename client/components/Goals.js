@@ -9,7 +9,7 @@ import GoalsMenu from "./GoalsMenu";
 import {
   fetchRetirementDetails,
   getHouseFormdetails,
-  fetchEmergencyGoal
+  fetchEmergencyGoal,
 } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
@@ -24,14 +24,14 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: false
+      goals: false,
     };
   }
 
   componentDidMount() {
     this.props.fetchRetirementDetails(this.props.user.id);
     this.props.getHouseFormdetails(this.props.user.id);
-    this.props.getEmergencyGoal(this.props.user.id);
+    this.props.fetchEmergencyGoal(this.props.user.id);
   }
 
   render() {
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
     user: state.user,
     retirement: state.retirement,
     emergency: state.emergencyGoalReducer,
-    houseForm: state.houseForm
+    houseForm: state.houseForm,
   };
 };
 
@@ -84,9 +84,9 @@ function mapDispatchToProps(dispatch) {
     getHouseFormdetails(userId) {
       dispatch(getHouseFormdetails(userId));
     },
-    getEmergencyGoal(userId) {
+    fetchEmergencyGoal(userId) {
       dispatch(fetchEmergencyGoal(userId));
-    }
+    },
   };
 }
 

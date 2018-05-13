@@ -8,10 +8,10 @@ const defaultEmergencyGoal = { isEnter: false };
 const GET_EMERGENCY_GOAL = "GET_EMERGENCY_GOAL";
 
 //action creators
-const getEmergencyGoal = emergencyGoal => ({
-  type: GET_EMERGENCY_GOAL,
-  emergencyGoal
-});
+export function getEmergencyGoal(emergencyGoal) {
+  const action = { type: GET_EMERGENCY_GOAL, emergencyGoal };
+  return action;
+}
 
 export const fetchEmergencyGoal = id => dispatch => {
   axios
@@ -28,7 +28,7 @@ export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
     .post(`/api/emergencyGoal/user/${id}`, {
       expense: expenseGoal,
       duration: expenseDuration,
-      isEnter: true
+      isEnter: true,
     })
     .then(res => res.data)
     .then(emergencyGoal => {
@@ -46,7 +46,7 @@ export default function emergencyGoalReducer(
 ) {
   switch (action.type) {
     case GET_EMERGENCY_GOAL:
-      return action.emergencyGoal;
+      return Object.assign({}, state, action.emergencyGoal);
     default:
       return state;
   }

@@ -18,7 +18,7 @@ import {
   SaveForEmergencyMainPage,
   House,
   Retirement,
-  RetirementResult
+  RetirementResult,
 } from "./components";
 import {
   me,
@@ -26,7 +26,7 @@ import {
   fetchItem,
   getBudgetFromDatabase,
   fetchEmergencyGoal,
-  fetchRetirementDetails
+  fetchRetirementDetails,
 } from "./store";
 
 /**
@@ -40,11 +40,7 @@ class Routes extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log("what is this.props.user.id", this.props.user.id);
-    // console.log("what is nextProps.id", nextProps.user.id);
     if (this.props.user.id !== nextProps.user.id) {
-      // console.log("do we get here?");
-      // console.log("what is nextProps.id inside", nextProps.user.id);
       this.props.fetchRetirementDetails(nextProps.user.id);
     }
   }
@@ -104,7 +100,7 @@ const mapState = state => {
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     userId: state.user.id,
-    user: state.user
+    user: state.user,
   };
 };
 
@@ -124,7 +120,7 @@ const mapDispatch = dispatch => {
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
-    }
+    },
   };
 };
 
@@ -137,5 +133,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 };

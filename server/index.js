@@ -48,7 +48,7 @@ const createApp = () => {
       secret: process.env.SESSION_SECRET || "my best friend is Cody",
       store: sessionStore,
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
     })
   );
   app.use(passport.initialize());
@@ -64,7 +64,6 @@ const createApp = () => {
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
-      console.log("Error ", req.path);
       const err = new Error("Not found");
       err.status = 404;
       next(err);

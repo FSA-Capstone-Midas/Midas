@@ -13,7 +13,7 @@ const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 
 const getInformation = information => ({
   type: GET_ACCESSTOKEN,
-  information
+  information,
 });
 
 // const getItem = item => ({
@@ -22,7 +22,6 @@ const getInformation = information => ({
 // });
 
 export const fetchInformation = publicToken => dispatch => {
-  //   console.log(publicToken, "did i get smth?");
   return axios
     .post("/api/plaid/get_access_token", { publicToken })
     .then(res => dispatch(getInformation(res.data)))

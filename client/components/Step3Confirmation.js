@@ -23,7 +23,6 @@ class Step3Confirmation extends Component {
 
   submitRegistration(event, id, formDetails) {
     event.preventDefault();
-    console.log("what is form deetails in submitReg", formDetails);
     this.props.addRetirementDetails(id, formDetails);
   }
 
@@ -97,7 +96,6 @@ class Step3Confirmation extends Component {
           size="huge"
           positive
           onClick={() => {
-            console.log("what is form", form);
             this.submitRegistration(event, user.id, form);
           }}
         >

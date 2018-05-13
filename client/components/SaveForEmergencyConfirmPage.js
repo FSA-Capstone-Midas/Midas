@@ -10,7 +10,6 @@ class SaveForEmergenyConfirmPage extends Component {
 
   handleSubmit(event, data, id) {
     event.preventDefault();
-    console.log(id);
     this.props.sendExpenseGoal(id, data);
     //redirect to goal home page
   }
@@ -68,7 +67,7 @@ class SaveForEmergenyConfirmPage extends Component {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
   };
 };
 
@@ -76,7 +75,7 @@ const mapDispatch = dispatch => {
   return {
     sendExpenseGoal(id, expenseData) {
       dispatch(postEmergencyGoal(id, expenseData));
-    }
+    },
   };
 };
 
