@@ -1,28 +1,13 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import Carousel from "nuka-carousel";
-import Footer from "./Footer";
+import React from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility,
-} from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
-import MobileContainer from "./BeforeLogin/MobileContainer";
-import DesktopContainer from "./BeforeLogin/DesktopContainer";
-import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import { withRouter } from "react-router-dom";
+import { Button, Grid, Header, Segment } from "semantic-ui-react";
+import MobileContainer from "../BeforeLogin/MobileContainer";
+import DesktopContainer from "../BeforeLogin/DesktopContainer";
+import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import AfterMobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Footer from "../Footer";
 
 const ResponsiveContainer = ({ children, logined }) => {
   return (
@@ -57,7 +42,6 @@ const AboutUs = props => {
                 About Us
               </Header>
               <p style={{ fontSize: "1.33em" }}>
-                {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
                 <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
               </p>
             </Grid.Column>
@@ -162,7 +146,6 @@ const AboutUs = props => {
                 Sign Up for Midas
               </Header>
               <p style={{ fontSize: "1.33em" }}>
-                {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
                 <b>MIDAS</b> Sign up and sync a bank account easily. Manage your
                 money like never before
               </p>

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 import {
   Button,
   Container,
@@ -12,10 +11,11 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
-import MobileContainer from "./BeforeLogin/MobileContainer";
-import DesktopContainer from "./BeforeLogin/DesktopContainer";
-import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import MobileContainer from "../BeforeLogin/MobileContainer";
+import DesktopContainer from "../BeforeLogin/DesktopContainer";
+import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import AfterMobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Footer from "../Footer";
 
 const ResponsiveContainer = ({ children, logined }) => {
   return (
