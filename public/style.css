@@ -3,35 +3,6 @@
   src: url('../../../../../fonts/jaapokkienchance-regular.ttf');
 } */
 
-/* flexbox layout for the grid*/
-/* body {
-  display: flex;
-}
-
-#app,
-#entry,
-#responsiveContainer,
-#responsive {
-  flex-grow: 1;
-  display: flex;
-}
-
-#responsive {
-  flex-direction: column;
-}
-
-#maincontent {
-  padding: 0em;
-  flex: 1 0 auto;
-  display: flex;
-}
-
-#contentdetail {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-} */
-
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
@@ -174,4 +145,9 @@ h2 {
 
 #p_wrap {
   white-space: pre-line;
+}
+
+/* Mobile NavBar */
+#mobileSignUpbutton {
+  margin-left: 0.5em;
 }
