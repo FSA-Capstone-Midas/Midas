@@ -17,7 +17,7 @@ const fieldValues = {
   monthlyRetirementSpending: "",
   retirementage: "",
   saveEachYear: "",
-  savedSoFar: "",
+  savedSoFar: ""
 };
 
 /**
@@ -48,7 +48,6 @@ export const addRetirementDetails = (id, formDetails) => dispatch => {
 };
 
 export const fetchRetirementDetails = id => dispatch => {
-  console.log("what is id inside fethcRetirement", id);
   axios
     .get(`/api/retirement/user/${id}`)
     .then(res => {

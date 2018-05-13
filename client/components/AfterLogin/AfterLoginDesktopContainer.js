@@ -17,7 +17,7 @@ import {
   Visibility,
   Input,
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../../store";
 
 /**
@@ -68,23 +68,24 @@ class MenuExampleSecondary extends Component {
         />
         <Menu.Item
           name="BUDGETS"
-          as={Link}
+          as={NavLink}
           to="/budget"
           active={activeItem === "BUDGETS"}
           onClick={this.handleItemClick}
         />
         <Menu.Item
           name="TRENDS"
-          as={Link}
+          as={NavLink}
           to="/trend"
           active={activeItem === "TRENDS"}
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name="RETIREMENT"
-          as={Link}
+          name="GOALS"
+          as={NavLink}
           to="/goals"
           active={activeItem === "GOALS"}
+          onClick={this.handleItemClick}
         />
       </Menu>
     );
@@ -133,14 +134,14 @@ class DesktopContainer extends Component {
                 <Menu.Item as={NavLink} to="/home">
                   HOME
                 </Menu.Item>
-                <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
+                <Menu.Item>ADD ACCOUNTS</Menu.Item>
                 <Menu.Item exact as={NavLink} to="/howitworks">
                   HOW IT WORKS
                 </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/aboutus">
                   ABOUT US
                 </Menu.Item>
-                <Menu.Item as={Link} to="/profile">
+                <Menu.Item as={NavLink} to="/profile">
                   PROFILE
                 </Menu.Item>
                 <Menu.Item position="right">

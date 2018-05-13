@@ -1,6 +1,6 @@
 const User = require("./user");
-const State = require("./state");
 const Retirement = require("./retirement");
+const EmergencyGoal = require("./emergencyGoal");
 const House = require("./house");
 
 /**
@@ -11,6 +11,7 @@ const House = require("./house");
  */
 
 Retirement.belongsTo(User);
+EmergencyGoal.belongsTo(User);
 House.belongsTo(User);
 
 /**
@@ -22,7 +23,7 @@ House.belongsTo(User);
 
 module.exports = {
   User,
-  State,
   Retirement,
+  EmergencyGoal,
   House
 };

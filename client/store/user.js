@@ -1,6 +1,7 @@
 import axios from "axios";
 import history from "../history";
 import { fetchInformation, fetchItem } from "./plaid";
+import { fetchEmergencyGoal } from "./index";
 
 /**
  * ACTION TYPES
@@ -27,7 +28,9 @@ export const me = () => dispatch =>
   axios
     .get("/auth/me")
     .then(res => {
+      const userId = res.data.id;
       dispatch(getUser(res.data || defaultUser));
+      dispatch(fetchEmergencyGoal(userId));
     })
     .catch(err => console.log(err));
 

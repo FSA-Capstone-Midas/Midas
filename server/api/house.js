@@ -21,7 +21,6 @@ router.post("/user/:userId", (req, res, next) => {
     if (!foundUser) {
       House.create(req.body)
         .then(newHousePlan => {
-          console.log("xxxxxx", newHousePlan);
           res.status(201).json(newHousePlan);
         })
         .catch(next);
@@ -29,7 +28,6 @@ router.post("/user/:userId", (req, res, next) => {
       foundUser
         .update(req.body)
         .then(newHousePlan => {
-          console.log("xxxxxx", newHousePlan);
           res.status(201).json(newHousePlan);
         })
         .catch(next);

@@ -126,7 +126,7 @@ const AboutUs = props => {
                     <span className="right floated">Joined in 2018</span>
                     <span>
                       <i className="user icon" />
-                      3 connections
+                      3,000 connections
                     </span>
                   </div>
                 </div>

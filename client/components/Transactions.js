@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import SideBar from "./SideBar";
 import Table from "./Table";
 import { renCompo } from "./utils";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -32,7 +32,7 @@ class Transactions extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 2000);
   }
 
   handleClick(event) {
@@ -42,41 +42,41 @@ class Transactions extends Component {
   }
 
   render() {
-    console.log("account ", this.props.account); //user account info
-    console.log("transaction ", this.props.transaction); //user transaction info
     const { transaction } = this.props;
     const rows = transaction;
 
     return (
       <ResponsiveContainer>
-        <Segment
-          id="howItWorksBackground"
-          style={{ padding: "1.5em", marginLeft: "15%", marginRight: "15%" }}
-          vertical
-        >
-          <Grid celled="internally" columns="equal" stackable>
-            <Grid.Row textAlign="center">
-              <Grid.Column
-                style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
-              >
-                {this.state.loading ? (
-                  <Loading />
-                ) : rows ? (
-                  <div>
-                    <Segment style={{ fontSize: "28px" }}>Transactions</Segment>
-                    <div className="ui grid">
-                      <SideBar handleClick={this.handleClick} />
-                      <div className="twelve wide column">
-                        {renCompo(this.state.currentChart, rows)}
+        <Container>
+          <Segment id="howItWorksBackground" vertical>
+            <Grid celled="internally" columns="equal" stackable>
+              <Grid.Row textAlign="center">
+                <Grid.Column
+                  style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                >
+                  {this.state.loading ? (
+                    <Loading />
+                  ) : rows ? (
+                    <Segment>
+                      <div>
+                        <Segment style={{ fontSize: "28px" }}>
+                          Transactions
+                        </Segment>
+                        <div className="ui grid">
+                          <SideBar handleClick={this.handleClick} />
+                          <div className="twelve wide column">
+                            {renCompo(this.state.currentChart, rows)}
+                          </div>
+                        </div>
+                        <Table rows={rows} />
                       </div>
-                    </div>
-                    <Table rows={rows} />
-                  </div>
-                ) : null}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
+                    </Segment>
+                  ) : null}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
+        </Container>
 
         <Footer />
       </ResponsiveContainer>
