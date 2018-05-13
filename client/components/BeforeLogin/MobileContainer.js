@@ -81,7 +81,7 @@ class MobileContainer extends Component {
                       as={Link}
                       to="/signup"
                       inverted
-                      style={{ marginLeft: "0.5em" }}
+                      id="mobileSignUpbutton"
                     >
                       Sign Up
                     </Button>
