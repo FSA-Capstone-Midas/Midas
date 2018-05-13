@@ -18,18 +18,18 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class Budget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 2000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
     $("table").tablesort();
   }
 
@@ -74,7 +74,7 @@ class Budget extends Component {
 const mapState = state => {
   return {
     account: state.plaid.account,
-    transaction: state.plaid.transaction
+    transaction: state.plaid.transaction,
   };
 };
 

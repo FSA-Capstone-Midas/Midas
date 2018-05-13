@@ -114,7 +114,7 @@ class RetirementResult extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
     this.props.fetchRetirementDetails(this.props.user.id);
   }
 

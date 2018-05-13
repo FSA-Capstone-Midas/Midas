@@ -40,7 +40,7 @@ class MobileContainer extends Component {
             <Menu.Item exact as={NavLink} to="/">
               Home
             </Menu.Item>
-            <Menu.Item exact as="a" to="/howitworks">
+            <Menu.Item exact as={NavLink} to="/howitworks">
               How It Works
             </Menu.Item>
             <Menu.Item as="a">Security</Menu.Item>

@@ -18,7 +18,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class Transactions extends Component {
@@ -26,13 +26,13 @@ class Transactions extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentChart: "spendingOverTime"
+      currentChart: "spendingOverTime",
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 2000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   handleClick(event) {
@@ -87,7 +87,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction
+    transaction: state.transactions.transaction,
   };
 };
 
