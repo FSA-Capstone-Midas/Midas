@@ -15,17 +15,12 @@ let client = new plaid.Client(
 );
 
 router.post("/get_access_token", (req, res, next) => {
-  // console.log(
-  //   "?????????????????????????????????????",
-  //   req.body,
-  //   "what do i have here"
-  // );
   console.log("???????????????????????", req.body.publicToken);
-  PUBLIC_TOKEN = req.body.publicToken;
+  let PUBLIC_TOKEN = req.body.publicToken;
   client.exchangePublicToken(PUBLIC_TOKEN, function(err, tokenResponse) {
-    if (err != null) {
+    if (err) {
       console.log("could not exchange public_token", err);
-      return res.json({ err: err });
+      return res.json({ err });
     }
     // ACCESS_TOKEN = tokenResponse.access_token;
     console.log("Access Token: " + ACCESS_TOKEN);
