@@ -22,14 +22,6 @@ nav a {
   margin: 1em;
 }
 
-h1 {
-  font-size: 3em;
-}
-
-h2 {
-  font-size: 1.5em;
-}
-
 #carousel {
   height: 80vh;
   display: flex;
@@ -141,6 +133,19 @@ h2 {
 
 #p_wrap {
   white-space: pre-line;
+}
+
+/* Global CSS*/
+h1 {
+  font-size: 200px;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+h3 {
+  font-size: 3em;
 }
 
 /* Mobile NavBar */

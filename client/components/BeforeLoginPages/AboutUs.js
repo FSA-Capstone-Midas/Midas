@@ -46,10 +46,8 @@ const AboutUs = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-              <Header as="h3" style={{ fontSize: "6em" }}>
-                About Us
-              </Header>
-              <p style={{ fontSize: "1.33em" }}>
+              <Header as="h1">About Us</Header>
+              <p as="h2">
                 <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
               </p>
             </Grid.Column>
