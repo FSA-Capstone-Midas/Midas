@@ -39,7 +39,6 @@ const Login = props => {
         vertical
       >
         <Grid textAlign="center" stackable verticalAlign="middle">
-          {/* <Grid.Row> */}
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="orange" textAlign="center">
               <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
@@ -49,6 +48,7 @@ const Login = props => {
               <Segment stacked>
                 <label>Email</label>
                 <Form.Input
+                  required
                   fluid
                   icon="user"
                   iconPosition="left"
@@ -58,6 +58,7 @@ const Login = props => {
 
                 <label>Password</label>
                 <Form.Input
+                  required
                   fluid
                   icon="lock"
                   iconPosition="left"
@@ -78,7 +79,6 @@ const Login = props => {
               </Segment>
             </Form>
           </Grid.Column>
-          {/* </Grid.Row> */}
         </Grid>
       </Segment>
 

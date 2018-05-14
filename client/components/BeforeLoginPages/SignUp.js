@@ -3,10 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Grid, Header, Segment } from "semantic-ui-react";
+import { auth } from "../../store";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
 import Footer from "../Footer";
-import { auth } from "../../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -36,24 +36,24 @@ const SignUp = props => {
 
   return (
     <ResponsiveContainer>
-      <Segment id="headerBackground" style={{ padding: "3em" }} vertical>
+      <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
-            <Grid.Column
-              style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
-            >
-              <Header as="h3" style={{ fontSize: "2em" }}>
-                Sign Up Now
-              </Header>
-              <p style={{ fontSize: "1.33em" }}>
-                <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
-              </p>
+            <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
+              <h1>Sign Up Now</h1>
+              <h3>
+                <b>MIDAS</b> We makes managing your money easy.
+              </h3>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
-      <Segment style={{ padding: "2em 0em" }} vertical>
-        <Grid container stackable verticalAlign="middle">
+
+      <Segment
+        style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
+        vertical
+      >
+        <Grid container textAlign="center" stackable verticalAlign="middle">
           <Grid.Row>
             <Grid.Column>
               <div id="signup-login">
@@ -140,17 +140,8 @@ const SignUp = props => {
           </Grid.Row>
         </Grid>
       </Segment>
-      <div
-        style={{
-          position: "fixed",
-          left: "0px",
-          bottom: "0px",
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        <Footer />
-      </div>
+
+      <Footer />
     </ResponsiveContainer>
   );
 };
