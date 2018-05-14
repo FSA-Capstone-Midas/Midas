@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import SideBar from "./SideBar";
+import BillAlert from "./BillAlert";
 import Table from "./Table";
 import { renCompo } from "./utils";
 import { Grid, Segment } from "semantic-ui-react";
@@ -42,9 +43,10 @@ class Transactions extends Component {
   }
 
   render() {
-    console.log("account ", this.props.account); //user account info
-    console.log("transaction ", this.props.transaction); //user transaction info
+    // console.log("account ", this.props.account); //user account info
+    // console.log("transaction ", this.props.transaction); //user transaction info
     const { transaction } = this.props;
+    console.log("!?!?!?!", this.props.state);
     const rows = transaction;
 
     return (
@@ -63,7 +65,14 @@ class Transactions extends Component {
                   <Loading />
                 ) : rows ? (
                   <div>
-                    <Segment style={{ fontSize: "28px" }}>Transactions</Segment>
+                    <Segment
+                      style={{
+                        fontSize: "28px",
+                        backgroundColor: "powderblue"
+                      }}
+                    >
+                      Transactions
+                    </Segment>
                     <div className="ui grid">
                       <SideBar handleClick={this.handleClick} />
                       <div className="twelve wide column">
@@ -86,6 +95,7 @@ class Transactions extends Component {
 
 const mapState = state => {
   return {
+    state: state,
     account: state.accounts.accountInfo,
     transaction: state.transactions.transaction
   };

@@ -10,6 +10,7 @@ import budget from "./budget";
 import form from "./form";
 import houseForm from "./houseForm";
 import stateReducer from "./state";
+import bills from "./bills";
 
 const reducer = combineReducers({
   user,
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   budget,
   form,
   houseForm,
+  bills,
   states: stateReducer
 });
 
@@ -37,3 +39,4 @@ export * from "./state";
 export * from "./budget";
 export * from "./form";
 export * from "./houseForm";
+export * from "./bills";

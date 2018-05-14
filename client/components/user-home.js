@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
 import { Segment, Grid, Menu } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import store, { fetchUser } from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -33,7 +35,8 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { accounts } = this.props;
+    const { accounts, bills } = this.props;
+
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
@@ -74,7 +77,7 @@ class UserHome extends React.Component {
                               </Menu.Menu>
                             </Menu.Item>
                             <img
-                              style={{ width: "240px", height: "150px" }}
+                              style={{ width: "220px", height: "120px" }}
                               className="carousel-image"
                               src="../../../../../../pictures/visa.png"
                             />
@@ -156,6 +159,7 @@ class UserHome extends React.Component {
                 </Menu>
               </Grid.Column>
               <Grid.Column width={9} style={{ marginLeft: "5%" }}>
+                {bills.id ? <BillAlert /> : null}
                 <AccountTable />
               </Grid.Column>
             </Grid>
@@ -173,18 +177,11 @@ class UserHome extends React.Component {
  */
 const mapState = state => {
   return {
+    state: state,
     email: state.user.email,
-    accounts: state.accounts
+    accounts: state.accounts,
+    bills: state.bills
   };
 };
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleClick(product, evt) {
-//       evt.preventDefault();
-//       dispatch(postToCart(product));
-//     }
-//   };
-// }
 
 export default connect(mapState)(UserHome);

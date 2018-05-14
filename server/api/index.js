@@ -4,6 +4,7 @@ module.exports = router;
 router.use("/users", require("./users"));
 router.use("/plaid", require("./plaid"));
 router.use("/state", require("./state"));
+router.use("/rent", require("./rent"));
 router.use("/retirement", require("./retirement"));
 
 router.use((req, res, next) => {

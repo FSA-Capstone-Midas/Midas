@@ -18,7 +18,7 @@ import {
   Input
 } from "semantic-ui-react";
 import { NavLink, withRouter, Link } from "react-router-dom";
-import { logout } from "../../store";
+import { logout, fetchUser } from "../../store";
 
 /**
  * COMPONENT
@@ -34,13 +34,14 @@ class MenuExampleSecondary extends Component {
 
   render() {
     const { activeItem } = this.state;
+    const { id, handleUser } = this.props;
 
     return (
       <Menu secondary style={{ fontSize: "15px", marginLeft: "12%" }}>
         <Menu.Item
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
-          onClick={this.handleItemClick}
+          onClick={(event, id => this.props.handleUser(event, id))}
           exact
           as={NavLink}
           to="/home"
@@ -48,7 +49,7 @@ class MenuExampleSecondary extends Component {
         <Menu.Item
           name="TRANSACTIONS"
           active={activeItem === "TRANSACTIONS"}
-          onClick={this.handleItemClick}
+          onClick={(event, id => this.props.handleUser(event, id))}
           exact
           as={NavLink}
           to="/transactions"
@@ -65,6 +66,9 @@ class MenuExampleSecondary extends Component {
           name="BILLS"
           active={activeItem === "BILLS"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/bills"
         />
         <Menu.Item
           name="BUDGETS"
@@ -168,15 +172,23 @@ class DesktopContainer extends Component {
 DesktopContainer.propTypes = {
   children: PropTypes.node
 };
-
+const mapState = state => {
+  return {
+    user: state.user,
+    id: state.user.id
+  };
+};
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
+    },
+    handleUser(event, id) {
+      dispatch(fetchUser(id));
     }
   };
 };
 
-export default withRouter(connect(null, mapDispatch)(DesktopContainer));
+export default withRouter(connect(mapState, mapDispatch)(DesktopContainer));
 
 // export default withRouter(DesktopContainer);

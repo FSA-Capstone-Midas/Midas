@@ -170,7 +170,7 @@ class RetirementResult extends Component {
     setTimeout(() => this.setState({ loading: false }), 3000);
   }
 
-  // handleClick(event) {
+  // (event) {
   //   const target = event.target;
   //   const name = target.name;
   //   this.setState({ currentChart: name });
