@@ -35,13 +35,25 @@ class UserHome extends React.Component {
     const { accounts } = this.props;
     return (
       <ResponsiveContainer>
+        <Segment id="headerBackground" style={{ padding: "0.1em" }} vertical>
+          <Grid celled="internally" columns="equal" stackable>
+            <Grid.Row textAlign="center">
+              <Grid.Column
+                style={{ paddingBottom: "0.1em", paddingTop: "0.1em" }}
+              >
+                <h3>DashBoard</h3>
+                <h4>Latest statistics & summary </h4>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
         <Container>
           {this.state.loading ? (
             <Loading />
           ) : (
-            <Segment>
+            <div>
               <Grid>
-                <Grid.Column width={4}>
+                <Grid.Column width={10}>
                   <Menu
                     vertical
                     style={{
@@ -49,99 +61,14 @@ class UserHome extends React.Component {
                       display: "table-row-group"
                     }}
                   >
-                    <h2>Account info</h2>
-                    {accounts &&
-                      accounts.accountInfo.map(account => {
-                        if (account.subtype === "checking") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    balances:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        } else if (account.subtype === "savings") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item key={account.id}>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    balances:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        } else if (account.subtype === "credit card") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item key={account.id}>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    Balance:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    Current:
-                                    <Menu.Item>{`$${
-                                      account.balances.current
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    Limit:
-                                    <Menu.Item>{`$${
-                                      account.balances.limit
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        }
-                      })}
+                    <h4>Account Summary</h4>
+                    <Grid.Column width={11}>
+                      <AccountTable />
+                    </Grid.Column>
                   </Menu>
                 </Grid.Column>
-                <Grid.Column width={11}>
-                  <AccountTable />
-                </Grid.Column>
               </Grid>
-            </Segment>
+            </div>
           )}
         </Container>
         <Footer />
