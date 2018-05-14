@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink, withRouter } from "react-router-dom";
 import {
   Button,
   Container,
@@ -9,7 +10,6 @@ import {
   Segment,
   Visibility,
 } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../../store";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };

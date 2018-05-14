@@ -43,17 +43,8 @@ class MobileContainer extends Component {
             <Menu.Item exact as={NavLink} to="/howitworks">
               How It Works
             </Menu.Item>
-            <Menu.Item as="a">Security</Menu.Item>
-            <Menu.Item as="a">Blog</Menu.Item>
-            <Menu.Item as="a">Support</Menu.Item>
             <Menu.Item exact as={NavLink} to="/aboutus">
               About Us
-            </Menu.Item>
-            <Menu.Item exact as={NavLink} to="/login">
-              Log in
-            </Menu.Item>
-            <Menu.Item exact as={NavLink} to="/signup">
-              Sign Up
             </Menu.Item>
           </Sidebar>
 
