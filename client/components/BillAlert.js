@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 import { Icon, Grid, Step } from "semantic-ui-react";
-import BillForm from "./BillForm";
 
 class BillAlert extends Component {
   render() {
-    const { id, user, userInfo, bills, all, accounts } = this.props;
-    if (bills && bills.id) {
+    const { bills } = this.props;
+    if (bills) {
       const newDate = new Date().toString().split(" ");
       const oldDate = bills.date.split("-");
       this.result = Math.abs(Number(newDate[2]) - Number(oldDate[1]));
@@ -25,7 +21,7 @@ class BillAlert extends Component {
                 <Step.Content>
                   <Step.Title>
                     {bills.id ? (
-                      <h4>
+                      <h4 style={{ fontSize: "15px" }}>
                         Your ${bills.price} monthly rent bill is due in{" "}
                         {this.result} days.
                       </h4>
@@ -44,11 +40,7 @@ class BillAlert extends Component {
 const mapState = state => {
   //set up number of goals of each user
   return {
-    user: state.user,
-    id: state.user.id,
-    bills: state.bills,
-    all: state,
-    accounts: state.accounts.accountInfo
+    bills: state.bills
   };
 };
 

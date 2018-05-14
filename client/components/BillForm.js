@@ -56,10 +56,10 @@ class BillForm extends Component {
                 style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
               >
                 <Header as="h3" style={{ fontSize: "2em" }}>
-                  Sign Up Now
+                  Bill Alarts
                 </Header>
                 <p style={{ fontSize: "1.33em" }}>
-                  <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
+                  Take Control of your bills today.
                 </p>
               </Grid.Column>
             </Grid.Row>
