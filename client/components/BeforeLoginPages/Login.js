@@ -2,7 +2,15 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Grid, Header, Button, Segment, Form, Image } from "semantic-ui-react";
+import {
+  Grid,
+  Header,
+  Button,
+  Segment,
+  Form,
+  Image,
+  Message,
+} from "semantic-ui-react";
 import { auth } from "../../store";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
@@ -20,7 +28,7 @@ ResponsiveContainer.propTypes = {
 };
 
 const Login = props => {
-  const { name, handleSubmit } = props;
+  const { name, handleSubmit, error } = props;
   return (
     <ResponsiveContainer>
       <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
@@ -78,6 +86,7 @@ const Login = props => {
                 </Button>
               </Segment>
             </Form>
+            {error ? <Message>Invalid login credentials</Message> : null}
           </Grid.Column>
         </Grid>
       </Segment>

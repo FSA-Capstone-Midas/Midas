@@ -60,6 +60,7 @@ export const auth = (
       authError => {
         // rare example: a good use case for parallel (non-catch) error handler
         dispatch(getUser({ error: authError }));
+        console.log("what is authError", authError);
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
