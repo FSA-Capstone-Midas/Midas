@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import Carousel from "nuka-carousel";
+import React from "react";
 import Footer from "./Footer";
-import { Grid, Segment, Progress, Container } from "semantic-ui-react";
+import { Segment, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { ProgressBar } from "react-bootstrap";

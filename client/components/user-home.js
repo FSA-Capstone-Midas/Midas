@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import AccountTable from "./AccountTable";
