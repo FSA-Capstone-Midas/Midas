@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "./Footer";
-import { Segment, Button, Grid, Header } from "semantic-ui-react";
+import { Segment, Grid, Header } from "semantic-ui-react";
 import store, { updateRent, fetchRent } from "../store";
-const ResponsiveContainer = ({ children }) => (
-  <div>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
-  </div>
-);
 
 class BillForm extends Component {
   constructor(props) {
@@ -42,7 +34,7 @@ class BillForm extends Component {
   }
 
   render() {
-    const { name, displayName, handleSubmit, error } = this.props;
+    const { name } = this.props;
     const startYear = 2000;
     const endYear = 2018;
     const startDay = 1;
@@ -67,7 +59,6 @@ class BillForm extends Component {
                   Sign Up Now
                 </Header>
                 <p style={{ fontSize: "1.33em" }}>
-                  {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
                   <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
                 </p>
               </Grid.Column>
