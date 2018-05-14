@@ -61,11 +61,7 @@ nav a {
   display: block;
 }
 
-/* #dob {
-  display: inline-flex;
-} */
-
-#map_election {
+/* #map_election {
   position: relative;
   width: 500px;
   height: 300px;
@@ -75,7 +71,7 @@ nav a {
   position: relative;
   width: 500px;
   height: 300px;
-}
+} */
 
 #profile {
   display: table;
@@ -109,22 +105,6 @@ nav a {
 #alertMessage {
   color: orange;
 }
-/* Progress for multi-steps form */
-.progress {
-  margin-bottom: 20px;
-  transition: all 0.2s ease;
-}
-
-.progress-step {
-  display: block;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 18px;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-}
 
 #p_wrap {
   white-space: pre-line;
@@ -143,6 +123,14 @@ h3 {
   font-size: 2.5em;
 }
 
+h4 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
 /* Mobile NavBar */
 #mobileSignUpbutton {
   margin-left: 0.5em;
@@ -157,4 +145,29 @@ h3 {
 #signUpSelect {
   display: flex;
   align-items: flex-end;
+}
+
+/* Progress for multi-steps form */
+.progress {
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.progress-step {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* Responsive datamap */
+svg.datamap {
+  position: relative !important;
+  overflow: inherit !important;
+  margin-top: -5%;
+  margin-left: -15%;
 }

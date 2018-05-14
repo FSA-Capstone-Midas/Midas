@@ -110,8 +110,8 @@ class SignUp extends Component {
           <Grid container textAlign="center" stackable verticalAlign="middle">
             <Grid.Column style={{ maxWidth: 750 }}>
               <Header as="h2" color="orange" textAlign="center">
-                <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
-                your account
+                <Image src="../../../../../pictures/midas_logo.png" /> Sign Up
+                for a new account
               </Header>
               <Form size="large" onSubmit={handleSubmit} name={name}>
                 <Segment stacked>

@@ -96,9 +96,6 @@ class PieSpending extends Component {
                 "#00D5D1",
                 "#00A0EF",
                 "#FF8800",
-                {
-                  /* "#0095FF", */
-                },
               ],
               hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
             },

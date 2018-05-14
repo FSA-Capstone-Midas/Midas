@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import {
-  AreaChart,
-  Area,
+  BarChart,
+  Bar,
+  ReferenceLine,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -71,65 +73,57 @@ const spendingCategory = {
   "Food and Drink": 0,
 };
 
-class BarNetIncome extends Component {
+class BarIncome extends Component {
   render() {
     const { rows } = this.props;
 
     data.forEach((el, index) => {
-      let sum = rows.reduce((acc, transaction) => {
-        if (el.month === transaction.date.slice(5, 7)) {
-          return acc + transaction.amount;
+      Object.keys(spendingCategory).forEach(category => {
+        let sum = rows.reduce((acc, transaction) => {
+          if (
+            (el.month === transaction.date.slice(5, 7) &&
+              category === transaction.category[0] &&
+              transaction.category[0] !== "Food and Drink") ||
+            (el.month === transaction.date.slice(5, 7) &&
+              category === transaction.category[0] &&
+              transaction.category[0] === "Food and Drink" &&
+              transaction.name.slice(0, 13) === "BOOK TRANSFER")
+          ) {
+            return acc + transaction.amount;
+          }
+          return acc;
+        }, 0);
+
+        if (category === "Food and Drink") {
+          data[index].Misc = -Math.round(sum, 2);
+        } else {
+          data[index][category] = -Math.round(sum, 2);
         }
-        return acc;
-      }, 0);
-      data[index]["Net Income"] = -Math.round(sum, 2);
+      });
     });
 
-    // data.forEach((el, index) => {
-    //   Object.keys(spendingCategory).forEach(category => {
-    //     let sum = rows.reduce((acc, transaction) => {
-    //       if (
-    //         (el.month === transaction.date.slice(5, 7) &&
-    //           category === transaction.category[0] &&
-    //           transaction.category[0] !== "Food and Drink") ||
-    //         (el.month === transaction.date.slice(5, 7) &&
-    //           category === transaction.category[0] &&
-    //           transaction.category[0] === "Food and Drink" &&
-    //           transaction.name.slice(0, 13) === "BOOK TRANSFER")
-    //       ) {
-    //         return acc + transaction.amount;
-    //       }
-    //       return acc;
-    //     }, 0);
-
-    //     if (category === "Food and Drink") {
-    //       data[index].Misc = -Math.round(sum, 2);
-    //     } else {
-    //       data[index][category] = -Math.round(sum, 2);
-    //     }
-    //   });
-    // });
-
     return (
-      <ResponsiveContainer>
-        <AreaChart
+      <ResponsiveContainer width="100%" height={500}>
+        <BarChart
+          width={800}
+          height={500}
           data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          stackOffset="sign"
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="Net Income"
-            stroke="#8884d8"
-            fill="#8884d8"
-          />
-        </AreaChart>
+          <Legend />
+          <ReferenceLine y={0} stroke="#000" />
+          <Bar dataKey="Interest" fill="#8884d8" stackId="stack" />
+          <Bar dataKey="Transfer" fill="#82ca9d" stackId="stack" />
+          <Bar dataKey="Misc" fill="#ffc658" stackId="stack" />
+        </BarChart>
       </ResponsiveContainer>
     );
   }
 }
 
-export default BarNetIncome;
+export default BarIncome;
