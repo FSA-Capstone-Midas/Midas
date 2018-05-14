@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button } from "semantic-ui-react";
-import { addFormdetails } from "../store/form";
+import { addFormdetails } from "../../store/form";
 
 class Step2 extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Header, Modal } from "semantic-ui-react";
-import { updateUserBudget } from "../store/budget";
+import { updateUserBudget } from "../../store/budget";
 
 class BudgetModal extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class BudgetModal extends Component {
       modalOpen: false,
       showMessage: false,
       category: "foodAndDrink",
-      budgetForCategory: 0
+      budgetForCategory: 0,
     };
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handChangeBudget = this.handleChangeBudget.bind(this);
@@ -44,7 +44,7 @@ class BudgetModal extends Component {
     const handleSubmit = this.props.handleSubmit;
     const budgetItemObj = {
       [this.state.category]: this.state.budgetForCategory,
-      userId
+      userId,
     };
     return (
       <Modal
@@ -117,7 +117,7 @@ class BudgetModal extends Component {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
   };
 };
 const mapDispatch = dispatch => {
@@ -125,7 +125,7 @@ const mapDispatch = dispatch => {
     handleSubmit: (event, budgetObject, id) => {
       event.preventDefault();
       dispatch(updateUserBudget(budgetObject, id));
-    }
+    },
   };
 };
 export default connect(mapState, mapDispatch)(BudgetModal);

@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
-import Loading from "./Loading";
+import Footer from "../Footer";
+import Loading from "../Loading";
 import { Grid, Segment } from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
 import { ResponsiveStream } from "@nivo/stream";
 import RetirementTable from "./RetirementTable";
-import { fetchRetirementDetails } from "../store";
+import { fetchRetirementDetails } from "../../store";
 
 const createData = retirement => {
   const result = [];

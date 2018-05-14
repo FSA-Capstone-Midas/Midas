@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import Footer from "./Footer";
+import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Footer from "../Footer";
 import SaveForEmergency from "./SaveForEmergency";
 import SaveForEmergenyConfirmPage from "./SaveForEmergencyConfirmPage";
 import { Container } from "semantic-ui-react";
@@ -15,7 +15,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class SaveForEmergencyMainPage extends Component {
@@ -24,7 +24,7 @@ class SaveForEmergencyMainPage extends Component {
     this.state = {
       expenseGoal: 0,
       expenseDuration: 0,
-      enteredExpense: false
+      enteredExpense: false,
     };
     this.handlePage = this.handlePage.bind(this);
   }

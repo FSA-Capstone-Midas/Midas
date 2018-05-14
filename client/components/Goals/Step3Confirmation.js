@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "semantic-ui-react";
-import { addRetirementDetails } from "../store";
+import { addRetirementDetails } from "../../store";
 
 class Step3Confirmation extends Component {
   constructor(props) {

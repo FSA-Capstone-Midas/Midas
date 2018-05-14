@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { fetchRetirementDetails } from "../store";
+import { fetchRetirementDetails } from "../../store";
 
 class RetirementTable extends Component {
   state = {
