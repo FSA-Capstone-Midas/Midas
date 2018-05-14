@@ -18,7 +18,9 @@ import {
   SaveForEmergencyMainPage,
   House,
   Retirement,
-  RetirementResult
+  RetirementResult,
+  Bills,
+  BillForm
 } from "./components";
 import {
   me,
@@ -26,7 +28,9 @@ import {
   fetchItem,
   getBudgetFromDatabase,
   fetchEmergencyGoal,
-  fetchRetirementDetails
+  fetchRetirementDetails,
+  fetchAllState,
+  fetchRent
 } from "./store";
 
 /**
@@ -45,7 +49,11 @@ class Routes extends Component {
       this.props.loadBudgetData(nextProps.user.id);
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user.id !== nextProps.user.id) {
+      this.props.fetchRent(nextProps.user.id);
+    }
+  }
   render() {
     const { isLoggedIn } = this.props;
 
@@ -75,6 +83,7 @@ class Routes extends Component {
             <Route exact path="/retirement" component={Retirement} />
             <Route exact path="/credit" component={UserCredit} />
             <Route exact path="/goals" component={Goals} />
+            <Route exact path="/bills" component={Bills} />
             <Route
               exact
               path="/goals/saveForEmergency"
@@ -118,6 +127,10 @@ const mapDispatch = dispatch => {
     },
     loadBudgetData(userId) {
       dispatch(getBudgetFromDatabase(userId));
+    },
+
+    fetchRent(id) {
+      dispatch(fetchRent(id));
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
