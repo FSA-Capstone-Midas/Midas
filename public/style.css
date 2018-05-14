@@ -3,10 +3,10 @@
   src: url('../../../../../fonts/jaapokkienchance-regular.ttf');
 } */
 
-@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -20,14 +20,6 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
-}
-
-h1 {
-  font-size: 3em;
-}
-
-h2 {
-  font-size: 1.5em;
 }
 
 #carousel {
@@ -56,12 +48,8 @@ h2 {
   /* transition: opacity 1.5s; */
 }
 
-#aboutUsBackground {
-  background: linear-gradient(#fdfcfb, #e2d1c3);
-}
-
 #homeBackground {
-  background-image: url("pictures/backgroundNYC.png") !important;
+  background-image: url('pictures/backgroundNYC.png') !important;
   background-size: cover !important;
 }
 
@@ -73,16 +61,7 @@ h2 {
   display: block;
 }
 
-#signup-login {
-  padding-left: 30%;
-  padding-right: 40%;
-}
-
-#dob {
-  display: inline-flex;
-}
-
-#map_election {
+/* #map_election {
   position: relative;
   width: 500px;
   height: 300px;
@@ -92,7 +71,7 @@ h2 {
   position: relative;
   width: 500px;
   height: 300px;
-}
+} */
 
 #profile {
   display: table;
@@ -126,6 +105,48 @@ h2 {
 #alertMessage {
   color: orange;
 }
+
+#p_wrap {
+  white-space: pre-line;
+}
+
+/* Global CSS*/
+h1 {
+  font-size: 4.5em;
+}
+
+h2 {
+  font-size: 3.5em;
+}
+
+h3 {
+  font-size: 2.5em;
+}
+
+h4 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+/* Mobile NavBar */
+#mobileSignUpbutton {
+  margin-left: 0.5em;
+}
+
+/* Header Section Background Color */
+#headerBackground {
+  background: linear-gradient(#fdfcfb, #e2d1c3);
+}
+
+/* Signup form select field */
+#signUpSelect {
+  display: flex;
+  align-items: flex-end;
+}
+
 /* Progress for multi-steps form */
 .progress {
   margin-bottom: 20px;
@@ -143,6 +164,10 @@ h2 {
   width: 100%;
 }
 
-#p_wrap {
-  white-space: pre-line;
+/* Responsive datamap */
+svg.datamap {
+  position: relative !important;
+  overflow: inherit !important;
+  margin-top: -5%;
+  margin-left: -15%;
 }

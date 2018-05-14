@@ -2,105 +2,70 @@ const crypto = require("crypto");
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const User = db.define(
-  "user",
-  {
-    firstName: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    lastName: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    nickName: {
-      type: Sequelize.STRING
-    },
-    phoneNumber: {
-      type: Sequelize.STRING
-    },
-    state: {
-      type: Sequelize.STRING
-    },
-    jobTitle: {
-      type: Sequelize.STRING
-    },
-    incomeRange: {
-      type: Sequelize.STRING
-    },
-    birthday: {
-      type: Sequelize.DATE
-    },
-    email: {
-      type: Sequelize.STRING,
-      unique: true,
-      allowNull: false
-    },
-    plaidTokenId: {
-      type: Sequelize.STRING
-    },
-    plaidItemId: {
-      type: Sequelize.STRING
-    },
-    password: {
-      type: Sequelize.STRING,
-      // Making `.password` act like a func hides it when serializing to JSON.
-      // This is a hack to get around Sequelize's lack of a "private" option.
-      get() {
-        return () => this.getDataValue("password");
-      }
-    },
-    salt: {
-      type: Sequelize.STRING,
-      // Making `.salt` act like a function hides it when serializing to JSON.
-      // This is a hack to get around Sequelize's lack of a "private" option.
-      get() {
-        return () => this.getDataValue("salt");
-      }
-    },
-    googleId: {
-      type: Sequelize.STRING
-    },
-    foodAndDrink: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    recreation: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    service: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    shops: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    travel: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    },
-    miscellaneous: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0
-    }
+const User = db.define("user", {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
   },
-  {
-    getterMethods: {
-      totalBudgetExpenditure() {
-        return (
-          this.foodAndDrink +
-          this.recreation +
-          this.service +
-          this.shops +
-          this.travel +
-          this.miscellaneous
-        );
-      }
-    }
-  }
-);
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  nickName: {
+    type: Sequelize.STRING,
+  },
+  phoneNumber: {
+    type: Sequelize.STRING,
+  },
+  state: {
+    type: Sequelize.STRING,
+  },
+  jobTitle: {
+    type: Sequelize.STRING,
+  },
+  incomeRange: {
+    type: Sequelize.STRING,
+  },
+  birthYear: {
+    type: Sequelize.INTEGER,
+  },
+  birthMonth: {
+    type: Sequelize.STRING,
+  },
+  birthDay: {
+    type: Sequelize.INTEGER,
+  },
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+  },
+  plaidTokenId: {
+    type: Sequelize.STRING,
+  },
+  plaidItemId: {
+    type: Sequelize.STRING,
+  },
+  password: {
+    type: Sequelize.STRING,
+    // Making `.password` act like a func hides it when serializing to JSON.
+    // This is a hack to get around Sequelize's lack of a "private" option.
+    get() {
+      return () => this.getDataValue("password");
+    },
+  },
+  salt: {
+    type: Sequelize.STRING,
+    // Making `.salt` act like a function hides it when serializing to JSON.
+    // This is a hack to get around Sequelize's lack of a "private" option.
+    get() {
+      return () => this.getDataValue("salt");
+    },
+  },
+  googleId: {
+    type: Sequelize.STRING,
+  },
+});
 
 module.exports = User;
 

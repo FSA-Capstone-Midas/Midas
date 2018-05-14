@@ -1,24 +1,15 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
-import Footer from "./Footer";
-import HomepageHeading from "./HomePageHeading";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
   Sidebar,
-  Visibility
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
 
 class MobileContainer extends Component {
   state = {};
@@ -33,7 +24,7 @@ class MobileContainer extends Component {
     this.setState({ sidebarOpened: !this.state.sidebarOpened });
 
   render() {
-    const { children } = this.props;
+    const { children, match } = this.props;
     const { sidebarOpened } = this.state;
 
     return (
@@ -46,18 +37,14 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as={NavLink} to="/">
+            <Menu.Item exact as={NavLink} to="/">
               Home
             </Menu.Item>
-            <Menu.Item as="a">How It Works</Menu.Item>
-            <Menu.Item as="a">Security</Menu.Item>
-            <Menu.Item as="a">Blog</Menu.Item>
-            <Menu.Item as="a">Support</Menu.Item>
-            <Menu.Item as={NavLink} to="/login">
-              Log in
+            <Menu.Item exact as={NavLink} to="/howitworks">
+              How It Works
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/signup">
-              Sign Up
+            <Menu.Item exact as={NavLink} to="/aboutus">
+              About Us
             </Menu.Item>
           </Sidebar>
 
@@ -69,7 +56,7 @@ class MobileContainer extends Component {
             <Segment
               inverted
               textAlign="center"
-              style={{ minHeight: 350, padding: "1em 0em" }}
+              style={{ minHeight: 50, padding: "1em 0em" }}
               vertical
             >
               <Container>
@@ -78,21 +65,25 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button as={Link} to="/login" inverted>
-                      Log in
-                    </Button>
-                    <Button
-                      as={Link}
-                      to="/signup"
-                      inverted
-                      style={{ marginLeft: "0.5em" }}
-                    >
-                      Sign Up
-                    </Button>
+                    {match.path === "/login" ? null : (
+                      <Button as={Link} to="/login" inverted>
+                        Log in
+                      </Button>
+                    )}
+
+                    {match.path === "/signup" ? null : (
+                      <Button
+                        as={Link}
+                        to="/signup"
+                        inverted
+                        id="mobileSignUpbutton"
+                      >
+                        Sign Up
+                      </Button>
+                    )}
                   </Menu.Item>
                 </Menu>
               </Container>
-              {/* <HomepageHeading mobile /> */}
             </Segment>
 
             {children}
@@ -104,7 +95,7 @@ class MobileContainer extends Component {
 }
 
 MobileContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default withRouter(MobileContainer);

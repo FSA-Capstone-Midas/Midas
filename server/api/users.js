@@ -28,38 +28,38 @@ router.put("/update/:id", (req, res, next) => {
     .then(data => res.status(201).json(data));
 });
 
-router.get("/:userId/budget", (req, res, next) => {
-  User.findById(req.params.userId)
-    .then(user => {
-      const budget = {};
-      budget.foodAndDrink = user.foodAndDrink;
-      budget.recreation = user.recreation;
-      budget.service = user.service;
-      budget.shops = user.shops;
-      budget.travel = user.travel;
-      budget.miscellaneous = user.miscellaneous;
-      budget.totalBudgetExpenditure = user.totalBudgetExpenditure;
-      res.json(budget);
-    })
-    .catch(next);
-});
+// router.get("/:userId/budget", (req, res, next) => {
+//   User.findById(req.params.userId)
+//     .then(user => {
+//       const budget = {};
+//       budget.foodAndDrink = user.foodAndDrink;
+//       budget.recreation = user.recreation;
+//       budget.service = user.service;
+//       budget.shops = user.shops;
+//       budget.travel = user.travel;
+//       budget.miscellaneous = user.miscellaneous;
+//       budget.totalBudgetExpenditure = user.totalBudgetExpenditure;
+//       res.json(budget);
+//     })
+//     .catch(next);
+// });
 
-router.put("/:userId/budget", (req, res, next) => {
-  User.update(req.body, {
-    where: { id: req.params.userId },
-    returning: true
-  })
-    .then(([affectedCount, affectedRows]) => {
-      const updatedUser = affectedRows[0];
-      const updatedBudget = {};
-      updatedBudget.foodAndDrink = updatedUser.foodAndDrink;
-      updatedBudget.recreation = updatedUser.recreation;
-      updatedBudget.service = updatedUser.service;
-      updatedBudget.shops = updatedUser.shops;
-      updatedBudget.travel = updatedUser.travel;
-      updatedBudget.miscellaneous = updatedUser.miscellaneous;
-      updatedBudget.totalBudgetExpenditure = updatedUser.totalBudgetExpenditure;
-      res.status(200).json(updatedBudget);
-    })
-    .catch(next);
-});
+// router.put("/:userId/budget", (req, res, next) => {
+//   User.update(req.body, {
+//     where: { id: req.params.userId },
+//     returning: true
+//   })
+//     .then(([affectedCount, affectedRows]) => {
+//       const updatedUser = affectedRows[0];
+//       const updatedBudget = {};
+//       updatedBudget.foodAndDrink = updatedUser.foodAndDrink;
+//       updatedBudget.recreation = updatedUser.recreation;
+//       updatedBudget.service = updatedUser.service;
+//       updatedBudget.shops = updatedUser.shops;
+//       updatedBudget.travel = updatedUser.travel;
+//       updatedBudget.miscellaneous = updatedUser.miscellaneous;
+//       updatedBudget.totalBudgetExpenditure = updatedUser.totalBudgetExpenditure;
+//       res.status(200).json(updatedBudget);
+//     })
+//     .catch(next);
+// });

@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import Carousel from "nuka-carousel";
+import React from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 import {
   Button,
   Container,
@@ -10,13 +8,14 @@ import {
   Grid,
   Header,
   Image,
-  Segment
+  Segment,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
-import MobileContainer from "./MobileContainer";
-import DesktopContainer from "./DesktopContainer";
-import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import MobileContainer from "../BeforeLogin/MobileContainer";
+import DesktopContainer from "../BeforeLogin/DesktopContainer";
+import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import AfterMobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Footer from "../Footer";
 
 const ResponsiveContainer = ({ children, logined }) => {
   return (
@@ -37,7 +36,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const HomePage = props => {
@@ -47,10 +46,6 @@ const HomePage = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
-              {/* <Header as="h3" style={{ fontSize: "2em" }}>
-              About Us
-            </Header> */}
-
               <img
                 style={{ width: "60%" }}
                 className="carousel-image"
@@ -75,10 +70,6 @@ const HomePage = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
-              {/* <Header as="h3" style={{ fontSize: "2em" }}>
-              About Us
-            </Header> */}
-
               <h1 />
               <p style={{ fontSize: "1.33em" }}>
                 <br />
@@ -147,7 +138,6 @@ const HomePage = props => {
                 Sign Up for Midas
               </Header>
               <p style={{ fontSize: "1.33em" }}>
-                {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
                 <b>Midas</b> Sign up and sync a bank account easily. Manage your
                 money like never before
               </p>
@@ -203,7 +193,7 @@ const HomePage = props => {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 

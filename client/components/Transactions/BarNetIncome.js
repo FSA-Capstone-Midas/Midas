@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import {
-  BarChart,
-  Bar,
-  ReferenceLine,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  ResponsiveContainer,
 } from "recharts";
 
 // get today's data
@@ -47,7 +46,7 @@ data.push(
   {
     name: "Sept",
     month: numToString((mm + 5) % 12 || mm + 5),
-    year: 2017
+    year: 2017,
   },
   { name: "Oct", month: numToString((mm + 6) % 12 || mm + 6), year: 2017 },
   { name: "Nov", month: numToString((mm + 7) % 12 || mm + 7), year: 2017 },
@@ -56,71 +55,56 @@ data.push(
   {
     name: "Feb",
     month: numToString((mm + 10) % 10 || mm + 3),
-    year: 2018
+    year: 2018,
   },
   { name: "Mar", month: numToString((mm + 11) % 12 || mm + 11), year: 2018 },
   { name: "Apr", month: numToString((mm + 12) % 12 || mm + 12), year: 2018 },
   {
     name: currentMonth,
     month: numToString((mm + 13) % 12 || mm + 13),
-    year: 2018
+    year: 2018,
   }
 );
 const spendingCategory = {
-  "Bank Fees": 0,
-  Community: 0,
+  Interest: 0,
+  Transfer: 0,
   "Food and Drink": 0,
-  Recreation: 0,
-  Service: 0,
-  Shops: 0,
-  Travel: 0
 };
 
-class BarSpending extends Component {
+class BarNetIncome extends Component {
   render() {
     const { rows } = this.props;
 
     data.forEach((el, index) => {
-      Object.keys(spendingCategory).forEach(category => {
-        let sum = rows.reduce((acc, transaction) => {
-          if (
-            el.month === transaction.date.slice(5, 7) &&
-            category === transaction.category[0] &&
-            transaction.name.slice(0, 13) !== "BOOK TRANSFER"
-          ) {
-            return acc + transaction.amount;
-          }
-          return acc;
-        }, 0);
-        data[index][category] = Math.round(sum, 2);
-      });
+      let sum = rows.reduce((acc, transaction) => {
+        if (el.month === transaction.date.slice(5, 7)) {
+          return acc + transaction.amount;
+        }
+        return acc;
+      }, 0);
+      data[index]["Net Income"] = -Math.round(sum, 2);
     });
 
     return (
-      <BarChart
-        style={{ fontSize: "12px" }}
-        width={800}
-        height={500}
-        data={data}
-        stackOffset="sign"
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <ReferenceLine y={0} stroke="#000" />
-        <Bar dataKey="Bank Fees" fill="#8884d8" stackId="stack" />
-        <Bar dataKey="Community" fill="#82ca9d" stackId="stack" />
-        <Bar dataKey="Food and Drink" fill="#ffc658" stackId="stack" />
-        <Bar dataKey="Recreation" fill="#A05DB5" stackId="stack" />
-        <Bar dataKey="Service" fill="#FF0082" stackId="stack" />
-        <Bar dataKey="Shops" fill="#35AFAA" stackId="stack" />
-        <Bar dataKey="Travel" fill="#FECBDE" stackId="stack" />
-      </BarChart>
+      <ResponsiveContainer>
+        <AreaChart
+          data={data}
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="Net Income"
+            stroke="#8884d8"
+            fill="#8884d8"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     );
   }
 }
 
-export default BarSpending;
+export default BarNetIncome;

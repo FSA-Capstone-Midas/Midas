@@ -1,21 +1,16 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
-import HomepageHeading from "./HomePageHeading";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import {
   Button,
   Container,
   Menu,
   Responsive,
   Segment,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
+const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
 class DesktopContainer extends Component {
   state = {};
@@ -28,7 +23,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...Responsive.onlyComputer}>
+      <Responsive {...notMobile}>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -46,6 +41,7 @@ class DesktopContainer extends Component {
               pointing={!fixed}
               secondary={!fixed}
               size="large"
+              style={{ border: "none" }}
             >
               <Container style={{ fontSize: "17px" }}>
                 <Menu.Item exact as={NavLink} to="/">
@@ -54,16 +50,15 @@ class DesktopContainer extends Component {
                 <Menu.Item exact as={NavLink} to="/howitworks">
                   How It Works
                 </Menu.Item>
-                <Menu.Item as="a">Security</Menu.Item>
-                <Menu.Item as="a">Blog</Menu.Item>
-                <Menu.Item as="a">Support</Menu.Item>
                 <Menu.Item exact as={NavLink} to="/aboutus">
                   About Us
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <Button as={Link} to="/login" inverted={!fixed}>
-                    Log in
-                  </Button>
+                  {match.path === "/login" ? null : (
+                    <Button as={Link} to="/login" inverted={!fixed}>
+                      Log in
+                    </Button>
+                  )}
 
                   {match.path === "/signup" ? null : (
                     <Button
@@ -79,7 +74,6 @@ class DesktopContainer extends Component {
                 </Menu.Item>
               </Container>
             </Menu>
-            {/* <HomepageHeading /> */}
           </Segment>
         </Visibility>
 
@@ -90,7 +84,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default withRouter(DesktopContainer);
