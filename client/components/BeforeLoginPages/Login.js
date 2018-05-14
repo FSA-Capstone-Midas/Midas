@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Grid, Header, Segment } from "semantic-ui-react";
+import { Grid, Header, Button, Segment, Form, Image } from "semantic-ui-react";
 import { auth } from "../../store";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
@@ -23,65 +23,66 @@ const Login = props => {
   const { name, handleSubmit } = props;
   return (
     <ResponsiveContainer>
-      <Segment id="headerBackground" style={{ padding: "3em" }} vertical>
+      <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
-            <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-              <Header as="h3" style={{ fontSize: "6em" }}>
-                Login
-              </Header>
-              <p style={{ fontSize: "2em" }}>
-                <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
-              </p>
+            <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
+              <h1>Login</h1>
+              <h3>Welcome back!</h3>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
 
-      <Segment style={{ padding: "2em 0em", height: "100vh" }} vertical>
-        <Grid container stackable verticalAlign="middle">
-          <Grid.Row>
-            <Grid.Column>
-              <div id="signup-login">
-                <form
-                  className="ui form"
-                  name={name}
-                  onSubmit={handleSubmit}
-                  style={{ fontSize: "15px" }}
+      <Segment
+        style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
+        vertical
+      >
+        <Grid textAlign="center" stackable verticalAlign="middle">
+          {/* <Grid.Row> */}
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as="h2" color="orange" textAlign="center">
+              <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
+              your account
+            </Header>
+            <Form size="large" name={name} onSubmit={handleSubmit}>
+              <Segment stacked>
+                <label>Email</label>
+                <Form.Input
+                  fluid
+                  icon="user"
+                  iconPosition="left"
+                  name="email"
+                  placeholder="Email"
+                />
+
+                <label>Password</label>
+                <Form.Input
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                />
+
+                <Button
+                  fluid
+                  size="large"
+                  inverted
+                  color="orange"
+                  role="button"
                 >
-                  <div className="field">
-                    <label>Email</label>
-                    <input name="email" placeholder="Email" />
-                  </div>
-                  <div className="field">
-                    <label>Password</label>
-                    <input name="password" placeholder="Password" />
-                  </div>
-                  <button
-                    type="submit"
-                    className="ui orange inverted button"
-                    role="button"
-                  >
-                    Submit
-                  </button>
-                  <br />
-                </form>
-              </div>
-            </Grid.Column>
-          </Grid.Row>
+                  Login
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+          {/* </Grid.Row> */}
         </Grid>
       </Segment>
-      <div
-        style={{
-          position: "fixed",
-          left: "0px",
-          bottom: "0px",
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        <Footer />
-      </div>
+
+      <Footer />
     </ResponsiveContainer>
   );
 };

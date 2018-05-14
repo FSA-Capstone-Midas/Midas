@@ -19,8 +19,8 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const SignUp = () => {
-  const { name, handleSubmit } = this.props;
+const SignUp = props => {
+  const { name, handleSubmit } = props;
   const startYear = 1948;
   const endYear = 2000;
   const startDay = 1;

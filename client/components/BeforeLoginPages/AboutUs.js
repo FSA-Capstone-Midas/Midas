@@ -42,14 +42,14 @@ ResponsiveContainer.propTypes = {
 const AboutUs = props => {
   return (
     <ResponsiveContainer logined={props.isLoggedIn}>
-      <Segment id="headerBackground" style={{ padding: "3em" }} vertical>
+      <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
-            <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
-              <Header as="h1">About Us</Header>
-              <p as="h2">
-                <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
-              </p>
+            <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
+              <h1>About Us</h1>
+              <h3>
+                <b>MIDAS</b> - We make managing your money easy.
+              </h3>
             </Grid.Column>
           </Grid.Row>
         </Grid>
