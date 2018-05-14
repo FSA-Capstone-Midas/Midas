@@ -5,10 +5,11 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
-import { Segment, Grid, Menu, Container } from "semantic-ui-react";
+import { Grid, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import store, { fetchUser } from "../store";
+import PieSpending from "./Transactions/PieSpending";
+import BarNetIncome from "./Transactions/BarNetIncome";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -30,141 +31,52 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 100);
   }
 
   render() {
-    const { accounts, bills } = this.props;
+    const { user, transaction, bills } = this.props;
 
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
           <Loading />
         ) : (
-          <Segment style={{ marginLeft: "10%", marginRight: "-3%" }}>
+          <div>
+            <div>
+              Welcome back {user.firstName} {user.lastName}
+              <br />
+              Last login time:
+              {user &&
+                user.updatedAt.split("T")[0] +
+                  " " +
+                  user.updatedAt.split("T")[1].slice(0, 8)}
+            </div>
+            <Divider section />
             <Grid>
-              <Grid.Column width={4}>
-                <Menu
-                  vertical
-                  style={{
-                    fontSize: "14px",
-                    display: "table-row-group"
-                  }}
-                >
-                  <h3>Account info</h3>
-                  {accounts &&
-                    accounts.accountInfo.map(account => {
-                      if (account.subtype === "checking") {
-                        return (
-                          <Segment
-                            key={account.id}
-                            style={{ fontSize: "14px", display: "flex" }}
-                          >
-                            <Menu.Item>
-                              <Menu.Header>{account.name}</Menu.Header>
-                              <Menu.Menu>
-                                <Menu.Item>
-                                  balances
-                                  <Menu.Item
-                                    name={String(account.balances.available)}
-                                  />
-                                </Menu.Item>
-                                <Menu.Item>
-                                  subtype
-                                  <Menu.Item name={account.subtype} />
-                                </Menu.Item>
-                              </Menu.Menu>
-                            </Menu.Item>
-                            <img
-                              style={{ width: "220px", height: "120px" }}
-                              className="carousel-image"
-                              src="../../../../../../pictures/visa.png"
-                            />
-                          </Segment>
-                        );
-                      } else if (account.subtype === "savings") {
-                        return (
-                          <Segment
-                            key={account.id}
-                            style={{ fontSize: "14px", display: "flex" }}
-                          >
-                            <Menu.Item key={account.id}>
-                              <Menu.Header>{account.name}</Menu.Header>
-                              <Menu.Menu>
-                                <Menu.Item>
-                                  balances
-                                  <Menu.Item
-                                    name={String(account.balances.available)}
-                                  />
-                                </Menu.Item>
-                                <Menu.Item>
-                                  subtype
-                                  <Menu.Item name={account.subtype} />
-                                </Menu.Item>
-                              </Menu.Menu>{" "}
-                            </Menu.Item>
-                            <img
-                              style={{ width: "220px", height: "120px" }}
-                              className="carousel-image"
-                              src="../../../../../../pictures/Chase.png"
-                            />
-                          </Segment>
-                        );
-                      } else if (account.subtype === "credit card") {
-                        return (
-                          <Segment
-                            key={account.id}
-                            style={{ fontSize: "14px", display: "flex" }}
-                          >
-                            <Menu.Item key={account.id}>
-                              <Menu.Header>{account.name}</Menu.Header>
-                              <Menu.Menu>
-                                <Menu.Item>
-                                  Balance{" "}
-                                  <Menu.Item
-                                    name={String(account.balances.available)}
-                                  />
-                                </Menu.Item>
-                                <Menu.Item>
-                                  Current{" "}
-                                  <Menu.Item
-                                    name={String(account.balances.current)}
-                                  />
-                                </Menu.Item>
-                                <Menu.Item>
-                                  Limit{" "}
-                                  <Menu.Item
-                                    name={String(account.balances.limit)}
-                                  />
-                                </Menu.Item>
-                                <Menu.Item>
-                                  subtype <Menu.Item name={account.subtype} />
-                                </Menu.Item>
-                              </Menu.Menu>
-                            </Menu.Item>
-                            <img
-                              style={{
-                                width: "220px",
-                                height: "120px",
-                                marginLeft: "18px"
-                              }}
-                              className="carousel-image"
-                              src="../../../../../../pictures/credit.png"
-                            />
-                          </Segment>
-                        );
-                      }
-                    })}
-                </Menu>
-              </Grid.Column>
-              <Grid.Column width={9} style={{ marginLeft: "5%" }}>
-                {bills.id ? <BillAlert /> : null}
+              <Grid.Column width={10}>
                 <AccountTable />
               </Grid.Column>
-            </Grid>
-          </Segment>
-        )}
 
+              <Grid.Column width={6}>
+                {bills.id ? <BillAlert /> : null}
+              </Grid.Column>
+            </Grid>
+            <Divider section />
+
+            <Grid>
+              <Grid.Column width={8}>
+                {transaction ? <PieSpending rows={transaction} /> : null}
+              </Grid.Column>
+              <Grid.Column width={8}>
+                {transaction ? <BarNetIncome rows={transaction} /> : null}
+              </Grid.Column>
+            </Grid>
+            <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
+          </div>
+        )}
         <Footer />
       </ResponsiveContainer>
     );
@@ -176,9 +88,10 @@ class UserHome extends React.Component {
  */
 const mapState = state => {
   return {
-    state: state,
+    user: state.user,
     email: state.user.email,
     accounts: state.accounts,
+    transaction: state.transactions.transaction,
     bills: state.bills
   };
 };

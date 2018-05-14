@@ -17,17 +17,17 @@ class BillAlert extends Component {
 
     return (
       <div>
-        <Grid columns={2}>
+        <Grid columns={1}>
           <Grid.Column>
             <Step.Group fluid vertical style={{ backgroundColor: "burlywood" }}>
               <Step active style={{ backgroundColor: "gold" }}>
                 <Icon color="red" name="announcement" />
                 <Step.Content>
                   <Step.Title>
-                    {bills && bills.id ? (
+                    {bills.id ? (
                       <h4>
-                        You Have ${bills.price} rent coming up in {this.result}{" "}
-                        days.
+                        Your ${bills.price} monthly rent bill is due in{" "}
+                        {this.result} days.
                       </h4>
                     ) : null}
                   </Step.Title>

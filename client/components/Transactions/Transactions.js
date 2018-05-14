@@ -18,7 +18,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Transactions extends Component {
@@ -26,7 +26,7 @@ class Transactions extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentChart: "spendingOverTime",
+      currentChart: "spendingOverTime"
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -67,7 +67,7 @@ class Transactions extends Component {
               style={{
                 padding: "2em 0em",
                 fontSize: "12px",
-                textAlign: "center",
+                textAlign: "center"
               }}
               vertical
             >
@@ -78,11 +78,10 @@ class Transactions extends Component {
                 </div>
               </div>
               <Table rows={rows} />
+              <Footer />
             </Segment>
           ) : null}
         </Container>
-
-        <Footer />
       </ResponsiveContainer>
     );
   }
@@ -91,7 +90,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction,
+    transaction: state.transactions.transaction
   };
 };
 
