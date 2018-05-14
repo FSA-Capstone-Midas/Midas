@@ -1,32 +1,19 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
-  Sidebar,
   Visibility,
-  Input,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import { logout } from "../../store";
 
-/**
- * COMPONENT
- */
-/* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
+const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
+
 class MenuExampleSecondary extends Component {
   state = { activeItem: "home" };
 
@@ -111,7 +98,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive>
+      <Responsive {...notMobile}>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -120,7 +107,7 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign="center"
-            style={{ minHeight: 100, padding: "1em 0em" }}
+            style={{ minHeight: 80, padding: "1em 0em" }}
             vertical
           >
             <Menu
@@ -129,20 +116,21 @@ class DesktopContainer extends Component {
               pointing={!fixed}
               secondary={!fixed}
               size="large"
+              style={{ border: "none" }}
             >
               <Container style={{ fontSize: "17px" }}>
                 <Menu.Item as={NavLink} to="/home">
-                  HOME
+                  Home
                 </Menu.Item>
-                <Menu.Item>ADD ACCOUNTS</Menu.Item>
+                <Menu.Item>Add Accounts</Menu.Item>
                 <Menu.Item exact as={NavLink} to="/howitworks">
-                  HOW IT WORKS
+                  How It Works
                 </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/aboutus">
-                  ABOUT US
+                  About Us
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/profile">
-                  PROFILE
+                <Menu.Item exact as={NavLink} to="/profile">
+                  Profile
                 </Menu.Item>
                 <Menu.Item position="right">
                   <Button
@@ -152,7 +140,7 @@ class DesktopContainer extends Component {
                     style={{ marginLeft: "0.5em" }}
                     onClick={handleClick}
                   >
-                    LOG OUT
+                    Log Out
                   </Button>
                 </Menu.Item>
               </Container>
