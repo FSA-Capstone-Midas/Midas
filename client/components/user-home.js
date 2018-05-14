@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
 import { Grid, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -34,7 +35,8 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { user, transaction } = this.props;
+    const { user, transaction, bills } = this.props;
+
     return (
       <ResponsiveContainer>
         {this.state.loading ? (
@@ -56,7 +58,9 @@ class UserHome extends React.Component {
                 <AccountTable />
               </Grid.Column>
 
-              <Grid.Column width={6}>hi</Grid.Column>
+              <Grid.Column width={6}>
+                {bills.id ? <BillAlert /> : null}
+              </Grid.Column>
             </Grid>
             <Divider section />
 
@@ -87,7 +91,8 @@ const mapState = state => {
     user: state.user,
     email: state.user.email,
     accounts: state.accounts,
-    transaction: state.transactions.transaction
+    transaction: state.transactions.transaction,
+    bills: state.bills
   };
 };
 

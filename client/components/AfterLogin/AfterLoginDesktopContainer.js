@@ -8,9 +8,9 @@ import {
   Menu,
   Responsive,
   Segment,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
-import { logout } from "../../store";
+import { logout, fetchUser } from "../../store";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
@@ -21,6 +21,7 @@ class MenuExampleSecondary extends Component {
 
   render() {
     const { activeItem } = this.state;
+    const { id, handleUser } = this.props;
 
     return (
       <Menu secondary style={{ fontSize: "15px", marginLeft: "12%" }}>
@@ -52,6 +53,9 @@ class MenuExampleSecondary extends Component {
           name="BILLS"
           active={activeItem === "BILLS"}
           onClick={this.handleItemClick}
+          exact
+          as={NavLink}
+          to="/bills"
         />
         <Menu.Item
           name="BUDGETS"
@@ -80,7 +84,7 @@ class MenuExampleSecondary extends Component {
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool,
+  mobile: PropTypes.bool
 };
 
 /* Heads up!
@@ -155,17 +159,26 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
-
+const mapState = state => {
+  return {
+    user: state.user,
+    id: state.user.id
+  };
+};
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
     },
+    handleUser(event, id) {
+      event.preventDefault();
+      dispatch(fetchUser(id));
+    }
   };
 };
 
-export default withRouter(connect(null, mapDispatch)(DesktopContainer));
+export default withRouter(connect(mapState, mapDispatch)(DesktopContainer));
 
 // export default withRouter(DesktopContainer);

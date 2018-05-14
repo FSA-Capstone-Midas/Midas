@@ -3,6 +3,7 @@ module.exports = router;
 
 router.use("/users", require("./users"));
 router.use("/plaid", require("./plaid"));
+router.use("/rent", require("./rent"));
 router.use("/retirement", require("./retirement"));
 router.use("/emergencyGoal", require("./emergencyGoal"));
 router.use("/house", require("./house"));
