@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import { Segment, Grid, Header } from "semantic-ui-react";
-import store, { updateRent, fetchRent } from "../store";
+import store, {
+  updateRent,
+  fetchRent,
+  fetchPhone,
+  updatePhone
+} from "../store";
 
 class BillForm extends Component {
   constructor(props) {
@@ -12,7 +17,11 @@ class BillForm extends Component {
       amount: 0,
       month: "",
       day: "",
-      Year: ""
+      Year: "",
+      phoneAmount: 0,
+      phoneMonth: "",
+      phoneDay: "",
+      phoneYear: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +31,12 @@ class BillForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    var phoneDate =
+      this.state.phoneYear +
+      "-" +
+      this.state.phoneMonth +
+      "-" +
+      this.state.phoneDay;
     const { id } = this.props;
     var date = this.state.Year + "-" + this.state.month + "-" + this.state.day;
     const dateResult = {
@@ -29,6 +44,13 @@ class BillForm extends Component {
       date: date,
       userId: id
     };
+    const phoneResult = {
+      price: Number(this.state.phoneAmount),
+      date: phoneDate,
+      userId: id
+    };
+    store.dispatch(fetchPhone(id));
+    store.dispatch(updatePhone(phoneResult));
     store.dispatch(fetchRent(id));
     store.dispatch(updateRent(dateResult));
   }
@@ -135,6 +157,62 @@ class BillForm extends Component {
                         </select>
                       </div>
                     </label>
+                    <div className="field">
+                      <label>amount</label>
+                      <input
+                        placeholder="phoneAmount"
+                        name="phoneAmount"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+
+                    <label>
+                      Enter the date of monthly rent
+                      <div id="dob">
+                        <select
+                          name="phoneMonth"
+                          default="phoneMonth"
+                          id="monthddl"
+                          onChange={this.handleChange}
+                        >
+                          <option value="1">January</option>
+                          <option value="2">Febuary</option>
+                          <option value="3">March</option>
+                          <option value="4">April</option>
+                          <option value="5">May</option>
+                          <option value="6">June</option>
+                          <option value="7">July</option>
+                          <option value="8">August</option>
+                          <option value="9">September</option>
+                          <option value="10">October</option>
+                          <option value="11">November</option>
+                          <option value="12">December</option>
+                        </select>
+                        <select
+                          name="phoneDay"
+                          id="dayddl"
+                          onChange={this.handleChange}
+                        >
+                          {arrayDay.map(elem => (
+                            <option key={`${elem}`} value={`${elem}`}>
+                              {elem}
+                            </option>
+                          ))}
+                        </select>
+
+                        <select
+                          name="phoneYear"
+                          id="Year"
+                          onChange={this.handleChange}
+                        >
+                          {arrayYear.map(item => (
+                            <option key={`${item}`} value={`${item}`}>
+                              {item}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </label>
                     <br />
                     <button
                       type="submit"
@@ -150,6 +228,7 @@ class BillForm extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
+
         <div
           style={{
             position: "fixed",

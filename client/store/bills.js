@@ -3,17 +3,16 @@ import history from "../history";
 
 const UPDATE_RENT = "UPDATE_RENT";
 const GET_RENT = "GET_RENT";
+const UPDATE_PHONE = "UPDATE_PHONE";
+const GET_PHONE = "GET_PHONE";
 
 const defaultUser = {};
 
 const updateUserRent = rent => ({ type: UPDATE_RENT, rent });
-// const getUserRent = rent => ({ type: GET_RENT, rent });
-function getUserRent(rent) {
-  return {
-    type: GET_RENT,
-    rent
-  };
-}
+const getUserRent = rent => ({ type: GET_RENT, rent });
+
+const updatePhoneBill = phone => ({ type: UPDATE_PHONE, phone });
+const getPhoneBill = phone => ({ type: GET_PHONE, phone });
 
 export const updateRent = rent => dispatch =>
   axios
@@ -32,12 +31,33 @@ export const fetchRent = id => dispatch =>
     })
     .catch(err => console.log(err));
 
+export const updatePhone = phone => dispatch =>
+  axios
+    .post("/api/phone", phone)
+    .then(res => {
+      dispatch(update(res.data));
+      history.push("/home");
+    })
+    .catch(err => console.log(err));
+
+export const fetchPhone = id => dispatch =>
+  axios
+    .get(`/api/phone/user/${id}`)
+    .then(res => {
+      dispatch(getPhoneBill(res.data));
+    })
+    .catch(err => console.log(err));
+
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case UPDATE_RENT:
       return action.rent;
     case GET_RENT:
       return Object.assign({}, state, action.rent);
+    case UPDATE_PHONE:
+      return action.phone;
+    case GET_PHONE:
+      return Object.assign({}, state, action.phone);
     default:
       return state;
   }
