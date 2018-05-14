@@ -18,14 +18,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Budget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
   componentDidMount() {
@@ -58,14 +58,13 @@ class Budget extends Component {
                       <BudgetProgress />
                       <BudgetHorizontalBarChart />
                     </Segment>
+                    <Footer />
                   </div>
                 )}
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-
-        <Footer />
       </ResponsiveContainer>
     );
   }
@@ -74,7 +73,7 @@ class Budget extends Component {
 const mapState = state => {
   return {
     account: state.plaid.account,
-    transaction: state.plaid.transaction,
+    transaction: state.plaid.transaction
   };
 };
 

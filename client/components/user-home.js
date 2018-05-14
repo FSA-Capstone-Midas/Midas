@@ -4,9 +4,11 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import AccountTable from "./AccountTable";
-import { Segment, Grid, Menu, Container } from "semantic-ui-react";
+import { Grid, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import PieSpending from "./Transactions/PieSpending";
+import BarNetIncome from "./Transactions/BarNetIncome";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -28,122 +30,49 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 100);
   }
 
   render() {
-    const { accounts } = this.props;
+    const { user, transaction } = this.props;
     return (
       <ResponsiveContainer>
-        <Container>
-          {this.state.loading ? (
-            <Loading />
-          ) : (
-            <Segment>
-              <Grid>
-                <Grid.Column width={4}>
-                  <Menu
-                    vertical
-                    style={{
-                      fontSize: "14px",
-                      display: "table-row-group"
-                    }}
-                  >
-                    <h2>Account info</h2>
-                    {accounts &&
-                      accounts.accountInfo.map(account => {
-                        if (account.subtype === "checking") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    balances:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        } else if (account.subtype === "savings") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item key={account.id}>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    balances:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        } else if (account.subtype === "credit card") {
-                          return (
-                            <Segment
-                              key={account.id}
-                              style={{ fontSize: "14px" }}
-                            >
-                              <Menu.Item key={account.id}>
-                                <Menu.Header>{account.name}</Menu.Header>
-                                <Menu.Menu>
-                                  <Menu.Item>
-                                    Balance:
-                                    <Menu.Item>{`$${
-                                      account.balances.available
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    Current:
-                                    <Menu.Item>{`$${
-                                      account.balances.current
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    Limit:
-                                    <Menu.Item>{`$${
-                                      account.balances.limit
-                                    }`}</Menu.Item>
-                                  </Menu.Item>
-                                  <Menu.Item>
-                                    subtype:
-                                    <Menu.Item name={account.subtype} />
-                                  </Menu.Item>
-                                </Menu.Menu>
-                              </Menu.Item>
-                            </Segment>
-                          );
-                        }
-                      })}
-                  </Menu>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <AccountTable />
-                </Grid.Column>
-              </Grid>
-            </Segment>
-          )}
-        </Container>
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <div>
+            <div>
+              Welcome back {user.firstName} {user.lastName}
+              <br />
+              Last login time:
+              {user &&
+                user.updatedAt.split("T")[0] +
+                  " " +
+                  user.updatedAt.split("T")[1].slice(0, 8)}
+            </div>
+            <Divider section />
+            <Grid>
+              <Grid.Column width={10}>
+                <AccountTable />
+              </Grid.Column>
+
+              <Grid.Column width={6}>hi</Grid.Column>
+            </Grid>
+            <Divider section />
+
+            <Grid>
+              <Grid.Column width={8}>
+                {transaction ? <PieSpending rows={transaction} /> : null}
+              </Grid.Column>
+              <Grid.Column width={8}>
+                {transaction ? <BarNetIncome rows={transaction} /> : null}
+              </Grid.Column>
+            </Grid>
+            <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
+          </div>
+        )}
         <Footer />
       </ResponsiveContainer>
     );
@@ -155,18 +84,11 @@ class UserHome extends React.Component {
  */
 const mapState = state => {
   return {
+    user: state.user,
     email: state.user.email,
-    accounts: state.accounts
+    accounts: state.accounts,
+    transaction: state.transactions.transaction
   };
 };
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleClick(product, evt) {
-//       evt.preventDefault();
-//       dispatch(postToCart(product));
-//     }
-//   };
-// }
 
 export default connect(mapState)(UserHome);

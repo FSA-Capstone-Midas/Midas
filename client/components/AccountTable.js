@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 const AccountTable = props => {
   const { accounts } = props;
   return (
-    <Segment>
+    <div>
       {accounts &&
         accounts.map(each => {
           if (each.type === "depository") {
@@ -20,8 +20,8 @@ const AccountTable = props => {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>balances</Table.HeaderCell>
-                    <Table.HeaderCell>subtype</Table.HeaderCell>
+                    <Table.HeaderCell>Balances</Table.HeaderCell>
+                    <Table.HeaderCell>Type</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -44,11 +44,11 @@ const AccountTable = props => {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>balances available</Table.HeaderCell>
-                    <Table.HeaderCell>balances current</Table.HeaderCell>
-                    <Table.HeaderCell>limit</Table.HeaderCell>
-                    <Table.HeaderCell>subtype</Table.HeaderCell>
-                    <Table.HeaderCell>Creadit card name</Table.HeaderCell>
+                    <Table.HeaderCell>Balances available</Table.HeaderCell>
+                    <Table.HeaderCell>Balances current</Table.HeaderCell>
+                    <Table.HeaderCell>Limit</Table.HeaderCell>
+                    <Table.HeaderCell>Account Type</Table.HeaderCell>
+                    <Table.HeaderCell>Creadit Card type</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -65,7 +65,7 @@ const AccountTable = props => {
             );
           }
         })}
-    </Segment>
+    </div>
   );
 };
 
