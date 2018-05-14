@@ -9,12 +9,11 @@ import {
   Input,
   Button,
   Icon,
-  Statistic,
+  Statistic
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { addHouseFormdetails, addHousePlan } from "../store";
-import AfterLoginMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { numberWithCommas } from "./utils";
 /*eslint-disable*/
 
@@ -26,14 +25,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class House extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showResult: false,
+      showResult: false
     };
     this.handleChangeLocal = this.handleChangeLocal.bind(this);
   }
@@ -57,7 +56,7 @@ class House extends Component {
       <ResponsiveContainer>
         <Segment
           id="howItWorksBackground"
-          style={{ padding: '1.5em' }}
+          style={{ padding: "1.5em" }}
           vertical
         >
           <i aria-hidden="true" className="home massive icon" />
@@ -151,7 +150,7 @@ class House extends Component {
 const mapStateToProps = state => {
   return {
     userId: state.user.id,
-    houseForm: state.houseForm,
+    houseForm: state.houseForm
   };
 };
 
@@ -165,7 +164,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     handleSubmit(event, housePlan) {
       event.preventDefault();
       dispatch(addHousePlan(housePlan));
-    },
+    }
   };
 };
 

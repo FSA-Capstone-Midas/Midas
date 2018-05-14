@@ -29,7 +29,7 @@ export const updateBudget = budgetData => ({
  */
 export const getBudgetFromDatabase = userId => dispatch =>
   axios
-    .get(`/user/${userId}/budget`)
+    .get(`api/budget/user/${userId}`)
     .then(res => {
       dispatch(getBudget(res.data));
     })
@@ -37,7 +37,7 @@ export const getBudgetFromDatabase = userId => dispatch =>
 
 export const updateUserBudget = (budgetObj, userId) => dispatch => {
   axios
-    .put(`/api/users/${userId}/budget`, budgetObj)
+    .post(`/api/budget/user/${userId}`, budgetObj)
     .then(res => {
       dispatch(updateBudget(res.data));
     })
@@ -49,9 +49,9 @@ export const updateUserBudget = (budgetObj, userId) => dispatch => {
 export default function(state = defaultBudget, action) {
   switch (action.type) {
     case GET_BUDGET:
-      return action.budgetData;
+      return Object.assign({}, state, action.budgetData);
     case UPDATE_BUDGET:
-      return action.budgetData;
+      return Object.assign({}, state, action.budgetData);
     default:
       return state;
   }

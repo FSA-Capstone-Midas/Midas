@@ -12,6 +12,7 @@ export default function Footer() {
         bottom: "0",
         width: "100%",
         textAlign: "center",
+        position: "relative",
       }}
     >
       <Container>

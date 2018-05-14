@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Progress, Segment } from "semantic-ui-react";
 
 const BudgetProgress = props => {
-  const totalBudgetExpenditure = props.totalBudgetExpenditure;
+  const totalBudgetExpenditure = props.budget.totalBudgetExpenditure;
   const actualSpending = props.actualSpending;
   const spendingRatio = totalBudgetExpenditure
     ? (actualSpending * 100 / totalBudgetExpenditure).toFixed(2)
@@ -32,10 +32,11 @@ const mapState = state => {
     .reduce((prev, next) => {
       return prev + next.amount;
     }, 0);
+  const budget = state.budget;
 
   return {
     actualSpending,
-    totalBudgetExpenditure: state.user.totalBudgetExpenditure
+    budget
   };
 };
 

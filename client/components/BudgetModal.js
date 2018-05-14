@@ -43,12 +43,16 @@ class BudgetModal extends Component {
     const userId = this.props.user.id;
     const handleSubmit = this.props.handleSubmit;
     const budgetItemObj = {
-      [this.state.category]: this.state.budgetForCategory
+      [this.state.category]: this.state.budgetForCategory,
+      userId
     };
     return (
       <Modal
         trigger={
-          <Button onClick={this.handleOpen} className="ui button">
+          <Button
+            onClick={this.handleOpen}
+            className="ui brown huge inverted button"
+          >
             <i aria-hidden="true" className="add icon" />Create a Budget
           </Button>
         }
