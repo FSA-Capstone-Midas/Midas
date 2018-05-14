@@ -17,14 +17,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -47,7 +47,7 @@ class UserHome extends React.Component {
                     vertical
                     style={{
                       fontSize: "14px",
-                      display: "table-row-group",
+                      display: "table-row-group"
                     }}
                   >
                     <h2>Account info</h2>
@@ -157,7 +157,7 @@ class UserHome extends React.Component {
 const mapState = state => {
   return {
     email: state.user.email,
-    accounts: state.accounts,
+    accounts: state.accounts
   };
 };
 

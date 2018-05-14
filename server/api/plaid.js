@@ -36,7 +36,7 @@ router.get("/auth", function(request, response, next) {
       return response.json({ error });
     }
     //Plaid success response
-    response.json({
+    response.status(200).json({
       error: false,
       accountInfo: data.accounts
     });
@@ -53,13 +53,13 @@ router.get("/transactions", (req, res, next) => {
       offset: 0
     },
     function(error, data) {
-      if (error != null) {
+      if (error) {
         console.log(JSON.stringify(error));
         return res.json({
           error: error
         });
       }
-      res.json({
+      res.status(200).json({
         error: false,
         transaction: data.transactions
       });
