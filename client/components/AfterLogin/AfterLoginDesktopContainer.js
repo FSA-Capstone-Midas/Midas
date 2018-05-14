@@ -41,7 +41,7 @@ class MenuExampleSecondary extends Component {
         <Menu.Item
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
-          onClick={(event, id => this.props.handleUser(event, id))}
+          onClick={this.handleItemClick}
           exact
           as={NavLink}
           to="/home"
@@ -49,7 +49,7 @@ class MenuExampleSecondary extends Component {
         <Menu.Item
           name="TRANSACTIONS"
           active={activeItem === "TRANSACTIONS"}
-          onClick={(event, id => this.props.handleUser(event, id))}
+          onClick={this.handleItemClick}
           exact
           as={NavLink}
           to="/transactions"
@@ -184,6 +184,7 @@ const mapDispatch = dispatch => {
       dispatch(logout());
     },
     handleUser(event, id) {
+      event.preventDefault();
       dispatch(fetchUser(id));
     }
   };

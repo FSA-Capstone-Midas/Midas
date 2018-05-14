@@ -17,7 +17,7 @@ class BillForm extends Component {
     console.log("props!!", props);
     super(props);
     this.state = {
-      Price: 0,
+      amount: 0,
       month: "",
       day: "",
       Year: ""
@@ -33,7 +33,7 @@ class BillForm extends Component {
     const { id } = this.props;
     var date = this.state.Year + "-" + this.state.month + "-" + this.state.day;
     const dateResult = {
-      price: Number(this.state.Price),
+      price: Number(this.state.amount),
       date: date,
       userId: id
     };
@@ -86,10 +86,10 @@ class BillForm extends Component {
                     style={{ fontSize: "15px" }}
                   >
                     <div className="field">
-                      <label>Price</label>
+                      <label>amount</label>
                       <input
-                        placeholder="Price"
-                        name="Price"
+                        placeholder="amount"
+                        name="amount"
                         onChange={this.handleChange}
                       />
                     </div>

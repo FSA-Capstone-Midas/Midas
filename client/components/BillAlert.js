@@ -9,7 +9,6 @@ import BillForm from "./BillForm";
 class BillAlert extends Component {
   render() {
     const { id, user, userInfo, bills, all, accounts } = this.props;
-    console.log("hello", bills);
     if (bills && bills.id) {
       const newDate = new Date().toString().split(" ");
       const oldDate = bills.date.split("-");
