@@ -47,7 +47,7 @@ const Login = props => {
         vertical
       >
         <Grid textAlign="center" stackable verticalAlign="middle">
-          <Grid.Column style={{ maxWidth: 450 }}>
+          <Grid.Column style={{ maxWidth: 750 }}>
             <Header as="h2" color="orange" textAlign="center">
               <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
               your account

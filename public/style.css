@@ -61,9 +61,9 @@ nav a {
   display: block;
 }
 
-#dob {
+/* #dob {
   display: inline-flex;
-}
+} */
 
 #map_election {
   position: relative;
@@ -151,4 +151,10 @@ h3 {
 /* Header Section Background Color */
 #headerBackground {
   background: linear-gradient(#fdfcfb, #e2d1c3);
+}
+
+/* Signup form select field */
+#signUpSelect {
+  display: flex;
+  align-items: flex-end;
 }

@@ -48,10 +48,23 @@ export const auth = (
   password,
   method,
   firstName,
-  lastName
+  lastName,
+  nickName,
+  birthYear,
+  birthMonth,
+  birthDay
 ) => dispatch =>
   axios
-    .post(`/auth/${method}`, { firstName, lastName, email, password })
+    .post(`/auth/${method}`, {
+      firstName,
+      lastName,
+      email,
+      password,
+      nickName,
+      birthYear,
+      birthMonth,
+      birthDay,
+    })
     .then(
       res => {
         dispatch(getUser(res.data));

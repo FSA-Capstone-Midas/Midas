@@ -1,8 +1,17 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Grid, Header, Segment } from "semantic-ui-react";
+import {
+  Grid,
+  Header,
+  Image,
+  Form,
+  Segment,
+  Checkbox,
+  Button,
+  Message,
+} from "semantic-ui-react";
 import { auth } from "../../store";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
@@ -19,133 +28,191 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const SignUp = props => {
-  const { name, handleSubmit } = props;
-  const startYear = 1948;
-  const endYear = 2000;
-  const startDay = 1;
-  const endDay = 31;
-  let arrayYear = [];
-  let arrayDay = [];
-  for (var i = startYear; i <= endYear; i++) {
-    arrayYear.push(i);
-  }
-  for (var j = startDay; j <= endDay; j++) {
-    arrayDay.push(j);
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      year: 0,
+      month: 0,
+      day: 0,
+    };
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
-  return (
-    <ResponsiveContainer>
-      <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
-        <Grid celled="internally" columns="equal" stackable>
-          <Grid.Row textAlign="center">
-            <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
-              <h1>Sign Up Now</h1>
-              <h3>
-                <b>MIDAS</b> - We makes managing your money easy.
-              </h3>
+  handleSelectChange(e, { name, value }) {
+    if (name === "year") {
+      this.setState({
+        year: value,
+      });
+    } else if (name === "month") {
+      this.setState({
+        month: value,
+      });
+    } else if (name === "day") {
+      this.setState({
+        day: value,
+      });
+    }
+  }
+
+  render() {
+    const { name, handleSubmit, error } = this.props;
+
+    const options = [
+      { key: "January", text: "January", value: 1 },
+      { key: "Febuary", text: "Febuary", value: 2 },
+      { key: "March", text: "March", value: 3 },
+      { key: "April", text: "April", value: 4 },
+      { key: "May", text: "May", value: 5 },
+      { key: "June", text: "June", value: 6 },
+      { key: "July", text: "July", value: 7 },
+      { key: "August", text: "August", value: 8 },
+      { key: "September", text: "September", value: 9 },
+      { key: "October", text: "October", value: 10 },
+      { key: "November", text: "November", value: 11 },
+      { key: "December", text: "December", value: 12 },
+    ];
+
+    const startYear = 1948;
+    const endYear = 2000;
+    const startDay = 1;
+    const endDay = 31;
+    let arrayYear = [];
+    let arrayDay = [];
+    for (var i = startYear; i <= endYear; i++) {
+      arrayYear.push({ key: i, text: i, value: i });
+    }
+    for (var j = startDay; j <= endDay; j++) {
+      arrayDay.push({ key: j, text: j, value: j });
+    }
+
+    console.log("this.state", this.state);
+
+    return (
+      <ResponsiveContainer>
+        <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
+          <Grid celled="internally" columns="equal" stackable>
+            <Grid.Row textAlign="center">
+              <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
+                <h1>Sign Up Now</h1>
+                <h3>
+                  <b>MIDAS</b> - We makes managing your money easy.
+                </h3>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+
+        <Segment
+          style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
+          vertical
+        >
+          <Grid container textAlign="center" stackable verticalAlign="middle">
+            <Grid.Column style={{ maxWidth: 750 }}>
+              <Header as="h2" color="orange" textAlign="center">
+                <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
+                your account
+              </Header>
+              <Form size="large" onSubmit={handleSubmit} name={name}>
+                <Segment stacked>
+                  <Form.Input
+                    label="First Name"
+                    required
+                    placeholder="First Name"
+                    name="firstName"
+                  />
+                  <Form.Input
+                    label="Last Name"
+                    required
+                    placeholder="Last Name"
+                    name="lastName"
+                  />
+                  <Form.Input
+                    label="Email"
+                    required
+                    placeholder="Email"
+                    name="email"
+                  />
+                  <Form.Input
+                    label="Password"
+                    required
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                  />
+                  <Form.Input
+                    label="What should we call you?"
+                    required
+                    name="nickName"
+                    placeholder="What should we call you?"
+                  />
+                  <label />
+                  <Form.Group widths="equal" id="signUpSelect">
+                    <Form.Select
+                      required
+                      name="month"
+                      default="month"
+                      id="monthddl"
+                      options={options}
+                      placeholder="Month"
+                      onChange={this.handleSelectChange}
+                    />
+                    <Form.Select
+                      label="Date of Birth"
+                      required
+                      name="day"
+                      id="dayddl"
+                      options={arrayDay}
+                      placeholder="Day"
+                      onChange={this.handleSelectChange}
+                    />
+                    <label />
+                    <Form.Select
+                      name="year"
+                      id="Year"
+                      options={arrayYear}
+                      placeholder="Year"
+                      onChange={this.handleSelectChange}
+                    />
+                  </Form.Group>
+                  <Form.Input
+                    style={{ display: "none" }}
+                    name="month"
+                    value={this.state.month}
+                  />
+                  <Form.Input
+                    style={{ display: "none" }}
+                    name="day"
+                    value={this.state.day}
+                  />
+                  <Form.Input
+                    style={{ display: "none" }}
+                    name="year"
+                    value={this.state.year}
+                  />
+
+                  <Form.Field>
+                    <Checkbox
+                      required
+                      label="I agree to the Terms and Conditions"
+                    />
+                  </Form.Field>
+                  <br />
+                  <Button inverted type="submit" color="orange">
+                    Sign Up
+                  </Button>
+                </Segment>
+              </Form>
+              {error ? <Message>Email already exists</Message> : null}
             </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+          </Grid>
+        </Segment>
 
-      <Segment
-        style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
-        vertical
-      >
-        <Grid container textAlign="center" stackable verticalAlign="middle">
-          <Grid.Row>
-            <Grid.Column>
-              <div id="signup-login">
-                <Form
-                  className="ui form"
-                  onSubmit={handleSubmit}
-                  name={name}
-                  style={{ fontSize: "15px" }}
-                >
-                  <div className="field">
-                    <label>First Name</label>
-                    <input placeholder="First Name" name="firstName" />
-                  </div>
-                  <div className="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" name="lastName" />
-                  </div>
-                  <div className="field">
-                    <label>Email</label>
-                    <input placeholder="Email" name="email" />
-                  </div>
-                  <div className="field">
-                    <label>Password</label>
-                    <input placeholder="Password" name="password" />
-                  </div>
-                  <div className="field">
-                    <label>What should we call you?</label>
-                    <input placeholder="What should we call you?" />
-                  </div>
-
-                  <label>
-                    Date of Birth
-                    <div id="dob">
-                      <select name="month" default="month" id="monthddl">
-                        <option value="1">January</option>
-                        <option value="2">Febuary</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                      </select>
-                      <select name="day" id="dayddl">
-                        {arrayDay.map(elem => (
-                          <option key={`${elem}`} value={`${elem}`}>
-                            {elem}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select name="Year" id="Year">
-                        {arrayYear.map(item => (
-                          <option key={`${item}`} value={`${item}`}>
-                            {item}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </label>
-                  <br />
-                  <div className="field">
-                    <div className="ui checkbox">
-                      <input type="checkbox" className="hidden" />
-                      <label>I agree to the Terms and Conditions</label>
-                    </div>
-                  </div>
-                  <br />
-                  <button
-                    type="submit"
-                    className="ui orange inverted button"
-                    role="button"
-                  >
-                    Submit
-                  </button>
-                  <br />
-                </Form>
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-
-      <Footer />
-    </ResponsiveContainer>
-  );
-};
-
+        <Footer />
+      </ResponsiveContainer>
+    );
+  }
+}
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
@@ -162,16 +229,35 @@ const mapSignup = state => {
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch, ownProps) => {
   return {
     handleSubmit(evt) {
+      console.log("what is evt.target.year.value", evt.target.year.value);
+      console.log("what is evt.target.day.value", evt.target.day.value);
+      console.log("what is evt.target.month.value", evt.target.month.value);
       evt.preventDefault();
       const formName = evt.target.name;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       const firstName = evt.target.firstName.value;
       const lastName = evt.target.lastName.value;
-      dispatch(auth(email, password, formName, firstName, lastName));
+      const nickName = evt.target.nickName.value;
+      const year = evt.target.year.value;
+      const month = evt.target.month.value;
+      const day = evt.target.day.value;
+      dispatch(
+        auth(
+          email,
+          password,
+          formName,
+          firstName,
+          lastName,
+          nickName,
+          year,
+          month,
+          day
+        )
+      );
     },
   };
 };

@@ -7,40 +7,46 @@ const User = db.define(
   {
     firstName: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastName: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     nickName: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     phoneNumber: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     state: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     jobTitle: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     incomeRange: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
-    birthday: {
-      type: Sequelize.DATE
+    birthYear: {
+      type: Sequelize.INTEGER,
+    },
+    birthMonth: {
+      type: Sequelize.STRING,
+    },
+    birthDay: {
+      type: Sequelize.INTEGER,
     },
     email: {
       type: Sequelize.STRING,
       unique: true,
-      allowNull: false
+      allowNull: false,
     },
     plaidTokenId: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     plaidItemId: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     password: {
       type: Sequelize.STRING,
@@ -48,7 +54,7 @@ const User = db.define(
       // This is a hack to get around Sequelize's lack of a "private" option.
       get() {
         return () => this.getDataValue("password");
-      }
+      },
     },
     salt: {
       type: Sequelize.STRING,
@@ -56,35 +62,35 @@ const User = db.define(
       // This is a hack to get around Sequelize's lack of a "private" option.
       get() {
         return () => this.getDataValue("salt");
-      }
+      },
     },
     googleId: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     foodAndDrink: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
     },
     recreation: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
     },
     service: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
     },
     shops: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
     },
     travel: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
+      defaultValue: 0,
     },
     miscellaneous: {
       type: Sequelize.INTEGER,
-      defaultValue: 0
-    }
+      defaultValue: 0,
+    },
   },
   {
     getterMethods: {
@@ -97,8 +103,8 @@ const User = db.define(
           this.travel +
           this.miscellaneous
         );
-      }
-    }
+      },
+    },
   }
 );
 
