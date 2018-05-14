@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Segment, Card, Sticky, Header, Icon } from "semantic-ui-react";
+import { Grid, Segment, Card, Sticky, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -10,73 +10,50 @@ class GoalsMenu extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event, data) {}
+  handleClick(event) {}
 
   render() {
+    let { retirement, emergencyGoal, houseForm } = this.props;
+
     return (
       <Segment>
         <Grid>
           <Grid.Column width={12}>
             <Grid>
               <Grid.Row columns={4}>
-                <Grid.Column>
-                  <Card
-                    header="Pay off Credit Card Debit"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Card
-                    header="Save for Retirement"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/retirement"
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Card
-                    header="Save for an Emergency"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/saveForEmergency"
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Card
-                    header="Buy a house"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                    as={NavLink}
-                    to="/house"
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Card
-                    header="Buy a Car"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
-
-                <Grid.Column>
-                  <Card
-                    header="Save for College"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Card
-                    header="Take a Trip"
-                    onClick={this.handleClick}
-                    image={"../../../../../../pictures/matthew.png"}
-                  />
-                </Grid.Column>
+                {retirement.birthyear ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Save for Retirement"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/retirement"
+                    />
+                  </Grid.Column>
+                )}
+                {emergencyGoal.isEnter ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Save for an Emergency"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/goals/saveForEmergency"
+                    />
+                  </Grid.Column>
+                )}
+                {houseForm.annualIncome ? null : (
+                  <Grid.Column>
+                    <Card
+                      header="Buy a house"
+                      onClick={this.handleClick}
+                      image={"../../../../../../pictures/matthew.png"}
+                      as={NavLink}
+                      to="/house"
+                    />
+                  </Grid.Column>
+                )}
               </Grid.Row>
             </Grid>
           </Grid.Column>
@@ -110,12 +87,14 @@ class GoalsMenu extends Component {
   }
 }
 
-const mapState = state => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    form: state.form,
+    user: state.user,
+    retirement: state.retirement,
+    emergencyGoal: state.emergencyGoalReducer,
+    houseForm: state.houseForm
+  };
 };
 
-const mapDispatch = dispatch => {
-  return {};
-};
-
-export default connect(mapState, mapDispatch)(GoalsMenu);
+export default connect(mapStateToProps)(GoalsMenu);

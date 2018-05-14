@@ -1,14 +1,9 @@
 import React from "react";
-import PieSpending from "./PieSpending";
-import PieIncome from "./PieIncome";
-import BarSpending from "./BarSpending";
-import BarIncome from "./BarIncome";
-import BarNetIncome from "./BarNetIncome";
-
-// import Step1 from "./Step1";
-// import Step2 from "./Step2";
-// import Confirmation from "./Confirmation";
-// import Success from "./Success";
+import PieSpending from "./Transactions/PieSpending";
+import PieIncome from "./Transactions/PieIncome";
+import BarSpending from "./Transactions/BarSpending";
+import BarIncome from "./Transactions/BarIncome";
+import BarNetIncome from "./Transactions/BarNetIncome";
 
 // util function to render charts/bars
 export const renCompo = (chartComponent, transactionsData) => {
@@ -39,6 +34,7 @@ export const renCompo = (chartComponent, transactionsData) => {
  * @param document node
  * @return string|array
  */
+
 export const getRadioOrCheckboxValue = el => {
   var values = [];
 
@@ -53,36 +49,6 @@ export const getRadioOrCheckboxValue = el => {
   return values;
 };
 
-// // util function for forms/steps
-// export const Fromstep = props => {
-//   switch (props.step) {
-//     case 1:
-//       return (
-//         <Step1
-//           fieldValues={props.fieldValues}
-//           saveValues={props.saveValues}
-//           nextStep={props.nextStep}
-//         />
-//       );
-//     case 2:
-//       return (
-//         <Step2
-//           fieldValues={props.fieldValues}
-//           saveValues={props.saveValues}
-//           previousStep={props.previousStep}
-//           nextStep={props.nextStep}
-//         />
-//       );
-//     case 3:
-//       return (
-//         <Confirmation
-//           fieldValues={props.fieldValues}
-//           saveValues={props.saveValues}
-//           previousStep={props.previousStep}
-//           nextStep={props.nextStep}
-//         />
-//       );
-//     case 4:
-//       return <Success />;
-//   }
-// };
+export function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

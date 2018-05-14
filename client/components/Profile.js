@@ -22,7 +22,7 @@ import {
   TextArea,
   Checkbox,
   Radio,
-  Select
+  Select,
 } from "semantic-ui-react";
 import { NavLink, withRouter } from "react-router-dom";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -36,7 +36,7 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
  */
 const options = [
   { key: "m", text: "Male", value: "male" },
-  { key: "f", text: "Female", value: "female" }
+  { key: "f", text: "Female", value: "female" },
 ];
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -46,12 +46,11 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class Profile extends React.Component {
   constructor(props) {
-    console.log("props!!", props);
     super(props);
     this.state = {
       firstName: props.user.firstName,
@@ -62,7 +61,7 @@ class Profile extends React.Component {
       incomeRange: 0,
       birthday: props.user.birthday,
       email: props.user.email,
-      state: ""
+      state: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -196,7 +195,7 @@ class Profile extends React.Component {
             left: "0",
             bottom: "-30px",
             width: "100%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <Footer />
@@ -209,7 +208,7 @@ class Profile extends React.Component {
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id
+    id: state.user.id,
   };
 };
 

@@ -58,12 +58,14 @@ class BudgetHorizontalBarChart extends Component {
 }
 
 const mapState = state => {
-  const foodAndDrink = state.user.foodAndDrink;
-  const recreation = state.user.recreation;
-  const travel = state.user.travel;
-  const service = state.user.service;
-  const shops = state.user.shops;
-  const miscellaneous = state.user.miscellaneous;
+  const {
+    foodAndDrink,
+    recreation,
+    travel,
+    service,
+    shops,
+    miscellaneous
+  } = state.budget;
   const transactions = state.transactions.transaction.filter(transaction => {
     return transaction.name.slice(0, 13) !== "BOOK TRANSFER";
   });

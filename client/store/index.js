@@ -8,9 +8,11 @@ import transactions from "./transactions";
 import accounts from "./accounts";
 import budget from "./budget";
 import form from "./form";
+import retirement from "./retirement";
 import houseForm from "./houseForm";
 import stateReducer from "./state";
 import bills from "./bills";
+import emergencyGoalReducer from "./emergencyGoal";
 
 const reducer = combineReducers({
   user,
@@ -19,9 +21,11 @@ const reducer = combineReducers({
   accounts,
   budget,
   form,
+  retirement,
   houseForm,
   bills,
-  states: stateReducer
+  states: stateReducer,
+  emergencyGoalReducer
 });
 
 const middleware = composeWithDevTools(
@@ -38,5 +42,7 @@ export * from "./accounts";
 export * from "./state";
 export * from "./budget";
 export * from "./form";
+export * from "./retirement";
 export * from "./houseForm";
 export * from "./bills";
+export * from "./emergencyGoal";

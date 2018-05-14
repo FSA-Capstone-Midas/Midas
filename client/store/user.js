@@ -1,6 +1,7 @@
 import axios from "axios";
 import history from "../history";
 import { fetchInformation, fetchItem } from "./plaid";
+import { fetchEmergencyGoal } from "./index";
 
 /**
  * ACTION TYPES
@@ -33,7 +34,9 @@ export const me = () => dispatch =>
   axios
     .get("/auth/me")
     .then(res => {
+      const userId = res.data.id;
       dispatch(getUser(res.data || defaultUser));
+      dispatch(fetchEmergencyGoal(userId));
     })
     .catch(err => console.log(err));
 
@@ -61,10 +64,23 @@ export const auth = (
   password,
   method,
   firstName,
-  lastName
+  lastName,
+  nickName,
+  birthYear,
+  birthMonth,
+  birthDay
 ) => dispatch =>
   axios
-    .post(`/auth/${method}`, { firstName, lastName, email, password })
+    .post(`/auth/${method}`, {
+      firstName,
+      lastName,
+      email,
+      password,
+      nickName,
+      birthYear,
+      birthMonth,
+      birthDay,
+    })
     .then(
       res => {
         dispatch(getUser(res.data));
@@ -73,6 +89,7 @@ export const auth = (
       authError => {
         // rare example: a good use case for parallel (non-catch) error handler
         dispatch(getUser({ error: authError }));
+        console.log("what is authError", authError);
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));

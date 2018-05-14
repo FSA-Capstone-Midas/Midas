@@ -9,7 +9,7 @@ import {
   fetchIncome,
   fetchIdentity,
   fetchAsset,
-  fetchMakingAsset
+  fetchMakingAsset,
 } from "../store";
 class Plaid extends Component {
   render() {
@@ -20,9 +20,8 @@ class Plaid extends Component {
       handleIncome,
       handleIdentity,
       handleAsset,
-      handleMakingAsset
+      handleMakingAsset,
     } = this.props;
-    // console.log(getData);
     return (
       <div>
         <PlaidLink
@@ -85,7 +84,7 @@ function mapDispatchToProps(dispatch) {
     handleMakingAsset(event) {
       event.preventDefault();
       dispatch(fetchMakingAsset());
-    }
+    },
   };
 }
 

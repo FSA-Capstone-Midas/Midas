@@ -78,7 +78,10 @@ class BillForm extends Component {
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column>
-                <div id="signup-login">
+                <div
+                  id="signup-login"
+                  style={{ display: "-webkit-inline-box", marginLeft: "40%" }}
+                >
                   <form
                     className="ui form"
                     onSubmit={this.handleSubmit}

@@ -15,7 +15,7 @@ import {
   Budget,
   UserCredit,
   Goals,
-  SaveForEmergency,
+  SaveForEmergencyMainPage,
   House,
   Retirement,
   RetirementResult,
@@ -26,8 +26,10 @@ import {
   me,
   fetchTransaction,
   fetchItem,
-  fetchAllState,
   getBudgetFromDatabase,
+  fetchEmergencyGoal,
+  fetchRetirementDetails,
+  fetchAllState,
   fetchRent
 } from "./store";
 
@@ -39,7 +41,13 @@ class Routes extends Component {
     this.props.loadInitialData();
     this.props.loadAccountsFromPlaid();
     this.props.loadTransactionsFromPlaid();
-    this.props.loadAllStateFromServer();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user.id !== nextProps.user.id) {
+      this.props.fetchRetirementDetails(nextProps.user.id);
+      this.props.loadBudgetData(nextProps.user.id);
+    }
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.user.id !== nextProps.user.id) {
@@ -67,21 +75,22 @@ class Routes extends Component {
             <Route exact path="/budget" component={Budget} />
             <Route exact path="/trend" component={UserTrend} />
             <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/retirement/analysis"
+              component={RetirementResult}
+            />
             <Route exact path="/retirement" component={Retirement} />
             <Route exact path="/credit" component={UserCredit} />
             <Route exact path="/goals" component={Goals} />
             <Route exact path="/bills" component={Bills} />
             <Route
               exact
-              path="/saveForEmergency"
-              component={SaveForEmergency}
+              path="/goals/saveForEmergency"
+              component={SaveForEmergencyMainPage}
             />
             <Route exact path="/house" component={House} />
-            <Route
-              exact
-              path="/retirement/analysis"
-              component={RetirementResult}
-            />
+
             <Route component={UserHome} />
           </Switch>
         )}
@@ -100,6 +109,7 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
+    userId: state.user.id,
     user: state.user
   };
 };
@@ -115,14 +125,15 @@ const mapDispatch = dispatch => {
     loadTransactionsFromPlaid() {
       dispatch(fetchTransaction());
     },
-    loadAllStateFromServer() {
-      dispatch(fetchAllState());
+    loadBudgetData(userId) {
+      dispatch(getBudgetFromDatabase(userId));
     },
-    loadBudgetData() {
-      dispatch(getBudgetFromDatabase());
-    },
+
     fetchRent(id) {
       dispatch(fetchRent(id));
+    },
+    fetchRetirementDetails(id) {
+      dispatch(fetchRetirementDetails(id));
     }
   };
 };

@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
-import { Segment, Grid, Menu } from "semantic-ui-react";
+import { Segment, Grid, Menu, Container } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import store, { fetchUser } from "../store";
@@ -31,7 +30,7 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 3000);
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   render() {

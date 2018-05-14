@@ -3,9 +3,14 @@ import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "./Footer";
-import { Segment, Button } from "semantic-ui-react";
+import { Segment, Button, Container } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
+import {
+  fetchRetirementDetails,
+  getHouseFormdetails,
+  fetchEmergencyGoal,
+} from "../store";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -19,37 +24,70 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: false
+      goals: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchRetirementDetails(this.props.user.id);
+    this.props.getHouseFormdetails(this.props.user.id);
+    this.props.fetchEmergencyGoal(this.props.user.id);
   }
 
   render() {
     let { goals } = this.state;
+    let { retirement, emergency, houseForm } = this.props;
     return (
       <ResponsiveContainer>
         <Segment>Goal Page</Segment>
-        {goals ? (
+        {retirement.birthyear ||
+        houseForm.annualIncome ||
+        emergency.isEnter ||
+        goals ? (
           <Segment>
-            <div>
-              <Button positive>Add More Goals!</Button>
-            </div>
-            <GoalsComponent />
+            <GoalsComponent
+              goals={goals}
+              houseForm={houseForm}
+              emergency={emergency}
+            />
           </Segment>
-        ) : (
-          <Segment>
+        ) : null}
+        <Segment>
+          {retirement.birthyear || houseForm.annualIncome || goals ? (
+            <h1>You have not added the following goals. Get Started</h1>
+          ) : (
             <h1>You have not added any goals. Get Started</h1>
-            <h3>Choose a Goal:</h3>
-            <GoalsMenu />
-          </Segment>
-        )}
+          )}
+          <h3>Choose a Goal:</h3>
+          <GoalsMenu />
+        </Segment>
       </ResponsiveContainer>
     );
   }
 }
 
-const mapState = state => {
-  //set up number of goals of each user
-  return {};
+const mapStateToProps = state => {
+  return {
+    form: state.form,
+    user: state.user,
+    retirement: state.retirement,
+    emergency: state.emergencyGoalReducer,
+    houseForm: state.houseForm,
+  };
 };
 
-export default connect(mapState)(Goals);
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchRetirementDetails(userId) {
+      dispatch(fetchRetirementDetails(userId));
+    },
+    getHouseFormdetails(userId) {
+      dispatch(getHouseFormdetails(userId));
+    },
+    fetchEmergencyGoal(userId) {
+      dispatch(fetchEmergencyGoal(userId));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goals);
