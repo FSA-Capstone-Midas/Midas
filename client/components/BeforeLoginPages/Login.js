@@ -54,8 +54,8 @@ const Login = props => {
             </Header>
             <Form size="large" name={name} onSubmit={handleSubmit}>
               <Segment stacked>
-                <label>Email</label>
                 <Form.Input
+                  label="Email"
                   required
                   fluid
                   icon="user"
@@ -64,8 +64,8 @@ const Login = props => {
                   placeholder="Email"
                 />
 
-                <label>Password</label>
                 <Form.Input
+                  label="Password"
                   required
                   fluid
                   icon="lock"

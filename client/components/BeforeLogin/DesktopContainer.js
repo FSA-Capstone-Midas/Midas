@@ -57,9 +57,11 @@ class DesktopContainer extends Component {
                   About Us
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <Button as={Link} to="/login" inverted={!fixed}>
-                    Log in
-                  </Button>
+                  {match.path === "/login" ? null : (
+                    <Button as={Link} to="/login" inverted={!fixed}>
+                      Log in
+                    </Button>
+                  )}
 
                   {match.path === "/signup" ? null : (
                     <Button

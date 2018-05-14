@@ -42,7 +42,7 @@ const SignUp = props => {
             <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
               <h1>Sign Up Now</h1>
               <h3>
-                <b>MIDAS</b> We makes managing your money easy.
+                <b>MIDAS</b> - We makes managing your money easy.
               </h3>
             </Grid.Column>
           </Grid.Row>
@@ -57,7 +57,7 @@ const SignUp = props => {
           <Grid.Row>
             <Grid.Column>
               <div id="signup-login">
-                <form
+                <Form
                   className="ui form"
                   onSubmit={handleSubmit}
                   name={name}
@@ -134,7 +134,7 @@ const SignUp = props => {
                     Submit
                   </button>
                   <br />
-                </form>
+                </Form>
               </div>
             </Grid.Column>
           </Grid.Row>

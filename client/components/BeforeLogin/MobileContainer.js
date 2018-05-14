@@ -24,7 +24,7 @@ class MobileContainer extends Component {
     this.setState({ sidebarOpened: !this.state.sidebarOpened });
 
   render() {
-    const { children } = this.props;
+    const { children, match } = this.props;
     const { sidebarOpened } = this.state;
 
     return (
@@ -74,17 +74,22 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button as={Link} to="/login" inverted>
-                      Log in
-                    </Button>
-                    <Button
-                      as={Link}
-                      to="/signup"
-                      inverted
-                      id="mobileSignUpbutton"
-                    >
-                      Sign Up
-                    </Button>
+                    {match.path === "/login" ? null : (
+                      <Button as={Link} to="/login" inverted>
+                        Log in
+                      </Button>
+                    )}
+
+                    {match.path === "/signup" ? null : (
+                      <Button
+                        as={Link}
+                        to="/signup"
+                        inverted
+                        id="mobileSignUpbutton"
+                      >
+                        Sign Up
+                      </Button>
+                    )}
                   </Menu.Item>
                 </Menu>
               </Container>
