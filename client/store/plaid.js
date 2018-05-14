@@ -13,7 +13,7 @@ const GET_ACCESSTOKEN = "GET_ACCESSTOKEN";
 
 const getInformation = information => ({
   type: GET_ACCESSTOKEN,
-  information,
+  information
 });
 
 // const getItem = item => ({
@@ -49,42 +49,42 @@ export const fetchInformation = publicToken => dispatch => {
 // };
 
 //waiting for plaid api approve
-export const fetchAsset = () => dispatch => {
-  return axios
-    .get("/api/plaid/asset_report")
-    .then(res => {
-      return dispatch(getItem(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchAsset = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/asset_report")
+//     .then(res => {
+//       return dispatch(getItem(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 //waiting for plaid api approve
-export const fetchMakingAsset = () => dispatch => {
-  return axios
-    .post("/api/plaid/asset_report/create")
-    .then(res => {
-      return dispatch(getItem(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchMakingAsset = () => dispatch => {
+//   return axios
+//     .post("/api/plaid/asset_report/create")
+//     .then(res => {
+//       return dispatch(getItem(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 //waiting for plaid api approve
-export const fetchIdentity = () => dispatch => {
-  return axios
-    .get("/api/plaid/identity")
-    .then(res => {
-      return dispatch(getItem(res.data));
-    })
-    .catch(err => console.error(err));
-};
+// export const fetchIdentity = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/identity")
+//     .then(res => {
+//       return dispatch(getItem(res.data));
+//     })
+//     .catch(err => console.error(err));
+// };
 
 //waiting for plaid api approve
-export const fetchIncome = () => dispatch => {
-  return axios
-    .get("/api/plaid/income")
-    .then(res => dispatch(getItem(res.data)))
-    .catch(err => console.error(err));
-};
+// export const fetchIncome = () => dispatch => {
+//   return axios
+//     .get("/api/plaid/income")
+//     .then(res => dispatch(getItem(res.data)))
+//     .catch(err => console.error(err));
+// };
 
 export default function plaidReducer(state = initialState, action) {
   switch (action.type) {

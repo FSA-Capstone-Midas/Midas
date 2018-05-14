@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Carousel from "nuka-carousel";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import AccountTable from "./AccountTable";
@@ -17,14 +16,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -47,7 +46,7 @@ class UserHome extends React.Component {
                     vertical
                     style={{
                       fontSize: "14px",
-                      display: "table-row-group",
+                      display: "table-row-group"
                     }}
                   >
                     <h2>Account info</h2>
@@ -157,7 +156,7 @@ class UserHome extends React.Component {
 const mapState = state => {
   return {
     email: state.user.email,
-    accounts: state.accounts,
+    accounts: state.accounts
   };
 };
 

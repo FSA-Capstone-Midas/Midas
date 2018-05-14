@@ -14,7 +14,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const UserCredit = () => (
@@ -42,14 +42,14 @@ const UserCredit = () => (
             style={{
               width: "-webkit-fill-available",
               marginLeft: "auto",
-              marginRight: "auto",
+              marginRight: "auto"
             }}
           >
             <h2
               className="ui header"
               style={{
                 marginLeft: "auto",
-                marginRight: "auto",
+                marginRight: "auto"
               }}
             >
               The average Midaser's credit score is
@@ -75,7 +75,7 @@ const UserCredit = () => (
               href="https://credit.com/"
               style={{
                 marginLeft: "auto",
-                marginRight: "auto",
+                marginRight: "auto"
               }}
             >
               <h2> Feel free to sign up to check your Credit score!</h2>

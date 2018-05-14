@@ -26,8 +26,7 @@ async function seed() {
       lastName: "kim",
       phoneNumber: "341421412",
       address: "brooklyn",
-      jobTitle: "software engineer",
-      plaidTokenId: "access-development-a18d6010-d862-4906-b6a6-f3e22d15180e"
+      jobTitle: "software engineer"
     }),
     User.create({
       email: "murphy@email.com",
