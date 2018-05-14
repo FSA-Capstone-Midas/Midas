@@ -63,7 +63,7 @@ const AboutUs = props => {
           <Grid.Row>
             <Grid.Column>
               <Card centered>
-                <Image src="../../../../../../pictures/JJ.png" />
+                <Image src="pictures/JJ.png" />
                 <Card.Content>
                   <Card.Header>JingJing Li</Card.Header>
                   <Card.Meta>Joined in 2018</Card.Meta>
