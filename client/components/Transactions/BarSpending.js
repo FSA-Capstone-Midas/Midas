@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 // get today's data
@@ -67,12 +68,16 @@ data.push(
   }
 );
 const spendingCategory = {
-  Interest: 0,
-  Transfer: 0,
+  "Bank Fees": 0,
+  Community: 0,
   "Food and Drink": 0,
+  Recreation: 0,
+  Service: 0,
+  Shops: 0,
+  Travel: 0,
 };
 
-class BarIncome extends Component {
+class BarSpending extends Component {
   render() {
     const { rows } = this.props;
 
@@ -80,47 +85,45 @@ class BarIncome extends Component {
       Object.keys(spendingCategory).forEach(category => {
         let sum = rows.reduce((acc, transaction) => {
           if (
-            (el.month === transaction.date.slice(5, 7) &&
-              category === transaction.category[0] &&
-              transaction.category[0] !== "Food and Drink") ||
-            (el.month === transaction.date.slice(5, 7) &&
-              category === transaction.category[0] &&
-              transaction.category[0] === "Food and Drink" &&
-              transaction.name.slice(0, 13) === "BOOK TRANSFER")
+            el.month === transaction.date.slice(5, 7) &&
+            category === transaction.category[0] &&
+            transaction.name.slice(0, 13) !== "BOOK TRANSFER"
           ) {
             return acc + transaction.amount;
           }
           return acc;
         }, 0);
-
-        if (category === "Food and Drink") {
-          data[index].Misc = -Math.round(sum, 2);
-        } else {
-          data[index][category] = -Math.round(sum, 2);
-        }
+        data[index][category] = Math.round(sum, 2);
       });
     });
 
     return (
-      <BarChart
-        width={800}
-        height={500}
-        data={data}
-        stackOffset="sign"
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <ReferenceLine y={0} stroke="#000" />
-        <Bar dataKey="Interest" fill="#8884d8" stackId="stack" />
-        <Bar dataKey="Transfer" fill="#82ca9d" stackId="stack" />
-        <Bar dataKey="Misc" fill="#ffc658" stackId="stack" />
-      </BarChart>
+      <ResponsiveContainer width="100%" height={500}>
+        <BarChart
+          style={{ fontSize: "12px" }}
+          width={800}
+          height={500}
+          data={data}
+          stackOffset="sign"
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <ReferenceLine y={0} stroke="#000" />
+          <Bar dataKey="Bank Fees" fill="#8884d8" stackId="stack" />
+          <Bar dataKey="Community" fill="#82ca9d" stackId="stack" />
+          <Bar dataKey="Food and Drink" fill="#ffc658" stackId="stack" />
+          <Bar dataKey="Recreation" fill="#A05DB5" stackId="stack" />
+          <Bar dataKey="Service" fill="#FF0082" stackId="stack" />
+          <Bar dataKey="Shops" fill="#35AFAA" stackId="stack" />
+          <Bar dataKey="Travel" fill="#FECBDE" stackId="stack" />
+        </BarChart>
+      </ResponsiveContainer>
     );
   }
 }
 
-export default BarIncome;
+export default BarSpending;

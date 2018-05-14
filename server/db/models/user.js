@@ -5,40 +5,46 @@ const db = require("../db");
 const User = db.define("user", {
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   lastName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   nickName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   phoneNumber: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   state: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   jobTitle: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   incomeRange: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
-  birthday: {
-    type: Sequelize.DATE
+  birthYear: {
+    type: Sequelize.INTEGER,
+  },
+  birthMonth: {
+    type: Sequelize.STRING,
+  },
+  birthDay: {
+    type: Sequelize.INTEGER,
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
   },
   plaidTokenId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   plaidItemId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   password: {
     type: Sequelize.STRING,
@@ -46,7 +52,7 @@ const User = db.define("user", {
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
       return () => this.getDataValue("password");
-    }
+    },
   },
   salt: {
     type: Sequelize.STRING,
@@ -54,11 +60,11 @@ const User = db.define("user", {
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
       return () => this.getDataValue("salt");
-    }
+    },
   },
   googleId: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = User;

@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Carousel from "nuka-carousel";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import { Grid, Segment, Container } from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import Loading from "./Loading";
+import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Loading from "../Loading";
 import TrendsMenuBar from "./TrendsMenuBar";
 import renderMap from "./TrendsMapHelper";
 import TrendsHousingTable from "./TrendsHousingTable";
@@ -19,7 +18,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class UserTrend extends Component {
@@ -27,7 +26,7 @@ class UserTrend extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentMap: "avgListingPrice"
+      currentMap: "avgListingPrice",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleTitleName = this.handleTitleName.bind(this);
@@ -116,44 +115,62 @@ class UserTrend extends Component {
   render() {
     return (
       <ResponsiveContainer>
-        {this.state.loading ? (
-          <Loading />
-        ) : (
-          <Container>
-            <Segment>
-              <Segment style={{ fontSize: "28px", textAlign: "center" }}>
-                TRENDS
-              </Segment>
-              <Segment style={{ padding: "1.5em" }} vertical>
-                <Grid celled="internally" columns="equal" stackable>
-                  <Grid.Row textAlign="center">
-                    <Grid.Column
-                      style={{
-                        paddingBottom: "0.5em",
-                        paddingTop: "2em"
-                      }}
-                    >
-                      <div>
-                        <Segment style={{ fontSize: "18px" }}>
-                          {this.handleTitleName()} - Year ended 2018
-                        </Segment>
-                        <Segment>
-                          <div className="ui grid">
-                            <TrendsMenuBar handleClick={this.handleClick} />
-                            <div className="twelve wide column">
-                              {renderMap(this.state.currentMap)}
-                            </div>
-                            {this.handleTable()}
-                          </div>
-                        </Segment>
-                      </div>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Segment>
+        <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
+          <Grid celled="internally" columns="equal" stackable>
+            <Grid.Row textAlign="center">
+              <Grid.Column
+                style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
+              >
+                <h3>Trends</h3>
+                <h4>Economics barometer around the country.</h4>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+        <Container>
+          {this.state.loading ? (
+            <Loading />
+          ) : (
+            <Segment
+              style={{
+                padding: "2em 0em",
+                fontSize: "12px",
+                textAlign: "center",
+              }}
+              vertical
+            >
+              <Grid celled="internally" columns="equal" stackable>
+                <Grid.Row textAlign="center">
+                  <Grid.Column
+                    style={{
+                      paddingBottom: "0.5em",
+                      paddingTop: "0.5em",
+                    }}
+                  >
+                    <h5>{this.handleTitleName()} - Year ended 2018</h5>
+                  </Grid.Column>
+                </Grid.Row>
+
+                <Segment
+                  style={{
+                    padding: "2em 0em",
+                    fontSize: "12px",
+                    textAlign: "center",
+                  }}
+                  vertical
+                >
+                  <div className="ui grid">
+                    <TrendsMenuBar handleClick={this.handleClick} />
+                    <div className="twelve wide column">
+                      {renderMap(this.state.currentMap)}
+                    </div>
+                  </div>
+                  {this.handleTable()}
+                </Segment>
+              </Grid>
             </Segment>
-          </Container>
-        )}
+          )}
+        </Container>
         <Footer />
       </ResponsiveContainer>
     );

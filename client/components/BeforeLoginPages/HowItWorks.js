@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
-import Footer from "./Footer";
+import React from "react";
 import { Grid, Header, Image, Segment } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import DesktopContainer from "./DesktopContainer";
-import MobileContainer from "./MobileContainer";
-import AfterDesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import AfterMobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import DesktopContainer from "../BeforeLogin/DesktopContainer";
+import MobileContainer from "../BeforeLogin/MobileContainer";
+import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import AfterMobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import Footer from "../Footer";
 
 const ResponsiveContainer = ({ children, logined }) => {
   return (
@@ -28,7 +28,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const HowItWorks = props => {
@@ -38,10 +38,6 @@ const HowItWorks = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
-              {/* <Header as="h3" style={{ fontSize: "2em" }}>
-              About Us
-            </Header> */}
-
               <img
                 style={{ width: "60%" }}
                 className="carousel-image"
@@ -139,7 +135,6 @@ const HowItWorks = props => {
                 Supported Banks
               </Header>
               <p style={{ fontSize: "1.33em" }}>
-                {/* <Image avatar src="/assets/images/avatar/large/nan.jpg" /> */}
                 Sign up and sync a bank account easily. Manage your money like
                 never before
               </p>
@@ -217,7 +212,7 @@ const HowItWorks = props => {
 };
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 

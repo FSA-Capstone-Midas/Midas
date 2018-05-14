@@ -1,23 +1,17 @@
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink, withRouter } from "react-router-dom";
 import {
   Button,
   Container,
-  Divider,
-  Grid,
-  Header,
   Icon,
-  Image,
-  List,
   Menu,
   Responsive,
   Segment,
   Sidebar,
-  Visibility,
-  Input
 } from "semantic-ui-react";
-import { NavLink, withRouter, Link } from "react-router-dom";
+import { logout } from "../../store";
 
 class MobileContainer extends Component {
   state = {};
@@ -32,7 +26,7 @@ class MobileContainer extends Component {
     this.setState({ sidebarOpened: !this.state.sidebarOpened });
 
   render() {
-    const { children } = this.props;
+    const { children, handleClick } = this.props;
     const { sidebarOpened } = this.state;
 
     return (
@@ -45,13 +39,38 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as="a" active>
-              HOME
+            <Menu.Item exact as={NavLink} to="/" active>
+              Home
             </Menu.Item>
-            <Menu.Item as="a">ADD ACCOUNTS</Menu.Item>
-            <Menu.Item as="a">PROFILE</Menu.Item>
-            <Menu.Item as="a">SETTING</Menu.Item>
-            <Menu.Item as="a">LOG OUT</Menu.Item>
+            <Menu.Item as="a">Add Accounts</Menu.Item>
+            <Menu.Item exact as={NavLink} to="/overview">
+              Overview
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/transactions">
+              Transactions
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/credit">
+              Credit
+            </Menu.Item>
+            <Menu.Item as="a">Bills</Menu.Item>
+            <Menu.Item exact as={NavLink} to="/budget">
+              Budget
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/trend">
+              Trends
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/goals">
+              Goals
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/profile">
+              Profile
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/howitworks">
+              How It Works
+            </Menu.Item>
+            <Menu.Item exact as={NavLink} to="/aboutus">
+              About Us
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher
@@ -62,7 +81,7 @@ class MobileContainer extends Component {
             <Segment
               inverted
               textAlign="center"
-              style={{ minHeight: 350, padding: "1em 0em" }}
+              style={{ minHeight: 50, padding: "1em 0em" }}
               vertical
             >
               <Container>
@@ -71,8 +90,13 @@ class MobileContainer extends Component {
                     <Icon name="sidebar" />
                   </Menu.Item>
                   <Menu.Item position="right">
-                    <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-                      LOG OUT
+                    <Button
+                      as="a"
+                      inverted
+                      style={{ marginLeft: "0.5em" }}
+                      onClick={handleClick}
+                    >
+                      Log Out
                     </Button>
                   </Menu.Item>
                 </Menu>
@@ -87,7 +111,15 @@ class MobileContainer extends Component {
 }
 
 MobileContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
-export default withRouter(MobileContainer);
+const mapDispatch = dispatch => {
+  return {
+    handleClick() {
+      dispatch(logout());
+    },
+  };
+};
+
+export default withRouter(connect(null, mapDispatch)(MobileContainer));
