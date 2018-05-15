@@ -96,10 +96,10 @@ class Retirement extends Component {
                     <main>
                       {this.state.step !== 4 ? (
                         <div>
-                          <h1>
+                          <h3>
                             {this.props.user.firstName}, looks like you are
                             ready to take charge of your retirement?
-                          </h1>
+                          </h3>
                           <div className="ui massive steps">
                             <div className={"step " + classNameStep1}>
                               <i className="user icon" />

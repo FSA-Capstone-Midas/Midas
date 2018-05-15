@@ -98,6 +98,7 @@ class Goals extends Component {
             </Grid>
           ) : null}
         </Container>
+        <Footer />
       </ResponsiveContainer>
     );
   }

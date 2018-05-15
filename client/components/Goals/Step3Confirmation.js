@@ -31,7 +31,7 @@ class Step3Confirmation extends Component {
 
     return (
       <div className="centered">
-        <h2>Confirm Registration</h2>
+        <h4>Confirm Registration</h4>
 
         <div className="ui relaxed items">
           <div className="item">

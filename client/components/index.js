@@ -22,5 +22,8 @@ export { default as Goals } from "./Goals/Goals";
 export {
   default as SaveForEmergencyMainPage,
 } from "./Goals/SaveForEmergencyMainPage";
+export {
+  default as SaveForEmergencyConfirmPage,
+} from "./Goals/SaveForEmergencyConfirmPage";
 export { default as House } from "./Goals/House";
 //export { Login, Signup } from "./auth-form";

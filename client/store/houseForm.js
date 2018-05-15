@@ -6,6 +6,7 @@ import axios from "axios";
 const ADD_HOUSE_FORM = "ADD_HOUSE_FORM";
 const GET_HOUSE_FORM = "GET_HOUSE_FORM";
 const GET_UPDATED_HOUSE_PLAN = "GET_HOUSE_PLAN";
+const DELETE_HOUSE_GOAL = "DELETE_HOUSE_GOAL";
 
 /**
  * INITIAL STATE
@@ -31,6 +32,11 @@ export function addHouseForm(changeDetails) {
 }
 export function getUpdatedHousePlan(housePlan) {
   const action = { type: GET_UPDATED_HOUSE_PLAN, housePlan };
+  return action;
+}
+
+export function deleteHouseGoal(houseGoal) {
+  const action = { type: DELETE_HOUSE_GOAL, houseGoal };
   return action;
 }
 /**
@@ -61,6 +67,15 @@ export const addHousePlan = housePlan => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const deleteHousePlan = id => dispatch => {
+  axios
+    .delete(`/api/house/user/${id}`)
+    .then(res => {
+      dispatch(deleteHouseGoal(res.data));
+    })
+    .catch(err => console.log(err));
+};
+
 /**
  * REDUCER
  */
@@ -72,6 +87,9 @@ export default function(state = fieldValues, action) {
       return Object.assign({}, state, action.changeDetails);
     case GET_UPDATED_HOUSE_PLAN:
       return Object.assign({}, state, action.housePlan);
+    case DELETE_HOUSE_GOAL:
+      return {};
+
     default:
       return state;
   }

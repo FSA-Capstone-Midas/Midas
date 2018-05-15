@@ -25,12 +25,12 @@ class Step1 extends Component {
     return (
       <div>
         <h2 />
-        <h2>
+        <h4>
           We need some information to calculate the chance that your portfolio
           will support your spending goals throughout retirement.
-        </h2>
+        </h4>
         <h2 />
-        <h2> First, let's establish the timeline for your plan.</h2>
+        <h4> First, let's establish the timeline for your plan.</h4>
 
         <h2 />
         <div>
