@@ -78,10 +78,10 @@ class BillForm extends Component {
                 style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
               >
                 <Header as="h3" style={{ fontSize: "2em" }}>
-                  Set up your monthly bill payments!
+                  Bill Alerts
                 </Header>
                 <p style={{ fontSize: "1.33em" }}>
-                  <b>MIDAS</b> OUR APP GIVES USERS ALERTS BASED ON THE DATE.
+                  Take Control of your bills today.
                 </p>
               </Grid.Column>
             </Grid.Row>
