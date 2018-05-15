@@ -12,7 +12,7 @@ class Plaid extends Component {
           clientName="Midas"
           env="development"
           product={["auth", "transactions"]}
-          publicKey="f274c354ebdaf254570702d564cd40"
+          publicKey="75968c85b9fcf14bb18a8e198161ad"
           onExit={handleOnExit}
           onSuccess={handleOnSuccess}
           //   onLoad={getData}
@@ -31,7 +31,7 @@ function mapDispatchToProps(dispatch) {
       console.log(error, metadata);
     },
     handleOnSuccess(token, metadata) {
-      dispatch(fetchInformation("token", metadata));
+      dispatch(fetchInformation(token, metadata));
     }
   };
 }

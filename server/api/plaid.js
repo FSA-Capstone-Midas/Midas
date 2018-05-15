@@ -1,6 +1,6 @@
 const plaid = require("plaid");
 const router = require("express").Router();
-const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
+// const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
 const { User } = require("../db/models");
 
 module.exports = router;
@@ -22,133 +22,80 @@ Date.prototype.yyyymmdd = function(past) {
 
 //our server key
 let client = new plaid.Client(
-  "5ae8f515900e950013499acf",
-  "f274c354ebdaf254570702d564cd40",
-  "f274c354ebdaf254570702d564cd40",
+  "5af4b49ee1c4cb0012b62b85",
+  "75968c85b9fcf14bb18a8e198161ad",
+  "75968c85b9fcf14bb18a8e198161ad",
   plaid.environments.development
 );
 
 router.post("/get_access_token", (req, res, next) => {
+  console.log("HEREE", req.body.successToken);
   let successTokenFromPlaid = req.body.successToken;
-  client.exchangePublicToken(successTokenFromPlaid, function(err, tokenResponse) {
+  console.log(successTokenFromPlaid);
+  client.exchangePublicToken(successTokenFromPlaid, function(
+    err,
+    tokenResponse
+  ) {
     if (err) {
       return res.json({ err });
     }
+    console.log(tokenResponse);
     // ACCESS_TOKEN = tokenResponse.access_token; //token from api
     //ITEM_ID = tokenResponse.item_id; //item id from api
-    let plaidTokenId = tokenResponse.access_token
-    let plaidItemId = tokenResponse.item_id
+    let plaidTokenId = tokenResponse.access_token;
+    let plaidItemId = tokenResponse.item_id;
+    console.log("47", plaidTokenId);
+    console.log("48", plaidItemId);
 
     User.findById(req.user.id)
-      .then(user => user.update({ plaidTokenId , plaidItemId}))
+      .then(user => user.update({ plaidTokenId, plaidItemId }))
       .catch(next);
 
-    console.log("Access Token: " + ACCESS_TOKEN);
-    console.log("Item ID: " + ITEM_ID);
+    // console.log("Access Token: " + ACCESS_TOKEN);
+    // console.log("Item ID: " + ITEM_ID);
 
     res.status(200).json({ success: "success" });
   });
 });
 
-router.get("/auth", function(request, response, next) {
-  // Pull the Item - this includes information about available products,
-  // billed products, webhook information, and more.
-  client.getAuth(ACCESS_TOKEN, function(error, data) {
-    if (error) {
-      return response.json({ error });
-    }
-    //Plaid success response
-    response.status(200).json({
-      error: false,
-      accountInfo: data.accounts //account balances
-    });
-  });
-});
-
-router.get("/transactions", (req, res, next) => {
-  let date = new Date();
-  let todatsDate = date.yyyymmdd(0);
-  let lastYear = date.yyyymmdd(1);
-  client.getTransactions(
-    ACCESS_TOKEN, //hard code, need to change
-    lastYear,
-    todatsDate,
-    {
-      count: 500,
-      offset: 0
-    },
-    function(error, data) {
-      if (error) {
-        console.log(JSON.stringify(error));
-        return res.json({
-          error: error
-        });
-      }
-      res.status(200).json({
-        error: false,
-        transaction: data.transactions
-      });
-    }
-  );
-});
-
-const daysRequested = 60;
-const options = {
-  client_report_id: "123",
-  webhook: "https://www.example.com",
-  user: {
-    client_user_id: "eY6D9AdYzgikPnRwzABeU7MpyorD9dSdq51n8",
-    first_name: "Joshua",
-    middle_name: "Leah",
-    last_name: "Park",
-    ssn: "537-65-3865",
-    phone_number: "(555) 123-4567",
-    email: "jane.doe@example.com"
-  }
-};
-
-// ---Waiting for Plaid Response for authorization---
-// router.get("/income", (req, res, next) => {
-//   client.getIncome(ACCESS_TOKEN, function(error, data) {
-//     if (error != null) {
-//       console.log(JSON.stringify(error));
-//       return res.json({
-//         error: error
-//       });
+// router.get("/auth", function(request, response, next) {
+//   // Pull the Item - this includes information about available products,
+//   // billed products, webhook information, and more.
+//   client.getAuth(ACCESS_TOKEN, function(error, data) {
+//     if (error) {
+//       return response.json({ error });
 //     }
-//     res.json({
+//     //Plaid success response
+//     response.status(200).json({
 //       error: false,
-//       income: data.income
+//       accountInfo: data.accounts //account balances
 //     });
 //   });
 // });
 
-// router.get("/identity", (req, res, next) => {
-//   client.getIdentity(ACCESS_TOKEN, function(error, data) {
-//     if (error != null) {
-//       console.log(JSON.stringify(error));
-//       return res.json({
-//         error: error
+// router.get("/transactions", (req, res, next) => {
+//   let date = new Date();
+//   let todatsDate = date.yyyymmdd(0);
+//   let lastYear = date.yyyymmdd(1);
+//   client.getTransactions(
+//     ACCESS_TOKEN, //hard code, need to change
+//     lastYear,
+//     todatsDate,
+//     {
+//       count: 500,
+//       offset: 0
+//     },
+//     function(error, data) {
+//       if (error) {
+//         console.log(JSON.stringify(error));
+//         return res.json({
+//           error: error
+//         });
+//       }
+//       res.status(200).json({
+//         error: false,
+//         transaction: data.transactions
 //       });
 //     }
-//     res.json({
-//       error: false,
-//       info: data.info
-//     });
-//   });
-// });
-
-// router.get("/asset_report", (req, res, next) => {
-//   client.getAssetReport(ASSET_REPORT_TOKEN, function(error, data) {
-//     if (error != null) {
-//       console.log(JSON.stringify(error));
-//       return res.json({
-//         error: error
-//       });
-//     }
-//     res.json({
-//       error: false,
-//       report: data.assetReportId
-//     });
-//   });
+//   );
 // });

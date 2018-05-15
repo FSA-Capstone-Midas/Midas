@@ -37,8 +37,7 @@ export default function Footer() {
                 Midas
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could
-                help re-engage users.
+                Disclaimer: This website is built for a web application school project. The data and relevent data visualization are not accurate. You should not act on the basis of anything contained on this website. If you choose to use our website and rely on it, it is wholelly at your own risk.
               </p>
             </Grid.Column>
           </Grid.Row>
