@@ -3,10 +3,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
+import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
-import { Segment, Grid, Menu, Container } from "semantic-ui-react";
+import { Grid, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import PieSpending from "./Transactions/PieSpending";
+import BarNetIncome from "./Transactions/BarNetIncome";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -28,49 +31,52 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 100);
   }
 
   render() {
-    const { accounts } = this.props;
+    const { user, transaction, bills } = this.props;
+
     return (
       <ResponsiveContainer>
-        <Segment id="headerBackground" style={{ padding: "0.1em" }} vertical>
-          <Grid celled="internally" columns="equal" stackable>
-            <Grid.Row textAlign="center">
-              <Grid.Column
-                style={{ paddingBottom: "0.1em", paddingTop: "0.1em" }}
-              >
-                <h3>DashBoard</h3>
-                <h4>Latest statistics & summary </h4>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-        <Container>
-          {this.state.loading ? (
-            <Loading />
-          ) : (
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <div>
             <div>
-              <Grid>
-                <Grid.Column width={10}>
-                  <Menu
-                    vertical
-                    style={{
-                      fontSize: "14px",
-                      display: "table-row-group"
-                    }}
-                  >
-                    <h4>Account Summary</h4>
-                    <Grid.Column width={11}>
-                      <AccountTable />
-                    </Grid.Column>
-                  </Menu>
-                </Grid.Column>
-              </Grid>
+              Welcome back {user.firstName} {user.lastName}
+              <br />
+              Last login time:
+              {user &&
+                user.updatedAt.split("T")[0] +
+                  " " +
+                  user.updatedAt.split("T")[1].slice(0, 8)}
             </div>
-          )}
-        </Container>
+            <Divider section />
+            <Grid>
+              <Grid.Column width={10}>
+                <AccountTable />
+              </Grid.Column>
+
+              <Grid.Column width={6}>
+                {bills.id ? <BillAlert /> : null}
+              </Grid.Column>
+            </Grid>
+            <Divider section />
+
+            <Grid>
+              <Grid.Column width={8}>
+                {transaction ? <PieSpending rows={transaction} /> : null}
+              </Grid.Column>
+              <Grid.Column width={8}>
+                {transaction ? <BarNetIncome rows={transaction} /> : null}
+              </Grid.Column>
+            </Grid>
+            <Divider hidden />
+            <Divider hidden />
+            <Divider hidden />
+          </div>
+        )}
         <Footer />
       </ResponsiveContainer>
     );
@@ -82,18 +88,12 @@ class UserHome extends React.Component {
  */
 const mapState = state => {
   return {
+    user: state.user,
     email: state.user.email,
-    accounts: state.accounts
+    accounts: state.accounts,
+    transaction: state.transactions.transaction,
+    bills: state.bills
   };
 };
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleClick(product, evt) {
-//       evt.preventDefault();
-//       dispatch(postToCart(product));
-//     }
-//   };
-// }
 
 export default connect(mapState)(UserHome);

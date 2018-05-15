@@ -17,7 +17,7 @@ export { default as AccountTable } from "./AccountTable";
 export { default as Profile } from "./Profile";
 export { default as Budget } from "./Budget";
 export {
-  default as BudgetHorizontalBarChart,
+  default as BudgetHorizontalBarChart
 } from "./BudgetHorizontalBarChart";
 export { default as BudgetProgress } from "./BudgetProgress";
 export { default as BudgetModal } from "./BudgetModal";
@@ -25,8 +25,14 @@ export { default as Retirement } from "./Retirement";
 export { default as RetirementResult } from "./RetirementResult";
 export { default as UserCredit } from "./UserCredit";
 export { default as Goals } from "./Goals";
+export { default as Bills } from "./Bills";
+export { default as BillForm } from "./BillForm";
+export { default as BillAlert } from "./BillAlert";
+
+export { default as SaveForEmergency } from "./SaveForEmergency";
+
 export {
-  default as SaveForEmergencyMainPage,
+  default as SaveForEmergencyMainPage
 } from "./SaveForEmergencyMainPage";
 export { default as House } from "./house";
 //export { Login, Signup } from "./auth-form";

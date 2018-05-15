@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Footer from "./Footer";
-import { Segment, Container, Grid, Image } from "semantic-ui-react";
+import { Segment, Container, Grid, Image, Progress } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import { ProgressBar } from "react-bootstrap";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -57,18 +56,14 @@ const UserCredit = () => (
             <div className="ui red statistic">
               <div className="value">800</div>
             </div>
-            <ProgressBar>
-              <ProgressBar striped bsStyle="danger" now={20} key={1} />
-              <ProgressBar bsStyle="warning" now={30} key={2} />
-              <ProgressBar active bsStyle="success" now={30} key={3} />
-            </ProgressBar>
-            <h2>
+            <Progress percent={85} inverted color="blue" progress />
+            <h4>
               Get your absolutely free credit score to see how you stack up.
-            </h2>
-            <h2>
+            </h4>
+            <h4>
               Discover what impacks your score and put yourself in a better
               position for a new loan, a new credit card-or even a new job.
-            </h2>
+            </h4>
             <a
               rel="noopener noreferrer"
               target="_blank"
@@ -78,7 +73,7 @@ const UserCredit = () => (
                 marginRight: "auto"
               }}
             >
-              <h2> Feel free to sign up to check your Credit score!</h2>
+              <h4> Feel free to sign up to check your Credit score!</h4>
             </a>
           </div>
         </div>

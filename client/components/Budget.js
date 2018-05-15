@@ -58,14 +58,13 @@ class Budget extends Component {
                       <BudgetProgress />
                       <BudgetHorizontalBarChart />
                     </Segment>
+                    <Footer />
                   </div>
                 )}
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-
-        <Footer />
       </ResponsiveContainer>
     );
   }
