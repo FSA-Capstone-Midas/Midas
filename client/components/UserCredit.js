@@ -56,7 +56,7 @@ const UserCredit = () => (
             <div className="ui red statistic">
               <div className="value">800</div>
             </div>
-            <Progress percent={85} inverted color="blue" progress />
+            <Progress percent={80} color="blue" size="medium" />
             <h4>
               Get your absolutely free credit score to see how you stack up.
             </h4>
