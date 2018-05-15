@@ -19,6 +19,7 @@ import {
   House,
   Retirement,
   RetirementResult,
+  SaveForEmergencyConfirmPage,
   Bills,
   BillForm
 } from "./components";
@@ -88,8 +89,13 @@ class Routes extends Component {
             <Route exact path="/bills" component={Bills} />
             <Route
               exact
-              path="/goals/saveForEmergency"
+              path="/goals/saveforemergency"
               component={SaveForEmergencyMainPage}
+            />
+            <Route
+              exact
+              path="/goals/saveforemergencyconfirmpage"
+              component={SaveForEmergencyConfirmPage}
             />
             <Route exact path="/house" component={House} />
 
@@ -112,7 +118,7 @@ const mapState = state => {
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     userId: state.user.id,
-    user: state.user
+    user: state.user,
   };
 };
 
@@ -139,7 +145,7 @@ const mapDispatch = dispatch => {
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
-    }
+    },
   };
 };
 
@@ -152,5 +158,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 };

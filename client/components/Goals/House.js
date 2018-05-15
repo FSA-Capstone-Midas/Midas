@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import {
   Segment,
   Container,
@@ -11,12 +11,12 @@ import {
   Button,
   Icon,
   Grid,
-  Statistic
+  Statistic,
 } from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
-import { addHouseFormdetails, addHousePlan } from "../store";
-import { numberWithCommas } from "./utils";
+import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
+import { addHouseFormdetails, addHousePlan } from "../../store";
+import { numberWithCommas } from "../utils";
 /*eslint-disable*/
 
 const ResponsiveContainer = ({ children }) => (
@@ -27,14 +27,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class House extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showResult: false
+      showResult: false,
     };
     this.handleChangeLocal = this.handleChangeLocal.bind(this);
   }
@@ -48,7 +48,7 @@ class House extends Component {
       annualInsurance,
       annualPropertyTax,
       percentDownPayment,
-      mortgageRate
+      mortgageRate,
     } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
     const aggressivePrice = Math.floor(annualIncome * 6);
@@ -65,7 +65,7 @@ class House extends Component {
         <Container>
           <Segment
             id="howItWorksBackground"
-            style={{ padding: "1.5em" }}
+            style={{ padding: '1.5em' }}
             vertical
           >
             <i aria-hidden="true" className="home massive icon" />
@@ -173,7 +173,7 @@ class House extends Component {
 const mapStateToProps = state => {
   return {
     userId: state.user.id,
-    houseForm: state.houseForm
+    houseForm: state.houseForm,
   };
 };
 
@@ -188,7 +188,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     handleSubmit(event, housePlan) {
       event.preventDefault();
       dispatch(addHousePlan(housePlan));
-    }
+    },
   };
 };
 

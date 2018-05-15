@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button } from "semantic-ui-react";
-import { addFormdetails } from "../store/form";
+import { addFormdetails } from "../../store/form";
 
 const options = [
   { key: "s", text: "Single", value: "single" },
-  { key: "m", text: "Married", value: "married" }
+  { key: "m", text: "Married", value: "married" },
 ];
 
 class Step1 extends Component {
@@ -25,12 +25,12 @@ class Step1 extends Component {
     return (
       <div>
         <h2 />
-        <h2>
+        <h4>
           We need some information to calculate the chance that your portfolio
           will support your spending goals throughout retirement.
-        </h2>
+        </h4>
         <h2 />
-        <h2> First, let's establish the timeline for your plan.</h2>
+        <h4> First, let's establish the timeline for your plan.</h4>
 
         <h2 />
         <div>
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
   return {
     account: state.accounts.accountInfo,
     transaction: state.transactions.transaction,
-    form: state.form
+    form: state.form,
   };
 };
 
@@ -95,7 +95,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     },
     handleSelectChange(e, { value }) {
       dispatch(addFormdetails({ martialStatus: value }));
-    }
+    },
   };
 };
 

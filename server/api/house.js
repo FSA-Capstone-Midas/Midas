@@ -34,3 +34,14 @@ router.post("/user/:userId", (req, res, next) => {
     }
   });
 });
+
+router.delete("/user/:userId", (req, res, next) => {
+  House.findOne({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+    .then(housePlan => housePlan.destroy())
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});

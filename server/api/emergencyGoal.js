@@ -20,4 +20,15 @@ router.post("/user/:userId", (req, res, next) => {
     .catch(next);
 });
 
+router.delete("/user/:userId", (req, res, next) => {
+  EmergencyGoal.findOne({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+    .then(emergencyPlan => emergencyPlan.destroy())
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});
+
 module.exports = router;

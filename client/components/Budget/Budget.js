@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
-import Loading from "./Loading";
+import Footer from "../Footer";
+import Loading from "../Loading";
 import BudgetHorizontalBarChart from "./BudgetHorizontalBarChart";
 import BudgetModal from "./BudgetModal";
 import BudgetProgress from "./BudgetProgress";
 import { Grid, Segment } from "semantic-ui-react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
 
 const ResponsiveContainer = ({ children }) => (
   <div>

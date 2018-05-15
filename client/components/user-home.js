@@ -6,7 +6,8 @@ import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import PhoneAlert from "./PhoneAlert";
 import AccountTable from "./AccountTable";
-import { Grid, Divider, Segment } from "semantic-ui-react";
+import { Grid, Divider, Segment, Container } from "semantic-ui-react";
+import GoalsMenu from "./Goals/GoalsMenu";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
@@ -20,14 +21,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -61,17 +62,8 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <Segment
-              textAlign="center"
-              style={{
-                fontSize: "28px",
-                backgroundColor: "powderblue"
-              }}
-            >
-              Dashboard
-            </Segment>
             <div style={{ fontSize: "20px" }}>
-              Welcome back {user.firstName} {user.lastName}
+              Welcome back {fullname}
               <br />
               Last login time:
               {user &&
@@ -80,20 +72,23 @@ class UserHome extends React.Component {
                   user.updatedAt.split("T")[1].slice(0, 8)}
             </div>
             <Divider section />
-            <Grid>
-              <Grid.Column width={10}>
-                <h4>Account Summary</h4>
-                <AccountTable />
-              </Grid.Column>
+            <Container>
+              <Grid>
+                <Grid.Column width={10}>
+                  <h4>Account Summary</h4>
+                  <AccountTable />
+                </Grid.Column>
 
-              <Grid.Column width={5}>
-                {bills.id ? <BillAlert /> : null}
-                {phone.id ? <PhoneAlert /> : null}
-              </Grid.Column>
-            </Grid>
+                <Grid.Column width={5}>
+                  <h4>Bills Summary</h4>
+                  {bills.id ? <BillAlert /> : null}
+                  {phone.id ? <PhoneAlert /> : null}
+                </Grid.Column>
+              </Grid>
+            </Container>
             <Divider section />
             <h4>Transactions</h4>
-            <Grid>
+            <Grid style={{ marginLeft: "10em" }}>
               <Grid.Column width={8}>
                 {transaction ? (
                   <div>
@@ -108,6 +103,12 @@ class UserHome extends React.Component {
             </Grid>
 
             <Divider section />
+            <Container>
+              <Grid>
+                <h4>Goals</h4>
+                <GoalsMenu />
+              </Grid>
+            </Container>
             <Divider hidden />
             <Divider hidden />
             <Divider hidden />
@@ -129,7 +130,7 @@ const mapState = state => {
     accounts: state.accounts,
     transaction: state.transactions.transaction,
     bills: state.bills,
-    phone: state.phone
+    phone: state.phone,
   };
 };
 

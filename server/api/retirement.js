@@ -59,3 +59,14 @@ router.post("/user/:userId", (req, res, next) => {
     }
   });
 });
+
+router.delete("/user/:userId", (req, res, next) => {
+  Retirement.findOne({
+    where: {
+      userId: req.params.userId,
+    },
+  })
+    .then(retirementPlan => retirementPlan.destroy())
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});
