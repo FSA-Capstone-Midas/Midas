@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
-import { Grid, Divider } from "semantic-ui-react";
+import { Grid, Divider, Segment } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
@@ -36,6 +36,12 @@ class UserHome extends React.Component {
 
   render() {
     const { user, transaction, bills } = this.props;
+    const fullname =
+      user.firstName.charAt(0).toUpperCase() +
+      user.firstName.slice(1) +
+      " " +
+      user.lastName.charAt(0).toUpperCase() +
+      user.lastName.slice(1);
 
     return (
       <ResponsiveContainer>
@@ -43,8 +49,17 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <div>
-              Welcome back {user.firstName} {user.lastName}
+            <Segment
+              textAlign="center"
+              style={{
+                fontSize: "28px",
+                backgroundColor: "powderblue"
+              }}
+            >
+              Dashboard
+            </Segment>
+            <div style={{ fontSize: "20px" }}>
+              Welcome back {fullname}
               <br />
               Last login time:
               {user &&
@@ -58,7 +73,7 @@ class UserHome extends React.Component {
                 <AccountTable />
               </Grid.Column>
 
-              <Grid.Column width={6}>
+              <Grid.Column width={5}>
                 {bills.id ? <BillAlert /> : null}
               </Grid.Column>
             </Grid>
@@ -68,10 +83,13 @@ class UserHome extends React.Component {
               <Grid.Column width={8}>
                 {transaction ? <PieSpending rows={transaction} /> : null}
               </Grid.Column>
+
               <Grid.Column width={8}>
                 {transaction ? <BarNetIncome rows={transaction} /> : null}
               </Grid.Column>
             </Grid>
+
+            <Divider section />
             <Divider hidden />
             <Divider hidden />
             <Divider hidden />
