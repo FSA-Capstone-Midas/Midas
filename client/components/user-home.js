@@ -36,7 +36,7 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { user, transaction, bills } = this.props;
+    const { user, transaction, bills, phone } = this.props;
     const fullname =
       user.firstName.charAt(0).toUpperCase() +
       user.firstName.slice(1) +
@@ -76,7 +76,7 @@ class UserHome extends React.Component {
 
               <Grid.Column width={5}>
                 {bills.id ? <BillAlert /> : null}
-                {bills.id ? <PhoneAlert /> : null}
+                {phone.id ? <PhoneAlert /> : null}
               </Grid.Column>
             </Grid>
             <Divider section />
@@ -112,7 +112,8 @@ const mapState = state => {
     email: state.user.email,
     accounts: state.accounts,
     transaction: state.transactions.transaction,
-    bills: state.bills
+    bills: state.bills,
+    phone: state.phone
   };
 };
 
