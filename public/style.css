@@ -101,31 +101,31 @@ nav a {
 /* Global CSS*/
 h1 {
   font-size: 4.5em;
-  font-family: 'Kanit', sans-serif;
+  /* font-family: 'Kanit', sans-serif; */
 }
 
 h2 {
   font-size: 3.5em;
-  font-family: 'Kanit', sans-serif;
+  /* font-family: 'Kanit', sans-serif; */
 }
 
 h3 {
   font-size: 2.5em;
-  font-family: 'Kanit', sans-serif;
+  /* font-family: 'Kanit', sans-serif; */
 }
 
 h4 {
   font-size: 2em;
-  font-family: 'Acme', sans-serif;
+  /* font-family: 'Acme', sans-serif; */
 }
 
-h5 {
+/* h5 {
   font-size: 1.5em;
 }
 
 p {
   font-size: 1em;
-}
+} */
 
 /* Mobile NavBar */
 #mobileSignUpbutton {
@@ -179,10 +179,10 @@ svg.datamap {
   flex: 1;
 }
 
-h4 {
+/* h4 {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 a {
   font-family: 'Boogaloo';
-}
+} */

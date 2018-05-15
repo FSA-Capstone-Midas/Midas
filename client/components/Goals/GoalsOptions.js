@@ -19,7 +19,7 @@ class GoalsOptions extends Component {
       <Item.Group divided>
         {this.props.retirement.birthyear ? (
           <Item>
-            <Item.Image src="../../../../../../pictures/matthew.png" />
+            <Item.Image src="pictures/retirement.png" />
 
             <Item.Content verticalAlign="middle">
               <Item.Header exact as={NavLink} to="/retirement/analysis">
@@ -29,13 +29,13 @@ class GoalsOptions extends Component {
                 <Label>Retirement Goal</Label>
               </Item.Extra>
               <NavLink to="/retirement">
-                <Button positive floated="right">
+                <Button color="teal" floated="right">
                   Update your retirement plan
                 </Button>
               </NavLink>
               <Button
                 name="retirementPlan"
-                negative
+                color="orange"
                 floated="right"
                 onClick={event =>
                   handleRetirementClick(event, this.props.user.id)
@@ -49,7 +49,7 @@ class GoalsOptions extends Component {
 
         {this.props.emergency.isEnter ? (
           <Item>
-            <Item.Image src="../../../../../../pictures/matthew.png" />
+            <Item.Image src="pictures/emergency.png" />
 
             <Item.Content verticalAlign="middle">
               <Item.Header>Emergency Planning Goal</Item.Header>
@@ -58,13 +58,13 @@ class GoalsOptions extends Component {
                 <Label>Emergency Planning</Label>
               </Item.Extra>
               <NavLink to="/saveForEmergency">
-                <Button positive floated="right">
+                <Button color="teal" floated="right">
                   Update your emergency plan
                 </Button>
               </NavLink>
               <Button
                 name="retirementPlan"
-                negative
+                color="orange"
                 floated="right"
                 onClick={event =>
                   handleEmergencyClick(event, this.props.user.id)
@@ -78,7 +78,7 @@ class GoalsOptions extends Component {
 
         {this.props.houseForm.annualIncome ? (
           <Item>
-            <Item.Image src="../../../../../../pictures/matthew.png" />
+            <Item.Image src="pictures/house.png" />
 
             <Item.Content verticalAlign="middle">
               <Item.Header>See your housing goal</Item.Header>
@@ -86,13 +86,13 @@ class GoalsOptions extends Component {
                 <Label>Housing Goal</Label>
               </Item.Extra>
               <NavLink to="/house">
-                <Button positive floated="right">
+                <Button color="teal" floated="right">
                   Update your mortgage plan
                 </Button>
               </NavLink>
               <Button
                 name="housingPlan"
-                negative
+                color="orange"
                 floated="right"
                 onClick={event => handleHouseClick(event, this.props.user.id)}
               >

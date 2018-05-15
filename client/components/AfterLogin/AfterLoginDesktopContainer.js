@@ -9,6 +9,7 @@ import {
   Responsive,
   Segment,
   Visibility,
+  Image,
 } from "semantic-ui-react";
 import { logout, fetchUser } from "../../store";
 
@@ -29,7 +30,7 @@ class MenuExampleSecondary extends Component {
         style={{
           fontSize: "15px",
           marginLeft: "12%",
-          fontFamily: "Roboto Condensed sans-serif"
+          fontFamily: "Roboto Condensed sans-serif",
         }}
       >
         <Menu.Item
@@ -132,9 +133,12 @@ class DesktopContainer extends Component {
               <Container
                 style={{
                   fontSize: "17px",
-                  fontFamily: "Roboto Condensed sans-serif"
+                  fontFamily: "Roboto Condensed sans-serif",
                 }}
               >
+                <Menu.Item style={{ marginBottom: "-1em" }}>
+                  <Image src="/pictures/midas_nav_logo.png" />
+                </Menu.Item>
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>

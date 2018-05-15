@@ -7,7 +7,7 @@ import BillAlert from "./BillAlert";
 import PhoneAlert from "./PhoneAlert";
 import AccountTable from "./AccountTable";
 import { Grid, Divider, Segment, Container } from "semantic-ui-react";
-import GoalsMenu from "./Goals/GoalsMenu";
+import GoalsComponent from "./Goals/GoalsComponent";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
@@ -21,14 +21,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -37,7 +37,15 @@ class UserHome extends React.Component {
   }
 
   render() {
-    const { user, transaction, bills, phone } = this.props;
+    const {
+      user,
+      transaction,
+      bills,
+      phone,
+      retirement,
+      emergency,
+      houseForm,
+    } = this.props;
     const fullname =
       user.firstName.charAt(0).toUpperCase() +
       user.firstName.slice(1) +
@@ -78,7 +86,7 @@ class UserHome extends React.Component {
               <Grid
                 style={{
                   width: "-webkit-fill-available",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
                 }}
               >
                 <Grid.Column width={10}>
@@ -87,7 +95,7 @@ class UserHome extends React.Component {
                 </Grid.Column>
 
                 <Grid.Column width={5}>
-                  <h4>Bills Summary</h4>
+                  <h4>Bills Notifications</h4>
                   {bills.id ? (
                     <BillAlert />
                   ) : (
@@ -120,7 +128,18 @@ class UserHome extends React.Component {
             <Container>
               <Grid>
                 <h4>Goals</h4>
-                <GoalsMenu />
+                <Grid
+                  style={{
+                    padding: "2em 0em",
+                    fontSize: "12px",
+                  }}
+                >
+                  <GoalsComponent
+                    retirement={retirement}
+                    houseForm={houseForm}
+                    emergency={emergency}
+                  />
+                </Grid>
               </Grid>
             </Container>
             <div />
@@ -145,7 +164,10 @@ const mapState = state => {
     accounts: state.accounts,
     transaction: state.transactions.transaction,
     bills: state.bills,
-    phone: state.phone
+    phone: state.phone,
+    houseForm: state.houseForm,
+    retirement: state.retirement,
+    emergency: state.emergencyGoalReducer,
   };
 };
 
