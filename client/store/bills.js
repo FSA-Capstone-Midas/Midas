@@ -7,13 +7,7 @@ const GET_RENT = "GET_RENT";
 const defaultUser = {};
 
 const updateUserRent = rent => ({ type: UPDATE_RENT, rent });
-// const getUserRent = rent => ({ type: GET_RENT, rent });
-function getUserRent(rent) {
-  return {
-    type: GET_RENT,
-    rent
-  };
-}
+const getUserRent = rent => ({ type: GET_RENT, rent });
 
 export const updateRent = rent => dispatch =>
   axios
