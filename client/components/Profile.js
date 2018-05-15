@@ -118,6 +118,7 @@ class Profile extends React.Component {
         <Segment
           style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
           vertical
+          id="mainContent"
         >
           <Grid container textAlign="center" stackable verticalAlign="middle">
             <Grid.Column style={{ maxWidth: 750 }}>
