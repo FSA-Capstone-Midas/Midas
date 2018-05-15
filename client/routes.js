@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { withRouter, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   Login,
@@ -21,16 +21,14 @@ import {
   RetirementResult,
   SaveForEmergencyConfirmPage,
   Bills,
-  BillForm
+  AddAccount
 } from "./components";
 import {
   me,
   fetchTransaction,
   fetchItem,
   getBudgetFromDatabase,
-  fetchEmergencyGoal,
   fetchRetirementDetails,
-  fetchAllState,
   fetchRent,
   fetchPhone
 } from "./store";
@@ -87,6 +85,8 @@ class Routes extends Component {
             <Route exact path="/credit" component={UserCredit} />
             <Route exact path="/goals" component={Goals} />
             <Route exact path="/bills" component={Bills} />
+            <Route exact path="/addAccount" component={AddAccount} />
+
             <Route
               exact
               path="/goals/saveforemergency"
@@ -118,7 +118,7 @@ const mapState = state => {
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     userId: state.user.id,
-    user: state.user,
+    user: state.user
   };
 };
 
@@ -145,7 +145,7 @@ const mapDispatch = dispatch => {
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
-    },
+    }
   };
 };
 
@@ -158,5 +158,5 @@ export default withRouter(connect(mapState, mapDispatch)(Routes));
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };

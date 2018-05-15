@@ -1,6 +1,8 @@
 const plaid = require("plaid");
 const router = require("express").Router();
 const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
+const { User } = require("../db/models");
+
 module.exports = router;
 
 //convert today's for plaid api version
@@ -27,16 +29,24 @@ let client = new plaid.Client(
 );
 
 router.post("/get_access_token", (req, res, next) => {
-  //store in db once we get the token back from plaid
-  let PUBLIC_TOKEN = req.body.publicToken;
-  client.exchangePublicToken(PUBLIC_TOKEN, function(err, tokenResponse) {
+  let successTokenFromPlaid = req.body.successToken;
+  client.exchangePublicToken(successTokenFromPlaid, function(err, tokenResponse) {
     if (err) {
       return res.json({ err });
     }
     // ACCESS_TOKEN = tokenResponse.access_token; //token from api
-    console.log("Access Token: " + ACCESS_TOKEN);
     //ITEM_ID = tokenResponse.item_id; //item id from api
+    let plaidTokenId = tokenResponse.access_token
+    let plaidItemId = tokenResponse.item_id
+
+    User.findById(req.user.id)
+      .then(user => user.update({ plaidTokenId , plaidItemId}))
+      .catch(next);
+
+    console.log("Access Token: " + ACCESS_TOKEN);
     console.log("Item ID: " + ITEM_ID);
+
+    res.status(200).json({ success: "success" });
   });
 });
 

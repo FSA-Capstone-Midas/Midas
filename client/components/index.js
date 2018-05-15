@@ -20,15 +20,16 @@ export { default as Retirement } from "./Goals/Retirement";
 export { default as RetirementResult } from "./Goals/RetirementResult";
 export { default as Goals } from "./Goals/Goals";
 export {
-  default as SaveForEmergencyMainPage,
+  default as SaveForEmergencyMainPage
 } from "./Goals/SaveForEmergencyMainPage";
 export {
-  default as SaveForEmergencyConfirmPage,
+  default as SaveForEmergencyConfirmPage
 } from "./Goals/SaveForEmergencyConfirmPage";
 export { default as House } from "./Goals/House";
 export { default as Bills } from "./Bills";
 export { default as BillForm } from "./BillForm";
 export { default as BillAlert } from "./BillAlert";
 export { default as PhoneAlert } from "./PhoneAlert";
+export { default as AddAccount } from "./AddAccount";
 
 //export { Login, Signup } from "./auth-form";
