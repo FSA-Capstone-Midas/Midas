@@ -32,6 +32,16 @@ class AddAccount extends Component {
                   <Plaid />
                 </Message.Content>
               </Message>
+              <Message>
+                <Message.Header>WARNING!!!!!</Message.Header>
+                <p>
+                  Disclaimer: This website is built for a web application school
+                  project. The data and relevent data visualization are not
+                  accurate. You should not act on the basis of anything
+                  contained on this website. If you choose to use our website
+                  and rely on it, it is wholelly at your own risk.
+                </p>
+              </Message>
             </Grid.Column>
           </Grid>
         </Container>
