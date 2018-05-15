@@ -21,7 +21,7 @@ import {
   RetirementResult,
   SaveForEmergencyConfirmPage,
   Bills,
-  BillForm
+  BillForm,
 } from "./components";
 import {
   me,
@@ -32,7 +32,7 @@ import {
   fetchRetirementDetails,
   fetchAllState,
   fetchRent,
-  fetchPhone
+  fetchPhone,
 } from "./store";
 
 /**
@@ -45,18 +45,19 @@ class Routes extends Component {
     this.props.loadTransactionsFromPlaid();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.user.id !== nextProps.user.id) {
+  componentWillReceiveProps(nextProps, prevProps) {
+    if (
+      this.props.user.id !== nextProps.user.id &&
+      (this.props.user.id !== 1 && nextProps.user.id !== null)
+    ) {
       this.props.fetchRetirementDetails(nextProps.user.id);
       this.props.loadBudgetData(nextProps.user.id);
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    if (this.props.user.id !== nextProps.user.id) {
       this.props.fetchRent(nextProps.user.id);
       this.props.fetchPhone(nextProps.user.id);
+      this.props.fetchEmergencyGoal(nextProps.user.id);
     }
   }
+
   render() {
     const { isLoggedIn } = this.props;
 
@@ -145,6 +146,9 @@ const mapDispatch = dispatch => {
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
+    },
+    fetchEmergencyGoal(id) {
+      dispatch(fetchEmergencyGoal(id));
     },
   };
 };

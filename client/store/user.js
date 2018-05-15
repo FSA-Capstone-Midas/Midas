@@ -21,7 +21,7 @@ const defaultUser = {};
 function getUser(user) {
   return {
     type: GET_USER,
-    user
+    user,
   };
 }
 // const getUser = user => ({ type: GET_USER, user });
@@ -36,7 +36,6 @@ export const me = () => dispatch =>
     .then(res => {
       const userId = res.data.id;
       dispatch(getUser(res.data || defaultUser));
-      dispatch(fetchEmergencyGoal(userId));
     })
     .catch(err => console.log(err));
 
