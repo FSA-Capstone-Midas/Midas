@@ -9,7 +9,7 @@ import {
   Responsive,
   Segment,
   Visibility,
-  Image,
+  Image
 } from "semantic-ui-react";
 import { logout, fetchUser } from "../../store";
 
@@ -30,7 +30,7 @@ class MenuExampleSecondary extends Component {
         style={{
           fontSize: "15px",
           marginLeft: "12%",
-          fontFamily: "Roboto Condensed sans-serif",
+          fontFamily: "Roboto Condensed sans-serif"
         }}
       >
         <Menu.Item
@@ -92,7 +92,7 @@ class MenuExampleSecondary extends Component {
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool,
+  mobile: PropTypes.bool
 };
 
 /* Heads up!
@@ -134,9 +134,10 @@ class DesktopContainer extends Component {
                 style={{
                   fontSize: "17px",
                   fontFamily: "Roboto Condensed sans-serif",
+                  width: "70%"
                 }}
               >
-                <Menu.Item style={{ marginBottom: "-1em" }}>
+                <Menu.Item style={{ marginBottom: "-1em", marginRight: "15%" }}>
                   <Image src="/pictures/midas_nav_logo.png" />
                 </Menu.Item>
                 <Menu.Item as={NavLink} to="/home">
@@ -175,12 +176,12 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id,
+    id: state.user.id
   };
 };
 const mapDispatch = dispatch => {
@@ -191,7 +192,7 @@ const mapDispatch = dispatch => {
     handleUser(event, id) {
       event.preventDefault();
       dispatch(fetchUser(id));
-    },
+    }
   };
 };
 
