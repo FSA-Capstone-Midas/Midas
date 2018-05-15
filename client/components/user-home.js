@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
@@ -88,7 +88,14 @@ class UserHome extends React.Component {
 
                 <Grid.Column width={5}>
                   <h4>Bills Summary</h4>
-                  {bills.id ? <BillAlert /> : null}
+                  {bills.id ? (
+                    <BillAlert />
+                  ) : (
+                    <h3 style={{ color: "green" }}>
+                      {" "}
+                      YAY You currently have no bills{" "}
+                    </h3>
+                  )}
                   {phone.id ? <PhoneAlert /> : null}
                 </Grid.Column>
               </Grid>
@@ -116,6 +123,7 @@ class UserHome extends React.Component {
                 <GoalsMenu />
               </Grid>
             </Container>
+            <div />
             <Divider hidden />
             <Divider hidden />
             <Divider hidden />

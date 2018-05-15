@@ -29,21 +29,21 @@ class BudgetHorizontalBarChart extends Component {
       ],
       datasets: [
         {
-          label: "Budget",
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
+          label: "Budget $",
+          backgroundColor: "rgba(0,255,0,0.3)",
+          borderColor: "rgba(192,192,192,0.3)",
           borderWidth: 1,
-          hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          hoverBorderColor: "rgba(255,99,132,1)",
+          hoverBackgroundColor: "rgba(0,0,255,0.3)",
+          hoverBorderColor: "rgba(192,192,192,0.3)",
           data: budgetArr
         },
         {
-          label: "Actual Spending",
-          backgroundColor: "rgba(179,181,198,0.2)",
+          label: "Actual Spending $",
+          backgroundColor: "rgba(255,0,0,0.3)",
           borderColor: "rgba(179,181,198,1)",
           borderWidth: 1,
-          hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          hoverBorderColor: "rgba(255,99,132,1)",
+          hoverBackgroundColor: "rgba(255, 0, 0, 0.8)",
+          hoverBorderColor: "rgba(255,0,255,0.3)",
           data: spendingArr
         }
       ]

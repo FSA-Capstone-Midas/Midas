@@ -24,7 +24,14 @@ class MenuExampleSecondary extends Component {
     const { id, handleUser } = this.props;
 
     return (
-      <Menu secondary style={{ fontSize: "15px", marginLeft: "12%" }}>
+      <Menu
+        secondary
+        style={{
+          fontSize: "15px",
+          marginLeft: "12%",
+          fontFamily: "Roboto Condensed sans-serif"
+        }}
+      >
         <Menu.Item
           name="OVERVIEW"
           active={activeItem === "OVERVIEW"}
@@ -122,7 +129,12 @@ class DesktopContainer extends Component {
               size="large"
               style={{ border: "none" }}
             >
-              <Container style={{ fontSize: "17px" }}>
+              <Container
+                style={{
+                  fontSize: "17px",
+                  fontFamily: "Roboto Condensed sans-serif"
+                }}
+              >
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>
