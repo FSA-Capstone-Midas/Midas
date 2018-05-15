@@ -16,9 +16,7 @@ Date.prototype.yyyymmdd = function(past) {
   ].join("-");
 };
 
-// let ACCESS_TOKEN = null;
-// let ASSET_REPORT_TOKEN = null;
-// let ASSET_REPORT_ID = null;
+let ACCESS_TOKEN = null;
 
 //our server key
 let client = new plaid.Client(
@@ -29,73 +27,76 @@ let client = new plaid.Client(
 );
 
 router.post("/get_access_token", (req, res, next) => {
-  console.log("HEREE", req.body.successToken);
   let successTokenFromPlaid = req.body.successToken;
-  console.log(successTokenFromPlaid);
   client.exchangePublicToken(successTokenFromPlaid, function(
     err,
     tokenResponse
   ) {
     if (err) {
       return res.json({ err });
+    } else {
+      let plaidTokenId = tokenResponse.access_token;
+      let plaidItemId = tokenResponse.item_id;
+
+      return User.findById(req.user.id)
+        .then(user => user.update({ plaidTokenId, plaidItemId }))
+        .then(result => res.status(200).json({ success: "success" }))
+        .catch(next);
     }
-    console.log(tokenResponse);
-    // ACCESS_TOKEN = tokenResponse.access_token; //token from api
-    //ITEM_ID = tokenResponse.item_id; //item id from api
-    let plaidTokenId = tokenResponse.access_token;
-    let plaidItemId = tokenResponse.item_id;
-    console.log("47", plaidTokenId);
-    console.log("48", plaidItemId);
-
-    User.findById(req.user.id)
-      .then(user => user.update({ plaidTokenId, plaidItemId }))
-      .catch(next);
-
-    // console.log("Access Token: " + ACCESS_TOKEN);
-    // console.log("Item ID: " + ITEM_ID);
-
-    res.status(200).json({ success: "success" });
   });
 });
 
-// router.get("/auth", function(request, response, next) {
-//   // Pull the Item - this includes information about available products,
-//   // billed products, webhook information, and more.
-//   client.getAuth(ACCESS_TOKEN, function(error, data) {
-//     if (error) {
-//       return response.json({ error });
-//     }
-//     //Plaid success response
-//     response.status(200).json({
-//       error: false,
-//       accountInfo: data.accounts //account balances
-//     });
-//   });
-// });
+// Account balance from Plaid API
+router.get("/auth", function(req, res, next) {
+  //grab from databese
 
-// router.get("/transactions", (req, res, next) => {
-//   let date = new Date();
-//   let todatsDate = date.yyyymmdd(0);
-//   let lastYear = date.yyyymmdd(1);
-//   client.getTransactions(
-//     ACCESS_TOKEN, //hard code, need to change
-//     lastYear,
-//     todatsDate,
-//     {
-//       count: 500,
-//       offset: 0
-//     },
-//     function(error, data) {
-//       if (error) {
-//         console.log(JSON.stringify(error));
-//         return res.json({
-//           error: error
-//         });
-//       }
-//       res.status(200).json({
-//         error: false,
-//         transaction: data.transactions
-//       });
-//     }
-//   );
-// });
+  User.findById(req.user.id)
+    .then(user => {
+      console.log(user.plaidTokenId);
+      let accessToken = user.plaidTokenId;
+      client.getAuth(accessToken, function(error, data) {
+        if (error) {
+          return res.json({ error });
+        } else {
+          return res.status(200).json({
+            error: false,
+            accountInfo: data.accounts //account balances
+          });
+        }
+      });
+    })
+    .catch(next);
+});
+
+router.get("/transactions", (req, res, next) => {
+  let date = new Date();
+  let todatsDate = date.yyyymmdd(0);
+  let lastYear = date.yyyymmdd(1);
+
+  User.findById(req.user.id)
+    .then(user => {
+      let accessToken = user.plaidTokenId;
+      client.getTransactions(
+        accessToken,
+        lastYear,
+        todatsDate,
+        {
+          count: 500,
+          offset: 0
+        },
+        function(error, data) {
+          if (error) {
+            return res.json({
+              error: error
+            });
+          } else {
+            return res.status(200).json({
+              error: false,
+              transaction: data.transactions
+            });
+          }
+        }
+      );
+    })
+    .catch(next);
+});
