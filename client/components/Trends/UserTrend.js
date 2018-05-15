@@ -18,7 +18,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class UserTrend extends Component {
@@ -26,7 +26,7 @@ class UserTrend extends Component {
     super(props);
     this.state = {
       loading: true,
-      currentMap: "avgListingPrice"
+      currentMap: "avgListingPrice",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleTitleName = this.handleTitleName.bind(this);
@@ -127,7 +127,7 @@ class UserTrend extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Container>
+        <Container id="mainContent">
           {this.state.loading ? (
             <Loading />
           ) : (
@@ -135,7 +135,7 @@ class UserTrend extends Component {
               style={{
                 padding: "2em 0em",
                 fontSize: "12px",
-                textAlign: "center"
+                textAlign: "center",
               }}
               vertical
             >
@@ -144,7 +144,7 @@ class UserTrend extends Component {
                   <Grid.Column
                     style={{
                       paddingBottom: "0.5em",
-                      paddingTop: "0.5em"
+                      paddingTop: "0.5em",
                     }}
                   >
                     <h5>{this.handleTitleName()} - Year ended 2018</h5>
@@ -155,7 +155,7 @@ class UserTrend extends Component {
                   style={{
                     padding: "2em 0em",
                     fontSize: "12px",
-                    textAlign: "center"
+                    textAlign: "center",
                   }}
                   vertical
                 >

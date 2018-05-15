@@ -10,7 +10,7 @@ const BudgetProgress = props => {
     : 0;
 
   return (
-    <Segment>
+    <div>
       {spendingRatio ? (
         <h4>{`You have spent ${spendingRatio}% of your budget.`}</h4>
       ) : (
@@ -20,7 +20,7 @@ const BudgetProgress = props => {
         </h4>
       )}
       <Progress percent={spendingRatio} indicating />
-    </Segment>
+    </div>
   );
 };
 
@@ -36,7 +36,7 @@ const mapState = state => {
 
   return {
     actualSpending,
-    budget
+    budget,
   };
 };
 

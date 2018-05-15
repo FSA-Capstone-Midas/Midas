@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Segment, Container } from "semantic-ui-react";
+import { Grid, Segment, Container, Responsive } from "semantic-ui-react";
 import Footer from "../Footer";
 import Loading from "../Loading";
 import SideBar from "./SideBar";
@@ -18,15 +18,17 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
+
+const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
 class Transactions extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      currentChart: "spendingOverTime"
+      currentChart: "spendingOverTime",
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -67,12 +69,13 @@ class Transactions extends Component {
               style={{
                 padding: "2em 0em",
                 fontSize: "12px",
-                textAlign: "center"
+                textAlign: "center",
               }}
               vertical
             >
               <div className="ui grid">
                 <SideBar handleClick={this.handleClick} />
+
                 <div className="twelve wide column">
                   {renCompo(this.state.currentChart, rows)}
                 </div>
@@ -90,7 +93,7 @@ class Transactions extends Component {
 const mapState = state => {
   return {
     account: state.accounts.accountInfo,
-    transaction: state.transactions.transaction
+    transaction: state.transactions.transaction,
   };
 };
 
