@@ -9,91 +9,11 @@ import {
   Responsive,
   Segment,
   Visibility,
-  Image
+  Image,
 } from "semantic-ui-react";
 import { logout, fetchUser } from "../../store";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
-
-class MenuExampleSecondary extends Component {
-  state = { activeItem: "home" };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-
-  render() {
-    const { activeItem } = this.state;
-    const { id, handleUser } = this.props;
-
-    return (
-      <Menu
-        secondary
-        style={{
-          fontSize: "15px",
-          marginLeft: "12%",
-          fontFamily: "Roboto Condensed sans-serif"
-        }}
-      >
-        <Menu.Item
-          name="OVERVIEW"
-          active={activeItem === "OVERVIEW"}
-          onClick={this.handleItemClick}
-          exact
-          as={NavLink}
-          to="/home"
-        />
-        <Menu.Item
-          name="TRANSACTIONS"
-          active={activeItem === "TRANSACTIONS"}
-          onClick={this.handleItemClick}
-          exact
-          as={NavLink}
-          to="/transactions"
-        />
-        <Menu.Item
-          name="CREDIT SCORE"
-          active={activeItem === "CREDIT SCORE"}
-          onClick={this.handleItemClick}
-          exact
-          as={NavLink}
-          to="/credit"
-        />
-        <Menu.Item
-          name="BILLS"
-          active={activeItem === "BILLS"}
-          onClick={this.handleItemClick}
-          exact
-          as={NavLink}
-          to="/bills"
-        />
-        <Menu.Item
-          name="BUDGETS"
-          as={NavLink}
-          to="/budget"
-          active={activeItem === "BUDGETS"}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name="TRENDS"
-          as={NavLink}
-          to="/trend"
-          active={activeItem === "TRENDS"}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name="GOALS"
-          as={NavLink}
-          to="/goals"
-          active={activeItem === "GOALS"}
-          onClick={this.handleItemClick}
-        />
-      </Menu>
-    );
-  }
-}
-
-MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool
-};
 
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
@@ -133,26 +53,48 @@ class DesktopContainer extends Component {
               <Container
                 style={{
                   fontSize: "17px",
-                  fontFamily: "Roboto Condensed sans-serif",
-                  width: "70%"
+                  width: "70%",
                 }}
               >
-                <Menu.Item style={{ marginBottom: "-1em", marginRight: "15%" }}>
-                  <Image src="/pictures/midas_nav_logo.png" />
-                </Menu.Item>
+                {this.state.fixed ? null : (
+                  <Menu.Item
+                    style={{ marginBottom: "-1em", marginRight: "10%" }}
+                  >
+                    <Image src="/pictures/midas_nav_logo.png" />
+                  </Menu.Item>
+                )}
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>
                 <Menu.Item>Add Accounts</Menu.Item>
-                <Menu.Item exact as={NavLink} to="/howitworks">
-                  How It Works
-                </Menu.Item>
-                <Menu.Item exact as={NavLink} to="/aboutus">
-                  About Us
-                </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/profile">
                   Profile
                 </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/transactions">
+                  Transactions
+                </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/credit">
+                  Credit Score
+                </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/bills">
+                  Bills
+                </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/budget">
+                  Budgets
+                </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/trend">
+                  Trends
+                </Menu.Item>
+
+                <Menu.Item exact as={NavLink} to="/goals">
+                  Goals
+                </Menu.Item>
+
                 <Menu.Item position="right">
                   <Button
                     as="a"
@@ -168,7 +110,6 @@ class DesktopContainer extends Component {
             </Menu>
           </Segment>
         </Visibility>
-        <MenuExampleSecondary />
         {children}
       </Responsive>
     );
@@ -176,12 +117,12 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id
+    id: state.user.id,
   };
 };
 const mapDispatch = dispatch => {
@@ -192,7 +133,7 @@ const mapDispatch = dispatch => {
     handleUser(event, id) {
       event.preventDefault();
       dispatch(fetchUser(id));
-    }
+    },
   };
 };
 
