@@ -4,6 +4,7 @@ import { NavLink, withRouter, Link } from "react-router-dom";
 import {
   Button,
   Container,
+  Image,
   Menu,
   Responsive,
   Segment,
@@ -44,6 +45,14 @@ class DesktopContainer extends Component {
               style={{ border: "none" }}
             >
               <Container style={{ fontSize: "17px" }}>
+                {this.state.fixed ? null : (
+                  <Menu.Item
+                    style={{ marginBottom: "-1em", marginRight: "10%" }}
+                  >
+                    <Image src="/pictures/midas_nav_logo.png" />
+                  </Menu.Item>
+                )}
+
                 <Menu.Item exact as={NavLink} to="/">
                   Home
                 </Menu.Item>

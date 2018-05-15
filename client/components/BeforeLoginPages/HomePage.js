@@ -11,6 +11,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
+import Typist from "react-typist";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
 import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
@@ -46,11 +47,12 @@ const HomePage = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
-              <img
+              <Typist>Seriously amazing.</Typist>
+              {/* <img
                 style={{ width: "60%" }}
                 className="carousel-image"
                 src="../../../../../../pictures/feature_link_headline.gif"
-              />
+              /> */}
               <h1>Time is money. Save both.</h1>
               <p style={{ fontSize: "1.33em" }}>
                 As New York’s first Personal financial management app,
