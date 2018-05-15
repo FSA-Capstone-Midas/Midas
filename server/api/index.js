@@ -8,6 +8,7 @@ router.use("/retirement", require("./retirement"));
 router.use("/emergencyGoal", require("./emergencyGoal"));
 router.use("/house", require("./house"));
 router.use("/budget", require("./budget"));
+router.use("/phone", require("./phone"));
 
 router.use((req, res, next) => {
   const error = new Error("Not Found");
