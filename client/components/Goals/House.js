@@ -76,7 +76,7 @@ class House extends Component {
                 <Grid.Column width={8}>
                   <h5>How much can I afford?</h5>
                   <br />
-                  <Form className="ui small" fluid>
+                  <Form className="ui small">
                     <Form.Field
                       control={Input}
                       label="Annual Income $:"
@@ -120,35 +120,31 @@ class House extends Component {
                   </Form>
                 </Grid.Column>
 
-                <Grid.Column width={8}>
-                  <div className="ui huge">
-                    <h5>How much will I need?</h5>
-                    <p>You can afford a home that costs </p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(aggressivePrice)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                    <p>for a total monthly payment of</p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(monthlyAggresive)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                    <p>You will need a down payment of</p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(downpaymentAggresive)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                  </div>
+                <Grid.Column width={8} verticalAlign="middle">
+                  {/* <div className="ui huge"> */}
+                  <h5>How much will I need?</h5>
+                  <p>You can afford a home that costs </p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(aggressivePrice)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  <p>for a total monthly payment of</p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(monthlyAggresive)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  <p>You will need a down payment of</p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(downpaymentAggresive)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  {/* </div> */}
                   <br />
                   <NavLink to="/goals">
-                    <Button
-                      icon
-                      className="ui huge button"
-                      labelPosition="right"
-                    >
+                    <Button icon className="ui huge button" floated="right">
                       Save the Goal
                       <Icon name="right arrow" />
                     </Button>
