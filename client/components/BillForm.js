@@ -274,7 +274,9 @@ class BillForm extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id
+    id: state.user.id,
+    phone: state.phone,
+    bill: state
   };
 };
 
