@@ -78,10 +78,10 @@ class BillForm extends Component {
                 style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
               >
                 <Header as="h3" style={{ fontSize: "2em" }}>
-                  Sign Up Now
+                  Set up your monthly bill payments!
                 </Header>
                 <p style={{ fontSize: "1.33em" }}>
-                  <b>MIDAS</b> OUR APP MAKES MANAGING YOUR MONEY EASY.
+                  <b>MIDAS</b> OUR APP GIVES USERS ALERTS BASED ON THE DATE.
                 </p>
               </Grid.Column>
             </Grid.Row>
@@ -90,7 +90,7 @@ class BillForm extends Component {
         <Segment style={{ padding: "2em 0em" }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
-              <Grid.Column>
+              <Grid.Column style={{ marginRight: "30%" }}>
                 <div
                   id="signup-login"
                   style={{ display: "-webkit-inline-box", marginLeft: "40%" }}
@@ -99,129 +99,155 @@ class BillForm extends Component {
                     className="ui form"
                     onSubmit={this.handleSubmit}
                     name={name}
-                    style={{ fontSize: "15px" }}
+                    style={{
+                      fontSize: "15px",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      padding: "0",
+                      margin: "0",
+                      justifyContent: "space-around"
+                    }}
                   >
-                    <div className="field">
-                      <label>amount</label>
-                      <input
-                        placeholder="amount"
-                        name="amount"
-                        onChange={this.handleChange}
-                      />
-                    </div>
-
-                    <label>
-                      Enter the date of monthly rent
-                      <div id="dob">
-                        <select
-                          name="month"
-                          default="month"
-                          id="monthddl"
-                          onChange={this.handleChange}
-                        >
-                          <option value="1">January</option>
-                          <option value="2">Febuary</option>
-                          <option value="3">March</option>
-                          <option value="4">April</option>
-                          <option value="5">May</option>
-                          <option value="6">June</option>
-                          <option value="7">July</option>
-                          <option value="8">August</option>
-                          <option value="9">September</option>
-                          <option value="10">October</option>
-                          <option value="11">November</option>
-                          <option value="12">December</option>
-                        </select>
-                        <select
-                          name="day"
-                          id="dayddl"
-                          onChange={this.handleChange}
-                        >
-                          {arrayDay.map(elem => (
-                            <option key={`${elem}`} value={`${elem}`}>
-                              {elem}
-                            </option>
-                          ))}
-                        </select>
-
-                        <select
-                          name="Year"
-                          id="Year"
-                          onChange={this.handleChange}
-                        >
-                          {arrayYear.map(item => (
-                            <option key={`${item}`} value={`${item}`}>
-                              {item}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </label>
-                    <div className="field">
-                      <label>amount</label>
-                      <input
-                        placeholder="phoneAmount"
-                        name="phoneAmount"
-                        onChange={this.handleChange}
-                      />
-                    </div>
-
-                    <label>
-                      Enter the date of monthly rent
-                      <div id="dob">
-                        <select
-                          name="phoneMonth"
-                          default="phoneMonth"
-                          id="monthddl"
-                          onChange={this.handleChange}
-                        >
-                          <option value="1">January</option>
-                          <option value="2">Febuary</option>
-                          <option value="3">March</option>
-                          <option value="4">April</option>
-                          <option value="5">May</option>
-                          <option value="6">June</option>
-                          <option value="7">July</option>
-                          <option value="8">August</option>
-                          <option value="9">September</option>
-                          <option value="10">October</option>
-                          <option value="11">November</option>
-                          <option value="12">December</option>
-                        </select>
-                        <select
-                          name="phoneDay"
-                          id="dayddl"
-                          onChange={this.handleChange}
-                        >
-                          {arrayDay.map(elem => (
-                            <option key={`${elem}`} value={`${elem}`}>
-                              {elem}
-                            </option>
-                          ))}
-                        </select>
-
-                        <select
-                          name="phoneYear"
-                          id="Year"
-                          onChange={this.handleChange}
-                        >
-                          {arrayYear.map(item => (
-                            <option key={`${item}`} value={`${item}`}>
-                              {item}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </label>
-                    <br />
-                    <button
-                      type="submit"
-                      className="ui orange inverted button"
-                      role="button"
+                    <Segment
+                      style={{
+                        padding: "5px",
+                        width: "50%",
+                        textAlign: "center"
+                      }}
                     >
-                      Submit
-                    </button>
+                      <div className="field">
+                        <label>Rent bill amount</label>
+                        <input
+                          placeholder="amount"
+                          name="amount"
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
+                      <label>
+                        Enter the date of monthly rent bill
+                        <div id="dob" style={{ display: "flex" }}>
+                          <select
+                            name="month"
+                            default="month"
+                            id="monthddl"
+                            onChange={this.handleChange}
+                          >
+                            <option value="1">January</option>
+                            <option value="2">Febuary</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                          </select>
+                          <select
+                            name="day"
+                            id="dayddl"
+                            onChange={this.handleChange}
+                          >
+                            {arrayDay.map(elem => (
+                              <option key={`${elem}`} value={`${elem}`}>
+                                {elem}
+                              </option>
+                            ))}
+                          </select>
+
+                          <select
+                            name="Year"
+                            id="Year"
+                            onChange={this.handleChange}
+                          >
+                            {arrayYear.map(item => (
+                              <option key={`${item}`} value={`${item}`}>
+                                {item}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </label>
+                    </Segment>
+                    <Segment
+                      style={{
+                        padding: "5px",
+                        width: "50%",
+                        textAlign: "center",
+                        marginTop: "0"
+                      }}
+                    >
+                      <div className="field">
+                        <label>Phone bill amount</label>
+                        <input
+                          placeholder="phoneAmount"
+                          name="phoneAmount"
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
+                      <label>
+                        Enter the date of monthly phone bill
+                        <div id="dob" style={{ display: "flex" }}>
+                          <select
+                            name="phoneMonth"
+                            default="phoneMonth"
+                            id="monthddl"
+                            onChange={this.handleChange}
+                          >
+                            <option value="1">January</option>
+                            <option value="2">Febuary</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                          </select>
+                          <select
+                            name="phoneDay"
+                            id="dayddl"
+                            onChange={this.handleChange}
+                          >
+                            {arrayDay.map(elem => (
+                              <option key={`${elem}`} value={`${elem}`}>
+                                {elem}
+                              </option>
+                            ))}
+                          </select>
+
+                          <select
+                            name="phoneYear"
+                            id="Year"
+                            onChange={this.handleChange}
+                          >
+                            {arrayYear.map(item => (
+                              <option key={`${item}`} value={`${item}`}>
+                                {item}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </label>
+                    </Segment>
                     <br />
+                    <br />
+                    <Segment>
+                      <button
+                        type="submit"
+                        className="ui orange inverted button"
+                        role="button"
+                      >
+                        Submit
+                      </button>
+                    </Segment>
                   </form>
                 </div>
               </Grid.Column>

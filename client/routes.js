@@ -30,7 +30,8 @@ import {
   fetchEmergencyGoal,
   fetchRetirementDetails,
   fetchAllState,
-  fetchRent
+  fetchRent,
+  fetchPhone
 } from "./store";
 
 /**
@@ -52,6 +53,7 @@ class Routes extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.user.id !== nextProps.user.id) {
       this.props.fetchRent(nextProps.user.id);
+      this.props.fetchPhone(nextProps.user.id);
     }
   }
   render() {
@@ -131,6 +133,9 @@ const mapDispatch = dispatch => {
 
     fetchRent(id) {
       dispatch(fetchRent(id));
+    },
+    fetchPhone(id) {
+      dispatch(fetchPhone(id));
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));

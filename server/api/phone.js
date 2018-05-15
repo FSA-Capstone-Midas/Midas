@@ -9,14 +9,13 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/user/:id", (req, res, next) => {
-  //   console.log(req.params.id, "REQSSSSS");
   Phone.findOne({
     where: {
       userId: req.params.id
     }
   })
-    .then(rents => {
-      res.json(rents);
+    .then(phones => {
+      res.json(phones);
     })
     .catch(next);
 });

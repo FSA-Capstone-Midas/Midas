@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import BillAlert from "./BillAlert";
+import PhoneAlert from "./PhoneAlert";
 import AccountTable from "./AccountTable";
 import { Grid, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -60,6 +61,7 @@ class UserHome extends React.Component {
 
               <Grid.Column width={6}>
                 {bills.id ? <BillAlert /> : null}
+                {bills.id ? <PhoneAlert /> : null}
               </Grid.Column>
             </Grid>
             <Divider section />

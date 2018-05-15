@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import SideBar from "./SideBar";
-import BillAlert from "./BillAlert";
+
 import Table from "./Table";
 import { renCompo } from "./utils";
 import { Grid, Segment } from "semantic-ui-react";

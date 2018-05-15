@@ -28,6 +28,7 @@ export { default as Goals } from "./Goals";
 export { default as Bills } from "./Bills";
 export { default as BillForm } from "./BillForm";
 export { default as BillAlert } from "./BillAlert";
+export { default as PhoneAlert } from "./PhoneAlert";
 
 export { default as SaveForEmergency } from "./SaveForEmergency";
 
