@@ -21,7 +21,7 @@ class DataMapApartments extends Component {
             " "
           );
         },
-        highlightBorderWidth: 6,
+        highlightBorderWidth: 6
       },
       // geographyConfig: {
       //   popupOnHover: true,
@@ -35,216 +35,216 @@ class DataMapApartments extends Component {
         Middle: "#fbff87",
         "Very Low": "#f8ffb7",
         defaultFill: "#e9ff00",
-        "New York": "#ff5347",
+        "New York": "#ff5347"
       },
       data: {
         AZ: {
           fillKey: "Very Low",
           median1BrRent: "$820",
-          defaultFill: "#FFFF00",
+          defaultFill: "#FFFF00"
         },
         CO: {
           fillKey: "Very High",
-          median1BrRent: "$1,000",
+          median1BrRent: "$1,000"
         },
         DE: {
           fillKey: "Middle",
-          median1BrRent: "$960",
+          median1BrRent: "$960"
         },
         FL: {
           fillKey: "Middle",
-          median1BrRent: "$950",
+          median1BrRent: "$950"
         },
         GA: {
           fillKey: "Middle",
-          median1BrRent: "$850",
+          median1BrRent: "$850"
         },
         HI: {
           fillKey: "Very High",
-          median1BrRent: "$1,480",
+          median1BrRent: "$1,480"
         },
         ID: {
           fillKey: "Middle",
-          median1BrRent: "$640",
+          median1BrRent: "$640"
         },
         IL: {
           fillKey: "Very Low",
-          median1BrRent: "$900",
+          median1BrRent: "$900"
         },
         IN: {
           fillKey: "Middle",
-          median1BrRent: "$650",
+          median1BrRent: "$650"
         },
         IA: {
           fillKey: "Very Low",
-          median1BrRent: "$610",
+          median1BrRent: "$610"
         },
         KS: {
           fillKey: "Very Low",
-          median1BrRent: "$650",
+          median1BrRent: "$650"
         },
         KY: {
           fillKey: "Very Low",
-          median1BrRent: "$600",
+          median1BrRent: "$600"
         },
         LA: {
           fillKey: "Middle",
-          median1BrRent: "$700",
+          median1BrRent: "$700"
         },
         MD: {
           fillKey: "Very High",
-          median1BrRent: "$1,220",
+          median1BrRent: "$1,220"
         },
         ME: {
           fillKey: "Middle",
-          median1BrRent: "$780",
+          median1BrRent: "$780"
         },
         MA: {
           fillKey: "Very High",
-          median1BrRent: "$1,270",
+          median1BrRent: "$1,270"
         },
         MN: {
           fillKey: "Middle",
-          median1BrRent: "$840",
+          median1BrRent: "$840"
         },
         MI: {
           fillKey: "Very Low",
-          median1BrRent: "$710",
+          median1BrRent: "$710"
         },
         MS: {
           fillKey: "Middle",
-          median1BrRent: "$650",
+          median1BrRent: "$650"
         },
         MO: {
           fillKey: "Very Low",
-          median1BrRent: "$660",
+          median1BrRent: "$660"
         },
         MT: {
           fillKey: "Very Low",
-          median1BrRent: "$620",
+          median1BrRent: "$620"
         },
         NC: {
           fillKey: "Middle",
-          median1BrRent: "$730",
+          median1BrRent: "$730"
         },
         NE: {
           fillKey: "Very Low",
-          median1BrRent: "$640",
+          median1BrRent: "$640"
         },
         NV: {
           fillKey: "Middle",
-          median1BrRent: "$860",
+          median1BrRent: "$860"
         },
         NH: {
           fillKey: "Very High",
-          median1BrRent: "$1,010",
+          median1BrRent: "$1,010"
         },
         NJ: {
           fillKey: "Very High",
-          median1BrRent: "$1,230",
+          median1BrRent: "$1,230"
         },
         NY: {
           fillKey: "New York",
-          median1BrRent: "$1,260",
+          median1BrRent: "$1,260"
         },
         ND: {
           fillKey: "Very Low",
-          median1BrRent: "$610",
+          median1BrRent: "$610"
         },
         NM: {
           fillKey: "Very Low",
-          median1BrRent: "$660",
+          median1BrRent: "$660"
         },
         OH: {
           fillKey: "UNDECIDED",
-          median1BrRent: "$650",
+          median1BrRent: "$650"
         },
         OK: {
           fillKey: "Very Low",
-          median1BrRent: "$600",
+          median1BrRent: "$600"
         },
         OR: {
           fillKey: "Middle",
-          median1BrRent: "$990",
+          median1BrRent: "$990"
         },
         PA: {
           fillKey: "Middle",
-          median1BrRent: "$820",
+          median1BrRent: "$820"
         },
         RI: {
           fillKey: "Very High",
-          median1BrRent: "$950",
+          median1BrRent: "$950"
         },
         SC: {
           fillKey: "Very Low",
-          median1BrRent: "$760",
+          median1BrRent: "$760"
         },
         SD: {
           fillKey: "Very Low",
-          median1BrRent: "$560",
+          median1BrRent: "$560"
         },
         TN: {
           fillKey: "Very Low",
-          median1BrRent: "$690",
+          median1BrRent: "$690"
         },
         TX: {
           fillKey: "Middle",
-          median1BrRent: "$830",
+          median1BrRent: "$830"
         },
         UT: {
           fillKey: "Very Low",
-          median1BrRent: "$790",
+          median1BrRent: "$790"
         },
         WI: {
           fillKey: "Very Low",
-          median1BrRent: "$670",
+          median1BrRent: "$670"
         },
         VA: {
           fillKey: "Very High",
-          median1BrRent: "$1,030",
+          median1BrRent: "$1,030"
         },
         VT: {
           fillKey: "Middle",
-          median1BrRent: "$970",
+          median1BrRent: "$970"
         },
         WA: {
           fillKey: "Very High",
-          median1BrRent: "$1,140",
+          median1BrRent: "$1,140"
         },
         WV: {
           fillKey: "Very Low",
-          median1BrRent: "$600",
+          median1BrRent: "$600"
         },
         WY: {
           fillKey: "Very Low",
-          median1BrRent: "$610",
+          median1BrRent: "$610"
         },
         CA: {
           fillKey: "Very High",
-          median1BrRent: "$1,430",
+          median1BrRent: "$1,430"
         },
         CT: {
           fillKey: "Very High",
-          median1BrRent: "$1070",
+          median1BrRent: "$1070"
         },
         AK: {
           fillKey: "Very High",
-          median1BrRent: "$930",
+          median1BrRent: "$930"
         },
         AR: {
           fillKey: "Very Low",
-          median1BrRent: "$570",
+          median1BrRent: "$570"
         },
         AL: {
           fillKey: "Very Low",
-          median1BrRent: "$650",
-        },
+          median1BrRent: "$650"
+        }
       },
       done: function(map) {
         map.svg.selectAll(".datamaps-subunit").on("click", function(geo) {
           var localData = map.options.data[geo.id];
         });
-      },
+      }
     });
     Map.labels();
     window.addEventListener("resize", function() {
@@ -256,11 +256,15 @@ class DataMapApartments extends Component {
     const divStyle = {
       position: "relative",
       width: "110%",
-      height: "100%",
+      height: "100%"
     };
     return (
       <div>
-        <div id="map_median1BrRent" style={divStyle} />
+        <div
+          id="map_median1BrRent"
+          className="animated pulse"
+          style={divStyle}
+        />
       </div>
     );
   }
@@ -268,7 +272,7 @@ class DataMapApartments extends Component {
 
 const mapState = state => {
   return {
-    stateInfo: state.states,
+    stateInfo: state.states
   };
 };
 

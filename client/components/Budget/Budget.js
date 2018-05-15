@@ -18,14 +18,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Budget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
   componentDidMount() {
@@ -36,36 +36,36 @@ class Budget extends Component {
   render() {
     return (
       <ResponsiveContainer>
-        <Segment
-          id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
-          vertical
-        >
+        <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">
               <Grid.Column
-                style={{ paddingBottom: "0.5em", paddingTop: "2em" }}
+                style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
               >
-                {this.state.loading ? (
-                  <Loading />
-                ) : (
-                  <div>
-                    <Segment style={{ fontSize: "28px", textAlign: "center" }}>
-                      BUDGETS
-                    </Segment>
-                    <Segment>
-                      <BudgetModal />
-                      <BudgetProgress />
-                      <BudgetHorizontalBarChart />
-                    </Segment>
-                  </div>
-                )}
+                <h3>Budget</h3>
+                <h4>Manage your budget.</h4>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-
-        <Footer />
+        <Grid celled="internally" columns="equal" stackable>
+          <Grid.Row textAlign="center">
+            <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
+              {this.state.loading ? (
+                <Loading />
+              ) : (
+                <div>
+                  <Segment>
+                    <BudgetModal />
+                    <BudgetProgress />
+                    <BudgetHorizontalBarChart />
+                  </Segment>
+                  <Footer />
+                </div>
+              )}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </ResponsiveContainer>
     );
   }
@@ -74,8 +74,14 @@ class Budget extends Component {
 const mapState = state => {
   return {
     account: state.plaid.account,
-    transaction: state.plaid.transaction,
+    transaction: state.plaid.transaction
   };
 };
 
 export default connect(mapState)(Budget);
+
+// <Segment
+// id="howItWorksBackground"
+// style={{ padding: "1.5em" }}
+// vertical
+// >

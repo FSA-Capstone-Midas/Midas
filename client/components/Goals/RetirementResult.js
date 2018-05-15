@@ -19,7 +19,7 @@ const createData = retirement => {
     monthlyRetirementSpending,
     retirementage,
     saveEachYear,
-    savedSoFar,
+    savedSoFar
   } = retirement;
 
   const currentYear = new Date().getFullYear();
@@ -39,8 +39,7 @@ const createData = retirement => {
         "Poor Market": poorMarket,
         "Good Market": goodMarket,
         savingOrSpending: beginningSaving,
-        cashFlow:
-          martialStatus === "single" ? beginningSaving : beginningSaving,
+        cashFlow: martialStatus === "single" ? beginningSaving : beginningSaving
       });
       num++;
     } else if (i > currentAge && i < retirementage) {
@@ -61,7 +60,7 @@ const createData = retirement => {
         cashFlow:
           martialStatus === "single"
             ? Math.round(beginningSaving, 0)
-            : Math.round(beginningSaving, 0),
+            : Math.round(beginningSaving, 0)
       });
       num++;
     } else {
@@ -84,7 +83,7 @@ const createData = retirement => {
         cashFlow:
           martialStatus === "single"
             ? Math.round(beginningSaving)
-            : Math.round(beginningSaving * 1.2),
+            : Math.round(beginningSaving * 1.2)
       });
       num++;
     }
@@ -102,14 +101,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class RetirementResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -146,7 +145,7 @@ class RetirementResult extends Component {
                           top: 50,
                           right: 110,
                           bottom: 50,
-                          left: 60,
+                          left: 60
                         }}
                         axisBottom={{
                           orient: "bottom",
@@ -154,7 +153,7 @@ class RetirementResult extends Component {
                           tickPadding: 5,
                           tickRotation: 0,
                           legend: "",
-                          legendOffset: 36,
+                          legendOffset: 36
                         }}
                         axisLeft={{
                           orient: "left",
@@ -162,7 +161,7 @@ class RetirementResult extends Component {
                           tickPadding: 5,
                           tickRotation: 0,
                           legend: "",
-                          legendOffset: -40,
+                          legendOffset: -40
                         }}
                         curve="natural"
                         offsetType="none"
@@ -176,7 +175,7 @@ class RetirementResult extends Component {
                             color: "#2c998f",
                             size: 4,
                             padding: 2,
-                            stagger: true,
+                            stagger: true
                           },
                           {
                             id: "squares",
@@ -185,22 +184,22 @@ class RetirementResult extends Component {
                             color: "#e4c912",
                             size: 6,
                             padding: 2,
-                            stagger: true,
-                          },
+                            stagger: true
+                          }
                         ]}
                         fill={[
                           {
                             match: {
-                              id: "Paul",
+                              id: "Paul"
                             },
-                            id: "dots",
+                            id: "dots"
                           },
                           {
                             match: {
-                              id: "Marcel",
+                              id: "Marcel"
                             },
-                            id: "squares",
-                          },
+                            id: "squares"
+                          }
                         ]}
                         animate={true}
                         motionStiffness={90}
@@ -213,8 +212,8 @@ class RetirementResult extends Component {
                             itemWidth: 80,
                             itemHeight: 20,
                             symbolSize: 12,
-                            symbolShape: "circle",
-                          },
+                            symbolShape: "circle"
+                          }
                         ]}
                       />
                     </div>
@@ -241,13 +240,13 @@ const mapState = state => {
     transaction: state.transactions.transaction,
     form: state.form,
     user: state.user,
-    retirement: state.retirement,
+    retirement: state.retirement
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchRetirementDetails: userId => dispatch(fetchRetirementDetails(userId)),
+    fetchRetirementDetails: userId => dispatch(fetchRetirementDetails(userId))
   };
 }
 

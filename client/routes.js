@@ -20,6 +20,8 @@ import {
   Retirement,
   RetirementResult,
   SaveForEmergencyConfirmPage,
+  Bills,
+  BillForm
 } from "./components";
 import {
   me,
@@ -28,6 +30,9 @@ import {
   getBudgetFromDatabase,
   fetchEmergencyGoal,
   fetchRetirementDetails,
+  fetchAllState,
+  fetchRent,
+  fetchPhone
 } from "./store";
 
 /**
@@ -46,7 +51,12 @@ class Routes extends Component {
       this.props.loadBudgetData(nextProps.user.id);
     }
   }
-
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user.id !== nextProps.user.id) {
+      this.props.fetchRent(nextProps.user.id);
+      this.props.fetchPhone(nextProps.user.id);
+    }
+  }
   render() {
     const { isLoggedIn } = this.props;
 
@@ -76,6 +86,7 @@ class Routes extends Component {
             <Route exact path="/retirement" component={Retirement} />
             <Route exact path="/credit" component={UserCredit} />
             <Route exact path="/goals" component={Goals} />
+            <Route exact path="/bills" component={Bills} />
             <Route
               exact
               path="/goals/saveforemergency"
@@ -124,6 +135,13 @@ const mapDispatch = dispatch => {
     },
     loadBudgetData(userId) {
       dispatch(getBudgetFromDatabase(userId));
+    },
+
+    fetchRent(id) {
+      dispatch(fetchRent(id));
+    },
+    fetchPhone(id) {
+      dispatch(fetchPhone(id));
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));

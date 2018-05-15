@@ -12,11 +12,11 @@ const DELETE_HOUSE_GOAL = "DELETE_HOUSE_GOAL";
  * INITIAL STATE
  */
 const fieldValues = {
-  annualIncome: "",
-  mortgageRate: "",
-  percentDownPayment: "",
-  annualInsurance: "",
-  annualPropertyTax: "",
+  annualIncome: 60000,
+  mortgageRate: 4.5,
+  percentDownPayment: 20,
+  annualInsurance: 500,
+  annualPropertyTax: 1
 };
 
 /**

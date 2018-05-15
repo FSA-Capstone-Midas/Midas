@@ -26,4 +26,9 @@ export {
   default as SaveForEmergencyConfirmPage,
 } from "./Goals/SaveForEmergencyConfirmPage";
 export { default as House } from "./Goals/House";
+export { default as Bills } from "./Bills";
+export { default as BillForm } from "./BillForm";
+export { default as BillAlert } from "./BillAlert";
+export { default as PhoneAlert } from "./PhoneAlert";
+
 //export { Login, Signup } from "./auth-form";

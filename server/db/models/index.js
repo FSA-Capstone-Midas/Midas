@@ -1,5 +1,7 @@
 const User = require("./user");
 const Retirement = require("./retirement");
+const Rent = require("./rent");
+const Phone = require("./phone");
 const EmergencyGoal = require("./emergencyGoal");
 const House = require("./house");
 const Budget = require("./budget");
@@ -12,6 +14,10 @@ const Budget = require("./budget");
  */
 
 Retirement.belongsTo(User);
+Rent.belongsTo(User);
+Phone.belongsTo(User);
+User.hasMany(Rent);
+User.hasMany(Phone);
 EmergencyGoal.belongsTo(User);
 House.belongsTo(User);
 Budget.belongsTo(User);
@@ -26,7 +32,9 @@ Budget.belongsTo(User);
 module.exports = {
   User,
   Retirement,
+  Rent,
   EmergencyGoal,
   House,
-  Budget
+  Budget,
+  Phone
 };
