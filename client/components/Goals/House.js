@@ -76,53 +76,47 @@ class House extends Component {
                 <Grid.Column width={8}>
                   <h5>How much can I afford?</h5>
                   <br />
-                  <Form className="ui small">
-                    <Form.Group>
-                      <Grid>
-                        <Grid.Column width={8}>
-                          <Form.Field
-                            control={Input}
-                            label="Annual Income $:"
-                            name="annualIncome"
-                            value={houseForm.annualIncome}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
-                            name="mortgageRate"
-                            value={houseForm.mortgageRate}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Annual Insurance $"
-                            name="annualInsurance"
-                            value={houseForm.annualInsurance}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Annual Property Tax % (national averge is 1%)"
-                            name="annualPropertyTax"
-                            value={houseForm.annualPropertyTax}
-                            onChange={handleChange}
-                          />
-                          <Form.Input
-                            label={`Percent Down Payment: ${
-                              houseForm.percentDownPayment
-                            } %`}
-                            min={0}
-                            max={100}
-                            name="percentDownPayment"
-                            onChange={handleChange}
-                            step={1}
-                            type="range"
-                            value={houseForm.percentDownPayment}
-                          />
-                        </Grid.Column>
-                      </Grid>
-                    </Form.Group>
+                  <Form className="ui small" fluid>
+                    <Form.Field
+                      control={Input}
+                      label="Annual Income $:"
+                      name="annualIncome"
+                      value={houseForm.annualIncome}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
+                      name="mortgageRate"
+                      value={houseForm.mortgageRate}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Annual Insurance $"
+                      name="annualInsurance"
+                      value={houseForm.annualInsurance}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Annual Property Tax % (national averge is 1%)"
+                      name="annualPropertyTax"
+                      value={houseForm.annualPropertyTax}
+                      onChange={handleChange}
+                    />
+                    <Form.Input
+                      label={`Percent Down Payment: ${
+                        houseForm.percentDownPayment
+                      } %`}
+                      min={0}
+                      max={100}
+                      name="percentDownPayment"
+                      onChange={handleChange}
+                      step={1}
+                      type="range"
+                      value={houseForm.percentDownPayment}
+                    />
                   </Form>
                 </Grid.Column>
 
