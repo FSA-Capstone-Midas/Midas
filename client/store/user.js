@@ -36,7 +36,9 @@ export const me = () => dispatch =>
     .then(res => {
       const userId = res.data.id;
       dispatch(getUser(res.data || defaultUser));
-      dispatch(fetchEmergencyGoal(userId));
+      if (userId) {
+        dispatch(fetchEmergencyGoal(userId));
+      }
     })
     .catch(err => console.log(err));
 
@@ -83,12 +85,11 @@ export const auth = (
     .then(
       res => {
         dispatch(getUser(res.data));
-        history.push("/home");
+        history.push("/addAccount");
       },
       authError => {
         // rare example: a good use case for parallel (non-catch) error handler
         dispatch(getUser({ error: authError }));
-        console.log("what is authError", authError);
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));

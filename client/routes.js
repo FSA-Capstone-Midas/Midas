@@ -56,7 +56,7 @@ class Routes extends Component {
     }
   }
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, userWithToken } = this.props;
 
     return (
       <Switch>
@@ -67,41 +67,45 @@ class Routes extends Component {
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
 
-        {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-            <Route exact path="/transactions" component={Transactions} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/budget" component={Budget} />
-            <Route exact path="/trend" component={UserTrend} />
-            <Route exact path="/profile" component={Profile} />
-            <Route
-              exact
-              path="/retirement/analysis"
-              component={RetirementResult}
-            />
-            <Route exact path="/retirement" component={Retirement} />
-            <Route exact path="/credit" component={UserCredit} />
-            <Route exact path="/goals" component={Goals} />
-            <Route exact path="/bills" component={Bills} />
-            <Route exact path="/addAccount" component={AddAccount} />
+        {!userWithToken ? (
+          <Route exact path="/addAccount" component={AddAccount} />
+        ) : null}
 
-            <Route
-              exact
-              path="/goals/saveforemergency"
-              component={SaveForEmergencyMainPage}
-            />
-            <Route
-              exact
-              path="/goals/saveforemergencyconfirmpage"
-              component={SaveForEmergencyConfirmPage}
-            />
-            <Route exact path="/house" component={House} />
+        {isLoggedIn &&
+          userWithToken && (
+            <Switch>
+              {/* Routes placed here are only available after logging in */}
+              <Route path="/home" component={UserHome} />
+              <Route exact path="/transactions" component={Transactions} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/budget" component={Budget} />
+              <Route exact path="/trend" component={UserTrend} />
+              <Route exact path="/profile" component={Profile} />
+              <Route
+                exact
+                path="/retirement/analysis"
+                component={RetirementResult}
+              />
+              <Route exact path="/retirement" component={Retirement} />
+              <Route exact path="/credit" component={UserCredit} />
+              <Route exact path="/goals" component={Goals} />
+              <Route exact path="/bills" component={Bills} />
 
-            <Route component={UserHome} />
-          </Switch>
-        )}
+              <Route
+                exact
+                path="/goals/saveforemergency"
+                component={SaveForEmergencyMainPage}
+              />
+              <Route
+                exact
+                path="/goals/saveforemergencyconfirmpage"
+                component={SaveForEmergencyConfirmPage}
+              />
+              <Route exact path="/house" component={House} />
+
+              <Route component={UserHome} />
+            </Switch>
+          )}
         {/* Displays our Login component as a fallback */}
         <Route component={HomePage} />
       </Switch>
@@ -117,6 +121,7 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
+    userWithToken: state.user.plaidTokenId,
     userId: state.user.id,
     user: state.user
   };

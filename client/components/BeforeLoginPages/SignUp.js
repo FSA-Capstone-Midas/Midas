@@ -10,7 +10,7 @@ import {
   Segment,
   Checkbox,
   Button,
-  Message,
+  Message
 } from "semantic-ui-react";
 import { auth } from "../../store";
 import MobileContainer from "../BeforeLogin/MobileContainer";
@@ -25,7 +25,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class SignUp extends Component {
@@ -34,7 +34,7 @@ class SignUp extends Component {
     this.state = {
       year: 0,
       month: 0,
-      day: 0,
+      day: 0
     };
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
@@ -42,15 +42,15 @@ class SignUp extends Component {
   handleSelectChange(e, { name, value }) {
     if (name === "year") {
       this.setState({
-        year: value,
+        year: value
       });
     } else if (name === "month") {
       this.setState({
-        month: value,
+        month: value
       });
     } else if (name === "day") {
       this.setState({
-        day: value,
+        day: value
       });
     }
   }
@@ -70,7 +70,7 @@ class SignUp extends Component {
       { key: "September", text: "September", value: 9 },
       { key: "October", text: "October", value: 10 },
       { key: "November", text: "November", value: 11 },
-      { key: "December", text: "December", value: 12 },
+      { key: "December", text: "December", value: 12 }
     ];
 
     const startYear = 1948;
@@ -225,16 +225,13 @@ const mapSignup = state => {
   return {
     name: "signup",
     displayName: "Sign Up",
-    error: state.user.error,
+    error: state.user.error
   };
 };
 
 const mapDispatch = (dispatch, ownProps) => {
   return {
     handleSubmit(evt) {
-      console.log("what is evt.target.year.value", evt.target.year.value);
-      console.log("what is evt.target.day.value", evt.target.day.value);
-      console.log("what is evt.target.month.value", evt.target.month.value);
       evt.preventDefault();
       const formName = evt.target.name;
       const email = evt.target.email.value;
@@ -258,7 +255,7 @@ const mapDispatch = (dispatch, ownProps) => {
           day
         )
       );
-    },
+    }
   };
 };
 
@@ -271,5 +268,5 @@ SignUp.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.object
 };

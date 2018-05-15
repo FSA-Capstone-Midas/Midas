@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Plaid from "./Plaid";
-import MobileContainer from "./BeforeLogin/MobileContainer";
-import DesktopContainer from "./BeforeLogin/DesktopContainer";
+import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
+import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import Footer from "./Footer";
-import { Container, Grid, Message, Icon } from "semantic-ui-react";
+import { Container, Grid, Message, Icon, Image } from "semantic-ui-react";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -46,6 +46,23 @@ class AddAccount extends Component {
                   is wholelly at your own risk.
                 </p>
               </Message>
+              <Grid>
+                <Grid.Column width={3}>
+                  <Image src="../../pictures/image.png" size="small" />
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Image src="../../pictures/image.png" size="small" />
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Image src="../../pictures/image.png" size="small" />
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Image src="../../pictures/image.png" size="small" />
+                </Grid.Column>
+                <Grid.Column width={3}>
+                  <Image src="../../pictures/image.png" size="small" />
+                </Grid.Column>
+              </Grid>
             </Grid.Column>
           </Grid>
         </Container>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PlaidLink from "react-plaid-link";
 import { connect } from "react-redux";
 import { fetchInformation } from "../store";
-import { Container } from "semantic-ui-react";
 
 class Plaid extends Component {
   render() {
