@@ -25,7 +25,7 @@ class Plaid extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatch = dispatch => {
   return {
     handleOnExit(metadata) {
       //user cancel to add bank to account
@@ -35,6 +35,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(fetchInformation(token, metadata));
     }
   };
-}
+};
 
-export default connect(null, mapDispatchToProps)(Plaid);
+export default connect(null, mapDispatch)(Plaid);
