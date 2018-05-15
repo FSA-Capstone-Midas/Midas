@@ -39,6 +39,15 @@ export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
     .catch(err => console.log(err));
 };
 
+export const deleteRetirementPlan = id => dispatch => {
+  axios
+    .delete(`/api/emergencyGoal/user/${id}`)
+    .then(res => {
+      dispatch(getEmergencyGoal(res.data));
+    })
+    .catch(err => console.log(err));
+};
+
 //reducer
 export default function emergencyGoalReducer(
   state = defaultEmergencyGoal,

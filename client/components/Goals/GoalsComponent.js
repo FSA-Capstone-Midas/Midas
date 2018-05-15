@@ -2,9 +2,33 @@ import React, { Component } from "react";
 import { Button, Icon, Item, Label, Segment, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { deleteRetirementPlan } from "../../store";
+import { deleteRetirementGoal } from "../../store";
+import { deleteHousePlan } from "../../store";
 
 class ItemExampleDivided extends Component {
+  constructor(props) {
+    super(props);
+    this.preEmergencyClick = this.preEmergencyClick.bind(this);
+  }
+  preEmergencyClick(event) {
+    event.preventDefault();
+    console.log("what is props", this.props);
+    this.props.handleEmergencyClick(event);
+  }
+
+  handleEmergencySubmit(event, data) {
+    event.preventDefault();
+    this.props.deleteEmergencyPlan(data);
+    //redirect to goal home page
+  }
+
   render() {
+    const {
+      handleRetirementClick,
+      handleEmergencyClick,
+      handleHouseClick,
+    } = this.props;
     return (
       <Item.Group divided>
         {this.props.retirement.birthyear ? (
@@ -23,7 +47,12 @@ class ItemExampleDivided extends Component {
                   Update your retirement plan
                 </Button>
               </NavLink>
-              <Button negative floated="right">
+              <Button
+                name="retirementPlan"
+                negative
+                floated="right"
+                onClick={event => handleRetirementClick(event)}
+              >
                 Delete retirement plan
               </Button>
             </Item.Content>
@@ -45,8 +74,13 @@ class ItemExampleDivided extends Component {
                   Update your emergency plan
                 </Button>
               </NavLink>
-              <Button negative floated="right">
-                Delete emergency plan
+              <Button
+                type="submit"
+                onClick={(event, data) =>
+                  this.handleEmergencySubmit(event, data)
+                }
+              >
+                Delete Emergency Plan
               </Button>
             </Item.Content>
           </Item>
@@ -62,11 +96,17 @@ class ItemExampleDivided extends Component {
                 <Label>Housing Goal</Label>
               </Item.Extra>
               <NavLink to="/house">
-                <Button positive floated="right">
+                <Button
+                  type="submit"
+                  name="housingPlan"
+                  positive
+                  floated="right"
+                  onClick={handleHouseClick}
+                >
                   Update your mortgage plan
                 </Button>
               </NavLink>
-              <Button negative floated="right">
+              <Button negative floated="right" onClick={handleHouseClick}>
                 Delete mortgage plan
               </Button>
             </Item.Content>
@@ -102,4 +142,21 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(GoalsComponent);
+const mapDispatchToProps = dispatch => {
+  return {
+    handleRetirementClick(event) {
+      dispatch(
+        deleteRetirementPlan({ [event.target.name]: event.target.value })
+      );
+    },
+    deleteEmergencyPlan(data) {
+      console.log("Do we get here?");
+      dispatch(deleteRetirementGoal(data));
+    },
+    handleHouseClick(event) {
+      dispatch(deleteHousePlan({ [event.target.name]: event.target.value }));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsComponent);
