@@ -16,8 +16,6 @@ Date.prototype.yyyymmdd = function(past) {
   ].join("-");
 };
 
-let ACCESS_TOKEN = null;
-
 //our server key
 let client = new plaid.Client(
   "5af4b49ee1c4cb0012b62b85",
@@ -52,7 +50,6 @@ router.get("/auth", function(req, res, next) {
 
   User.findById(req.user.id)
     .then(user => {
-      console.log(user.plaidTokenId);
       let accessToken = user.plaidTokenId;
       client.getAuth(accessToken, function(error, data) {
         if (error) {

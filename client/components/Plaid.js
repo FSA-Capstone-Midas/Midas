@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PlaidLink from "react-plaid-link";
 import { connect } from "react-redux";
 import { fetchInformation } from "../store";
+import { Container } from "semantic-ui-react";
 
 class Plaid extends Component {
   render() {
@@ -17,7 +18,7 @@ class Plaid extends Component {
           onSuccess={handleOnSuccess}
           //   onLoad={getData}
         >
-          Open Link and connect your bank!
+          Connect your bank account to Midas!
         </PlaidLink>
       </div>
     );
@@ -26,9 +27,9 @@ class Plaid extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleOnExit(error, metadata) {
-      console.log("link: user exited");
-      console.log(error, metadata);
+    handleOnExit(metadata) {
+      //user cancel to add bank to account
+      // console.log(error, metadata)
     },
     handleOnSuccess(token, metadata) {
       dispatch(fetchInformation(token, metadata));

@@ -48,12 +48,11 @@ export const updateProfile = (id, profile) => dispatch =>
       history.push("/home");
     })
     .catch(err => console.log(err));
+
 export const fetchUser = id => dispatch => {
-  // console.log("~~~~~~~~~~~", id);
   axios
     .get(`/api/users/${id}`)
     .then(res => {
-      console.log("~~~~~~~~~~~data", res.data);
       dispatch(getUser(res.data));
     })
     .catch(err => console.log(err));
@@ -79,7 +78,7 @@ export const auth = (
       nickName,
       birthYear,
       birthMonth,
-      birthDay,
+      birthDay
     })
     .then(
       res => {
