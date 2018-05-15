@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import AccountTable from "./AccountTable";
-import { Grid, Divider } from "semantic-ui-react";
+import { Grid, Segment, Divider } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
@@ -39,11 +39,22 @@ class UserHome extends React.Component {
 
     return (
       <ResponsiveContainer>
+        <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
+          <Grid celled="internally" columns="equal" stackable>
+            <Grid.Row textAlign="center">
+              <Grid.Column
+                style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
+              >
+                <h3>Dashboard</h3>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
         {this.state.loading ? (
           <Loading />
         ) : (
           <div>
-            <div>
+            <div style={{ fontSize: "20px" }}>
               Welcome back {user.firstName} {user.lastName}
               <br />
               Last login time:
@@ -55,6 +66,7 @@ class UserHome extends React.Component {
             <Divider section />
             <Grid>
               <Grid.Column width={10}>
+                <h4>Account Summary</h4>
                 <AccountTable />
               </Grid.Column>
 
@@ -63,10 +75,14 @@ class UserHome extends React.Component {
               </Grid.Column>
             </Grid>
             <Divider section />
-
+            <h4>Transactions</h4>
             <Grid>
               <Grid.Column width={8}>
-                {transaction ? <PieSpending rows={transaction} /> : null}
+                {transaction ? (
+                  <div>
+                    <PieSpending rows={transaction} />
+                  </div>
+                ) : null}
               </Grid.Column>
               <Grid.Column width={8}>
                 {transaction ? <BarNetIncome rows={transaction} /> : null}
