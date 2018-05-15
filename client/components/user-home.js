@@ -21,14 +21,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -62,7 +62,9 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <div style={{ fontSize: "20px" }}>
+            <div
+              style={{ fontSize: "20px", marginLeft: "85%", paddingTop: "1em" }}
+            >
               Welcome back {fullname}
               <br />
               Last login time:
@@ -72,8 +74,13 @@ class UserHome extends React.Component {
                   user.updatedAt.split("T")[1].slice(0, 8)}
             </div>
             <Divider section />
-            <Container>
-              <Grid>
+            <Container style={{ width: "70%" }}>
+              <Grid
+                style={{
+                  width: "-webkit-fill-available",
+                  justifyContent: "space-between"
+                }}
+              >
                 <Grid.Column width={10}>
                   <h4>Account Summary</h4>
                   <AccountTable />
@@ -87,8 +94,8 @@ class UserHome extends React.Component {
               </Grid>
             </Container>
             <Divider section />
-            <h4>Transactions</h4>
-            <Grid style={{ marginLeft: "10em" }}>
+            <h4 style={{ marginLeft: "14.5%" }}>Transactions</h4>
+            <Grid style={{ marginLeft: "20em", marginRight: "15%" }}>
               <Grid.Column width={8}>
                 {transaction ? (
                   <div>
@@ -130,7 +137,7 @@ const mapState = state => {
     accounts: state.accounts,
     transaction: state.transactions.transaction,
     bills: state.bills,
-    phone: state.phone,
+    phone: state.phone
   };
 };
 
