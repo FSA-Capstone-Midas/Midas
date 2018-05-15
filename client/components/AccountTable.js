@@ -27,7 +27,9 @@ const AccountTable = props => {
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>{each.name}</Table.Cell>
-                    <Table.Cell>${each.balances.available}</Table.Cell>
+                    <Table.Cell style={{ color: "lightGreen" }}>
+                      ${each.balances.available}
+                    </Table.Cell>
                     <Table.Cell>{each.subtype}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
@@ -54,7 +56,9 @@ const AccountTable = props => {
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>{each.name}</Table.Cell>
-                    <Table.Cell>${each.balances.available}</Table.Cell>
+                    <Table.Cell style={{ color: "lightGreen" }}>
+                      ${each.balances.available}
+                    </Table.Cell>
                     <Table.Cell>${each.balances.current}</Table.Cell>
                     <Table.Cell>${each.balances.limit}</Table.Cell>
                     <Table.Cell>{each.subtype}</Table.Cell>
