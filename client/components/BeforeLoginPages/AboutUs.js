@@ -58,6 +58,7 @@ const AboutUs = props => {
       <Segment
         style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
         vertical
+        id="mainContent"
       >
         <Grid container stackable verticalAlign="middle" columns={4}>
           <Grid.Row>
