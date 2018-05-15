@@ -71,18 +71,14 @@ class BillForm extends Component {
     }
     return (
       <div>
-        <Segment id="aboutUsBackground" style={{ padding: "3em" }} vertical>
+        <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">
               <Grid.Column
-                style={{ paddingBottom: "0.5em", paddingTop: "0.5em" }}
+                style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
               >
-                <Header as="h3" style={{ fontSize: "2em" }}>
-                  Bill Alerts
-                </Header>
-                <p style={{ fontSize: "1.33em" }}>
-                  Take Control of your bills today.
-                </p>
+                <h3>Trends</h3>
+                <h4>Economics barometer around the country.</h4>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -274,7 +270,9 @@ class BillForm extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id
+    id: state.user.id,
+    phone: state.phone,
+    bill: state
   };
 };
 

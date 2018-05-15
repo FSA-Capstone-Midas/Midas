@@ -20,7 +20,7 @@ const AccountTable = props => {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Balances</Table.HeaderCell>
+                    <Table.HeaderCell>Balance</Table.HeaderCell>
                     <Table.HeaderCell>Type</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
