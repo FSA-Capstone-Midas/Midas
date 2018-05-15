@@ -23,7 +23,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...notMobile}>
+      <Responsive {...notMobile} id="#desktopNav">
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}

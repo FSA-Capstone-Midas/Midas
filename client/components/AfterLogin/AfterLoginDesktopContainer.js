@@ -8,7 +8,7 @@ import {
   Menu,
   Responsive,
   Segment,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 import { logout, fetchUser } from "../../store";
 
@@ -84,7 +84,7 @@ class MenuExampleSecondary extends Component {
 }
 
 MenuExampleSecondary.propTypes = {
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
 };
 
 /* Heads up!
@@ -102,7 +102,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...notMobile}>
+      <Responsive {...notMobile} id="desktopNav">
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -159,12 +159,12 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id
+    id: state.user.id,
   };
 };
 const mapDispatch = dispatch => {
@@ -175,7 +175,7 @@ const mapDispatch = dispatch => {
     handleUser(event, id) {
       event.preventDefault();
       dispatch(fetchUser(id));
-    }
+    },
   };
 };
 
