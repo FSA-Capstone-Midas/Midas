@@ -9,7 +9,14 @@ const UPDATE_BUDGET = "UPDATE_BUDGET";
 /**
  * INITIAL STATE
  */
-const defaultBudget = {};
+const defaultBudget = {
+  foodAndDrink: 1000,
+  recreation: 1000,
+  service: 1000,
+  shops: 1000,
+  travel: 1000,
+  miscellaneous: 25000
+};
 
 /**
  * ACTION CREATORS

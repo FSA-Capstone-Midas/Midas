@@ -11,11 +11,11 @@ const GET_UPDATED_HOUSE_PLAN = "GET_HOUSE_PLAN";
  * INITIAL STATE
  */
 const fieldValues = {
-  annualIncome: "",
-  mortgageRate: "",
-  percentDownPayment: "",
-  annualInsurance: "",
-  annualPropertyTax: "",
+  annualIncome: 60000,
+  mortgageRate: 4.5,
+  percentDownPayment: 20,
+  annualInsurance: 500,
+  annualPropertyTax: 1
 };
 
 /**

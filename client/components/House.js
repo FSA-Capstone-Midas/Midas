@@ -5,10 +5,12 @@ import { connect } from "react-redux";
 import Footer from "./Footer";
 import {
   Segment,
+  Container,
   Form,
   Input,
   Button,
   Icon,
+  Grid,
   Statistic
 } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -41,106 +43,127 @@ class House extends Component {
   }
   render() {
     const { handleChange, handleSubmit, userId, houseForm } = this.props;
+    const {
+      annualIncome,
+      annualInsurance,
+      annualPropertyTax,
+      percentDownPayment,
+      mortgageRate
+    } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
-    const aggressivePrice = Math.floor(houseForm.annualIncome * 6);
+    const aggressivePrice = Math.floor(annualIncome * 6);
     const downpaymentAggresive = Math.floor(
-      aggressivePrice * (houseForm.percentDownPayment / 100)
+      aggressivePrice * (percentDownPayment / 100)
     );
+    const paymentBalance = aggressivePrice - downpaymentAggresive;
     const monthlyAggresive = Math.floor(
-      (aggressivePrice - downpaymentAggresive) *
-        Math.pow(1 + houseForm.mortgageRate / 100, 30) /
-        360
+      paymentBalance * Math.pow(1 + mortgageRate / 100, 30) / 360
     );
 
     return (
       <ResponsiveContainer>
-        <Segment
-          id="howItWorksBackground"
-          style={{ padding: "1.5em" }}
-          vertical
-        >
-          <i aria-hidden="true" className="home massive icon" />
-          <h4>Buy a Home</h4>
-          <div className="ui divider" />
-          <h5>How much can I afford?</h5>
-          <br />
-          <Form className="ui huge">
-            <Form.Group>
-              <Form.Field
-                control={Input}
-                label="Annual Income $:"
-                name="annualIncome"
-                onChange={handleChange}
-              />
-              <Form.Field
-                control={Input}
-                label="Mortgage Rate( average 30-year fixed rate is 4.04%)"
-                name="mortgageRate"
-                onChange={handleChange}
-              />
-              <Form.Field
-                control={Input}
-                label="Percent Down Payment"
-                name="percentDownPayment"
-                onChange={handleChange}
-              />
-              <Form.Field
-                control={Input}
-                label="Annual Insurance $:"
-                name="annualInsurance"
-                onChange={handleChange}
-              />
-              <Form.Field
-                control={Input}
-                label="Annual Property Tax(national averge is 1%)"
-                name="annualPropertyTax"
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Form>
-          <Button
-            className="ui large secondary button"
-            onClick={event => {
-              handleSubmit(event, housePlan);
-              this.handleChangeLocal();
-            }}
+        <Container>
+          <Segment
+            id="howItWorksBackground"
+            style={{ padding: "1.5em" }}
+            vertical
           >
-            Estimate
-          </Button>
+            <i aria-hidden="true" className="home massive icon" />
+            <h4>Buy a Home</h4>
+            <div className="ui divider" />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  <h5>How much can I afford?</h5>
+                  <br />
+                  <Form className="ui small">
+                    <Form.Group>
+                      <Grid>
+                        <Grid.Column width={8}>
+                          <Form.Field
+                            control={Input}
+                            label="Annual Income $:"
+                            name="annualIncome"
+                            value={houseForm.annualIncome}
+                            onChange={handleChange}
+                          />
+                          <Form.Field
+                            control={Input}
+                            label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
+                            name="mortgageRate"
+                            value={houseForm.mortgageRate}
+                            onChange={handleChange}
+                          />
+                          <Form.Field
+                            control={Input}
+                            label="Annual Insurance $"
+                            name="annualInsurance"
+                            value={houseForm.annualInsurance}
+                            onChange={handleChange}
+                          />
+                          <Form.Field
+                            control={Input}
+                            label="Annual Property Tax % (national averge is 1%)"
+                            name="annualPropertyTax"
+                            value={houseForm.annualPropertyTax}
+                            onChange={handleChange}
+                          />
+                          <Form.Input
+                            label={`Percent Down Payment: ${
+                              houseForm.percentDownPayment
+                            } %`}
+                            min={0}
+                            max={100}
+                            name="percentDownPayment"
+                            onChange={handleChange}
+                            step={1}
+                            type="range"
+                            value={houseForm.percentDownPayment}
+                          />
+                        </Grid.Column>
+                      </Grid>
+                    </Form.Group>
+                  </Form>
+                </Grid.Column>
 
-          <div className="ui divider" />
-          {this.state.showResult ? (
-            <div className="ui huge">
-              <h5>How much will I need?</h5>
-              <p>You can afford a home that costs </p>
-              <Statistic color="teal">
-                <Statistic.Value>
-                  ${`${numberWithCommas(aggressivePrice)}`}
-                </Statistic.Value>
-              </Statistic>
-              <p>for a total monthly payment of</p>
-              <Statistic color="teal">
-                <Statistic.Value>
-                  ${`${numberWithCommas(monthlyAggresive)}`}
-                </Statistic.Value>
-              </Statistic>
-              <p>You will need a down payment of</p>
-              <Statistic color="teal">
-                <Statistic.Value>
-                  ${`${numberWithCommas(downpaymentAggresive)}`}
-                </Statistic.Value>
-              </Statistic>
-              <br />
-            </div>
-          ) : null}
-
-          <NavLink to="/goals">
-            <Button icon className="ui large button" labelPosition="right">
-              Save the Goal
-              <Icon name="right arrow" />
-            </Button>
-          </NavLink>
-        </Segment>
+                <Grid.Column width={8}>
+                  <div className="ui huge">
+                    <h5>How much will I need?</h5>
+                    <p>You can afford a home that costs </p>
+                    <Statistic color="teal">
+                      <Statistic.Value>
+                        ${`${numberWithCommas(aggressivePrice)}`}
+                      </Statistic.Value>
+                    </Statistic>
+                    <p>for a total monthly payment of</p>
+                    <Statistic color="teal">
+                      <Statistic.Value>
+                        ${`${numberWithCommas(monthlyAggresive)}`}
+                      </Statistic.Value>
+                    </Statistic>
+                    <p>You will need a down payment of</p>
+                    <Statistic color="teal">
+                      <Statistic.Value>
+                        ${`${numberWithCommas(downpaymentAggresive)}`}
+                      </Statistic.Value>
+                    </Statistic>
+                  </div>
+                  <br />
+                  <NavLink to="/goals">
+                    <Button
+                      icon
+                      className="ui huge button"
+                      labelPosition="right"
+                    >
+                      Save the Goal
+                      <Icon name="right arrow" />
+                    </Button>
+                  </NavLink>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
+        </Container>
         <Footer />
       </ResponsiveContainer>
     );
@@ -161,6 +184,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         addHouseFormdetails({ [event.target.name]: +event.target.value })
       );
     },
+
     handleSubmit(event, housePlan) {
       event.preventDefault();
       dispatch(addHousePlan(housePlan));
