@@ -45,8 +45,11 @@ class Routes extends Component {
     this.props.loadTransactionsFromPlaid();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.user.id !== nextProps.user.id) {
+  componentWillReceiveProps(nextProps, prevProps) {
+    if (
+      this.props.user.id !== nextProps.user.id &&
+      (this.props.user.id !== 1 && nextProps.user.id !== null)
+    ) {
       this.props.fetchRetirementDetails(nextProps.user.id);
       this.props.loadBudgetData(nextProps.user.id);
       this.props.fetchRent(nextProps.user.id);
