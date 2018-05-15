@@ -3,10 +3,22 @@ const router = require("express").Router();
 const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
 module.exports = router;
 
+//convert today's for plaid api version
+Date.prototype.yyyymmdd = function(past) {
+  var mm = this.getMonth() + 1; // getMonth() is zero-based
+  var dd = this.getDate();
+  return [
+    this.getFullYear() - past,
+    (mm > 9 ? "" : "0") + mm,
+    (dd > 9 ? "" : "0") + dd
+  ].join("-");
+};
+
 // let ACCESS_TOKEN = null;
 // let ASSET_REPORT_TOKEN = null;
 // let ASSET_REPORT_ID = null;
 
+//our server key
 let client = new plaid.Client(
   "5ae8f515900e950013499acf",
   "f274c354ebdaf254570702d564cd40",
@@ -15,15 +27,15 @@ let client = new plaid.Client(
 );
 
 router.post("/get_access_token", (req, res, next) => {
+  //store in db once we get the token back from plaid
   let PUBLIC_TOKEN = req.body.publicToken;
   client.exchangePublicToken(PUBLIC_TOKEN, function(err, tokenResponse) {
     if (err) {
-      console.log("could not exchange public_token", err);
       return res.json({ err });
     }
-    // ACCESS_TOKEN = tokenResponse.access_token;
+    // ACCESS_TOKEN = tokenResponse.access_token; //token from api
     console.log("Access Token: " + ACCESS_TOKEN);
-    //ITEM_ID = tokenResponse.item_id;
+    //ITEM_ID = tokenResponse.item_id; //item id from api
     console.log("Item ID: " + ITEM_ID);
   });
 });
@@ -38,16 +50,19 @@ router.get("/auth", function(request, response, next) {
     //Plaid success response
     response.status(200).json({
       error: false,
-      accountInfo: data.accounts
+      accountInfo: data.accounts //account balances
     });
   });
 });
 
 router.get("/transactions", (req, res, next) => {
+  let date = new Date();
+  let todatsDate = date.yyyymmdd(0);
+  let lastYear = date.yyyymmdd(1);
   client.getTransactions(
-    ACCESS_TOKEN,
-    "2017-05-02",
-    "2018-05-02",
+    ACCESS_TOKEN, //hard code, need to change
+    lastYear,
+    todatsDate,
     {
       count: 500,
       offset: 0
