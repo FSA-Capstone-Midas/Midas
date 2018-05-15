@@ -55,11 +55,11 @@ class Budget extends Component {
                 <Loading />
               ) : (
                 <div>
-                  <Segment>
+                  <div>
                     <BudgetModal />
                     <BudgetProgress />
                     <BudgetHorizontalBarChart />
-                  </Segment>
+                  </div>
                   <Footer />
                 </div>
               )}
