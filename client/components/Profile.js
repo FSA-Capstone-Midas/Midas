@@ -103,7 +103,7 @@ class Profile extends React.Component {
     console.log("what is user", user.birthMonth);
     console.log("what is user", user.birthDay);
     return (
-      <ResponsiveContainer>
+      <ResponsiveContainer id="desktopNav">
         <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">
@@ -184,7 +184,7 @@ class Profile extends React.Component {
                       default="month"
                       id="monthddl"
                       options={options}
-                      placeholder={user.birthMonth.toString()}
+                      placeholder={user.birthMonth}
                       onChange={this.handleSelectChange}
                     />
                     <Form.Select
@@ -193,7 +193,7 @@ class Profile extends React.Component {
                       name="birthDay"
                       id="dayddl"
                       options={arrayDay}
-                      placeholder={user.birthDay.toString()}
+                      placeholder={user.birthDay}
                       onChange={this.handleSelectChange}
                     />
                     <label />
@@ -201,7 +201,7 @@ class Profile extends React.Component {
                       name="birthYear"
                       id="Year"
                       options={arrayYear}
-                      placeholder={user.birthYear.toString()}
+                      placeholder={user.birthYear}
                       onChange={this.handleSelectChange}
                     />
                   </Form.Group>
