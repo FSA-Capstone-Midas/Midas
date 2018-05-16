@@ -14,6 +14,7 @@ export const updatePhone = phone => dispatch =>
     .post("/api/phone", phone)
     .then(res => {
       dispatch(updatePhoneBill(res.data));
+      history.push("/home");
     })
     .catch(err => console.log(err));
 

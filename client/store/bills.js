@@ -9,7 +9,7 @@ const defaultUser = {};
 const updateUserRent = rent => ({ type: UPDATE_RENT, rent });
 const getUserRent = rent => ({ type: GET_RENT, rent });
 
-export const updateRent = rent => dispatch =>
+export const updateRent = rent => dispatch => {
   axios
     .post("/api/rent", rent)
     .then(res => {
@@ -17,6 +17,7 @@ export const updateRent = rent => dispatch =>
       history.push("/home");
     })
     .catch(err => console.log(err));
+};
 
 export const fetchRent = id => dispatch =>
   axios
