@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import { Icon, Grid, Step } from "semantic-ui-react";
-import BillForm from "./BillForm";
 
 class PhoneAlert extends Component {
   render() {

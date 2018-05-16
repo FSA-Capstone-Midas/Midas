@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Plaid from "./Plaid";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
+import MobileContainer from "./BeforeLogin/MobileContainer";
+import DesktopContainer from "./BeforeLogin/DesktopContainer";
 import Footer from "./Footer";
 import { Container, Grid, Message, Icon, Image } from "semantic-ui-react";
 

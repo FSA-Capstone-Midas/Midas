@@ -131,7 +131,7 @@ const demoTransaction = {
       account_id: "PQ0YKV7ExXs00KaeQBAQTEqR6YXV8aSmQ3ern",
       account_owner: null,
       amount: -2000,
-      category: ["Food and Drink", "Restaurants"],
+      category: ["Transfer", "Internal Account Transfer"],
       category_id: "13005000",
       date: "2018-04-30",
       location: [Object],
