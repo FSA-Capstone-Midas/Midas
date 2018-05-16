@@ -11,7 +11,7 @@ import {
   Divider,
   Segment,
   Container,
-  Responsive,
+  Responsive
 } from "semantic-ui-react";
 import GoalsComponent from "./Goals/GoalsComponent";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -28,7 +28,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const notMobile = { minwidth: Responsive.onlyMobile.maxWidth + 1 };
@@ -37,7 +37,7 @@ class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
 
@@ -53,7 +53,7 @@ class UserHome extends React.Component {
       phone,
       retirement,
       emergency,
-      houseForm,
+      houseForm
     } = this.props;
 
     const fullname =
@@ -86,7 +86,7 @@ class UserHome extends React.Component {
                   style={{
                     fontSize: "20px",
                     marginLeft: "85%",
-                    paddingTop: "1em",
+                    paddingTop: "1em"
                   }}
                 >
                   Welcome back {fullname}
@@ -195,7 +195,7 @@ const mapState = state => {
     phone: state.phone,
     houseForm: state.houseForm,
     retirement: state.retirement,
-    emergency: state.emergencyGoalReducer,
+    emergency: state.emergencyGoalReducer
   };
 };
 
