@@ -49,6 +49,7 @@ class BillForm extends Component {
       date: phoneDate,
       userId: id
     };
+
     if (!this.state.phoneMonth) {
       store.dispatch(fetchRent(id));
       store.dispatch(updateRent(dateResult));
@@ -73,20 +74,20 @@ class BillForm extends Component {
       arrayDay.push(j);
     }
     return (
-      <div>
+      <div id="desktopNav">
         <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">
               <Grid.Column
                 style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
               >
-                <h3>Trends</h3>
-                <h4>Economics barometer around the country.</h4>
+                <h3>Add your bills</h3>
+                <h4>Set Up Bill Reminders now</h4>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: "2em 0em" }} vertical id="mainContent">
+        <Segment id="mainContent" style={{ padding: "2em 0em" }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column style={{ marginRight: "30%" }}>

@@ -53,20 +53,16 @@ class DesktopContainer extends Component {
               <Container
                 style={{
                   fontSize: "17px",
-                  width: "70%",
                 }}
               >
                 {this.state.fixed ? null : (
-                  <Menu.Item
-                    style={{ marginBottom: "-1em", marginRight: "10%" }}
-                  >
+                  <Menu.Item style={{ marginBottom: "-1em" }}>
                     <Image src="/pictures/midas_nav_logo.png" />
                   </Menu.Item>
                 )}
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>
-                <Menu.Item>Add Accounts</Menu.Item>
                 <Menu.Item exact as={NavLink} to="/profile">
                   Profile
                 </Menu.Item>
