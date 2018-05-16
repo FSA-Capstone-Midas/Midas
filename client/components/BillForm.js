@@ -56,6 +56,11 @@ class BillForm extends Component {
     } else if (!this.state.month) {
       store.dispatch(fetchPhone(id));
       store.dispatch(updatePhone(phoneResult));
+    } else {
+      store.dispatch(fetchRent(id));
+      store.dispatch(updateRent(dateResult));
+      store.dispatch(fetchPhone(id));
+      store.dispatch(updatePhone(phoneResult));
     }
   }
 

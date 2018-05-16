@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import {
   deleteRetirementPlan,
   deleteEmergencyPlan,
-  deleteHousePlan,
+  deleteHousePlan
 } from "../../store";
 
 class GoalsOptions extends Component {
@@ -13,12 +13,12 @@ class GoalsOptions extends Component {
     const {
       handleRetirementClick,
       handleEmergencyClick,
-      handleHouseClick,
+      handleHouseClick
     } = this.props;
     return (
       <Item.Group divided>
         {this.props.retirement.birthyear ? (
-          <Item>
+          <Item style={{ fontSize: "20px" }}>
             <Item.Image src="pictures/retirement.png" />
 
             <Item.Content verticalAlign="middle">
@@ -51,7 +51,7 @@ class GoalsOptions extends Component {
           <Item>
             <Item.Image src="pictures/emergency.png" />
 
-            <Item.Content verticalAlign="middle">
+            <Item.Content verticalAlign="middle" style={{ fontSize: "20px" }}>
               <Item.Header>Emergency Planning Goal</Item.Header>
               <Item.Extra>
                 <p>Total Expense Goal: ${this.props.emergency.totalExpense}</p>
@@ -80,7 +80,7 @@ class GoalsOptions extends Component {
           <Item>
             <Item.Image src="pictures/house.png" />
 
-            <Item.Content verticalAlign="middle">
+            <Item.Content verticalAlign="middle" style={{ fontSize: "20px" }}>
               <Item.Header>See your housing goal</Item.Header>
               <Item.Extra>
                 <Label>Housing Goal</Label>
@@ -111,7 +111,7 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
-    emergency: state.emergencyGoalReducer,
+    emergency: state.emergencyGoalReducer
   };
 };
 
@@ -126,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     handleHouseClick(event, id) {
       console.log("what is id", id);
       dispatch(deleteHousePlan(id));
-    },
+    }
   };
 };
 

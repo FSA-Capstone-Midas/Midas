@@ -17,7 +17,7 @@ const fieldValues = {
   mortgageRate: 0,
   percentDownPayment: 0,
   annualInsurance: 0,
-  annualPropertyTax: 0,
+  annualPropertyTax: 0
 };
 
 /**
@@ -64,6 +64,7 @@ export const addHousePlan = housePlan => dispatch => {
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
+      console.log("spoijef", res.data);
       console.log("what is res.data", res.data);
       dispatch(getUpdatedHousePlan(res.data));
       history.push("/goals");
