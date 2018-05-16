@@ -111,11 +111,9 @@ class UserHome extends React.Component {
                     <AccountTable />
                   </Grid.Column>
 
-                  <Grid.Column swidth={6}>
+                  <Grid.Column width={6}>
                     <h3>Bills Notifications</h3>
-                    {bills.id ? (
-                      <BillAlert />
-                    ) : (
+                    {!bills.id || !phone.id ? (
                       <Feed>
                         <Feed.Event>
                           <Feed.Label>
@@ -129,8 +127,16 @@ class UserHome extends React.Component {
                           </Feed.Content>
                         </Feed.Event>
                       </Feed>
-                    )}
-                    {phone.id ? <PhoneAlert /> : null}
+                    ) : bills.id && phone.id ? (
+                      <div>
+                        <BillAlert />
+                        <PhoneAlert />
+                      </div>
+                    ) : bills.id ? (
+                      <BillAlert />
+                    ) : phone.id ? (
+                      <PhoneAlert />
+                    ) : null}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>

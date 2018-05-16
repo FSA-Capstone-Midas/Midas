@@ -49,6 +49,8 @@ class BillForm extends Component {
       date: phoneDate,
       userId: id,
     };
+
+    console.log("what is phoneResult", phoneResult);
     store.dispatch(fetchPhone(id));
     store.dispatch(updatePhone(phoneResult));
     store.dispatch(fetchRent(id));
