@@ -12,16 +12,16 @@ const AccountTable = props => {
           if (each.type === "depository") {
             return (
               <Table
-                color="blue"
+                color="teal"
                 key={each.account_id}
                 inverted
                 style={{ fontSize: "15px" }}
               >
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Balance</Table.HeaderCell>
-                    <Table.HeaderCell>Type</Table.HeaderCell>
+                    <Table.HeaderCell width={8}>Name</Table.HeaderCell>
+                    <Table.HeaderCell witdh={4}>Balance</Table.HeaderCell>
+                    <Table.HeaderCell witdh={4}>Type</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -38,19 +38,25 @@ const AccountTable = props => {
           } else if (each.type === "credit") {
             return (
               <Table
-                color="violet"
+                color="blue"
                 key={each.account_id}
                 inverted
                 style={{ fontSize: "15px" }}
               >
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Balances available</Table.HeaderCell>
-                    <Table.HeaderCell>Balances current</Table.HeaderCell>
-                    <Table.HeaderCell>Limit</Table.HeaderCell>
-                    <Table.HeaderCell>Account Type</Table.HeaderCell>
-                    <Table.HeaderCell>Creadit Card type</Table.HeaderCell>
+                    <Table.HeaderCell width={1}>Name</Table.HeaderCell>
+                    <Table.HeaderCell width={4}>
+                      Available Balance
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={3}>
+                      Current Balance
+                    </Table.HeaderCell>
+                    <Table.HeaderCell width={1}>Limit</Table.HeaderCell>
+                    <Table.HeaderCell width={3}>Account Type</Table.HeaderCell>
+                    <Table.HeaderCell width={4}>
+                      Creadit Card Type
+                    </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -62,7 +68,7 @@ const AccountTable = props => {
                     <Table.Cell>${each.balances.current}</Table.Cell>
                     <Table.Cell>${each.balances.limit}</Table.Cell>
                     <Table.Cell>{each.subtype}</Table.Cell>
-                    <Table.Cell>{each.official_name}</Table.Cell>
+                    <Table.Cell>{each.official_name.toLowerCase()}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>

@@ -12,6 +12,8 @@ import {
   Segment,
   Container,
   Responsive,
+  Feed,
+  Icon,
 } from "semantic-ui-react";
 import GoalsComponent from "./Goals/GoalsComponent";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -19,6 +21,7 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
 import BarNetIncome from "./Transactions/BarNetIncome";
 import UserHomeCalender from "./UserHomeCalender";
+import Words from "./Words";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -81,16 +84,25 @@ class UserHome extends React.Component {
         ) : (
           <div>
             <Container style={{ width: "80%", paddingTop: "1em" }}>
-              <Grid stackable style={{ float: "right" }}>
-                <Grid.Row>
-                  <Grid.Column width={16}>
-                    <p>Welcome </p>
+              <Grid stackable>
+                <Grid.Row style={{ marginBottom: "-2%" }}>
+                  <Grid.Column width={13}>
+                    <Words fullname={fullname} />
+                    <div />
+                  </Grid.Column>
+                  <Grid.Column style={{ float: "rigth" }} width={3}>
+                    <p>
+                      Last login time: <br />
+                      {user &&
+                        user.updatedAt.split("T")[0] +
+                          " " +
+                          user.updatedAt.split("T")[1].slice(0, 8)}
+                    </p>
                     <div />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
             </Container>
-            <Divider section />
             <Container style={{ width: "80%", paddingTop: "1em" }}>
               <Grid stackable>
                 <Grid.Row>
@@ -99,15 +111,24 @@ class UserHome extends React.Component {
                     <AccountTable />
                   </Grid.Column>
 
-                  <Grid.Column width={6}>
+                  <Grid.Column swidth={6}>
                     <h3>Bills Notifications</h3>
                     {bills.id ? (
                       <BillAlert />
                     ) : (
-                      <h3 style={{ color: "green" }}>
-                        {" "}
-                        YAY You currently have no bills{" "}
-                      </h3>
+                      <Feed>
+                        <Feed.Event>
+                          <Feed.Label>
+                            <Icon name="pencil" />
+                          </Feed.Label>
+                          <Feed.Content>
+                            <Feed.Date>Today</Feed.Date>
+                            <Feed.Summary>
+                              YAY You currently have no bills{" "}
+                            </Feed.Summary>
+                          </Feed.Content>
+                        </Feed.Event>
+                      </Feed>
                     )}
                     {phone.id ? <PhoneAlert /> : null}
                   </Grid.Column>
