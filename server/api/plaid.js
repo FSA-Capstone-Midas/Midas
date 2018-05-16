@@ -2,6 +2,7 @@ const plaid = require("plaid");
 const router = require("express").Router();
 // const { ACCESS_TOKEN, ITEM_ID } = require("../../secrets.js");
 const { User } = require("../db/models");
+const fs = require("fs");
 
 module.exports = router;
 
@@ -87,6 +88,8 @@ router.get("/transactions", (req, res, next) => {
               error: error
             });
           } else {
+            let fakeData = JSON.stringify(data.transactions);
+            fs.writeFileSync("dummyData.json", fakeData);
             return res.status(200).json({
               error: false,
               transaction: data.transactions
