@@ -14,17 +14,15 @@
     "postinstall": "touch secrets.js",
     "seed": "node script/seed.js",
     "start": "node server",
-    "start-dev":
-      "NODE_ENV='development' npm run build-client-watch & npm run start-server",
-    "start-server":
-      "nodemon server -e html,js,scss --ignore public --ignore client",
-    "test":
-      "NODE_ENV='test' mocha ./server/**/*.spec.js ./server/**/**/*.spec.js ./client/**/*.spec.js --require @babel/polyfill --require @babel/register"
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & npm run start-server",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
+    "test": "NODE_ENV='test' mocha ./server/**/*.spec.js ./server/**/**/*.spec.js ./client/**/*.spec.js --require @babel/polyfill --require @babel/register"
   },
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
     "@nivo/bar": "^0.33.0",
+    "@nivo/calendar": "^0.33.0",
     "@nivo/stream": "^0.33.0",
     "@nivo/treemap": "^0.33.0",
     "axios": "^0.15.3",
