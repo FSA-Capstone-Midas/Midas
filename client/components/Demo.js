@@ -27,8 +27,8 @@ const Demo = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
-              <h1>Login</h1>
-              <h3>Welcome back!</h3>
+              <h1>Demo</h1>
+              <h3>Try It!</h3>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -42,18 +42,26 @@ const Demo = props => {
         <Grid textAlign="center" stackable verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 750 }}>
             <Header as="h2" color="orange" textAlign="center">
-              <Image src="../../../../../pictures/midas_logo.png" /> Log-in to
-              your account
+              <Image src="../../../../../pictures/midas_logo.png" /> Try our
+              demo account
             </Header>
-            <Form size="large" name={name} onSubmit={handleSubmit}>
-              <Button fluid size="large" inverted color="orange" role="button">
-                Login
-              </Button>
+            <Form size="large" name={name}>
+              <Segment stacked>
+                <Button
+                  fluid
+                  size="large"
+                  inverted
+                  color="orange"
+                  role="button"
+                  onClick={handleSubmit}
+                >
+                  Login
+                </Button>
+              </Segment>
             </Form>
           </Grid.Column>
         </Grid>
       </Segment>
-
       <Footer />
     </ResponsiveContainer>
   );
@@ -71,10 +79,10 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
-      const formName = evt.target.name;
-      const email = "murphy@email.com";
+      const formName = "login";
+      const email = "cody@email.com";
       const password = "123";
-      dispatch(auth(email, +password, formName));
+      dispatch(auth(email, password, formName));
     }
   };
 };
@@ -84,7 +92,7 @@ export default withRouter(connect(mapLogin, mapDispatch)(Demo));
 /**
  * PROP TYPES
  */
-Login.propTypes = {
+Demo.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,

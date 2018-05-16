@@ -46,9 +46,8 @@ export default function Footer() {
               </Header>
               <p>
                 Disclaimer: This website is built for a web application school
-                project. It is not intended for commercial use. The data and
-                corresponding data visualization are not accurate. You should
-                not act on the basis of anything contained on this website. Any
+                project. It is not intended for commercial use. You should not
+                act on the basis of anything contained on this website. Any
                 reliance you place on such material is strictly at your own
                 risk. In addition, we are not responsible for any personal
                 information compromise or loss resulting from the use of this
