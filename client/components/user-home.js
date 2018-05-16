@@ -11,7 +11,9 @@ import {
   Divider,
   Segment,
   Container,
-  Responsive
+  Responsive,
+  Feed,
+  Icon,
 } from "semantic-ui-react";
 import GoalsComponent from "./Goals/GoalsComponent";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
@@ -19,6 +21,7 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
 import BarNetIncome from "./Transactions/BarNetIncome";
 import UserHomeCalender from "./UserHomeCalender";
+import Words from "./Words";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -28,7 +31,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const notMobile = { minwidth: Responsive.onlyMobile.maxWidth + 1 };
@@ -37,7 +40,7 @@ class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
 
@@ -53,7 +56,7 @@ class UserHome extends React.Component {
       phone,
       retirement,
       emergency,
-      houseForm
+      houseForm,
     } = this.props;
 
     const fullname =
@@ -80,23 +83,24 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <Container style={{ width: "95%", paddingTop: "1.2em" }}>
-              <Grid stackable verticalAlign="middle">
-                <div
-                  style={{
-                    fontSize: "20px",
-                    marginLeft: "85%",
-                    paddingTop: "1em"
-                  }}
-                >
-                  Welcome back {fullname}
-                  <br />
-                  Last login time:{" "}
-                  {user &&
-                    user.updatedAt.split("T")[0] +
-                      " " +
-                      user.updatedAt.split("T")[1].slice(0, 8)}
-                </div>
+            <Container style={{ width: "80%", paddingTop: "1em" }}>
+              <Grid stackable>
+                <Grid.Row style={{ marginBottom: "-2%" }}>
+                  <Grid.Column width={13}>
+                    <Words fullname={fullname} />
+                    <div />
+                  </Grid.Column>
+                  <Grid.Column style={{ float: "rigth" }} width={3}>
+                    <p>
+                      Last login time: <br />
+                      {user &&
+                        user.updatedAt.split("T")[0] +
+                          " " +
+                          user.updatedAt.split("T")[1].slice(0, 8)}
+                    </p>
+                    <div />
+                  </Grid.Column>
+                </Grid.Row>
               </Grid>
             </Container>
             <Container style={{ width: "80%", paddingTop: "1em" }}>
@@ -109,15 +113,30 @@ class UserHome extends React.Component {
 
                   <Grid.Column width={6}>
                     <h3>Bills Notifications</h3>
-                    {bills.id ? (
+                    {!bills.id || !phone.id ? (
+                      <Feed>
+                        <Feed.Event>
+                          <Feed.Label>
+                            <Icon name="pencil" />
+                          </Feed.Label>
+                          <Feed.Content>
+                            <Feed.Date>Today</Feed.Date>
+                            <Feed.Summary>
+                              YAY You currently have no bills{" "}
+                            </Feed.Summary>
+                          </Feed.Content>
+                        </Feed.Event>
+                      </Feed>
+                    ) : bills.id && phone.id ? (
+                      <div>
+                        <BillAlert />
+                        <PhoneAlert />
+                      </div>
+                    ) : bills.id ? (
                       <BillAlert />
-                    ) : (
-                      <h3 style={{ color: "green" }}>
-                        {" "}
-                        YAY You currently have no bills{" "}
-                      </h3>
-                    )}
-                    {phone.id ? <PhoneAlert /> : null}
+                    ) : phone.id ? (
+                      <PhoneAlert />
+                    ) : null}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
@@ -195,7 +214,7 @@ const mapState = state => {
     phone: state.phone,
     houseForm: state.houseForm,
     retirement: state.retirement,
-    emergency: state.emergencyGoalReducer
+    emergency: state.emergencyGoalReducer,
   };
 };
 
