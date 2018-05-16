@@ -8,7 +8,7 @@ import {
   Grid,
   Header,
   Image,
-  Segment,
+  Segment
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import MobileContainer from "../BeforeLogin/MobileContainer";
@@ -36,7 +36,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const HomePage = props => {
@@ -193,7 +193,7 @@ const HomePage = props => {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 

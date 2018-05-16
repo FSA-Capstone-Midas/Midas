@@ -7,7 +7,7 @@ import {
   Menu,
   Responsive,
   Segment,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
@@ -53,6 +53,7 @@ class DesktopContainer extends Component {
                 <Menu.Item exact as={NavLink} to="/aboutus">
                   About Us
                 </Menu.Item>
+
                 <Menu.Item position="right">
                   {match.path === "/login" ? null : (
                     <Button as={Link} to="/login" inverted={!fixed}>
@@ -84,7 +85,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default withRouter(DesktopContainer);
