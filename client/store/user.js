@@ -41,7 +41,6 @@ export const me = () => dispatch =>
   axios
     .get("/auth/me")
     .then(res => {
-      console.log(res.data);
       if (res.data.id) {
         let userId = res.data.id;
         dispatch(getUser(res.data || defaultUser));

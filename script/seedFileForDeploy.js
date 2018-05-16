@@ -1,3 +1,21 @@
+const phoneBill = {
+  id: 1,
+  price: 1233,
+  date: "2018-06-08T04:00:00.000Z",
+  createdAt: "2018-05-14T21:06:28.313Z",
+  updatedAt: "2018-05-14T21:06:28.313Z",
+  userId: 1
+};
+
+const rentBill = {
+  id: 1,
+  price: 1223,
+  date: "2018-06-01T04:00:00.000Z",
+  createdAt: "2018-05-14T21:06:28.313Z",
+  updatedAt: "2018-05-14T21:06:28.313Z",
+  userId: 1
+};
+
 const demoAccounts = {
   error: false,
   accountInfo: [
@@ -1556,5 +1574,7 @@ const demoTransaction = {
 
 module.exports = {
   demoAccounts,
-  demoTransaction
+  demoTransaction,
+  phoneBill,
+  rentBill
 };

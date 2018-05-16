@@ -26,7 +26,7 @@ class PhoneAlert extends Component {
                   <Step.Title>
                     {phone.id ? (
                       <h4 style={{ fontSize: "15px" }}>
-                        Your ${phone.price} monthly rent bill is due in{" "}
+                        Your ${phone.price} monthly phone bill is due in{" "}
                         {this.result} days.
                       </h4>
                     ) : null}

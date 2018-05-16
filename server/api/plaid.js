@@ -87,7 +87,6 @@ router.get("/transactions", (req, res, next) => {
               error: error
             });
           } else {
-            console.log("HERER", req.user.id);
             return res.status(200).json({
               error: false,
               transaction: data.transactions

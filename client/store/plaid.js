@@ -15,7 +15,10 @@ export const fetchInformation = successToken => dispatch => {
     .post("/api/plaid/get_access_token", { successToken })
     .then(res => {
       dispatch(getInformation(res.data));
-      history.push("/home");
+      //if success add token
+      if (!res.data.error) {
+        history.push("/home");
+      }
     })
     .catch(err => console.error(err));
 };

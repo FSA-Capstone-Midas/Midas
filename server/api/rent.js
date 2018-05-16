@@ -16,6 +16,7 @@ router.get("/user/:id", (req, res, next) => {
     }
   })
     .then(rents => {
+      console.log(rents);
       res.json(rents);
     })
     .catch(next);
