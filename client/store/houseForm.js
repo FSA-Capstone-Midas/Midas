@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from "../history";
 
 /**
  * ACTION TYPES
@@ -58,12 +59,15 @@ export const addHouseFormdetails = changeDetails => dispatch => {
 
 export const addHousePlan = housePlan => dispatch => {
   const userId = housePlan.userId;
-
+  console.log("what is housePlan", housePlan);
+  console.log("what is userId", userId);
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
       console.log("spoijef", res.data);
+      console.log("what is res.data", res.data);
       dispatch(getUpdatedHousePlan(res.data));
+      history.push("/goals");
     })
     .catch(err => console.log(err));
 };
@@ -72,7 +76,7 @@ export const deleteHousePlan = id => dispatch => {
   axios
     .delete(`/api/house/user/${id}`)
     .then(res => {
-      dispatch(deleteHouseGoal(res.data));
+      dispatch(getHouseFormdetails(id));
     })
     .catch(err => console.log(err));
 };
@@ -89,7 +93,7 @@ export default function(state = fieldValues, action) {
     case GET_UPDATED_HOUSE_PLAN:
       return Object.assign({}, state, action.housePlan);
     case DELETE_HOUSE_GOAL:
-      return {};
+      return Object.assign({}, state);
 
     default:
       return state;

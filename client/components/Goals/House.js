@@ -51,6 +51,7 @@ class House extends Component {
       mortgageRate
     } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
+    console.log('what is housePlan here', housePlan);
     const aggressivePrice = Math.floor(annualIncome * 6);
     const downpaymentAggresive = Math.floor(
       aggressivePrice * (percentDownPayment / 100)
@@ -144,7 +145,12 @@ class House extends Component {
                   {/* </div> */}
                   <br />
                   <NavLink to="/goals">
-                    <Button icon className="ui huge button" floated="right">
+                    <Button
+                      icon
+                      className="ui huge button"
+                      floated="right"
+                      onClick={event => handleSubmit(event, { housePlan })}
+                    >
                       Save the Goal
                       <Icon name="right arrow" />
                     </Button>
@@ -178,7 +184,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         dispatch(addHousePlan(housePlan));
     },
 
-    handleSubmit(event, housePlan) {
+    handleSubmit(event, { housePlan }) {
       event.preventDefault();
       console.log("hi`~", housePlan);
       dispatch(addHousePlan(housePlan));
