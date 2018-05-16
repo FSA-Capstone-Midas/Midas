@@ -6,12 +6,19 @@ import Loading from "./Loading";
 import BillAlert from "./BillAlert";
 import PhoneAlert from "./PhoneAlert";
 import AccountTable from "./AccountTable";
-import { Grid, Divider, Segment, Container } from "semantic-ui-react";
+import {
+  Grid,
+  Divider,
+  Segment,
+  Container,
+  Responsive,
+} from "semantic-ui-react";
 import GoalsComponent from "./Goals/GoalsComponent";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
 import BarNetIncome from "./Transactions/BarNetIncome";
+import UserHomeCalender from "./UserHomeCalender";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -24,6 +31,8 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 };
 
+const notMobile = { minwidth: Responsive.onlyMobile.maxWidth + 1 };
+
 class UserHome extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +42,7 @@ class UserHome extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 100);
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   render() {
@@ -46,6 +55,7 @@ class UserHome extends React.Component {
       emergency,
       houseForm,
     } = this.props;
+
     const fullname =
       user.firstName.charAt(0).toUpperCase() +
       user.firstName.slice(1) +
@@ -70,82 +80,100 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <div
-              style={{ fontSize: "20px", marginLeft: "85%", paddingTop: "1em" }}
-            >
-              Welcome back {fullname}
-              <br />
-              Last login time:
-              {user &&
-                user.updatedAt.split("T")[0] +
-                  " " +
-                  user.updatedAt.split("T")[1].slice(0, 8)}
-            </div>
-            <Divider section />
-            <Container style={{ width: "70%" }}>
-              <Grid
-                style={{
-                  width: "-webkit-fill-available",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Grid.Column width={10}>
-                  <h4>Account Summary</h4>
-                  <AccountTable />
-                </Grid.Column>
-
-                <Grid.Column width={5}>
-                  <h4>Bills Notifications</h4>
-                  {bills.id ? (
-                    <BillAlert />
-                  ) : (
-                    <h3 style={{ color: "green" }}>
-                      {" "}
-                      YAY You currently have no bills{" "}
-                    </h3>
-                  )}
-                  {phone.id ? <PhoneAlert /> : null}
-                </Grid.Column>
-              </Grid>
-            </Container>
-            <Divider section />
-            <h4 style={{ marginLeft: "14.5%" }}>Transactions</h4>
-            <Grid style={{ marginLeft: "20em", marginRight: "15%" }}>
-              <Grid.Column width={8}>
-                {transaction ? (
-                  <div>
-                    <PieSpending rows={transaction} />
-                  </div>
-                ) : null}
-              </Grid.Column>
-
-              <Grid.Column width={8}>
-                {transaction ? <BarNetIncome rows={transaction} /> : null}
-              </Grid.Column>
-            </Grid>
-
-            <Divider section />
-            <Container>
-              <Grid>
-                <h4>Goals</h4>
-                <Grid
+            <Container style={{ width: "95%", paddingTop: "1.2em" }}>
+              <Grid stackable verticalAlign="middle">
+                <div
                   style={{
-                    padding: "2em 0em",
-                    fontSize: "12px",
+                    fontSize: "20px",
+                    marginLeft: "85%",
+                    paddingTop: "1em",
                   }}
                 >
-                  <GoalsComponent
-                    retirement={retirement}
-                    houseForm={houseForm}
-                    emergency={emergency}
-                  />
-                </Grid>
+                  Welcome back {fullname}
+                  <br />
+                  Last login time:{" "}
+                  {user &&
+                    user.updatedAt.split("T")[0] +
+                      " " +
+                      user.updatedAt.split("T")[1].slice(0, 8)}
+                </div>
               </Grid>
             </Container>
-            <div />
-            <Divider hidden />
-            <Divider hidden />
-            <Divider hidden />
+            <Container style={{ width: "80%", paddingTop: "1em" }}>
+              <Grid stackable>
+                <Grid.Row>
+                  <Grid.Column width={10}>
+                    <h3>Account Summary</h3>
+                    <AccountTable />
+                  </Grid.Column>
+
+                  <Grid.Column width={6}>
+                    <h3>Bills Notifications</h3>
+                    {bills.id ? (
+                      <BillAlert />
+                    ) : (
+                      <h3 style={{ color: "green" }}>
+                        {" "}
+                        YAY You currently have no bills{" "}
+                      </h3>
+                    )}
+                    {phone.id ? <PhoneAlert /> : null}
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
+            <Divider section />
+
+            <Container style={{ width: "80%", paddingTop: "1em" }}>
+              <Grid stackable>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <h3>Transactions</h3>
+                    {transaction ? (
+                      <div>
+                        <PieSpending rows={transaction} />
+                      </div>
+                    ) : null}
+                  </Grid.Column>
+
+                  <Grid.Column width={8}>
+                    {transaction ? <BarNetIncome rows={transaction} /> : null}
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
+            <Divider section />
+            <Container
+              style={{ width: "80%", paddingTop: "1em" }}
+              {...notMobile}
+            >
+              <Grid stackable verticalAlign="middle">
+                <Grid.Row>
+                  <Grid.Column width={16}>
+                    <h3>Daily Spending Heat Map</h3>
+                    <UserHomeCalender />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
+            <Divider section />
+
+            <Container
+              style={{ width: "80%", paddingTop: "1em", paddingBottom: "3em" }}
+            >
+              <Grid stackable verticalAlign="middle">
+                <Grid.Row>
+                  <Grid.Column width={16}>
+                    <h3>Goals</h3>
+                    <GoalsComponent
+                      retirement={retirement}
+                      houseForm={houseForm}
+                      emergency={emergency}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
           </div>
         )}
         <Footer />
