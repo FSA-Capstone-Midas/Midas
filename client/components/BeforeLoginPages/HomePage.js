@@ -46,6 +46,7 @@ const HomePage = props => {
         <Grid celled="internally" columns="equal" stackable>
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
+              {/* <Typist>Seriously amazing.</Typist> */}
               <img
                 style={{ width: "60%" }}
                 className="carousel-image"

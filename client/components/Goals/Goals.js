@@ -51,7 +51,7 @@ class Goals extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Container>
+        <Container id="mainContent">
           <Grid>
             <Grid.Row textAlign="center">
               <Grid.Column

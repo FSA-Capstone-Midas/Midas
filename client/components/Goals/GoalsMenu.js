@@ -56,11 +56,11 @@ class GoalsMenu extends Component {
                 <NavLink to="/retirement">
                   {retirement.birthyear ? (
                     <Button disabled onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/retirement.png" />
                     </Button>
                   ) : (
                     <Button onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/retirement.png" />
                     </Button>
                   )}
                 </NavLink>
@@ -72,11 +72,11 @@ class GoalsMenu extends Component {
                 <NavLink to="/goals/saveForEmergency">
                   {emergencyGoal.isEnter ? (
                     <Button disabled onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/emergency.png" />
                     </Button>
                   ) : (
                     <Button onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/emergency.png" />
                     </Button>
                   )}
                 </NavLink>
@@ -88,11 +88,11 @@ class GoalsMenu extends Component {
                 <NavLink to="/house">
                   {houseForm.annualIncome ? (
                     <Button disabled onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/house.png" />
                     </Button>
                   ) : (
                     <Button onClick={this.handleClick}>
-                      <Image src="../../../../../../pictures/matthew.png" />
+                      <Image src="pictures/house.png" />
                     </Button>
                   )}
                 </NavLink>

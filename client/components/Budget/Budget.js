@@ -48,18 +48,18 @@ class Budget extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Grid celled="internally" columns="equal" stackable>
+        <Grid celled="internally" columns="equal" stackable id="mainContent">
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "0.5em", paddingTop: "2em" }}>
               {this.state.loading ? (
                 <Loading />
               ) : (
                 <div>
-                  <Segment>
+                  <div>
                     <BudgetModal />
                     <BudgetProgress />
                     <BudgetHorizontalBarChart />
-                  </Segment>
+                  </div>
                   <Footer />
                 </div>
               )}

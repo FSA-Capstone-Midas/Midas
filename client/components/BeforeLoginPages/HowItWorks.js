@@ -95,8 +95,8 @@ const HowItWorks = props => {
 
       <Segment style={{ padding: "2em 0em" }} vertical>
         <Grid container stackable verticalAlign="middle">
-          <Grid.Row>
-            <Grid.Column floated="left" width={6}>
+          <Grid.Row verticalAlign="middle">
+            <Grid.Column floated="left" width={6} verticalAlign="middle">
               <Image
                 size="medium"
                 src="../../../../../../pictures/feature_link_solution.gif"
@@ -129,7 +129,7 @@ const HowItWorks = props => {
 
       <Segment style={{ padding: "2em 2em" }} vertical>
         <Grid container stackable verticalAlign="middle">
-          <Grid.Row textAlign="center">
+          <Grid.Row textAlign="center" verticalAlign="middle">
             <Grid.Column style={{ paddingBottom: "1em", paddingTop: "1em" }}>
               <Header as="h3" style={{ fontSize: "2em" }}>
                 Supported Banks
@@ -141,7 +141,7 @@ const HowItWorks = props => {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row verticalAlign="middle">
             <Grid.Column width={3}>
               <div className="ui small circular rotate left reveal image">
                 <img

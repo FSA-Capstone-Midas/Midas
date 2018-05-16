@@ -1,9 +1,17 @@
 import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import store, { updateProfile } from "../store";
-import { Button, Header, Icon, Form, Input } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  Header,
+  Image,
+  Segment,
+  Icon,
+  Form
+} from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -14,9 +22,33 @@ import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
  * It can be more complicated, but you can create really flexible markup.
  */
 const options = [
-  { key: "m", text: "Male", value: "male" },
-  { key: "f", text: "Female", value: "female" }
+  { key: "January", text: "January", value: "January" },
+  { key: "Febuary", text: "Febuary", value: "Febuary" },
+  { key: "March", text: "March", value: "March" },
+  { key: "April", text: "April", value: "April" },
+  { key: "May", text: "May", value: "May" },
+  { key: "June", text: "June", value: "June" },
+  { key: "July", text: "July", value: "July" },
+  { key: "August", text: "August", value: "August" },
+  { key: "September", text: "September", value: "September" },
+  { key: "October", text: "October", value: "October" },
+  { key: "November", text: "November", value: "November" },
+  { key: "December", text: "December", value: "December" }
 ];
+
+const startYear = 1948;
+const endYear = 2000;
+const startDay = 1;
+const endDay = 31;
+let arrayYear = [];
+let arrayDay = [];
+for (var i = startYear; i <= endYear; i++) {
+  arrayYear.push({ key: i, text: i, value: i });
+}
+for (var j = startDay; j <= endDay; j++) {
+  arrayDay.push({ key: j, text: j, value: j });
+}
+
 const ResponsiveContainer = ({ children }) => (
   <div>
     <DesktopContainer>{children}</DesktopContainer>
@@ -35,150 +67,185 @@ class Profile extends React.Component {
       firstName: props.user.firstName,
       lastName: props.user.lastName,
       nickName: props.user.nickName,
-      phoneNumber: 0,
-      jobTitle: "",
-      incomeRange: 0,
-      birthday: props.user.birthday,
+      birthYear: props.user.birthYear,
+      birthMonth: props.user.birthMonth,
+      birthDay: props.user.birthDay,
+      phoneNumber: props.user.phoneNumber,
+      jobTitle: props.user.jobTitle,
+      incomeRange: props.user.incomeRange,
       email: props.user.email,
-      state: ""
+      state: props.user.state
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { id, user } = this.props;
+    const { id } = this.props;
     store.dispatch(updateProfile(id, this.state));
   }
+
+  handleSelectChange(e, { name, value }) {
+    if (name === "birthYear") {
+      this.setState({
+        birthYear: value
+      });
+    } else if (name === "birthMonth") {
+      this.setState({
+        birthMonth: value
+      });
+    } else if (name === "birthDay") {
+      this.setState({
+        birthDay: value
+      });
+    }
+  }
+
   render() {
     const { user } = this.props;
+    console.log("what is user", user.birthYear);
+    console.log("what is user", user.birthMonth);
+    console.log("what is user", user.birthDay);
     return (
-      <ResponsiveContainer style={{ height: "100%" }}>
-        <Header as="h2" icon textAlign="center">
-          <Icon name="users" circular />
-          <Header.Content>
-            Update your profile to get your financial advice optimized!
-          </Header.Content>
-        </Header>
-        <Form
-          id="profile"
-          onSubmit={this.handleSubmit}
-          style={{ fontSize: "13px" }}
+      <ResponsiveContainer id="desktopNav">
+        <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
+          <Grid celled="internally" columns="equal" stackable>
+            <Grid.Row textAlign="center">
+              <Grid.Column style={{ paddingBottom: "2em", paddingTop: "2em" }}>
+                <h1>Update your profile</h1>
+                <h3>Get your financial advice optimized!</h3>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+
+        <Segment
+          style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
+          vertical
+          id="mainContent"
         >
-          <Form.Group
-            widths="equal"
-            style={{ marginBottom: "3em", marginTop: "3em" }}
-          >
-            <Form.Field>
-              <label>First name</label>
-              <Input
-                fluid
-                placeholder={user.firstName}
-                value={this.state.firstName}
-                name="firstName"
-                onChange={this.handleChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Last name</label>
-              <Input
-                fluid
-                placeholder={user.lastName}
-                value={this.state.lastName}
-                name="lastName"
-                onChange={this.handleChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>D.O.B</label>
-              <Input
-                value={this.state.birthday}
-                name="birthday"
-                onChange={this.handleChange}
-                fluid
-                placeholder={user.birthday}
-              />
-            </Form.Field>
-          </Form.Group>
-          <Form.Group
-            unstackable
-            widths={1}
-            style={{ marginBottom: "3em", marginTop: "3em" }}
-          >
-            <Form.Input
-              value={this.state.email}
-              name="email"
-              onChange={this.handleChange}
-              label="Email"
-              placeholder={user.email}
-            />
-          </Form.Group>
-          <Form.Group
-            widths={2}
-            style={{ marginBottom: "3em", marginTop: "3em" }}
-          >
-            <Form.Input
-              value={this.state.state}
-              name="state"
-              onChange={this.handleChange}
-              label="State"
-              placeholder="State"
-            />
-            <Form.Input
-              value={this.state.nickName}
-              name="nickName"
-              onChange={this.handleChange}
-              label="NickName"
-              placeholder={user.nickName}
-            />
-          </Form.Group>
-          <Form.Group
-            widths={2}
-            style={{ marginBottom: "3em", marginTop: "3em" }}
-          >
-            <Form.Input
-              value={this.state.jobTitle}
-              name="jobTitle"
-              onChange={this.handleChange}
-              label="Job Title"
-              placeholder="Job Title"
-            />
-            <Form.Input
-              value={this.state.incomeRange}
-              name="incomeRange"
-              onChange={this.handleChange}
-              label="Income Range"
-              placeholder="Income Range"
-            />
-          </Form.Group>
-          <Form.Group inline style={{ marginBottom: "3em", marginTop: "3em" }}>
-            <Form.Field>
-              <label>Phone Number</label>
-              <Input
-                name="phoneNumber"
-                onChange={this.handleChange}
-                placeholder="(xxx)-(xxx)-(xxxx)"
-              />
-            </Form.Field>
-          </Form.Group>
-          <Button positive type="submit">
-            Update Profile
-          </Button>
-        </Form>
-        <div
-          style={{
-            position: "fixed",
-            left: "0",
-            bottom: "-30px",
-            width: "100%",
-            textAlign: "center"
-          }}
-        >
-          <Footer />
-        </div>
+          <Grid container textAlign="center" stackable verticalAlign="middle">
+            <Grid.Column style={{ maxWidth: 750 }}>
+              <Header as="h2" color="orange" textAlign="center">
+                <Image src="../../../../../pictures/midas_logo.png" /> Update
+                your profile now!
+              </Header>
+
+              <Form
+                size="large"
+                id="profile"
+                onSubmit={this.handleSubmit}
+                style={{ fontSize: "13px" }}
+              >
+                <Segment stacked>
+                  <Form.Input
+                    label="First Name"
+                    required
+                    placeholder={user.firstName}
+                    value={this.state.firstName}
+                    name="firstName"
+                    onChange={this.handleChange}
+                  />
+
+                  <Form.Input
+                    label="Last Name"
+                    required
+                    placeholder={user.lastName}
+                    value={this.state.lastName}
+                    name="lastName"
+                    onChange={this.handleChange}
+                  />
+
+                  <Form.Input
+                    value={this.state.email}
+                    required
+                    name="email"
+                    onChange={this.handleChange}
+                    label="Email"
+                    placeholder={user.email}
+                  />
+
+                  <Form.Input
+                    value={this.state.nickName}
+                    name="nickName"
+                    onChange={this.handleChange}
+                    label="NickName"
+                    placeholder={user.nickName}
+                  />
+
+                  <Form.Input
+                    value={this.state.state}
+                    name="state"
+                    onChange={this.handleChange}
+                    label="State"
+                    placeholder={user.state}
+                  />
+
+                  <Form.Group widths="equal" id="signUpSelect">
+                    <Form.Select
+                      required
+                      name="birthMonth"
+                      default="month"
+                      id="monthddl"
+                      options={options}
+                      placeholder={user.birthMonth}
+                      onChange={this.handleSelectChange}
+                    />
+                    <Form.Select
+                      label="Date of Birth"
+                      required
+                      name="birthDay"
+                      id="dayddl"
+                      options={arrayDay}
+                      placeholder={user.birthDay}
+                      onChange={this.handleSelectChange}
+                    />
+                    <label />
+                    <Form.Select
+                      name="birthYear"
+                      id="Year"
+                      options={arrayYear}
+                      placeholder={user.birthYear}
+                      onChange={this.handleSelectChange}
+                    />
+                  </Form.Group>
+
+                  <Form.Input
+                    value={this.state.jobTitle}
+                    name="jobTitle"
+                    onChange={this.handleChange}
+                    label="Job Title"
+                    placeholder={user.jobTitle}
+                  />
+                  <Form.Input
+                    value={this.state.incomeRange}
+                    name="incomeRange"
+                    onChange={this.handleChange}
+                    label="Income Range"
+                    placeholder={user.incomeRange}
+                  />
+
+                  <Form.Input
+                    value={this.state.phoneNumber}
+                    label="Phone Number"
+                    name="phoneNumber"
+                    onChange={this.handleChange}
+                    placeholder="(xxx)-(xxx)-(xxxx)"
+                  />
+
+                  <Button positive type="submit">
+                    Update Profile
+                  </Button>
+                </Segment>
+              </Form>
+            </Grid.Column>
+          </Grid>
+        </Segment>
+        <Footer />
       </ResponsiveContainer>
     );
   }

@@ -6,7 +6,7 @@ import store, {
   updateRent,
   fetchRent,
   fetchPhone,
-  updatePhone
+  updatePhone,
 } from "../store";
 
 class BillForm extends Component {
@@ -21,7 +21,7 @@ class BillForm extends Component {
       phoneAmount: 0,
       phoneMonth: "",
       phoneDay: "",
-      phoneYear: ""
+      phoneYear: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,13 +42,15 @@ class BillForm extends Component {
     const dateResult = {
       price: Number(this.state.amount),
       date: date,
-      userId: id
+      userId: id,
     };
     const phoneResult = {
       price: Number(this.state.phoneAmount),
       date: phoneDate,
-      userId: id
+      userId: id,
     };
+
+    console.log("what is phoneResult", phoneResult);
     store.dispatch(fetchPhone(id));
     store.dispatch(updatePhone(phoneResult));
     store.dispatch(fetchRent(id));
@@ -70,20 +72,20 @@ class BillForm extends Component {
       arrayDay.push(j);
     }
     return (
-      <div>
+      <div id="desktopNav">
         <Segment id="headerBackground" style={{ padding: "0.7em" }} vertical>
           <Grid celled="internally" columns="equal" stackable>
             <Grid.Row textAlign="center">
               <Grid.Column
                 style={{ paddingBottom: "0.7em", paddingTop: "0.7em" }}
               >
-                <h3>Trends</h3>
-                <h4>Economics barometer around the country.</h4>
+                <h3>Add your bills</h3>
+                <h4>Set Up Bill Reminders now</h4>
               </Grid.Column>
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: "2em 0em" }} vertical>
+        <Segment id="mainContent" style={{ padding: "2em 0em" }} vertical>
           <Grid container stackable verticalAlign="middle">
             <Grid.Row>
               <Grid.Column style={{ marginRight: "30%" }}>
@@ -101,14 +103,14 @@ class BillForm extends Component {
                       flexWrap: "wrap",
                       padding: "0",
                       margin: "0",
-                      justifyContent: "space-around"
+                      justifyContent: "space-around",
                     }}
                   >
                     <Segment
                       style={{
                         padding: "5px",
                         width: "50%",
-                        textAlign: "center"
+                        textAlign: "center",
                       }}
                     >
                       <div className="field">
@@ -173,7 +175,7 @@ class BillForm extends Component {
                         padding: "5px",
                         width: "50%",
                         textAlign: "center",
-                        marginTop: "0"
+                        marginTop: "0",
                       }}
                     >
                       <div className="field">
@@ -251,17 +253,7 @@ class BillForm extends Component {
           </Grid>
         </Segment>
 
-        <div
-          style={{
-            position: "fixed",
-            left: "0px",
-            bottom: "0px",
-            width: "100%",
-            textAlign: "center"
-          }}
-        >
-          <Footer />
-        </div>
+        <Footer />
       </div>
     );
   }
@@ -272,7 +264,7 @@ const mapState = state => {
     user: state.user,
     id: state.user.id,
     phone: state.phone,
-    bill: state
+    bill: state,
   };
 };
 

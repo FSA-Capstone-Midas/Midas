@@ -11,6 +11,7 @@ const TrendsMenuBar = props => {
               className="item"
               name="avgListingPrice"
               onClick={props.handleClick}
+              style={{ color: "brown" }}
             >
               Average Listing Price
             </a>
@@ -18,6 +19,7 @@ const TrendsMenuBar = props => {
               className="item"
               name="medianSalesPrice"
               onClick={props.handleClick}
+              style={{ color: "brown" }}
             >
               Median Sales Price
             </a>
@@ -25,6 +27,7 @@ const TrendsMenuBar = props => {
               className="item"
               name="truliaPopularity"
               onClick={props.handleClick}
+              style={{ color: "brown" }}
             >
               Trulia Popularity
             </a>
@@ -33,10 +36,20 @@ const TrendsMenuBar = props => {
         <div className="item">
           <div className="header">Apartment</div>
           <div className="menu">
-            <a className="item" name="1BedRoomRent" onClick={props.handleClick}>
+            <a
+              className="item"
+              name="1BedRoomRent"
+              onClick={props.handleClick}
+              style={{ color: "chocolate" }}
+            >
               1 Bed Room Rent
             </a>
-            <a className="item" name="2BedRoomRent" onClick={props.handleClick}>
+            <a
+              className="item"
+              name="2BedRoomRent"
+              onClick={props.handleClick}
+              style={{ color: "chocolate" }}
+            >
               2 Bed Rooms Rent
             </a>
           </div>
@@ -48,10 +61,16 @@ const TrendsMenuBar = props => {
               className="item"
               name="monthlyChange"
               onClick={props.handleClick}
+              style={{ color: "green" }}
             >
               Monthly Change
             </a>
-            <a className="item" name="yearlyChange" onClick={props.handleClick}>
+            <a
+              className="item"
+              name="yearlyChange"
+              onClick={props.handleClick}
+              style={{ color: "green" }}
+            >
               Yearly Change
             </a>
           </div>

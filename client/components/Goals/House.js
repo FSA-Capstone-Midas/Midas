@@ -77,84 +77,74 @@ class House extends Component {
                   <h5>How much can I afford?</h5>
                   <br />
                   <Form className="ui small">
-                    <Form.Group>
-                      <Grid>
-                        <Grid.Column width={8}>
-                          <Form.Field
-                            control={Input}
-                            label="Annual Income $:"
-                            name="annualIncome"
-                            value={houseForm.annualIncome}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
-                            name="mortgageRate"
-                            value={houseForm.mortgageRate}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Annual Insurance $"
-                            name="annualInsurance"
-                            value={houseForm.annualInsurance}
-                            onChange={handleChange}
-                          />
-                          <Form.Field
-                            control={Input}
-                            label="Annual Property Tax % (national averge is 1%)"
-                            name="annualPropertyTax"
-                            value={houseForm.annualPropertyTax}
-                            onChange={handleChange}
-                          />
-                          <Form.Input
-                            label={`Percent Down Payment: ${
-                              houseForm.percentDownPayment
-                            } %`}
-                            min={0}
-                            max={100}
-                            name="percentDownPayment"
-                            onChange={handleChange}
-                            step={1}
-                            type="range"
-                            value={houseForm.percentDownPayment}
-                          />
-                        </Grid.Column>
-                      </Grid>
-                    </Form.Group>
+                    <Form.Field
+                      control={Input}
+                      label="Annual Income $:"
+                      name="annualIncome"
+                      value={houseForm.annualIncome}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
+                      name="mortgageRate"
+                      value={houseForm.mortgageRate}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Annual Insurance $"
+                      name="annualInsurance"
+                      value={houseForm.annualInsurance}
+                      onChange={handleChange}
+                    />
+                    <Form.Field
+                      control={Input}
+                      label="Annual Property Tax % (national averge is 1%)"
+                      name="annualPropertyTax"
+                      value={houseForm.annualPropertyTax}
+                      onChange={handleChange}
+                    />
+                    <Form.Input
+                      label={`Percent Down Payment: ${
+                        houseForm.percentDownPayment
+                      } %`}
+                      min={0}
+                      max={100}
+                      name="percentDownPayment"
+                      onChange={handleChange}
+                      step={1}
+                      type="range"
+                      value={houseForm.percentDownPayment}
+                    />
                   </Form>
                 </Grid.Column>
 
-                <Grid.Column width={8}>
-                  <div className="ui huge">
-                    <h5>How much will I need?</h5>
-                    <p>You can afford a home that costs </p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(aggressivePrice)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                    <p>for a total monthly payment of</p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(monthlyAggresive)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                    <p>You will need a down payment of</p>
-                    <Statistic color="teal">
-                      <Statistic.Value>
-                        ${`${numberWithCommas(downpaymentAggresive)}`}
-                      </Statistic.Value>
-                    </Statistic>
-                  </div>
+                <Grid.Column width={8} verticalAlign="middle">
+                  {/* <div className="ui huge"> */}
+                  <h5>How much will I need?</h5>
+                  <p>You can afford a home that costs </p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(aggressivePrice)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  <p>for a total monthly payment of</p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(monthlyAggresive)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  <p>You will need a down payment of</p>
+                  <Statistic color="teal">
+                    <Statistic.Value>
+                      ${`${numberWithCommas(downpaymentAggresive)}`}
+                    </Statistic.Value>
+                  </Statistic>
+                  {/* </div> */}
                   <br />
                   <NavLink to="/goals">
-                    <Button
-                      icon
-                      className="ui huge button"
-                      labelPosition="right"
-                    >
+                    <Button icon className="ui huge button" floated="right">
                       Save the Goal
                       <Icon name="right arrow" />
                     </Button>

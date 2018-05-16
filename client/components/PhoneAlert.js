@@ -45,7 +45,7 @@ const mapState = state => {
     id: state.user.id,
     phone: state.phone,
     all: state,
-    accounts: state.accounts.accountInfo
+    accounts: state.accounts.accountInfo,
   };
 };
 

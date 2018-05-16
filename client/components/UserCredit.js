@@ -28,9 +28,9 @@ const UserCredit = () => (
         </Grid.Row>
       </Grid>
     </Segment>
-    <Container>
-      <Segment
-        style={{ padding: "2em 0em", fontSize: "28px", textAlign: "center" }}
+    <div id="mainContent">
+      <div
+        style={{ padding: "2em 0em", fontSize: "24px", textAlign: "center" }}
       >
         <div
           className="ui segment"
@@ -56,14 +56,18 @@ const UserCredit = () => (
             <div className="ui red statistic">
               <div className="value">800</div>
             </div>
-            <Progress percent={80} color="blue" size="medium" />
-            <h4>
+            <div>
+              <div className="ui active indicating progress" data-percent="80">
+                <div className="bar" style={{ width: "80%" }} />
+              </div>
+            </div>
+            <h5>
               Get your absolutely free credit score to see how you stack up.
-            </h4>
-            <h4>
+            </h5>
+            <h5>
               Discover what impacks your score and put yourself in a better
               position for a new loan, a new credit card-or even a new job.
-            </h4>
+            </h5>
             <a
               rel="noopener noreferrer"
               target="_blank"
@@ -78,8 +82,8 @@ const UserCredit = () => (
           </div>
         </div>
         <div />
-      </Segment>
-    </Container>
+      </div>
+    </div>
 
     <Footer />
   </ResponsiveContainer>
