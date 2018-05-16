@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Progress, Segment } from "semantic-ui-react";
+import { Progress } from "semantic-ui-react";
 
 const BudgetProgress = props => {
   const totalBudgetExpenditure = props.budget.totalBudgetExpenditure;
@@ -14,7 +14,7 @@ const BudgetProgress = props => {
       {spendingRatio ? (
         <h4>{`You have spent ${spendingRatio}% of your budget.`}</h4>
       ) : (
-        <h4>
+        <h4 style={{ marginTop: "1em" }}>
           We can only track your spending progress after you have set up your
           budget.
         </h4>
@@ -36,7 +36,7 @@ const mapState = state => {
 
   return {
     actualSpending,
-    budget,
+    budget
   };
 };
 
