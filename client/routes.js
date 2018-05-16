@@ -23,16 +23,7 @@ import {
   Bills,
   AddAccount
 } from "./components";
-import {
-  me,
-  fetchTransaction,
-  fetchItem,
-  getBudgetFromDatabase,
-  fetchRetirementDetails,
-  fetchRent,
-  fetchPhone,
-  fetchEmergencyGoal
-} from "./store";
+import { me } from "./store";
 
 /**
  * COMPONENT
@@ -40,20 +31,6 @@ import {
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (
-      this.props.user.id !== nextProps.user.id &&
-      (this.props.user.id !== 1 && nextProps.user.id !== null)
-    ) {
-      // this.props.loadAccountsFromPlaid();
-      // this.props.fetchRetirementDetails(nextProps.user.id);
-      // this.props.loadBudgetData(nextProps.user.id);
-      // this.props.fetchRent(nextProps.user.id);
-      // this.props.fetchPhone(nextProps.user.id);
-      // this.props.fetchEmergencyDataFromServer(nextProps.user.id);
-    }
   }
 
   render() {
@@ -68,9 +45,9 @@ class Routes extends Component {
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
 
-        {!userWithToken ? (
+        {!userWithToken && (
           <Route exact path="/addAccount" component={AddAccount} />
-        ) : null}
+        )}
 
         {isLoggedIn &&
           userWithToken && (
@@ -132,27 +109,6 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
-    },
-    loadAccountsFromPlaid() {
-      dispatch(fetchItem());
-    },
-    loadTransactionsFromPlaid() {
-      dispatch(fetchTransaction());
-    },
-    loadBudgetData(id) {
-      dispatch(getBudgetFromDatabase(id));
-    },
-    fetchRent(id) {
-      dispatch(fetchRent(id));
-    },
-    fetchPhone(id) {
-      dispatch(fetchPhone(id));
-    },
-    fetchRetirementDetails(id) {
-      dispatch(fetchRetirementDetails(id));
-    },
-    fetchEmergencyDataFromServer(id) {
-      dispatch(fetchEmergencyGoal(id));
     }
   };
 };
