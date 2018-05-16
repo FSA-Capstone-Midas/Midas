@@ -12,11 +12,11 @@ const DELETE_HOUSE_GOAL = "DELETE_HOUSE_GOAL";
  * INITIAL STATE
  */
 const fieldValues = {
-  annualIncome: 60000,
-  mortgageRate: 4.5,
-  percentDownPayment: 20,
-  annualInsurance: 500,
-  annualPropertyTax: 1
+  annualIncome: 0,
+  mortgageRate: 0,
+  percentDownPayment: 0,
+  annualInsurance: 0,
+  annualPropertyTax: 0
 };
 
 /**
@@ -62,6 +62,7 @@ export const addHousePlan = housePlan => dispatch => {
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
+      console.log("spoijef", res.data);
       dispatch(getUpdatedHousePlan(res.data));
     })
     .catch(err => console.log(err));
