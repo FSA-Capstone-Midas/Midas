@@ -16,7 +16,6 @@ export const fetchItem = () => dispatch => {
     .get("/api/plaid/auth")
     .then(res => {
       dispatch(getItem(demoAccounts));
-      //add seed data here
     })
     .catch(err => console.error(err));
 };

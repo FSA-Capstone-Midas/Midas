@@ -47,13 +47,12 @@ class Routes extends Component {
       this.props.user.id !== nextProps.user.id &&
       (this.props.user.id !== 1 && nextProps.user.id !== null)
     ) {
-      this.props.loadAccountsFromPlaid();
-      this.props.loadTransactionsFromPlaid();
-      this.props.fetchRetirementDetails(nextProps.user.id);
-      this.props.loadBudgetData(nextProps.user.id);
-      this.props.fetchRent(nextProps.user.id);
-      this.props.fetchPhone(nextProps.user.id);
-      this.props.fetchEmergencyDataFromServer(nextProps.user.id);
+      // this.props.loadAccountsFromPlaid();
+      // this.props.fetchRetirementDetails(nextProps.user.id);
+      // this.props.loadBudgetData(nextProps.user.id);
+      // this.props.fetchRent(nextProps.user.id);
+      // this.props.fetchPhone(nextProps.user.id);
+      // this.props.fetchEmergencyDataFromServer(nextProps.user.id);
     }
   }
 
@@ -140,8 +139,8 @@ const mapDispatch = dispatch => {
     loadTransactionsFromPlaid() {
       dispatch(fetchTransaction());
     },
-    loadBudgetData(userId) {
-      dispatch(getBudgetFromDatabase(userId));
+    loadBudgetData(id) {
+      dispatch(getBudgetFromDatabase(id));
     },
     fetchRent(id) {
       dispatch(fetchRent(id));

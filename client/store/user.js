@@ -1,6 +1,14 @@
 import axios from "axios";
 import history from "../history";
-import { fetchTransaction } from "./index";
+import {
+  fetchTransaction,
+  fetchItem,
+  getBudgetFromDatabase,
+  fetchRent,
+  fetchPhone,
+  fetchRetirementDetails,
+  fetchEmergencyGoal
+} from "./index";
 
 /**
  * ACTION TYPES
@@ -33,8 +41,18 @@ export const me = () => dispatch =>
   axios
     .get("/auth/me")
     .then(res => {
-      dispatch(fetchTransaction());
-      dispatch(getUser(res.data || defaultUser));
+      console.log(res.data);
+      if (res.data.id) {
+        let userId = res.data.id;
+        dispatch(getUser(res.data || defaultUser));
+        dispatch(fetchTransaction());
+        dispatch(fetchItem());
+        dispatch(getBudgetFromDatabase(userId));
+        dispatch(fetchRent(userId));
+        dispatch(fetchPhone(userId));
+        dispatch(fetchRetirementDetails(userId));
+        dispatch(fetchEmergencyGoal(userId));
+      }
     })
     .catch(err => console.log(err));
 
@@ -80,8 +98,20 @@ export const auth = (
     })
     .then(
       res => {
+        let userId = res.data.id;
         dispatch(getUser(res.data));
-        history.push("/addAccount");
+        if (method === "signup") {
+          history.push("/addAccount");
+        } else {
+          dispatch(fetchTransaction());
+          dispatch(fetchItem());
+          dispatch(getBudgetFromDatabase(userId));
+          dispatch(fetchRent(userId));
+          dispatch(fetchPhone(userId));
+          dispatch(fetchRetirementDetails(userId));
+          dispatch(fetchEmergencyGoal(userId));
+          history.push("/home");
+        }
       },
       authError => {
         // rare example: a good use case for parallel (non-catch) error handler

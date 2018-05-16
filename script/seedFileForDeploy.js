@@ -21,7 +21,7 @@ const demoAccounts = {
     },
     {
       account_id: "qVP6re7OaqU117QvYKMYFvzk8VPLrxHJZvVoe",
-      balances: { available: 925.21, current: 995.88, limit: 10000 },
+      balances: { available: 925.21, current: 9074.79, limit: 10000 },
       mask: "8623",
       name: "CREDIT CARD",
       official_name: "FREEDOM UNLIMITED CREDIT CARD",

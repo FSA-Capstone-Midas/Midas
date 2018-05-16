@@ -55,7 +55,6 @@ router.get("/auth", function(req, res, next) {
         if (error) {
           return res.json({ error });
         } else {
-          console.log("HERER", req.user);
           return res.status(200).json({
             error: false,
             accountInfo: data.accounts //account balances

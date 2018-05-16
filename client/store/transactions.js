@@ -15,7 +15,7 @@ export const fetchTransaction = () => dispatch => {
   return axios
     .get("/api/plaid/transactions")
     .then(res => {
-      return dispatch(getTransaction(demoTransaction));
+      dispatch(getTransaction(res.data || demoTransaction));
     })
     .catch(err => console.error(err));
 };
