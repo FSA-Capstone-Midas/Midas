@@ -86,8 +86,6 @@ class SignUp extends Component {
       arrayDay.push({ key: j, text: j, value: j });
     }
 
-    console.log("this.state", this.state);
-
     return (
       <ResponsiveContainer>
         <Segment id="headerBackground" style={{ padding: "2em" }} vertical>

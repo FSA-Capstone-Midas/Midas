@@ -30,7 +30,8 @@ import {
   getBudgetFromDatabase,
   fetchRetirementDetails,
   fetchRent,
-  fetchPhone
+  fetchPhone,
+  fetchEmergencyGoal
 } from "./store";
 
 /**
@@ -39,16 +40,20 @@ import {
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
-    this.props.loadAccountsFromPlaid();
-    this.props.loadTransactionsFromPlaid();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.user.id !== nextProps.user.id) {
+    if (
+      this.props.user.id !== nextProps.user.id &&
+      (this.props.user.id !== 1 && nextProps.user.id !== null)
+    ) {
+      this.props.loadAccountsFromPlaid();
+      this.props.loadTransactionsFromPlaid();
       this.props.fetchRetirementDetails(nextProps.user.id);
       this.props.loadBudgetData(nextProps.user.id);
       this.props.fetchRent(nextProps.user.id);
       this.props.fetchPhone(nextProps.user.id);
+      this.props.fetchEmergencyDataFromServer(nextProps.user.id);
     }
   }
 
@@ -146,6 +151,9 @@ const mapDispatch = dispatch => {
     },
     fetchRetirementDetails(id) {
       dispatch(fetchRetirementDetails(id));
+    },
+    fetchEmergencyDataFromServer(id) {
+      dispatch(fetchEmergencyGoal(id));
     }
   };
 };

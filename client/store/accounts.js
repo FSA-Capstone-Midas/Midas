@@ -1,4 +1,5 @@
 import axios from "axios";
+import { demoAccounts } from "../../script/seedFileForDeploy";
 
 const initialState = {};
 
@@ -12,9 +13,10 @@ const getItem = item => ({
 // fetch accounts from api
 export const fetchItem = () => dispatch => {
   return axios
-    .get("/api/plaid/auth") //fetch accounts
+    .get("/api/plaid/auth")
     .then(res => {
-      return dispatch(getItem(res.data));
+      dispatch(getItem(demoAccounts));
+      //add seed data here
     })
     .catch(err => console.error(err));
 };

@@ -8,8 +8,7 @@ import BillForm from "./BillForm";
 
 class PhoneAlert extends Component {
   render() {
-    const { id, user, userInfo, phone, all, accounts } = this.props;
-    console.log("check this out!!!!", all);
+    const { phone } = this.props;
     if (phone && phone.id) {
       const newDate = new Date().toString().split(" ");
       const oldDate = phone.date.split("-");
