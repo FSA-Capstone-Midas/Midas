@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from "../history";
 
 const initialState = {};
 
@@ -12,7 +13,10 @@ const getInformation = information => ({
 export const fetchInformation = successToken => dispatch => {
   return axios
     .post("/api/plaid/get_access_token", { successToken })
-    .then(res => dispatch(getInformation(res.data)))
+    .then(res => {
+      dispatch(getInformation(res.data));
+      history.push("/home");
+    })
     .catch(err => console.error(err));
 };
 

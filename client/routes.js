@@ -138,7 +138,6 @@ const mapDispatch = dispatch => {
     loadBudgetData(userId) {
       dispatch(getBudgetFromDatabase(userId));
     },
-
     fetchRent(id) {
       dispatch(fetchRent(id));
     },
