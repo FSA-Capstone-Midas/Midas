@@ -15,7 +15,11 @@ export const fetchTransaction = () => dispatch => {
   return axios
     .get("/api/plaid/transactions")
     .then(res => {
-      dispatch(getTransaction(res.data || demoTransaction));
+      if (res.data.error) {
+        dispatch(getTransaction(demoTransaction));
+      } else {
+        dispatch(getTransaction(res.data || demoTransaction));
+      }
     })
     .catch(err => console.error(err));
 };

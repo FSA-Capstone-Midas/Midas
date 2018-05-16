@@ -15,7 +15,11 @@ export const fetchItem = () => dispatch => {
   return axios
     .get("/api/plaid/auth")
     .then(res => {
-      dispatch(getItem(res.data || demoAccounts));
+      if (res.data.error) {
+        dispatch(getItem(demoAccounts));
+      } else {
+        dispatch(getItem(res.data || demoAccounts));
+      }
     })
     .catch(err => console.error(err));
 };

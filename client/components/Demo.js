@@ -80,7 +80,7 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault();
       const formName = "login";
-      const email = "cody@email.com";
+      const email = "murphy@email.com";
       const password = "123";
       dispatch(auth(email, password, formName));
     }
