@@ -88,8 +88,8 @@ router.get("/transactions", (req, res, next) => {
               error: error
             });
           } else {
-            let fakeData = JSON.stringify(data.transactions);
-            fs.writeFileSync("dummyData.json", fakeData);
+            // let fakeData = JSON.stringify(data.transactions,null ,2);
+            // fs.writeFileSync("dummyData.json", fakeData);
             return res.status(200).json({
               error: false,
               transaction: data.transactions
