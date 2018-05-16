@@ -9,7 +9,7 @@ import {
   Responsive,
   Segment,
   Visibility,
-  Image,
+  Image
 } from "semantic-ui-react";
 import { logout, fetchUser } from "../../store";
 
@@ -52,7 +52,7 @@ class DesktopContainer extends Component {
             >
               <Container
                 style={{
-                  fontSize: "17px",
+                  fontSize: "17px"
                 }}
               >
                 {this.state.fixed ? null : (
@@ -62,9 +62,6 @@ class DesktopContainer extends Component {
                 )}
                 <Menu.Item as={NavLink} to="/home">
                   Home
-                </Menu.Item>
-                <Menu.Item exact as={NavLink} to="/profile">
-                  Profile
                 </Menu.Item>
 
                 <Menu.Item exact as={NavLink} to="/transactions">
@@ -90,6 +87,9 @@ class DesktopContainer extends Component {
                 <Menu.Item exact as={NavLink} to="/goals">
                   Goals
                 </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/profile">
+                  Profile
+                </Menu.Item>
 
                 <Menu.Item position="right">
                   <Button
@@ -113,12 +113,12 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id,
+    id: state.user.id
   };
 };
 const mapDispatch = dispatch => {
@@ -129,7 +129,7 @@ const mapDispatch = dispatch => {
     handleUser(event, id) {
       event.preventDefault();
       dispatch(fetchUser(id));
-    },
+    }
   };
 };
 
