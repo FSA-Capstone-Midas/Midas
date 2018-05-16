@@ -80,25 +80,17 @@ class UserHome extends React.Component {
           <Loading />
         ) : (
           <div>
-            <Container style={{ width: "95%", paddingTop: "1.2em" }}>
-              <Grid stackable verticalAlign="middle">
-                <div
-                  style={{
-                    fontSize: "20px",
-                    marginLeft: "85%",
-                    paddingTop: "1em",
-                  }}
-                >
-                  Welcome back {fullname}
-                  <br />
-                  Last login time:{" "}
-                  {user &&
-                    user.updatedAt.split("T")[0] +
-                      " " +
-                      user.updatedAt.split("T")[1].slice(0, 8)}
-                </div>
+            <Container style={{ width: "80%", paddingTop: "1em" }}>
+              <Grid stackable style={{ float: "right" }}>
+                <Grid.Row>
+                  <Grid.Column width={16}>
+                    <p>Welcome </p>
+                    <div />
+                  </Grid.Column>
+                </Grid.Row>
               </Grid>
             </Container>
+            <Divider section />
             <Container style={{ width: "80%", paddingTop: "1em" }}>
               <Grid stackable>
                 <Grid.Row>
