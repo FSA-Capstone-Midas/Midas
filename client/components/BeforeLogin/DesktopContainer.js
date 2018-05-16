@@ -60,7 +60,9 @@ class DesktopContainer extends Component {
                 <Menu.Item exact as={NavLink} to="/aboutus">
                   About Us
                 </Menu.Item>
-
+                <Menu.Item exact as={NavLink} to="/demo">
+                  Demo
+                </Menu.Item>
                 <Menu.Item position="right">
                   {match.path === "/login" ? null : (
                     <Button as={Link} to="/login" inverted={!fixed}>

@@ -15,7 +15,7 @@ export const fetchItem = () => dispatch => {
   return axios
     .get("/api/plaid/auth")
     .then(res => {
-      dispatch(getItem(demoAccounts));
+      dispatch(getItem(res.data || demoAccounts));
     })
     .catch(err => console.error(err));
 };

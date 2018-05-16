@@ -14,8 +14,7 @@ export const fetchInformation = successToken => dispatch => {
   return axios
     .post("/api/plaid/get_access_token", { successToken })
     .then(res => {
-      console.log(res.data);
-      dispatch(getInformation("Successfully linked to Account"));
+      dispatch(getInformation(res.data));
       if (!res.data.error) {
         history.push("/home");
       }

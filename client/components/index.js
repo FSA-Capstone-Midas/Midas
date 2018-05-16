@@ -31,5 +31,6 @@ export { default as BillForm } from "./BillForm";
 export { default as BillAlert } from "./BillAlert";
 export { default as PhoneAlert } from "./PhoneAlert";
 export { default as AddAccount } from "./AddAccount";
+export { default as Demo } from "./Demo";
 
 //export { Login, Signup } from "./auth-form";

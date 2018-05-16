@@ -22,7 +22,8 @@ import {
   SaveForEmergencyConfirmPage,
   Bills,
   AddAccount,
-  BillForm
+  BillForm,
+  Demo
 } from "./components";
 
 import {
@@ -56,6 +57,7 @@ class Routes extends Component {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/howitworks" component={HowItWorks} />
+        <Route exact path="/demo" component={Demo} />
 
         {!userWithToken && (
           <Route exact path="/addAccount" component={AddAccount} />
