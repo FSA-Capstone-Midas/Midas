@@ -53,7 +53,7 @@ class DesktopContainer extends Component {
               <Container
                 style={{
                   fontSize: "17px",
-                  width: "70%",
+
                 }}
               >
                 {this.state.fixed ? null : (
