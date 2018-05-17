@@ -16,8 +16,8 @@ class BillAlert extends Component {
         <Grid columns={1}>
           <Grid.Column>
             <Step.Group fluid vertical style={{ backgroundColor: "burlywood" }}>
-              <Step active style={{ backgroundColor: "gold" }}>
-                <Icon color="red" name="announcement" />
+              <Step active style={{ backgroundColor: "#FFC107" }}>
+                <Icon color="blue" name="calendar" />
                 <Step.Content>
                   <Step.Title>
                     {bills.id ? (
@@ -40,7 +40,7 @@ class BillAlert extends Component {
 const mapState = state => {
   //set up number of goals of each user
   return {
-    bills: state.bills
+    bills: state.bills,
   };
 };
 
