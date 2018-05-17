@@ -3,13 +3,13 @@ import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
 import Footer from "../Footer";
-import { Segment, Grid, Container } from "semantic-ui-react";
+import { Segment, Grid, Container, Divider } from "semantic-ui-react";
 import GoalsComponent from "./GoalsComponent";
 import GoalsMenu from "./GoalsMenu";
 import {
   fetchRetirementDetails,
   getHouseFormdetails,
-  fetchEmergencyGoal,
+  fetchEmergencyGoal
 } from "../../store";
 
 const ResponsiveContainer = ({ children }) => (
@@ -24,7 +24,7 @@ class Goals extends Component {
     super(props);
     //return menu bar if no goals
     this.state = {
-      goals: false,
+      goals: false
     };
   }
 
@@ -87,7 +87,7 @@ class Goals extends Component {
             <Grid
               style={{
                 padding: "2em 0em",
-                fontSize: "12px",
+                fontSize: "12px"
               }}
             >
               <GoalsComponent
@@ -98,6 +98,7 @@ class Goals extends Component {
             </Grid>
           ) : null}
         </Container>
+        <Divider hidden />
         <Footer />
       </ResponsiveContainer>
     );
@@ -110,7 +111,7 @@ const mapStateToProps = state => {
     user: state.user,
     retirement: state.retirement,
     emergency: state.emergencyGoalReducer,
-    houseForm: state.houseForm,
+    houseForm: state.houseForm
   };
 };
 
@@ -124,7 +125,7 @@ function mapDispatchToProps(dispatch) {
     },
     fetchEmergencyGoal(userId) {
       dispatch(fetchEmergencyGoal(userId));
-    },
+    }
   };
 }
 

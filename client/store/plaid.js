@@ -15,7 +15,6 @@ export const fetchInformation = successToken => dispatch => {
   return axios
     .post("/api/plaid/get_access_token", { successToken })
     .then(res => {
-      console.log("store", res.data);
       dispatch(getInformation(res.data));
       dispatch(me());
       if (!res.data.error) {

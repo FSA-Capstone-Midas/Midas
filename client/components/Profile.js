@@ -3,7 +3,15 @@ import React from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import store, { updateProfile } from "../store";
-import { Button, Grid, Header, Image, Segment, Form } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  Header,
+  Image,
+  Segment,
+  Form,
+  Divider
+} from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
@@ -105,7 +113,6 @@ class Profile extends React.Component {
             </Grid.Row>
           </Grid>
         </Segment>
-
         <Segment
           style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
           vertical
@@ -227,6 +234,7 @@ class Profile extends React.Component {
             </Grid.Column>
           </Grid>
         </Segment>
+        <Divider hidden />
         <Footer />
       </ResponsiveContainer>
     );
