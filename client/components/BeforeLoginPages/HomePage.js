@@ -180,7 +180,7 @@ const HomePage = props => {
             Do you want to sign up an account and vistualize your financial
             statement and spending activity?
           </p>
-          <Button size="huge" as={Link} to="/demo">
+          <Button size="huge" as={Link} to="/signup">
             I'm Interested
           </Button>
         </Container>

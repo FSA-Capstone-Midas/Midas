@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import {
   deleteRetirementPlan,
   deleteEmergencyPlan,
-  deleteHousePlan,
+  deleteHousePlan
 } from "../../store";
 
 class GoalsOptions extends Component {
@@ -13,7 +13,7 @@ class GoalsOptions extends Component {
     const {
       handleRetirementClick,
       handleEmergencyClick,
-      handleHouseClick,
+      handleHouseClick
     } = this.props;
     return (
       <Item.Group divided>
@@ -111,7 +111,7 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
-    emergency: state.emergencyGoalReducer,
+    emergency: state.emergencyGoalReducer
   };
 };
 
@@ -124,9 +124,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(deleteEmergencyPlan(id));
     },
     handleHouseClick(event, id) {
-      console.log("what is id", id);
       dispatch(deleteHousePlan(id));
-    },
+    }
   };
 };
 

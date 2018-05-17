@@ -11,7 +11,7 @@ const rentBill = {
   id: 1,
   price: 123,
   date: "2018-06-01T04:00:00.000Z",
-  createdAt: "2018-05-14T21:06:28.313Z",
+  createdAt: "2018-05-15T21:06:28.313Z",
   updatedAt: "2018-05-14T21:06:28.313Z",
   userId: 1
 };

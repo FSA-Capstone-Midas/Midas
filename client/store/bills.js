@@ -12,7 +12,7 @@ const getUserRent = rent => ({ type: GET_RENT, rent });
 
 export const updateRent = rent => dispatch =>
   axios
-    .post("/api/rent", rent)
+    .post("/api/rent/", rent)
     .then(res => {
       dispatch(updateUserRent(res.data));
       history.push("/home");

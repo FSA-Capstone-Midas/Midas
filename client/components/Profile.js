@@ -107,9 +107,6 @@ class Profile extends React.Component {
 
   render() {
     const { user } = this.props;
-    console.log("what is user", user.birthYear);
-    console.log("what is user", user.birthMonth);
-    console.log("what is user", user.birthDay);
     return (
       <ResponsiveContainer id="desktopNav">
         <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
