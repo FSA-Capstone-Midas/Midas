@@ -76,7 +76,7 @@ class GoalsOptions extends Component {
           </Item>
         ) : null}
 
-        {this.props.houseForm.annualIncome ? (
+        {this.props.houseForm.annualIncome !== 0 ? (
           <Item>
             <Item.Image src="pictures/house.png" />
 
