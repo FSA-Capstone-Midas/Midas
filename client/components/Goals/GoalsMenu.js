@@ -5,10 +5,6 @@ import { NavLink } from "react-router-dom";
 
 //render menu
 class GoalsMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let { retirement, emergencyGoal, houseForm } = this.props;
 

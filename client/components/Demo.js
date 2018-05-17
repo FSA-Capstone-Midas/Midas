@@ -55,7 +55,7 @@ const Demo = props => {
                   role="button"
                   onClick={handleSubmit}
                 >
-                  Login
+                  ENTER
                 </Button>
               </Segment>
             </Form>

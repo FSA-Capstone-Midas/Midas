@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Button, Icon, Item, Label, Segment, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import GoalsOptions from "./GoalsOptions";
 
 //render box
@@ -25,7 +24,7 @@ const mapStateToProps = state => {
     form: state.form,
     user: state.user,
     retirement: state.retirement,
-    emergency: state.emergencyGoalReducer,
+    emergency: state.emergencyGoalReducer
   };
 };
 
