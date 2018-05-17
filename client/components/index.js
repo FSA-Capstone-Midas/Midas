@@ -8,7 +8,6 @@ export { default as HomePage } from "./BeforeLoginPages/HomePage";
 export { default as HowItWorks } from "./BeforeLoginPages/HowItWorks";
 export { default as Login } from "./BeforeLoginPages/Login";
 export { default as SignUp } from "./BeforeLoginPages/SignUp";
-export { default as Navbar } from "./navbar";
 export { default as UserHome } from "./user-home";
 export { default as Profile } from "./Profile";
 export { default as UserCredit } from "./UserCredit";

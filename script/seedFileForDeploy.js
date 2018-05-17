@@ -125,7 +125,7 @@ const demoTransaction = {
     {
       "account_id": "Or0v9g5Yw6CD8dRYmkwQs9OpNZ3jwaS8a3KD6",
       "account_owner": null,
-      "amount": 790.46,
+      "amount": 90.46,
       "category": [
         "Shops",
         "Clothing and Accessories"
@@ -26192,7 +26192,7 @@ const demoTransaction = {
     {
       "account_id": "VmAJdwyYB3iwMqpE8aBrFpMYBAE8bDUrwLN87",
       "account_owner": null,
-      "amount": 673,
+      "amount": 73,
       "category": [
         "Travel",
         "Lodging"
@@ -26297,7 +26297,7 @@ const demoTransaction = {
     {
       "account_id": "VmAJdwyYB3iwMqpE8aBrFpMYBAE8bDUrwLN87",
       "account_owner": null,
-      "amount": 256.49,
+      "amount": 56.49,
       "category": [
         "Travel",
         "Airlines and Aviation Services"
@@ -26367,7 +26367,7 @@ const demoTransaction = {
     {
       "account_id": "M0AkomrVXdtRzq3xQyYOszKkanOYBXtMeV3qZ",
       "account_owner": null,
-      "amount": 700,
+      "amount": 10,
       "category": [
         "Transfer",
         "Internal Account Transfer"
