@@ -6,12 +6,11 @@ import store, {
   updateRent,
   fetchRent,
   fetchPhone,
-  updatePhone,
+  updatePhone
 } from "../store";
 
 class BillForm extends Component {
   constructor(props) {
-    console.log("props!!", props);
     super(props);
     this.state = {
       amount: 0,
@@ -21,7 +20,7 @@ class BillForm extends Component {
       phoneAmount: 0,
       phoneMonth: "",
       phoneDay: "",
-      phoneYear: "",
+      phoneYear: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,15 +41,14 @@ class BillForm extends Component {
     const dateResult = {
       price: Number(this.state.amount),
       date: date,
-      userId: id,
+      userId: id
     };
     const phoneResult = {
       price: Number(this.state.phoneAmount),
       date: phoneDate,
-      userId: id,
+      userId: id
     };
 
-    console.log("what is phoneResult", phoneResult);
     store.dispatch(fetchPhone(id));
     store.dispatch(updatePhone(phoneResult));
     store.dispatch(fetchRent(id));
@@ -103,14 +101,14 @@ class BillForm extends Component {
                       flexWrap: "wrap",
                       padding: "0",
                       margin: "0",
-                      justifyContent: "space-around",
+                      justifyContent: "space-around"
                     }}
                   >
                     <Segment
                       style={{
                         padding: "5px",
                         width: "50%",
-                        textAlign: "center",
+                        textAlign: "center"
                       }}
                     >
                       <div className="field">
@@ -175,7 +173,7 @@ class BillForm extends Component {
                         padding: "5px",
                         width: "50%",
                         textAlign: "center",
-                        marginTop: "0",
+                        marginTop: "0"
                       }}
                     >
                       <div className="field">
@@ -264,7 +262,7 @@ const mapState = state => {
     user: state.user,
     id: state.user.id,
     phone: state.phone,
-    bill: state,
+    bill: state
   };
 };
 
