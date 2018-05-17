@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import {
   Button,
   Grid,
@@ -163,7 +163,7 @@ const AboutUs = props => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign="center">
-              <Button size="huge" as={NavLink} to="/home">
+              <Button size="huge" as={Link} to="/home">
                 Check Them Out
               </Button>
             </Grid.Column>
