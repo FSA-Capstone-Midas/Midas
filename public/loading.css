@@ -47,3 +47,7 @@
     -webkit-transform: scale(1);
   }
 }
+
+.outside-div {
+  min-height: 70vh;
+}

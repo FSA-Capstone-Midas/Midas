@@ -16,6 +16,7 @@ import {
   Icon,
 } from "semantic-ui-react";
 import GoalsComponent from "./Goals/GoalsComponent";
+import GoalsMenu from "./Goals/GoalsMenu";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import PieSpending from "./Transactions/PieSpending";
@@ -140,8 +141,8 @@ class UserHome extends React.Component {
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
+              <Divider section />
             </Container>
-            <Divider section />
 
             <Container style={{ width: "80%", paddingTop: "1em" }}>
               <Grid stackable>
@@ -160,8 +161,8 @@ class UserHome extends React.Component {
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
+              <Divider section />
             </Container>
-            <Divider section />
             <Container
               style={{ width: "80%", paddingTop: "1em" }}
               {...notMobile}
@@ -174,8 +175,8 @@ class UserHome extends React.Component {
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
+              <Divider section />
             </Container>
-            <Divider section />
 
             <Container
               style={{ width: "80%", paddingTop: "1em", paddingBottom: "3em" }}
@@ -183,7 +184,32 @@ class UserHome extends React.Component {
               <Grid stackable verticalAlign="middle">
                 <Grid.Row>
                   <Grid.Column width={16}>
-                    <h3>Goals</h3>
+                    {retirement.birthyear &&
+                    houseForm.annualIncome &&
+                    emergency.isEnter ? (
+                      <h4>You have set up all your goals! Review them below</h4>
+                    ) : retirement.birthyear ||
+                    houseForm.annualIncome ||
+                    emergency.isEnter ? (
+                      <div>
+                        <h4>
+                          You have not added the following goals. Get Started
+                        </h4>
+                        <GoalsMenu />
+                      </div>
+                    ) : (
+                      <div>
+                        <h4>Good jobs and focus your goals!!!</h4>
+                        <h5>Choose a Goal:</h5>
+                        <GoalsMenu />
+                      </div>
+                    )}
+                  </Grid.Column>
+                </Grid.Row>
+
+                <Divider section />
+                <Grid.Row>
+                  <Grid.Column width={16}>
                     <GoalsComponent
                       retirement={retirement}
                       houseForm={houseForm}
@@ -195,6 +221,7 @@ class UserHome extends React.Component {
             </Container>
           </div>
         )}
+        <Divider hidden />
         <Footer />
       </ResponsiveContainer>
     );
