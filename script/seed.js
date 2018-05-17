@@ -35,7 +35,8 @@ async function seed() {
       lastName: "chan",
       phoneNumber: "31241242",
       address: "Queens",
-      jobTitle: "software engineer"
+      jobTitle: "software engineer",
+      plaidTokenId: "123"
     })
   ]);
   // Wowzers! We can even `await` on the right-hand side of the assignment operator

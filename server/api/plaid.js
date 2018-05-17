@@ -68,16 +68,15 @@ router.get("/auth", function(req, res, next) {
 
 router.get("/transactions", (req, res, next) => {
   let date = new Date();
-  let todatsDate = date.yyyymmdd(0);
+  let todaysDate = date.yyyymmdd(0);
   let lastYear = date.yyyymmdd(1);
-
   User.findById(req.user.id)
     .then(user => {
       let accessToken = user.plaidTokenId;
       client.getTransactions(
         accessToken,
         lastYear,
-        todatsDate,
+        todaysDate,
         {
           count: 500,
           offset: 0
@@ -88,7 +87,7 @@ router.get("/transactions", (req, res, next) => {
               error: error
             });
           } else {
-            // let fakeData = JSON.stringify(data.transactions,null ,2);
+            // let fakeData = JSON.stringify(data.transactions, null, 2);
             // fs.writeFileSync("dummyData.json", fakeData);
             return res.status(200).json({
               error: false,
