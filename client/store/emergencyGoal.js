@@ -40,7 +40,7 @@ export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
     .then(emergencyGoal => {
       //return added data to database
       dispatch(getEmergencyGoal(emergencyGoal));
-      history.push("/goals");
+      // history.push("/goals");
     })
     .catch(err => console.log(err));
 };
@@ -50,6 +50,7 @@ export const deleteEmergencyPlan = id => dispatch => {
     .delete(`/api/emergencyGoal/user/${id}`)
     .then(res => {
       dispatch(deleteEmergencyGoal(res.data));
+      console.log("what is history", history);
     })
     .catch(err => console.log(err));
 };

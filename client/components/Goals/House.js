@@ -11,7 +11,7 @@ import {
   Button,
   Icon,
   Grid,
-  Statistic,
+  Statistic
 } from "semantic-ui-react";
 import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
@@ -27,14 +27,14 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class House extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showResult: false,
+      showResult: false
     };
     this.handleChangeLocal = this.handleChangeLocal.bind(this);
   }
@@ -48,9 +48,10 @@ class House extends Component {
       annualInsurance,
       annualPropertyTax,
       percentDownPayment,
-      mortgageRate,
+      mortgageRate
     } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
+    console.log("what is housePlan here", housePlan);
     const aggressivePrice = Math.floor(annualIncome * 6);
     const downpaymentAggresive = Math.floor(
       aggressivePrice * (percentDownPayment / 100)
@@ -59,13 +60,13 @@ class House extends Component {
     const monthlyAggresive = Math.floor(
       paymentBalance * Math.pow(1 + mortgageRate / 100, 30) / 360
     );
-
+    // console.log("house plan", housePlan);
     return (
       <ResponsiveContainer>
         <Container>
           <Segment
             id="howItWorksBackground"
-            style={{ padding: '1.5em' }}
+            style={{ padding: "1.5em" }}
             vertical
           >
             <i aria-hidden="true" className="home massive icon" />
@@ -76,7 +77,7 @@ class House extends Component {
                 <Grid.Column width={8}>
                   <h5>How much can I afford?</h5>
                   <br />
-                  <Form className="ui small">
+                  <Form className="ui small" onSubmit={handleSubmit}>
                     <Form.Field
                       control={Input}
                       label="Annual Income $:"
@@ -144,7 +145,12 @@ class House extends Component {
                   {/* </div> */}
                   <br />
                   <NavLink to="/goals">
-                    <Button icon className="ui huge button" floated="right">
+                    <Button
+                      icon
+                      className="ui huge button"
+                      floated="right"
+                      onClick={event => handleSubmit(event, { housePlan })}
+                    >
                       Save the Goal
                       <Icon name="right arrow" />
                     </Button>
@@ -163,22 +169,24 @@ class House extends Component {
 const mapStateToProps = state => {
   return {
     userId: state.user.id,
-    houseForm: state.houseForm,
+    houseForm: state.houseForm
   };
 };
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
-    handleChange(event) {
+    handleChange(event, housePlan) {
+      // console.log("hi`~", event.target.value, "::", [event.target.name]);
+      // console.log("hi`~");
       dispatch(
         addHouseFormdetails({ [event.target.name]: +event.target.value })
       );
     },
 
-    handleSubmit(event, housePlan) {
+    handleSubmit(event, { housePlan }) {
       event.preventDefault();
       dispatch(addHousePlan(housePlan));
-    },
+    }
   };
 };
 

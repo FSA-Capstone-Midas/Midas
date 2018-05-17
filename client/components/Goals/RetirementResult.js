@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "../Footer";
 import Loading from "../Loading";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment, Divider } from "semantic-ui-react";
 import DesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "../AfterLogin/AfterLoginMobileContainer";
 import { ResponsiveStream } from "@nivo/stream";
@@ -217,6 +217,7 @@ class RetirementResult extends Component {
                         ]}
                       />
                     </div>
+                    <Divider section />
                     <RetirementTable
                       retirement={this.props.retirement}
                       objWithAllProperty={objWithAllProperty}

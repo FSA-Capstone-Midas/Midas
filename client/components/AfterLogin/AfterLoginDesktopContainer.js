@@ -68,9 +68,6 @@ class DesktopContainer extends Component {
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>
-                <Menu.Item exact as={NavLink} to="/profile">
-                  Profile
-                </Menu.Item>
 
                 <Menu.Item exact as={NavLink} to="/transactions">
                   Transactions
@@ -94,6 +91,9 @@ class DesktopContainer extends Component {
 
                 <Menu.Item exact as={NavLink} to="/goals">
                   Goals
+                </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/profile">
+                  Profile
                 </Menu.Item>
 
                 <Menu.Item position="right">

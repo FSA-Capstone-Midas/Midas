@@ -49,10 +49,18 @@ class BillForm extends Component {
       userId: id
     };
 
-    store.dispatch(fetchPhone(id));
-    store.dispatch(updatePhone(phoneResult));
-    store.dispatch(fetchRent(id));
-    store.dispatch(updateRent(dateResult));
+    if (!this.state.phoneMonth) {
+      store.dispatch(fetchRent(id));
+      store.dispatch(updateRent(dateResult));
+    } else if (!this.state.month) {
+      store.dispatch(fetchPhone(id));
+      store.dispatch(updatePhone(phoneResult));
+    } else {
+      store.dispatch(fetchRent(id));
+      store.dispatch(updateRent(dateResult));
+      store.dispatch(fetchPhone(id));
+      store.dispatch(updatePhone(phoneResult));
+    }
   }
 
   render() {

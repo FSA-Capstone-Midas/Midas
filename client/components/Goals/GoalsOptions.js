@@ -18,7 +18,7 @@ class GoalsOptions extends Component {
     return (
       <Item.Group divided>
         {this.props.retirement.birthyear ? (
-          <Item>
+          <Item style={{ fontSize: "20px" }}>
             <Item.Image src="pictures/retirement.png" />
 
             <Item.Content verticalAlign="middle">
@@ -51,7 +51,7 @@ class GoalsOptions extends Component {
           <Item>
             <Item.Image src="pictures/emergency.png" />
 
-            <Item.Content verticalAlign="middle">
+            <Item.Content verticalAlign="middle" style={{ fontSize: "20px" }}>
               <Item.Header>Emergency Planning Goal</Item.Header>
               <Item.Extra>
                 <p>Total Expense Goal: ${this.props.emergency.totalExpense}</p>
@@ -76,11 +76,11 @@ class GoalsOptions extends Component {
           </Item>
         ) : null}
 
-        {this.props.houseForm.annualIncome ? (
+        {this.props.houseForm.annualIncome !== 0 ? (
           <Item>
             <Item.Image src="pictures/house.png" />
 
-            <Item.Content verticalAlign="middle">
+            <Item.Content verticalAlign="middle" style={{ fontSize: "20px" }}>
               <Item.Header>See your housing goal</Item.Header>
               <Item.Extra>
                 <Label>Housing Goal</Label>
