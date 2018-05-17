@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
-import { Segment, Grid, Header } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 import store, {
   updateRent,
   fetchRent,
@@ -11,7 +11,6 @@ import store, {
 
 class BillForm extends Component {
   constructor(props) {
-    console.log("props!!", props);
     super(props);
     this.state = {
       amount: 0,

@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
-import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 import { Icon, Grid, Step } from "semantic-ui-react";
-import BillForm from "./BillForm";
 
 class PhoneAlert extends Component {
   render() {
-    const { id, user, userInfo, phone, all, accounts } = this.props;
-    console.log("check this out!!!!", all);
+    const { phone } = this.props;
     if (phone && phone.id) {
       const newDate = new Date().toString().split(" ");
       const oldDate = phone.date.split("-");
@@ -49,7 +44,7 @@ const mapState = state => {
     id: state.user.id,
     phone: state.phone,
     all: state,
-    accounts: state.accounts.accountInfo,
+    accounts: state.accounts.accountInfo
   };
 };
 

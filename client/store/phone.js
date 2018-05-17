@@ -1,5 +1,6 @@
 import axios from "axios";
 import history from "../history";
+import { phoneBill } from "../../script/seedFileForDeploy";
 
 const UPDATE_PHONE = "UPDATE_PHONE";
 const GET_PHONE = "GET_PHONE";
@@ -22,7 +23,7 @@ export const fetchPhone = id => dispatch =>
   axios
     .get(`/api/phone/user/${id}`)
     .then(res => {
-      dispatch(getPhoneBill(res.data));
+      dispatch(getPhoneBill(res.data || phoneBill));
     })
     .catch(err => console.log(err));
 

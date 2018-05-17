@@ -59,13 +59,9 @@ export const addHouseFormdetails = changeDetails => dispatch => {
 
 export const addHousePlan = housePlan => dispatch => {
   const userId = housePlan.userId;
-  console.log("what is housePlan", housePlan);
-  console.log("what is userId", userId);
   axios
     .post(`api/house/user/${userId}`, housePlan)
     .then(res => {
-      console.log("spoijef", res.data);
-      console.log("what is res.data", res.data);
       dispatch(getUpdatedHousePlan(res.data));
       history.push("/goals");
     })

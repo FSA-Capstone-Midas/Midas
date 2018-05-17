@@ -1,93 +1,39 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PlaidLink from "react-plaid-link";
 import { connect } from "react-redux";
-import {
-  fetchInformation,
-  fetchItem,
-  fetchTransaction,
-  fetchIncome,
-  fetchIdentity,
-  fetchAsset,
-  fetchMakingAsset,
-} from "../store";
+import { fetchInformation } from "../store";
+
 class Plaid extends Component {
   render() {
-    const {
-      handleOnSuccess,
-      handleAccount,
-      handleTransaction,
-      handleIncome,
-      handleIdentity,
-      handleAsset,
-      handleMakingAsset,
-    } = this.props;
+    const { handleOnSuccess, handleOnExit } = this.props;
     return (
       <div>
         <PlaidLink
           clientName="Midas"
           env="development"
           product={["auth", "transactions"]}
-          publicKey="f274c354ebdaf254570702d564cd40"
-          onExit={this.handleOnExit}
+          publicKey="75968c85b9fcf14bb18a8e198161ad"
+          onExit={handleOnExit}
           onSuccess={handleOnSuccess}
           //   onLoad={getData}
         >
-          Open Link and connect your bank!
+          Connect your bank account to Midas!
         </PlaidLink>
-        <button onClick={evt => handleAccount(evt)}>Get Account</button>
-        <button onClick={evt => handleTransaction(evt)}>
-          Get transactions
-        </button>
-        <button onClick={evt => handleIncome(evt)}>Get income</button>
-        <button onClick={evt => handleIdentity(evt)}>Get identity</button>
-        <button onClick={evt => handleAsset(evt)}>Get asset</button>
-        <button onClick={evt => handleMakingAsset(evt)}>make asset</button>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
+const mapDispatch = dispatch => {
   return {
-    handleOnExit(error, metadata) {
-      console.log("link: user exited");
-      console.log(error, metadata);
+    handleOnExit(metadata) {
+      //user cancel to add bank to account
+      // console.log(error, metadata)
     },
     handleOnSuccess(token, metadata) {
       dispatch(fetchInformation(token, metadata));
-    },
-    handleAccount(event) {
-      event.preventDefault();
-      dispatch(fetchItem());
-    },
-    handleTransaction(event) {
-      event.preventDefault();
-      dispatch(fetchTransaction());
-    },
-    handleIncome(event) {
-      event.preventDefault();
-      dispatch(fetchIncome());
-    },
-    handleIdentity(event) {
-      event.preventDefault();
-      dispatch(fetchIdentity());
-    },
-    handleAsset(event) {
-      event.preventDefault();
-      dispatch(fetchAsset());
-    },
-    handleMakingAsset(event) {
-      event.preventDefault();
-      dispatch(fetchMakingAsset());
-    },
+    }
   };
-}
+};
 
-const PlaidContainer = connect(mapStateToProps, mapDispatchToProps)(Plaid);
-
-export default PlaidContainer;
+export default connect(null, mapDispatch)(Plaid);

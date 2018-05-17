@@ -1,4 +1,5 @@
 import axios from "axios";
+import { demoTransaction } from "../../script/seedFileForDeploy";
 
 const initialState = {};
 
@@ -14,7 +15,11 @@ export const fetchTransaction = () => dispatch => {
   return axios
     .get("/api/plaid/transactions")
     .then(res => {
-      return dispatch(getTransaction(res.data));
+      if (res.data.error) {
+        dispatch(getTransaction(demoTransaction));
+      } else {
+        dispatch(getTransaction(res.data || demoTransaction));
+      }
     })
     .catch(err => console.error(err));
 };

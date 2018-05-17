@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import {
   Button,
   Container,
@@ -8,9 +9,9 @@ import {
   Grid,
   Header,
   Image,
-  Segment,
+  Segment
 } from "semantic-ui-react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
 import AfterDesktopContainer from "../AfterLogin/AfterLoginDesktopContainer";
@@ -36,7 +37,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const HomePage = props => {
@@ -146,7 +147,9 @@ const HomePage = props => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign="center">
-              <Button size="huge">Check Them Out</Button>
+              <Button size="huge" as={Link} to="/signup">
+                Check Them Out
+              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -154,16 +157,13 @@ const HomePage = props => {
       <Segment style={{ padding: "8em 0em" }} vertical>
         <Container text>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            Breaking The Grid, Grabs Your Attention
+            Try Our Demo Account
           </Header>
           <p style={{ fontSize: "1.33em" }}>
-            Instead of focusing on content creation and hard work, we have
-            learned how to master the art of doing nothing by providing massive
-            amounts of whitespace and generic content that can seem massive,
-            monolithic and worth your attention.
+            Login to our demo account to test it out!
           </p>
-          <Button as="a" size="large">
-            Read More
+          <Button size="huge" as={Link} to="/demo">
+            Try It Now
           </Button>
           <Divider
             as="h4"
@@ -174,16 +174,14 @@ const HomePage = props => {
             <a href="#">Case Studies</a>
           </Divider>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            Did We Tell You About Our Bananas?
+            Want to test it out with your bank?
           </Header>
           <p style={{ fontSize: "1.33em" }}>
-            Yes I know you probably disregarded the earlier boasts as
-            non-sequitur filler content, but it's really true. It took years of
-            gene splicing and combinatory DNA research, but our bananas can
-            really dance.
+            Do you want to sign up an account and vistualize your financial
+            statement and spending activity?
           </p>
-          <Button as="a" size="large">
-            I'm Still Quite Interested
+          <Button size="huge" as={Link} to="/signup">
+            I'm Interested
           </Button>
         </Container>
       </Segment>
@@ -194,7 +192,7 @@ const HomePage = props => {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 

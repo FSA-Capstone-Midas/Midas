@@ -8,7 +8,6 @@ export { default as HomePage } from "./BeforeLoginPages/HomePage";
 export { default as HowItWorks } from "./BeforeLoginPages/HowItWorks";
 export { default as Login } from "./BeforeLoginPages/Login";
 export { default as SignUp } from "./BeforeLoginPages/SignUp";
-export { default as Navbar } from "./navbar";
 export { default as UserHome } from "./user-home";
 export { default as Profile } from "./Profile";
 export { default as UserCredit } from "./UserCredit";
@@ -20,15 +19,17 @@ export { default as Retirement } from "./Goals/Retirement";
 export { default as RetirementResult } from "./Goals/RetirementResult";
 export { default as Goals } from "./Goals/Goals";
 export {
-  default as SaveForEmergencyMainPage,
+  default as SaveForEmergencyMainPage
 } from "./Goals/SaveForEmergencyMainPage";
 export {
-  default as SaveForEmergencyConfirmPage,
+  default as SaveForEmergencyConfirmPage
 } from "./Goals/SaveForEmergencyConfirmPage";
 export { default as House } from "./Goals/House";
 export { default as Bills } from "./Bills";
 export { default as BillForm } from "./BillForm";
 export { default as BillAlert } from "./BillAlert";
 export { default as PhoneAlert } from "./PhoneAlert";
+export { default as AddAccount } from "./AddAccount";
+export { default as Demo } from "./Demo";
 
 //export { Login, Signup } from "./auth-form";

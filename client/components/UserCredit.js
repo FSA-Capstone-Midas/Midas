@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Footer from "./Footer";
-import { Segment, Container, Grid, Image, Progress } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 

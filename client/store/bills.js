@@ -1,5 +1,6 @@
 import axios from "axios";
 import history from "../history";
+import { rentBill } from "../../script/seedFileForDeploy";
 
 const UPDATE_RENT = "UPDATE_RENT";
 const GET_RENT = "GET_RENT";
@@ -11,7 +12,7 @@ const getUserRent = rent => ({ type: GET_RENT, rent });
 
 export const updateRent = rent => dispatch => {
   axios
-    .post("/api/rent", rent)
+    .post("/api/rent/", rent)
     .then(res => {
       dispatch(updateUserRent(res.data));
       history.push("/home");
@@ -23,7 +24,7 @@ export const fetchRent = id => dispatch =>
   axios
     .get(`/api/rent/user/${id}`)
     .then(res => {
-      dispatch(getUserRent(res.data));
+      dispatch(getUserRent(res.data || rentBill));
     })
     .catch(err => console.log(err));
 

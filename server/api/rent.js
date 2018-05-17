@@ -9,7 +9,6 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/user/:id", (req, res, next) => {
-  //   console.log(req.params.id, "REQSSSSS");
   Rent.findOne({
     where: {
       userId: req.params.id

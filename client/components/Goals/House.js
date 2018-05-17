@@ -51,7 +51,6 @@ class House extends Component {
       mortgageRate
     } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
-    console.log("what is housePlan here", housePlan);
     const aggressivePrice = Math.floor(annualIncome * 6);
     const downpaymentAggresive = Math.floor(
       aggressivePrice * (percentDownPayment / 100)
@@ -60,7 +59,6 @@ class House extends Component {
     const monthlyAggresive = Math.floor(
       paymentBalance * Math.pow(1 + mortgageRate / 100, 30) / 360
     );
-    // console.log("house plan", housePlan);
     return (
       <ResponsiveContainer>
         <Container>
@@ -176,8 +174,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(event, housePlan) {
-      // console.log("hi`~", event.target.value, "::", [event.target.name]);
-      // console.log("hi`~");
       dispatch(
         addHouseFormdetails({ [event.target.name]: +event.target.value })
       );

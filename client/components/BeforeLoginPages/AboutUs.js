@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import {
   Button,
   Grid,
@@ -9,7 +9,7 @@ import {
   Segment,
   Card,
   Icon,
-  Image,
+  Image
 } from "semantic-ui-react";
 import MobileContainer from "../BeforeLogin/MobileContainer";
 import DesktopContainer from "../BeforeLogin/DesktopContainer";
@@ -36,7 +36,7 @@ const ResponsiveContainer = ({ children, logined }) => {
 };
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const AboutUs = props => {
@@ -163,7 +163,9 @@ const AboutUs = props => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign="center">
-              <Button size="huge">Check Them Out</Button>
+              <Button size="huge" as={Link} to="/home">
+                Check Them Out
+              </Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -175,7 +177,7 @@ const AboutUs = props => {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Segment, Table, Tab } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 
 const AccountTable = props => {

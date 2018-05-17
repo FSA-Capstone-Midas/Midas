@@ -16,7 +16,7 @@ class PieSpending extends Component {
             "Recreation",
             "Service",
             "Shops",
-            "Travel",
+            "Travel"
           ],
           datasets: [
             {
@@ -86,7 +86,7 @@ class PieSpending extends Component {
                     return acc;
                   }, 0),
                   2
-                ),
+                )
               ],
               backgroundColor: [
                 "#FF6384",
@@ -95,11 +95,11 @@ class PieSpending extends Component {
                 "#FF005B",
                 "#00D5D1",
                 "#00A0EF",
-                "#FF8800",
+                "#FF8800"
               ],
-              hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-            },
-          ],
+              hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+            }
+          ]
         }}
         type="doughnut"
       />

@@ -1,25 +1,21 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { NavLink, withRouter, Link } from "react-router-dom";
+import { logout } from "../../store";
 import { connect } from "react-redux";
-import { NavLink, withRouter } from "react-router-dom";
 import {
   Button,
   Container,
+  Image,
   Menu,
   Responsive,
   Segment,
-  Visibility,
-  Image
+  Visibility
 } from "semantic-ui-react";
-import { logout, fetchUser } from "../../store";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
-class DesktopContainer extends Component {
+class AddAccountDesktopNavBar extends Component {
   state = {};
 
   hideFixedMenu = () => this.setState({ fixed: false });
@@ -30,7 +26,7 @@ class DesktopContainer extends Component {
     const { fixed } = this.state;
 
     return (
-      <Responsive {...notMobile} id="desktopNav">
+      <Responsive {...notMobile} id="#desktopNav">
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -50,52 +46,29 @@ class DesktopContainer extends Component {
               size="large"
               style={{ border: "none" }}
             >
-              <Container
-                style={{
-                  fontSize: "17px"
-                }}
-              >
+              <Container style={{ fontSize: "17px" }}>
                 {this.state.fixed ? null : (
                   <Menu.Item
-                    style={{ marginBottom: "-1em" }}
-                    exact
-                    as={NavLink}
-                    to="/"
+                    style={{ marginBottom: "-1em", marginRight: "10%" }}
+                    as={Link}
+                    to="/home"
                   >
                     <Image src="/pictures/midas_nav_logo.png" />
                   </Menu.Item>
                 )}
-                <Menu.Item as={NavLink} to="/home">
+
+                <Menu.Item exact as={NavLink} to="/">
                   Home
                 </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/transactions">
-                  Transactions
+                <Menu.Item exact as={NavLink} to="/howitworks">
+                  How It Works
                 </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/credit">
-                  Credit Score
+                <Menu.Item exact as={NavLink} to="/aboutus">
+                  About Us
                 </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/bills">
-                  Bills
+                <Menu.Item exact as={NavLink} to="/howitworks">
+                  Add Account
                 </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/budget">
-                  Budgets
-                </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/trend">
-                  Trends
-                </Menu.Item>
-
-                <Menu.Item exact as={NavLink} to="/goals">
-                  Goals
-                </Menu.Item>
-                <Menu.Item exact as={NavLink} to="/profile">
-                  Profile
-                </Menu.Item>
-
                 <Menu.Item position="right">
                   <Button
                     as="a"
@@ -111,33 +84,22 @@ class DesktopContainer extends Component {
             </Menu>
           </Segment>
         </Visibility>
+
         {children}
       </Responsive>
     );
   }
 }
 
-DesktopContainer.propTypes = {
+AddAccountDesktopNavBar.propTypes = {
   children: PropTypes.node
-};
-const mapState = state => {
-  return {
-    user: state.user,
-    id: state.user.id
-  };
 };
 const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    },
-    handleUser(event, id) {
-      event.preventDefault();
-      dispatch(fetchUser(id));
     }
   };
 };
 
-export default withRouter(connect(mapState, mapDispatch)(DesktopContainer));
-
-// export default withRouter(DesktopContainer);
+export default withRouter(connect(null, mapDispatch)(AddAccountDesktopNavBar));

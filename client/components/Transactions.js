@@ -43,8 +43,6 @@ class Transactions extends Component {
   }
 
   render() {
-    // console.log("account ", this.props.account); //user account info
-    // console.log("transaction ", this.props.transaction); //user transaction info
     const { transaction } = this.props;
     const rows = transaction;
 

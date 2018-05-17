@@ -8,7 +8,7 @@ import {
   Menu,
   Responsive,
   Segment,
-  Visibility,
+  Visibility
 } from "semantic-ui-react";
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
@@ -46,7 +46,12 @@ class DesktopContainer extends Component {
             >
               <Container style={{ fontSize: "17px" }}>
                 {this.state.fixed ? null : (
-                  <Menu.Item style={{ marginBottom: "-1em" }}>
+                  <Menu.Item
+                    style={{ marginBottom: "-1em" }}
+                    exact
+                    as={NavLink}
+                    to="/"
+                  >
                     <Image src="/pictures/midas_nav_logo.png" />
                   </Menu.Item>
                 )}
@@ -59,6 +64,9 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/aboutus">
                   About Us
+                </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/demo">
+                  Demo
                 </Menu.Item>
                 <Menu.Item position="right">
                   {match.path === "/login" ? null : (
@@ -91,7 +99,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default withRouter(DesktopContainer);

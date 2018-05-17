@@ -31,11 +31,12 @@ async function seed() {
     User.create({
       email: "murphy@email.com",
       password: "123",
-      firstName: "casy",
-      lastName: "chan",
+      firstName: "Midas",
+      lastName: "user",
       phoneNumber: "31241242",
       address: "Queens",
-      jobTitle: "software engineer"
+      jobTitle: "software engineer",
+      plaidTokenId: "123"
     })
   ]);
   // Wowzers! We can even `await` on the right-hand side of the assignment operator

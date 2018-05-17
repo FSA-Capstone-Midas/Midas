@@ -2,13 +2,6 @@ import React from "react";
 import { ResponsiveCalendar } from "@nivo/calendar";
 import { connect } from "react-redux";
 
-// const data = [
-//   {
-//     day: "2016-03-15",
-//     value: 165,
-//   },
-// ];
-
 class UserHomeCalender extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +16,7 @@ class UserHomeCalender extends React.Component {
       "Recreation",
       "Service",
       "Shops",
-      "Travel",
+      "Travel"
     ];
 
     const filteredTransactions = allTrans.filter(singleT => {
@@ -47,15 +40,10 @@ class UserHomeCalender extends React.Component {
       let value = Math.round(oldValue);
       return { day, value };
     });
-    console.log("what is data", data);
     return data;
   }
 
   render() {
-    const { transaction } = this.props;
-
-    console.log("what is transaction", transaction);
-
     return (
       <div style={{ height: 500, width: "100%" }}>
         {this.props.transaction ? (
@@ -69,7 +57,7 @@ class UserHomeCalender extends React.Component {
               top: 50,
               right: 5,
               bottom: 60,
-              left: 5,
+              left: 5
             }}
             yearSpacing={40}
             monthBorderColor="#ffffff"
@@ -84,8 +72,8 @@ class UserHomeCalender extends React.Component {
                 itemCount: 20,
                 itemWidth: 54,
                 itemHeight: 36,
-                itemDirection: "top-to-bottom",
-              },
+                itemDirection: "top-to-bottom"
+              }
             ]}
           />
         ) : null}
@@ -96,7 +84,7 @@ class UserHomeCalender extends React.Component {
 
 const mapState = state => {
   return {
-    transaction: state.transactions.transaction,
+    transaction: state.transactions.transaction
   };
 };
 

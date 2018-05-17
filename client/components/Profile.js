@@ -3,16 +3,18 @@ import React from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import store, { updateProfile } from "../store";
-import { Button, Grid, Header, Image, Segment, Form } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  Header,
+  Image,
+  Segment,
+  Form,
+  Divider
+} from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
-/* eslint-disable react/no-multi-comp */
-
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
 const options = [
   { key: "January", text: "January", value: "January" },
   { key: "Febuary", text: "Febuary", value: "Febuary" },
@@ -25,7 +27,7 @@ const options = [
   { key: "September", text: "September", value: "September" },
   { key: "October", text: "October", value: "October" },
   { key: "November", text: "November", value: "November" },
-  { key: "December", text: "December", value: "December" },
+  { key: "December", text: "December", value: "December" }
 ];
 
 const startYear = 1948;
@@ -49,7 +51,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 class Profile extends React.Component {
@@ -66,7 +68,7 @@ class Profile extends React.Component {
       jobTitle: props.user.jobTitle,
       incomeRange: props.user.incomeRange,
       email: props.user.email,
-      state: props.user.state,
+      state: props.user.state
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -84,24 +86,21 @@ class Profile extends React.Component {
   handleSelectChange(e, { name, value }) {
     if (name === "birthYear") {
       this.setState({
-        birthYear: value,
+        birthYear: value
       });
     } else if (name === "birthMonth") {
       this.setState({
-        birthMonth: value,
+        birthMonth: value
       });
     } else if (name === "birthDay") {
       this.setState({
-        birthDay: value,
+        birthDay: value
       });
     }
   }
 
   render() {
     const { user } = this.props;
-    console.log("what is user", user.birthYear);
-    console.log("what is user", user.birthMonth);
-    console.log("what is user", user.birthDay);
     return (
       <ResponsiveContainer id="desktopNav">
         <Segment id="headerBackground" style={{ padding: "2em" }} vertical>
@@ -114,7 +113,6 @@ class Profile extends React.Component {
             </Grid.Row>
           </Grid>
         </Segment>
-
         <Segment
           style={{ padding: "2em 0em", fontSize: "12px", textAlign: "center" }}
           vertical
@@ -196,7 +194,6 @@ class Profile extends React.Component {
                       placeholder={user.birthDay}
                       onChange={this.handleSelectChange}
                     />
-                    <label />
                     <Form.Select
                       name="birthYear"
                       id="Year"
@@ -237,6 +234,7 @@ class Profile extends React.Component {
             </Grid.Column>
           </Grid>
         </Segment>
+        <Divider hidden />
         <Footer />
       </ResponsiveContainer>
     );
@@ -246,7 +244,7 @@ class Profile extends React.Component {
 const mapState = state => {
   return {
     user: state.user,
-    id: state.user.id,
+    id: state.user.id
   };
 };
 
