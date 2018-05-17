@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon, Item, Label, Segment, Grid } from "semantic-ui-react";
+import { Button, Item, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {

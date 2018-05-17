@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Segment,
-  Card,
-  Sticky,
-  Header,
-  Button,
-  Container,
-  Image,
-} from "semantic-ui-react";
+import { Grid, Header, Button, Container, Image } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -16,10 +7,7 @@ import { NavLink } from "react-router-dom";
 class GoalsMenu extends Component {
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
   }
-
-  // handleClick(event) {}
 
   render() {
     let { retirement, emergencyGoal, houseForm } = this.props;
@@ -112,7 +100,7 @@ const mapStateToProps = state => {
     user: state.user,
     retirement: state.retirement,
     emergencyGoal: state.emergencyGoalReducer,
-    houseForm: state.houseForm,
+    houseForm: state.houseForm
   };
 };
 

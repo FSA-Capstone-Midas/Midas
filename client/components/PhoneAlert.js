@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Footer from "./Footer";
 import { Icon, Grid, Step } from "semantic-ui-react";
 
 class PhoneAlert extends Component {
@@ -45,7 +44,7 @@ const mapState = state => {
     id: state.user.id,
     phone: state.phone,
     all: state,
-    accounts: state.accounts.accountInfo,
+    accounts: state.accounts.accountInfo
   };
 };
 

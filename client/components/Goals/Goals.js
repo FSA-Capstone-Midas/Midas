@@ -22,7 +22,6 @@ const ResponsiveContainer = ({ children }) => (
 class Goals extends Component {
   constructor(props) {
     super(props);
-    //return menu bar if no goals
     this.state = {
       goals: false
     };
