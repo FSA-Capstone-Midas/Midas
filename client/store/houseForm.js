@@ -76,7 +76,7 @@ export const deleteHousePlan = id => dispatch => {
   axios
     .delete(`/api/house/user/${id}`)
     .then(res => {
-      dispatch(getHouseFormdetails(id));
+      dispatch(deleteHouseGoal());
     })
     .catch(err => console.log(err));
 };
@@ -93,7 +93,7 @@ export default function(state = fieldValues, action) {
     case GET_UPDATED_HOUSE_PLAN:
       return Object.assign({}, state, action.housePlan);
     case DELETE_HOUSE_GOAL:
-      return Object.assign({}, state);
+      return fieldValues;
 
     default:
       return state;

@@ -51,7 +51,7 @@ class House extends Component {
       mortgageRate
     } = houseForm;
     const housePlan = Object.assign({}, { userId }, houseForm);
-    console.log('what is housePlan here', housePlan);
+    console.log("what is housePlan here", housePlan);
     const aggressivePrice = Math.floor(annualIncome * 6);
     const downpaymentAggresive = Math.floor(
       aggressivePrice * (percentDownPayment / 100)
@@ -83,28 +83,28 @@ class House extends Component {
                       label="Annual Income $:"
                       name="annualIncome"
                       value={houseForm.annualIncome}
-                      onChange={housePlan => handleChange(event, housePlan)}
+                      onChange={handleChange}
                     />
                     <Form.Field
                       control={Input}
                       label="Mortgage Rate % (average 30-year fixed rate is 4.04%)"
                       name="mortgageRate"
                       value={houseForm.mortgageRate}
-                      onChange={housePlan => handleChange(event, housePlan)}
+                      onChange={handleChange}
                     />
                     <Form.Field
                       control={Input}
                       label="Annual Insurance $"
                       name="annualInsurance"
                       value={houseForm.annualInsurance}
-                      onChange={housePlan => handleChange(event, housePlan)}
+                      onChange={handleChange}
                     />
                     <Form.Field
                       control={Input}
                       label="Annual Property Tax % (national averge is 1%)"
                       name="annualPropertyTax"
                       value={houseForm.annualPropertyTax}
-                      onChange={housePlan => handleChange(event, housePlan)}
+                      onChange={handleChange}
                     />
                     <Form.Input
                       label={`Percent Down Payment: ${
@@ -113,7 +113,7 @@ class House extends Component {
                       min={0}
                       max={100}
                       name="percentDownPayment"
-                      onChange={housePlan => handleChange(event, housePlan)}
+                      onChange={handleChange}
                       step={1}
                       type="range"
                       value={houseForm.percentDownPayment}
@@ -180,13 +180,11 @@ const mapDispatchToProps = function(dispatch, ownProps) {
       // console.log("hi`~");
       dispatch(
         addHouseFormdetails({ [event.target.name]: +event.target.value })
-      ),
-        dispatch(addHousePlan(housePlan));
+      );
     },
 
     handleSubmit(event, { housePlan }) {
       event.preventDefault();
-      console.log("hi`~", housePlan);
       dispatch(addHousePlan(housePlan));
     }
   };
