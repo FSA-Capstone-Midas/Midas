@@ -31,8 +31,8 @@ async function seed() {
     User.create({
       email: "murphy@email.com",
       password: "123",
-      firstName: "casy",
-      lastName: "chan",
+      firstName: "Donald",
+      lastName: "Trump",
       phoneNumber: "31241242",
       address: "Queens",
       jobTitle: "software engineer",

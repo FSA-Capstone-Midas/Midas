@@ -163,7 +163,7 @@ const AboutUs = props => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column textAlign="center">
-              <Button size="huge" as={NavLink} to="/signup">
+              <Button size="huge" as={NavLink} to="/home">
                 Check Them Out
               </Button>
             </Grid.Column>

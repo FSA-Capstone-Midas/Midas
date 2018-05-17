@@ -37,7 +37,9 @@ export default function Footer() {
             <Grid.Column width={3}>
               <Header inverted as="h4" content="Services" />
               <List link inverted>
-                <List.Item>How To Access</List.Item>
+                <List.Item as={NavLink} to="/home">
+                  How To Access
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
