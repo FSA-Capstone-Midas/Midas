@@ -2,17 +2,14 @@ const router = require("express").Router();
 const { User, Rent } = require("../db/models");
 module.exports = router;
 
-router.get("/:id", (req, res, next) => {
+router.get("/", (req, res, next) => {
   User.findAll({
-    where: {
-      id: req.params.id
-    },
-    include: [{ model: Rent }],
+    // explicitly select only the id and email fields - even though
+    // users' passwords are encrypted, it won't help if we just
+    // send everything to anyone who asks!
     attributes: ["id", "email"]
   })
-    .then(users => {
-      res.json(users);
-    })
+    .then(users => res.json(users))
     .catch(next);
 });
 

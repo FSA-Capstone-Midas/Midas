@@ -3,24 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 import Footer from "./Footer";
 import store, { updateProfile } from "../store";
-import {
-  Button,
-  Grid,
-  Header,
-  Image,
-  Segment,
-  Icon,
-  Form
-} from "semantic-ui-react";
+import { Button, Grid, Header, Image, Segment, Form } from "semantic-ui-react";
 import DesktopContainer from "./AfterLogin/AfterLoginDesktopContainer";
 import MobileContainer from "./AfterLogin/AfterLoginMobileContainer";
 
-/* eslint-disable react/no-multi-comp */
-
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
 const options = [
   { key: "January", text: "January", value: "January" },
   { key: "Febuary", text: "Febuary", value: "Febuary" },
@@ -201,7 +187,6 @@ class Profile extends React.Component {
                       placeholder={user.birthDay}
                       onChange={this.handleSelectChange}
                     />
-                    <label />
                     <Form.Select
                       name="birthYear"
                       id="Year"
