@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { NavLink, withRouter, Link } from "react-router-dom";
-import { logout } from "../store";
+import { logout } from "../../store";
 import { connect } from "react-redux";
 import {
   Button,
@@ -15,7 +15,7 @@ import {
 
 const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 };
 
-class AfterLoginBeforeAccount extends Component {
+class AddAccountDesktopNavBar extends Component {
   state = {};
 
   hideFixedMenu = () => this.setState({ fixed: false });
@@ -50,6 +50,8 @@ class AfterLoginBeforeAccount extends Component {
                 {this.state.fixed ? null : (
                   <Menu.Item
                     style={{ marginBottom: "-1em", marginRight: "10%" }}
+                    as={Link}
+                    to="/home"
                   >
                     <Image src="/pictures/midas_nav_logo.png" />
                   </Menu.Item>
@@ -89,7 +91,7 @@ class AfterLoginBeforeAccount extends Component {
   }
 }
 
-AfterLoginBeforeAccount.propTypes = {
+AddAccountDesktopNavBar.propTypes = {
   children: PropTypes.node
 };
 const mapDispatch = dispatch => {
@@ -100,4 +102,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default withRouter(connect(null, mapDispatch)(AfterLoginBeforeAccount));
+export default withRouter(connect(null, mapDispatch)(AddAccountDesktopNavBar));

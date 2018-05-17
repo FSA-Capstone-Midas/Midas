@@ -68,6 +68,9 @@ class DesktopContainer extends Component {
                 <Menu.Item as={NavLink} to="/home">
                   Home
                 </Menu.Item>
+                <Menu.Item exact as={NavLink} to="/addAccount">
+                  Add Account
+                </Menu.Item>
                 <Menu.Item exact as={NavLink} to="/profile">
                   Profile
                 </Menu.Item>

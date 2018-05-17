@@ -11,7 +11,7 @@ import {
   Sidebar
 } from "semantic-ui-react";
 
-class AfterLoginBeforeAccountMobile extends Component {
+class AddAccountMobileNavBar extends Component {
   state = {};
 
   handlePusherClick = () => {
@@ -94,8 +94,8 @@ class AfterLoginBeforeAccountMobile extends Component {
   }
 }
 
-AfterLoginBeforeAccountMobile.propTypes = {
+AddAccountMobileNavBar.propTypes = {
   children: PropTypes.node
 };
 
-export default withRouter(AfterLoginBeforeAccountMobile);
+export default withRouter(AddAccountMobileNavBar);

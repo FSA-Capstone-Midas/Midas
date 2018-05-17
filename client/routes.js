@@ -26,17 +26,7 @@ import {
   Demo
 } from "./components";
 
-import {
-  me,
-  fetchTransaction,
-  fetchItem,
-  getBudgetFromDatabase,
-  fetchEmergencyGoal,
-  fetchRetirementDetails,
-  fetchAllState,
-  fetchRent,
-  fetchPhone
-} from "./store";
+import { me } from "./store";
 
 /**
  * COMPONENT
@@ -59,9 +49,10 @@ class Routes extends Component {
         <Route exact path="/howitworks" component={HowItWorks} />
         <Route exact path="/demo" component={Demo} />
 
-        {!userWithToken && (
-          <Route exact path="/addAccount" component={AddAccount} />
-        )}
+        {!userWithToken &&
+          isLoggedIn && (
+            <Route exact path="/addAccount" component={AddAccount} />
+          )}
 
         {isLoggedIn &&
           userWithToken && (

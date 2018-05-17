@@ -1,10 +1,17 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Plaid from "./Plaid";
-import MobileContainer from "./BeforeLogin/MobileContainer";
-import DesktopContainer from "./BeforeLogin/DesktopContainer";
+import MobileContainer from "./AddAccountNavBar/AddAccountMobileNavBar";
+import DesktopContainer from "./AddAccountNavBar/AddAccountDesktopNavBar";
 import Footer from "./Footer";
-import { Container, Grid, Message, Icon, Image } from "semantic-ui-react";
+import {
+  Container,
+  Grid,
+  Message,
+  Icon,
+  Image,
+  Divider
+} from "semantic-ui-react";
 
 const ResponsiveContainer = ({ children }) => (
   <div>
@@ -21,6 +28,7 @@ class AddAccount extends Component {
   render() {
     return (
       <ResponsiveContainer>
+        <Divider section />
         <Container>
           <Grid centered columns={2}>
             <Grid.Column>
@@ -66,6 +74,9 @@ class AddAccount extends Component {
             </Grid.Column>
           </Grid>
         </Container>
+        <Divider section />
+
+        <Footer />
       </ResponsiveContainer>
     );
   }
