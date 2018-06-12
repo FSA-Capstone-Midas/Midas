@@ -34,7 +34,7 @@ export const postEmergencyGoal = (id, emergencyInfo) => dispatch => {
     .post(`/api/emergencyGoal/user/${id}`, {
       expense: expenseGoal,
       duration: expenseDuration,
-      isEnter: true,
+      isEnter: true
     })
     .then(res => res.data)
     .then(emergencyGoal => {
@@ -50,7 +50,6 @@ export const deleteEmergencyPlan = id => dispatch => {
     .delete(`/api/emergencyGoal/user/${id}`)
     .then(res => {
       dispatch(deleteEmergencyGoal(res.data));
-      console.log("what is history", history);
     })
     .catch(err => console.log(err));
 };
