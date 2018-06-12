@@ -41,7 +41,7 @@ class SaveForEmergency extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleFormSubmit(evevt) {
+  handleFormSubmit(event) {
     event.preventDefault();
     this.props.handlePage(this.state.duration, this.state.amount, {
       enteredExpense: true
